@@ -1,0 +1,10 @@
+[2023-10-08][INFO]Usuario alta: INSERT INTO `usuario` ( `usuario`, `clave`) VALUES ( '', '');
+[2023-10-08][INFO]Ejecutando Query INSERT INTO `usuario` ( `usuario`, `clave`) VALUES ( '', ''); 
+[2023-10-08][INFO]Usuario alta: INSERT INTO `usuario` ( `usuario`, `clave`) VALUES ( '', 'asdasdas');
+[2023-10-08][INFO]Ejecutando Query INSERT INTO `usuario` ( `usuario`, `clave`) VALUES ( '', 'asdasdas'); 
+[2023-10-08][INFO]Usuario alta: INSERT INTO `usuario` ( `usuario`, `clave`) VALUES ( '', 'Duilio92');
+[2023-10-08][INFO]Ejecutando Query INSERT INTO `usuario` ( `usuario`, `clave`) VALUES ( '', 'Duilio92'); 
+[2023-10-08][INFO]Usuario alta: INSERT INTO `usuario` ( `usuario`, `clave`) VALUES ( 'Pepe', 'LocoPepe');
+[2023-10-08][INFO]Ejecutando Query INSERT INTO `usuario` ( `usuario`, `clave`) VALUES ( 'Pepe', 'LocoPepe'); 
+[2023-10-08][INFO]Usuario alta: INSERT INTO `usuario` ( `usuario`, `clave`) VALUES ( 'DuilioRubio', 'Duilio92');
+[2023-10-08][INFO]Ejecutando Query INSERT INTO `usuario` ( `usuario`, `clave`) VALUES ( 'DuilioRubio', 'Duilio92'); 
