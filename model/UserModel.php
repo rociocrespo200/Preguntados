@@ -7,11 +7,45 @@ class UserModel {
         $this->database = $database;
     }
 
-    public function alta($usuario, $clave) {
-        $sql = "INSERT INTO `usuario` ( `usuario`, `clave`) VALUES ( '$usuario', '$clave');";
+    public function alta($nombre, $apellido, $anioNacimiento, $pais, $ciudad, $mail, $usuario, $clave, $fotoPerfil) {
+        $sql = "INSERT INTO `usuario` (`nombre`, `apellido`, `anio_nacimiento`, `pais`, `ciudad`, `mail`, `usuario`, `clave` ,`foto_perfil`) 
+        VALUES ('$nombre', '$apellido', '$anioNacimiento', '$pais', '$ciudad', '$mail', '$usuario', '$clave', '$fotoPerfil')";
         Logger::info('Usuario alta: ' . $sql);
-
         $this->database->query($sql);
     }
+
+    public function compararClaves($clave1, $clave2){
+        return $clave1==$clave2;
+    }
+
+    function validarClave($clave1){
+        $regex = '/^(?=.*[A-Z])(?=.*\d).{6,}$/';
+        return (preg_match($regex, $clave1));
+    }
+
+    function validarUsuario($usuario){
+        $regex = '/^\S{6,}$/';
+        return (preg_match($regex, $usuario));
+    }
+
+    function validarCorreo($correo) {
+        $patron = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/";
+        return (preg_match($patron, $correo));
+    }
+
+    function buscarUsuario($usuario){
+        $query= "SELECT * FROM usuario WHERE usuario = '$usuario'";
+        $resultado =  $this->database->query($query);
+        if (empty($resultado)){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+
+
+
 
 }
