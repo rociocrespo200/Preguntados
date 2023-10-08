@@ -64,3 +64,17 @@
         VALUES ('Duilio', 'Rubio', '1995', 'Uruguay', 'Montevideo', 'drubio950@alumno.unlam.edu.ar', 'Duke1992', 'Duke', 'error.jpg')
 [2023-10-08][INFO]Ejecutando Query INSERT INTO `usuario` (`nombre`, `apellido`, `anio_nacimiento`, `pais`, `ciudad`, `mail`, `usuario`, `clave` ,`foto_perfil`) 
         VALUES ('Duilio', 'Rubio', '1995', 'Uruguay', 'Montevideo', 'drubio950@alumno.unlam.edu.ar', 'Duke1992', 'Duke', 'error.jpg') 
+[2023-10-08][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'Duilio24' 
+[2023-10-08][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'Duilio24' 
+[2023-10-08][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'Duilio24' 
+[2023-10-08][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'Duilio29' 
+[2023-10-08][INFO]Usuario alta: INSERT INTO `usuario` (`nombre`, `apellido`, `anio_nacimiento`, `pais`, `ciudad`, `mail`, `usuario`, `clave` ,`foto_perfil`) 
+        VALUES ('Duilio', 'Rubio', '1992', 'Argentina', 'Buenos Aires', 'duilio@gmail.com.ar', 'Duilio29', 'Duilio29', 'error.jpg')
+[2023-10-08][INFO]Ejecutando Query INSERT INTO `usuario` (`nombre`, `apellido`, `anio_nacimiento`, `pais`, `ciudad`, `mail`, `usuario`, `clave` ,`foto_perfil`) 
+        VALUES ('Duilio', 'Rubio', '1992', 'Argentina', 'Buenos Aires', 'duilio@gmail.com.ar', 'Duilio29', 'Duilio29', 'error.jpg') 
+[2023-10-08][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'Duilio29' 
+[2023-10-08][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'asdasas' 
+[2023-10-08][INFO]Usuario alta: INSERT INTO `usuario` (`nombre`, `apellido`, `anio_nacimiento`, `pais`, `ciudad`, `mail`, `usuario`, `clave` ,`foto_perfil`) 
+        VALUES ('Duilio', 'Rubio', '199233', 'Argentina', 'Buenos Aires', 'duilio.rubio.92@gmail.co', 'asdasas', 'Duilio92', 'error.jpg')
+[2023-10-08][INFO]Ejecutando Query INSERT INTO `usuario` (`nombre`, `apellido`, `anio_nacimiento`, `pais`, `ciudad`, `mail`, `usuario`, `clave` ,`foto_perfil`) 
+        VALUES ('Duilio', 'Rubio', '199233', 'Argentina', 'Buenos Aires', 'duilio.rubio.92@gmail.co', 'asdasas', 'Duilio92', 'error.jpg') 
