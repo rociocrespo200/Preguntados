@@ -34,10 +34,20 @@ class UserController {
             Redirect::to('/user/signin');
         }
 
+        $nombre = $_POST["nombre"];
+        $apellido = $_POST["apellido"];
+        $anioNacimiento = $_POST["anio_nacimiento"];
+        $pais = $_POST["pais"];
+        $ciudad = $_POST["ciudad"];
+        $mail = $_POST["mail"];
         $usuario = $_POST["usuario"];
         $clave = $_POST['clave'];
+        $fotoPerfil = $_POST['fotoPerfil'] ?? "error.jpg";
 
-        $this->model->alta($usuario, $clave);
+
+
+
+        $this->model->alta($nombre, $apellido, $anioNacimiento, $pais, $ciudad, $mail, $usuario, $clave, $fotoPerfil);
 
 
         Redirect::root();
