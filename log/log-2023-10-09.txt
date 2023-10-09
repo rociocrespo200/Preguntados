@@ -35,3 +35,8 @@
 [2023-10-09][INFO]Ejecutando Query INSERT INTO `usuario` (`nombre`, `apellido`, `anio_nacimiento`, `pais`, `ciudad`, `mail`, `usuario`, `clave` ,`foto_perfil`) 
         VALUES ('fgvdf', 'fdgv', '2001', 'Uruguay', 'Chihuaha', 'marina@gmai.com', 'marina123', '123Marina123', 'costume_party.jpg') 
 [2023-10-09][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'marina123' 
+[2023-10-09][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'laura1235' 
+[2023-10-09][INFO]Usuario alta: INSERT INTO `usuario` (`nombre`, `apellido`, `anio_nacimiento`, `pais`, `ciudad`, `mail`, `usuario`, `clave` ,`foto_perfil`) 
+        VALUES ('rocio', 'laroa', '3234', 'Uruguay', 'Canelones', 'laura@gmail.com', 'laura1235', 'Jaimito1234', 'cinema.jpg')
+[2023-10-09][INFO]Ejecutando Query INSERT INTO `usuario` (`nombre`, `apellido`, `anio_nacimiento`, `pais`, `ciudad`, `mail`, `usuario`, `clave` ,`foto_perfil`) 
+        VALUES ('rocio', 'laroa', '3234', 'Uruguay', 'Canelones', 'laura@gmail.com', 'laura1235', 'Jaimito1234', 'cinema.jpg') 

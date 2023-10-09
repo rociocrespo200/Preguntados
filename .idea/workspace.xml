@@ -5,32 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="86e8dfa8-f60c-4051-9718-0a89732e3a3f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/Preguntados.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/log/log-2023-10-09.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/fondo_imagen.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/icono_editar.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/administrar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/logo_rainbow.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/profile.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/profile_picture_user_icon_153847.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/view/public/fondo_imagen.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/view/public/icono_editar.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/view/public/login.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/view/public/logo_rainbow.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/view/public/parabanner.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/view/public/parahome.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/view/public/profile_picture_user_icon_153847.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/view/public/signin.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/configuration.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config/configuration.ini" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/usuarios/cinema.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/header.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/header.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/loginView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/loginView.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/log-2023-10-09.txt" beforeDir="false" afterPath="$PROJECT_DIR$/log/log-2023-10-09.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/public/fondo_imagen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/public/icono_editar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/public/login.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/public/logo_rainbow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/public/parabanner.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/public/parahome.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/public/profile_picture_user_icon_153847.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/public/signin.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/view/registroView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/registroView.mustache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -90,7 +76,7 @@
       <option name="presentableId" value="Default" />
       <updated>1696797593087</updated>
       <workItem from="1696797594183" duration="4968000" />
-      <workItem from="1696805693007" duration="3882000" />
+      <workItem from="1696805693007" duration="5825000" />
     </task>
     <servers />
   </component>

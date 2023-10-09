@@ -42,7 +42,7 @@ class UserController {
         $mail = $_POST["mail"];
         $usuario = $_POST["usuario"];
         $clave = $_POST['clave'];
-        //$clave2 = $_POST['clave2'];
+        $clave2 = $_POST['clave2'];
 
         if (isset($_FILES["fileInput"]) && $_FILES["fileInput"]["error"] === UPLOAD_ERR_OK) {
             move_uploaded_file($_FILES["fileInput"]["tmp_name"] , "./public/usuarios/" . $_FILES['fileInput']['name']);
@@ -60,10 +60,10 @@ class UserController {
             Redirect::to('/user/signin');
         }
 
-//        if(!$this->model->compararClaves($clave,$clave2)){
-//            $_SESSION["error"] = "Las claves no coinciden";
-//            Redirect::to('/user/signin');
-//        }
+        if(!$this->model->compararClaves($clave,$clave2)){
+            $_SESSION["error"] = "Las claves no coinciden";
+            Redirect::to('/user/signin');
+        }
 
         if(!$this->model->buscarUsuario($usuario)){
             $_SESSION["error"] = "El usuario ya existe";
