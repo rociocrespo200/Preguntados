@@ -10,7 +10,38 @@ class UserController {
     }
 
     public function login() {
-        $this->render->printView('login');
+        $data = [];
+
+        if (!empty($_SESSION['error'])) {
+            $data["error"] = $_SESSION['error'];
+            unset($_SESSION['error']);
+        }
+
+        $data['action'] = '/user/procesarLogin';
+        $data['submitText'] = 'Ingresar';
+
+        $this->render->printView('login', $data);
+    }
+
+    public function procesarLogin(){
+        if( empty($_POST['usuario'] ) || empty($_POST['clave'])){
+            $_SESSION["error"] = "Debe completar todos los campos";
+            Redirect::to('/user/login');
+        }
+
+        $usuario = $_POST["usuario"];
+        $clave = $_POST['clave'];
+
+        $usuarioBuscado = $this->model->get($usuario, $clave);
+
+        if($usuarioBuscado == null){
+            $_SESSION["error"] = "Usuario o contraseña incorrectos";
+            Redirect::to('/user/login');
+        }
+
+        $_SESSION["usuario"] = $usuarioBuscado;
+        $this->render->printView('home', $_SESSION["usuario"]);
+
     }
 
     public function signin() {
@@ -75,10 +106,14 @@ class UserController {
         Redirect::root();
     }
 
-    public function show() {
 
-        $this->render->printView('home');//crea una vista, con el constructor de esta clase, llamada home
+    public function profile() {
+        $this->render->printView('perfil', $_SESSION['usuario']);
     }
 
+    public function cerrarSesion(){
+        session_destroy();
+        Redirect::root();
+    }
 
 }

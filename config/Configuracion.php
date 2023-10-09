@@ -45,6 +45,10 @@ class Configuracion {
         return new UserController($this->getRender(), $model);
     }
 
+    public function getProfileController() {
+        $model = new ProfileModel($this->getDatabase());
+        return new ProfileController($this->getRender(), $model);
+    }
     public function getRouter() {
       //crea un objeto de tipo Ruta con un Controller y un metodo por defecto
         return new Router($this,"getHomeController","show");//show no sera mejor?

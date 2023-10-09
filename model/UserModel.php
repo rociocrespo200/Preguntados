@@ -43,6 +43,22 @@ class UserModel {
         }
     }
 
+    function validarIngreso($usuario, $clave){
+        $query = "SELECT * FROM usuario WHERE usuario = '$usuario' AND clave = '$clave'";
+        $resultado =  $this->database->query($query);
+
+        if ($resultado !== false && $resultado->num_rows > 0) {
+            print_r($resultado);
+            return $resultado->fetch_object();
+        } else {
+            return null;
+        }
+    }
+
+    public function get($usuario, $clave) {
+        $result = $this->database->query("SELECT * FROM usuario WHERE usuario = '$usuario' AND clave = '$clave'");
+        return $result[0];
+    }
 
 
 

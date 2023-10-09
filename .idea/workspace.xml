@@ -5,19 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="86e8dfa8-f60c-4051-9718-0a89732e3a3f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/public/usuarios/cinema.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controller/ProfileController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/ProfileModel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/personajes.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/perfilView.mustache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/Configuracion.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/Configuracion.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/UserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/log/log-2023-10-09.txt" beforeDir="false" afterPath="$PROJECT_DIR$/log/log-2023-10-09.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/public/fondo_imagen.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/public/icono_editar.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/public/login.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/public/logo_rainbow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/public/parabanner.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/public/parahome.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/public/profile_picture_user_icon_153847.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/public/signin.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/registroView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/registroView.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/UserModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/UserModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/header.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/header.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/homeView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/homeView.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/loginView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/loginView.mustache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +76,7 @@
       <option name="presentableId" value="Default" />
       <updated>1696797593087</updated>
       <workItem from="1696797594183" duration="4968000" />
-      <workItem from="1696805693007" duration="5825000" />
+      <workItem from="1696805693007" duration="19216000" />
     </task>
     <servers />
   </component>

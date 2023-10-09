@@ -11,7 +11,7 @@
     --violeta-tres: #403BBF;
     --violeta-cuatro: #9048D9;
     --violeta-cinco: #BDC0F2;
-    --degradado-violeta: linear-gradient(5deg, #9148d993 0, #2A2C59 100%);;
+    --degradado-violeta: linear-gradient(5deg, rgba(170, 109, 232, 0.58) 0, #2A2C59 100%);;
 }
 
 body {
@@ -41,7 +41,7 @@ main {
     height: 90%;
 }
 
-form {
+form , .contenedor_centrado {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -53,12 +53,30 @@ form {
     margin: auto;
     position: absolute;
     left: 27%;
-    top: 20%;
+    top: 25%;
     color: white;
 }
 
 form > div{
     width: 100%;
+}
+
+#form1 {
+    top: 35%;
+}
+
+div.header_usuario{
+    background-color: var(--violeta-cinco);
+    padding: 10px;
+    width: 300px;
+    text-align: center;
+    border-radius: 6px;
+
+}
+
+div.header_usuario >p{
+    margin-bottom: 0;
+
 }
 
 .infoBasica{
@@ -100,7 +118,7 @@ form > div{
 
 /*BOTONES*/
 a.boton, button.boton{
-    background-color: var(--violeta-cuatro);
+    background-color: var(--violeta-uno);
     width: 200px;
     font-size: 18px;
     color: white;
@@ -135,5 +153,95 @@ h2{
     height: 100%;
 }
 
+/*Perfil*/
+.header_usuario {
+    box-sizing: border-box;
+    position: relative;
+    top: 70px;
+    margin-bottom: 0;
+    z-index: 100;
+}
 
+.header_usuario:hover{
+    border-bottom: 1px solid var(--violeta-tres);
+    color: var(--violeta-cinco);
+}
 
+header p,
+header h5 {
+    margin-bottom: 0;
+}
+
+header a{
+    text-decoration: none;
+}
+
+#usuario_divPrincipal_div>progress {
+    width: 100%;
+    vertical-align: bottom;
+}
+
+div#usuario_divPrincipal {
+    background-color: #BDC0F2;
+    border-radius: 6px;
+    padding: 10px 30px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+    color: #000000;
+}
+
+div#usuario_divSecundario {
+    background-color: rgba(0, 0, 0, 0.108);
+    padding: 10px 30px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+}
+
+div#usuario_divPrincipal img {
+    width: 70px;
+    height: 70px;
+}
+
+header > nav{
+    position: relative;
+    top: 23px;
+}
+header a:hover{
+    text-decoration: none;
+    color: white;
+}
+
+header a{
+    color: white;
+}
+
+a.navegacion{
+    padding: 10px 30px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    min-width: 200px;
+    font-size: 18px;
+    color: white;
+    font-weight: 500;
+}
+a.navegacion_seleccionado{
+    background-color: var(--violeta-uno);
+}
+
+a.navegacion:hover{
+    border-bottom: 3px solid var(--violeta-tres);
+    scale: 1.01;
+    color: var(--violeta-cinco);
+}
+
+.btn_danger{
+    background-color: #cb1717;
+}
+
+.btn_danger:hover{
+    background-color: #ab1515;
+    scale: 1.02;
+}
