@@ -1,0 +1,813 @@
+Index: controller/UserController.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\r\n\r\nclass UserController {\r\n    private $render;\r\n    private $model;\r\n\r\n    public function __construct($render, $model) {\r\n        $this->render = $render;\r\n        $this->model = $model;\r\n    }\r\n\r\n    public function login() {\r\n        $this->render->printView('login');\r\n    }\r\n\r\n    public function signin() {\r\n        $data = [];\r\n\r\n        if(!empty($_SESSION['error'])){\r\n            $data[\"error\"] = $_SESSION['error'];\r\n            unset( $_SESSION['error']);\r\n        }\r\n\r\n        $data['action'] = '/user/procesarAlta';\r\n        $data['submitText'] = 'Registrarme';\r\n        $this->render->printView('registro', $data);\r\n\r\n    }\r\n\r\n\r\n    public function procesarAlta(){\r\n        if( empty($_POST['usuario'] ) || empty($_POST['clave'])){ //falta las validaciones de usuario y clave\r\n            $_SESSION[\"error\"] = \"Alguno de los campos era erroneo o vacio\";\r\n            Redirect::to('/user/signin');\r\n        }\r\n\r\n        $usuario = $_POST[\"usuario\"];\r\n        $clave = $_POST['clave'];\r\n\r\n        $this->model->alta($usuario, $clave);\r\n\r\n\r\n        Redirect::root();\r\n    }\r\n\r\n\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/controller/UserController.php b/controller/UserController.php
+--- a/controller/UserController.php	(revision e28a12db6b49ae06adc8e521ad4ce3ba09328f28)
++++ b/controller/UserController.php	(date 1696801892149)
+@@ -43,6 +43,10 @@
+         Redirect::root();
+     }
+ 
++    public function show() {
++
++        $this->render->printView('home');//crea una vista, con el constructor de esta clase, llamada home
++    }
+ 
+ 
+ }
+\ No newline at end of file
+Index: view/registroView.mustache
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><main>\r\n\r\n    <section class=\"section-vh-50\">\r\n        <div class=\"container py-5 h-10\">\r\n            <div class=\"row d-flex justify-content-center align-items-center h-100\">\r\n                <div class=\"col col-xl-10\">\r\n                    <div class=\"card\" style=\"border-radius: 1rem; box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);\">\r\n                        <div class=\"row g-0\">\r\n                            <div class=\"col-md-6 col-lg-5 d-none d-md-block\">\r\n                                <img src=\"/public/signin.png\" alt=\"Preguntados\" class=\"img-fluid img-center\" style=\"border-radius: 1rem 0 0 1rem;\" />\r\n                            </div>\r\n                            <div class=\"col-md-6 col-lg-7 d-flex align-items-center\">\r\n                                <div class=\"card-body p-4 p-lg-5 text-black\">\r\n\r\n\r\n\r\n                                    <form  method=\"post\" action=\"{{action}}\">\r\n\r\n                                        <div class=\"d-flex align-items-center mb-3 pb-1\">\r\n                                            <i class=\"fas fa-cubes fa-2x me-3\" style=\"color: #ff6219;\"></i>\r\n                                            <span class=\"h1 fw-bold mb-0\">Registrate</span>\r\n                                        </div>\r\n\r\n                                        <h5 class=\"fw-normal mb-3 pb-3\" style=\"letter-spacing: 1px;\">Registrate</h5>\r\n\r\n                                        <div class=\"form-outline mb-4\">\r\n                                            <label class=\"form-label\" for=\"form2Example17\">Ingrese nombre de usuario</label>\r\n                                            <input type=\"text\" id=\"form2Example17\" class=\"form-control form-control-lg\" name=\"usuario\" value=\"{{usuario}}\" required/>\r\n                                        </div>\r\n\r\n                                        <div class=\"form-outline mb-4\">\r\n                                            <label class=\"form-label\" for=\"form2Example27\">Ingrese una clave</label><br>\r\n                                            <input type=\"password\" id=\"form2Example27\" class=\"form-control form-control-lg\" name=\"clave\" value=\"{{clave}}\" required/>\r\n                                            <small class=\"text-muted\">La clave debe tener al menos una mayúscula y al menos un número</small>\r\n                                        </div>\r\n\r\n<!--                                        <div class=\"form-outline mb-4\">\r\n                                            <label class=\"form-label\" for=\"form2Example27\">Repita la clave</label>\r\n                                            <input type=\"password\" id=\"form2Example27\" class=\"form-control form-control-lg\" name=\"clave2\" value=\"{{clave}}\" required/>\r\n                                        </div>\r\n-->\r\n                                        <div class=\"pt-1 mb-4\">\r\n                                            <button class=\"btn btn-dark btn-lg btn-block\" type=\"submit\">{{submitText}}</button>\r\n                                        </div>\r\n\r\n                                    </form>\r\n\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </section>\r\n</main>\r\n\r\n\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/view/registroView.mustache b/view/registroView.mustache
+--- a/view/registroView.mustache	(revision e28a12db6b49ae06adc8e521ad4ce3ba09328f28)
++++ b/view/registroView.mustache	(date 1696801209128)
+@@ -1,60 +1,76 @@
+-<main>
++
++    <main>
++        <form action="" >
++
++            <div class="div_form_titulos">
++                <h2>Crear cuenta</h2>
++            </div>
+ 
+-    <section class="section-vh-50">
+-        <div class="container py-5 h-10">
+-            <div class="row d-flex justify-content-center align-items-center h-100">
+-                <div class="col col-xl-10">
+-                    <div class="card" style="border-radius: 1rem; box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);">
+-                        <div class="row g-0">
+-                            <div class="col-md-6 col-lg-5 d-none d-md-block">
+-                                <img src="/public/signin.png" alt="Preguntados" class="img-fluid img-center" style="border-radius: 1rem 0 0 1rem;" />
+-                            </div>
+-                            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+-                                <div class="card-body p-4 p-lg-5 text-black">
+-
+-
+-
+-                                    <form  method="post" action="{{action}}">
+-
+-                                        <div class="d-flex align-items-center mb-3 pb-1">
+-                                            <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+-                                            <span class="h1 fw-bold mb-0">Registrate</span>
+-                                        </div>
+-
+-                                        <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Registrate</h5>
+-
+-                                        <div class="form-outline mb-4">
+-                                            <label class="form-label" for="form2Example17">Ingrese nombre de usuario</label>
+-                                            <input type="text" id="form2Example17" class="form-control form-control-lg" name="usuario" value="{{usuario}}" required/>
+-                                        </div>
+-
+-                                        <div class="form-outline mb-4">
+-                                            <label class="form-label" for="form2Example27">Ingrese una clave</label><br>
+-                                            <input type="password" id="form2Example27" class="form-control form-control-lg" name="clave" value="{{clave}}" required/>
+-                                            <small class="text-muted">La clave debe tener al menos una mayúscula y al menos un número</small>
+-                                        </div>
+-
+-<!--                                        <div class="form-outline mb-4">
+-                                            <label class="form-label" for="form2Example27">Repita la clave</label>
+-                                            <input type="password" id="form2Example27" class="form-control form-control-lg" name="clave2" value="{{clave}}" required/>
+-                                        </div>
+--->
+-                                        <div class="pt-1 mb-4">
+-                                            <button class="btn btn-dark btn-lg btn-block" type="submit">{{submitText}}</button>
+-                                        </div>
+-
+-                                    </form>
+-
+-                                </div>
+-                            </div>
+-                        </div>
+-                    </div>
+-                </div>
+-            </div>
+-        </div>
+-    </section>
+-</main>
++            <div class="div_form_campos">
++
++                <div class="infoBasica"> 
++                    <div id="infoBasica_div1">
++                        <img id="imagen_enviada" src="../public/profile_picture_user_icon_153847.png" alt="">
++                        <div id="editarImagen" >
++                            <img src="../public/icono_editar.png" alt="" class="w-100 p-3">
++                            <input type="file" id="fileInput" name="fileInput" style="display: none;">
++                        </div> 
++                    </div>
++                    <div class="w-100">
++                        <div class="form-row form-group">
++                            <div class="col">
++                                <label for="exampleInputEmail1">Nombre</label>
++                                <input type="text" name="nombre" class="form-control" placeholder="Ingrese su nombre">
++                            </div>
++                            <div class="col">
++                                <label for="exampleInputEmail1">Apellido</label>
++                                <input type="text" name="apellido" class="form-control" placeholder="Ingrese su apellido">
++                            </div>
++                        </div>
++                        <div class="form-row form-group">
++                            <div class="col">
++                                <label for="exampleInputEmail1">Fecha de nacimiento</label>
++                                <input type="date" name="fecha" class="form-control" >
++                            </div>
++                            <div class="col">
++                                <label for="inputState">Genero</label>
++                                <select id="inputState" name="genero" class="form-control">
++                                    <option value="masculino">Masculino</option>
++                                    <option value="femenino">Fenenino</option>
++                                    <option value="">Prefiero no decirlo</option>
++                                </select>
++                            </div>
++                        </div>
++                    </div>
++                
++                </div>
++
++
++
++
++                <div class="form-row form-group">
++                    <div class="col">
++                        <label for="exampleInputEmail1">Usuario</label>
++                        <input type="text" name="usuario" class="form-control" placeholder="Ingrese su usuario">
++                    </div>
++                    <div class="col">
++                        <label for="exampleInputEmail1">Contraseña</label>
++                        <input type="password"  name="clave"  class="form-control" placeholder="Ingrese la contraseña">
++                    </div>
++                </div>
++
++                <div class="form-group form-group">
++                    <label for="exampleInputEmail1">Email address</label>
++                    <input type="email"  name="email"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese su email">
++                </div>
++
++
++
++            </div>
++
++            <button type="submit" class="btn boton">Registrarse</button>
++
++        </form>
++    </main>
+ 
+-
+-
+-
++    <script src="../public/js/administrar.js"></script>
+Index: view/loginView.mustache
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\r\n<main>\r\n\r\n    <section class=\"section-vh-50\">\r\n        <div class=\"container py-5 h-10\">\r\n            <div class=\"row d-flex justify-content-center align-items-center h-100\">\r\n                <div class=\"col col-xl-10\">\r\n                    <div class=\"card\" style=\"border-radius: 1rem; box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);\">\r\n                        <div class=\"row g-0\">\r\n                            <div class=\"col-md-6 col-lg-5 d-none d-md-block\">\r\n                                <img src=\"/public/login.png\" alt=\"Preguntados\" class=\"img-fluid img-center\" style=\"border-radius: 1rem 0 0 1rem;\" />\r\n                            </div>\r\n                            <div class=\"col-md-6 col-lg-7 d-flex align-items-center\">\r\n                                <div class=\"card-body p-4 p-lg-5 text-black\">\r\n\r\n                                    <form>\r\n\r\n                                        <div class=\"d-flex align-items-center mb-3 pb-1\">\r\n                                            <i class=\"fas fa-cubes fa-2x me-3\" style=\"color: #ff6219;\"></i>\r\n                                            <span class=\"h1 fw-bold mb-0\">Ingresar</span>\r\n                                        </div>\r\n\r\n                                        <h5 class=\"fw-normal mb-3 pb-3\" style=\"letter-spacing: 1px;\">Inicia sesión</h5>\r\n\r\n                                        <div class=\"form-outline mb-4\">\r\n                                            <input type=\"text\" id=\"form2Example17\" class=\"form-control form-control-lg\" name=\"usuario\" required/>\r\n                                            <label class=\"form-label\" for=\"form2Example17\">Nombre de usuario</label>\r\n                                        </div>\r\n\r\n                                        <div class=\"form-outline mb-4\">\r\n                                            <input type=\"password\" id=\"form2Example27\" class=\"form-control form-control-lg\" name=\"clave\" required/>\r\n                                            <label class=\"form-label\" for=\"form2Example27\">Clave</label>\r\n                                        </div>\r\n\r\n                                        <div class=\"pt-1 mb-4\">\r\n                                            <button class=\"btn btn-dark btn-lg btn-block\" type=\"button\">Ingresar</button>\r\n                                        </div>\r\n\r\n                                    </form>\r\n\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </section>\r\n</main>\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/view/loginView.mustache b/view/loginView.mustache
+--- a/view/loginView.mustache	(revision e28a12db6b49ae06adc8e521ad4ce3ba09328f28)
++++ b/view/loginView.mustache	(date 1696800805741)
+@@ -1,51 +1,26 @@
+ 
+-<main>
+-
+-    <section class="section-vh-50">
+-        <div class="container py-5 h-10">
+-            <div class="row d-flex justify-content-center align-items-center h-100">
+-                <div class="col col-xl-10">
+-                    <div class="card" style="border-radius: 1rem; box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);">
+-                        <div class="row g-0">
+-                            <div class="col-md-6 col-lg-5 d-none d-md-block">
+-                                <img src="/public/login.png" alt="Preguntados" class="img-fluid img-center" style="border-radius: 1rem 0 0 1rem;" />
+-                            </div>
+-                            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+-                                <div class="card-body p-4 p-lg-5 text-black">
++    <main>
++        <form action="">
+ 
+-                                    <form>
+-
+-                                        <div class="d-flex align-items-center mb-3 pb-1">
+-                                            <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+-                                            <span class="h1 fw-bold mb-0">Ingresar</span>
+-                                        </div>
++            <div class="div_form_titulos">
++                <h2>Iniciar Sesion</h2>
++            </div>
+ 
+-                                        <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Inicia sesión</h5>
++            <div class="div_form_campos">
+ 
+-                                        <div class="form-outline mb-4">
+-                                            <input type="text" id="form2Example17" class="form-control form-control-lg" name="usuario" required/>
+-                                            <label class="form-label" for="form2Example17">Nombre de usuario</label>
+-                                        </div>
+-
+-                                        <div class="form-outline mb-4">
+-                                            <input type="password" id="form2Example27" class="form-control form-control-lg" name="clave" required/>
+-                                            <label class="form-label" for="form2Example27">Clave</label>
+-                                        </div>
++                <div class="form-group">
++                    <label for="exampleInputEmail1">Usuario</label>
++                    <input type="text" name="usuario" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
++                        placeholder="Ingrese su usuario">
++                </div>
++                <div class="form-group">
++                    <label for="exampleInputPassword1">Password</label>
++                    <input type="password" name="clave" class="form-control" id="exampleInputPassword1" placeholder="Ingrese su contraseña">
++                </div>
+ 
+-                                        <div class="pt-1 mb-4">
+-                                            <button class="btn btn-dark btn-lg btn-block" type="button">Ingresar</button>
+-                                        </div>
++            </div>
+ 
+-                                    </form>
+-
+-                                </div>
+-                            </div>
+-                        </div>
+-                    </div>
+-                </div>
+-            </div>
+-        </div>
+-    </section>
+-</main>
+-
+-
++            <button type="submit" class="btn boton">Ingresar</button>
++
++        </form>
++    </main>
+Index: view/header.mustache
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\r\n<html lang=\"es\">\r\n\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <!-- CSS only -->\r\n    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css\" rel=\"stylesheet\" integrity=\"sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65\" crossorigin=\"anonymous\">\r\n    <link rel=\"stylesheet\" href=\"\"/>\r\n    <title>Preguntados</title>\r\n    <style>\r\n        .img-center {\r\n            display: block;\r\n            margin-left: auto;\r\n            margin-right: auto;\r\n            max-height: 100%; /* Asegura que la imagen no supere la altura de su contenedor */\r\n        }\r\n\r\n        .section-vh-50 {\r\n            background-color: #f0f0f0;\r\n\r\n        }\r\n\r\n        .container-center {\r\n            height: 100%;\r\n            display: flex;\r\n            justify-content: center; /* Centrar horizontalmente */\r\n            align-items: center; /* Centrar verticalmente */\r\n        }\r\n    </style>\r\n</head>\r\n\r\n<body>\r\n<nav class=\"navbar navbar-expand-lg navbar-dark bg-secondary h-100 py-3\">\r\n    <div class=\"container-fluid mt-2\">\r\n        <a class=\"navbar-brand\" href=\"/\">\r\n            <img src=\"/public/parabanner.png\" alt=\"banner-preguntados\" class=\"img-fluid\" style=\"width: 200px;\" />\r\n        </a>\r\n        <button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n            <span class=\"navbar-toggler-icon\"></span>\r\n        </button>\r\n        <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n            <ul class=\"d-flex align-items-center navbar-nav me-auto mb-2 mb-lg-0\">\r\n                <li class=\"nav-item\">\r\n                    <a class=\"nav-link active\" aria-current=\"page\" href=\"#\"></a>\r\n                </li>\r\n            </ul>\r\n            <form class=\"d-flex w-auto\">\r\n\r\n                <a class=\"btn btn-outline-light me-2\" href=\"/user/login\">Ingresar </a>\r\n                <a class=\"btn btn-outline-light me-2\" href=\"/user/signin\">Registrarme </a>\r\n\r\n            </form>\r\n\r\n\r\n        </div>\r\n    </div>\r\n</nav>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/view/header.mustache b/view/header.mustache
+--- a/view/header.mustache	(revision e28a12db6b49ae06adc8e521ad4ce3ba09328f28)
++++ b/view/header.mustache	(date 1696801350112)
+@@ -6,54 +6,31 @@
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- CSS only -->
+-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+-    <link rel="stylesheet" href=""/>
++    <link rel="stylesheet" href="../public/css/style.css"/>
++    <!--Bootstrap-->
++    <link rel="icon" href="./imagenes/favicon.ico" type="image/vnd.microsoft.icon">
++    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
++          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
++    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
++            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
++    </script>
++    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
++            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
++    </script>
++    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
++            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
++    </script>
+     <title>Preguntados</title>
+-    <style>
+-        .img-center {
+-            display: block;
+-            margin-left: auto;
+-            margin-right: auto;
+-            max-height: 100%; /* Asegura que la imagen no supere la altura de su contenedor */
+-        }
+-
+-        .section-vh-50 {
+-            background-color: #f0f0f0;
+ 
+-        }
+-
+-        .container-center {
+-            height: 100%;
+-            display: flex;
+-            justify-content: center; /* Centrar horizontalmente */
+-            align-items: center; /* Centrar verticalmente */
+-        }
+-    </style>
+ </head>
+ 
+ <body>
+-<nav class="navbar navbar-expand-lg navbar-dark bg-secondary h-100 py-3">
+-    <div class="container-fluid mt-2">
+-        <a class="navbar-brand" href="/">
+-            <img src="/public/parabanner.png" alt="banner-preguntados" class="img-fluid" style="width: 200px;" />
+-        </a>
+-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+-            <span class="navbar-toggler-icon"></span>
+-        </button>
+-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+-            <ul class="d-flex align-items-center navbar-nav me-auto mb-2 mb-lg-0">
+-                <li class="nav-item">
+-                    <a class="nav-link active" aria-current="page" href="#"></a>
+-                </li>
+-            </ul>
+-            <form class="d-flex w-auto">
+-
+-                <a class="btn btn-outline-light me-2" href="/user/login">Ingresar </a>
+-                <a class="btn btn-outline-light me-2" href="/user/signin">Registrarme </a>
+-
+-            </form>
+-
+-
++<header class="d-flex">
++        <img class="logo" src="../../public/logo_rainbow.png" alt="">
++        <div>
++            <a href="/user/signin" class="btn boton_secundario">Registrarse</a>
++            <a href="user/login" class="btn boton_secundario ">Iniciar sesion</a>
+         </div>
+-    </div>
+-</nav>
+\ No newline at end of file
++        
++</header>
++
+Index: config/configuration.ini
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>servername=localhost\r\nusername=root\r\npassword=\"\"\r\ndbname=preguntados
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/config/configuration.ini b/config/configuration.ini
+--- a/config/configuration.ini	(revision e28a12db6b49ae06adc8e521ad4ce3ba09328f28)
++++ b/config/configuration.ini	(date 1696720312220)
+@@ -1,4 +1,4 @@
+ servername=localhost
+ username=root
+-password=""
++password="46521541"
+ dbname=preguntados
+\ No newline at end of file
+Index: public/js/administrar.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/public/js/administrar.js b/public/js/administrar.js
+new file mode 100644
+--- /dev/null	(date 1695182151943)
++++ b/public/js/administrar.js	(date 1695182151943)
+@@ -0,0 +1,48 @@
++document.addEventListener("DOMContentLoaded", function() {
++    var selectElements = document.querySelectorAll('.mi-selector');
++    
++    for (var i = 0; i < selectElements.length; i++) {
++        var selectElement = selectElements[i];
++        selectElement.classList.add("select2"); // Agregar la clase "select2" para la apariencia
++    }
++});
++
++
++//IMAGEN
++
++document.addEventListener("DOMContentLoaded", function () {
++    const editarImagen = document.getElementById("editarImagen");
++    const fileInput = document.getElementById("fileInput");
++
++    // Agrega un controlador de eventos para el clic en la imagen
++    editarImagen.addEventListener("click", function () {
++        fileInput.click(); // Simula hacer clic en el elemento de entrada de archivo
++    });
++
++    // Agrega un controlador de eventos para detectar cuando se selecciona un archivo
++    fileInput.addEventListener("change", function () {
++        const selectedFile = fileInput.files[0];
++        if (selectedFile) {
++            // Aquí puedes realizar acciones con el archivo seleccionado
++            console.log("Archivo seleccionado:", selectedFile.name);
++        }
++    });
++});
++
++document.addEventListener("DOMContentLoaded", function () {
++    const fileInput = document.getElementById("fileInput");
++    const imagenEnviada = document.getElementById("imagen_enviada");
++
++    // Agrega un controlador de eventos para detectar cuando se selecciona un archivo
++    fileInput.addEventListener("change", function () {
++        const selectedFile = fileInput.files[0];
++        if (selectedFile) {
++            // Crea una URL válida para el archivo seleccionado
++            const objectURL = URL.createObjectURL(selectedFile);
++
++            // Establece el atributo "src" de la imagen con la URL del archivo
++            imagenEnviada.src = objectURL;
++        }
++    });
++});
++
+Index: public/js/main.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/public/js/main.js b/public/js/main.js
+new file mode 100644
+--- /dev/null	(date 1695182151944)
++++ b/public/js/main.js	(date 1695182151944)
+@@ -0,0 +1,4 @@
++mobiscroll.select('#multiple-select', {
++    inputElement: document.getElementById('my-input'),
++    touchUi: false
++});
+\ No newline at end of file
+Index: .idea/Preguntados.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/Preguntados.iml b/.idea/Preguntados.iml
+new file mode 100644
+--- /dev/null	(date 1696797670160)
++++ b/.idea/Preguntados.iml	(date 1696797670160)
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="WEB_MODULE" version="4">
++  <component name="NewModuleRootManager">
++    <content url="file://$MODULE_DIR$" />
++    <orderEntry type="inheritedJdk" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++</module>
+\ No newline at end of file
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/modules.xml b/.idea/modules.xml
+new file mode 100644
+--- /dev/null	(date 1696797670219)
++++ b/.idea/modules.xml	(date 1696797670219)
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectModuleManager">
++    <modules>
++      <module fileurl="file://$PROJECT_DIR$/.idea/Preguntados.iml" filepath="$PROJECT_DIR$/.idea/Preguntados.iml" />
++    </modules>
++  </component>
++</project>
+\ No newline at end of file
+Index: public/css/style.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/public/css/style.css b/public/css/style.css
+new file mode 100644
+--- /dev/null	(date 1696801292891)
++++ b/public/css/style.css	(date 1696801292891)
+@@ -0,0 +1,139 @@
++@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Asap&family=Bai+Jamjuree:wght@500&family=Roboto:wght@400;900&display=swap');
++* {
++    margin: 0;
++    padding: 0;
++    font-family: 'Bai Jamjuree', sans-serif;
++}
++
++:root {
++    --violeta-uno: #1F1E40;
++    --violeta-dos: #2A2C59;
++    --violeta-tres: #403BBF;
++    --violeta-cuatro: #9048D9;
++    --violeta-cinco: #BDC0F2;
++    --degradado-violeta: linear-gradient(5deg, #9148d993 0, #2A2C59 100%);;
++}
++
++body {
++    width: 100%;
++    height: 100vh;
++    max-height: 100vh;
++    overflow: hidden;
++}
++
++header {
++    flex-direction: row;
++    justify-content: space-between;
++    padding: 0 100px ;
++    align-items: center;
++    height: 10%;
++    width: 100%;
++    background-color: var(--violeta-dos);
++
++}
++
++main {
++    background-color: var(--violeta-uno);
++    background-image: url(../fondo_imagen.png);
++    background-size: cover;
++    background-position: center;
++    width: 100%;
++    height: 90%;
++}
++
++form {
++    display: flex;
++    flex-direction: column;
++    align-items: center;
++    gap: 20px;
++    background: var(--degradado-violeta);
++    width: 50%;
++    padding: 50px 100px;
++    border-radius: 6px;
++    margin: auto;
++    position: absolute;
++    left: 27%;
++    top: 25%;
++    color: white;
++}
++
++form > div{
++    width: 100%;
++}
++
++.infoBasica{
++    display: flex;
++    gap: 20px;
++    align-items: center;
++}
++
++#infoBasica_div1{
++    width: 150px;
++    height: 150px;
++}
++
++#editarImagen{
++    position: relative;
++    bottom: 150px;
++    text-align: center;
++    background-color: #00000024;
++    width: 100%;
++    height: 100%;
++    padding: 10px;
++    border-radius: 5px;
++}
++#editarImagen:hover{
++    background-color: #00000059;
++}
++
++#editarImagen:hover > img{
++    display: block;
++}
++
++
++#imagen_enviada{
++    width: 150px;
++    height: 100%;
++    object-fit: cover;
++    object-position: center;
++}
++
++/*BOTONES*/
++a.boton, button.boton{
++    background-color: var(--violeta-cuatro);
++    width: 200px;
++    font-size: 18px;
++    color: white;
++    font-weight: 500;
++}
++
++.boton:hover{
++    scale: 1.02;
++    color: white;
++    background-color: #763cb0 ;
++}
++
++a.boton_secundario, button.boton_secundario{
++    border: 3px solid var(--violeta-cuatro);
++    background-color: rgba(0, 0, 0, 0.127);
++    font-size: 18px;
++    width: 200px;
++    color: var(--violeta-cuatro);
++    font-weight: 500;
++}
++
++.boton_secundario:hover {
++    scale: 1.03;
++    color: white;
++}
++
++h2{
++    text-align: center;
++}
++
++.logo{
++    height: 100%;
++}
++
++
++
+Index: .idea/php.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/php.xml b/.idea/php.xml
+new file mode 100644
+--- /dev/null	(date 1696797670231)
++++ b/.idea/php.xml	(date 1696797670231)
+@@ -0,0 +1,22 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="MessDetectorOptionsConfiguration">
++    <option name="transferred" value="true" />
++  </component>
++  <component name="PHPCSFixerOptionsConfiguration">
++    <option name="transferred" value="true" />
++  </component>
++  <component name="PHPCodeSnifferOptionsConfiguration">
++    <option name="highlightLevel" value="WARNING" />
++    <option name="transferred" value="true" />
++  </component>
++  <component name="PhpProjectSharedConfiguration" php_language_level="7.1">
++    <option name="suggestChangeDefaultLanguageLevel" value="false" />
++  </component>
++  <component name="PhpStanOptionsConfiguration">
++    <option name="transferred" value="true" />
++  </component>
++  <component name="PsalmOptionsConfiguration">
++    <option name="transferred" value="true" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+new file mode 100644
+--- /dev/null	(date 1696797670287)
++++ b/.idea/vcs.xml	(date 1696797670287)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+new file mode 100644
+--- /dev/null	(date 1696797670676)
++++ b/.idea/.gitignore	(date 1696797670676)
+@@ -0,0 +1,8 @@
++# Default ignored files
++/shelf/
++/workspace.xml
++# Editor-based HTTP Client requests
++/httpRequests/
++# Datasource local storage ignored files
++/dataSources/
++/dataSources.local.xml
+Index: view/login2View.mustache
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/view/login2View.mustache b/view/login2View.mustache
+new file mode 100644
+--- /dev/null	(date 1696720022737)
++++ b/view/login2View.mustache	(date 1696720022737)
+@@ -0,0 +1,51 @@
++
++<main>
++
++    <section class="section-vh-50">
++        <div class="container py-5 h-10">
++            <div class="row d-flex justify-content-center align-items-center h-100">
++                <div class="col col-xl-10">
++                    <div class="card" style="border-radius: 1rem; box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);">
++                        <div class="row g-0">
++                            <div class="col-md-6 col-lg-5 d-none d-md-block">
++                                <img src="/public/login.png" alt="Preguntados" class="img-fluid img-center" style="border-radius: 1rem 0 0 1rem;" />
++                            </div>
++                            <div class="col-md-6 col-lg-7 d-flex align-items-center">
++                                <div class="card-body p-4 p-lg-5 text-black">
++
++                                    <form>
++
++                                        <div class="d-flex align-items-center mb-3 pb-1">
++                                            <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
++                                            <span class="h1 fw-bold mb-0">Ingresar</span>
++                                        </div>
++
++                                        <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Inicia sesión</h5>
++
++                                        <div class="form-outline mb-4">
++                                            <input type="text" id="form2Example17" class="form-control form-control-lg" name="usuario" required/>
++                                            <label class="form-label" for="form2Example17">Nombre de usuario</label>
++                                        </div>
++
++                                        <div class="form-outline mb-4">
++                                            <input type="password" id="form2Example27" class="form-control form-control-lg" name="clave" required/>
++                                            <label class="form-label" for="form2Example27">Clave</label>
++                                        </div>
++
++                                        <div class="pt-1 mb-4">
++                                            <button class="btn btn-dark btn-lg btn-block" type="button">Ingresar</button>
++                                        </div>
++
++                                    </form>
++
++                                </div>
++                            </div>
++                        </div>
++                    </div>
++                </div>
++            </div>
++        </div>
++    </section>
++</main>
++
++
+Index: view/registro2View.mustache
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/view/registro2View.mustache b/view/registro2View.mustache
+new file mode 100644
+--- /dev/null	(date 1696720022737)
++++ b/view/registro2View.mustache	(date 1696720022737)
+@@ -0,0 +1,60 @@
++<main>
++
++    <section class="section-vh-50">
++        <div class="container py-5 h-10">
++            <div class="row d-flex justify-content-center align-items-center h-100">
++                <div class="col col-xl-10">
++                    <div class="card" style="border-radius: 1rem; box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);">
++                        <div class="row g-0">
++                            <div class="col-md-6 col-lg-5 d-none d-md-block">
++                                <img src="/public/signin.png" alt="Preguntados" class="img-fluid img-center" style="border-radius: 1rem 0 0 1rem;" />
++                            </div>
++                            <div class="col-md-6 col-lg-7 d-flex align-items-center">
++                                <div class="card-body p-4 p-lg-5 text-black">
++
++
++
++                                    <form  method="post" action="{{action}}">
++
++                                        <div class="d-flex align-items-center mb-3 pb-1">
++                                            <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
++                                            <span class="h1 fw-bold mb-0">Registrate</span>
++                                        </div>
++
++                                        <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Registrate</h5>
++
++                                        <div class="form-outline mb-4">
++                                            <label class="form-label" for="form2Example17">Ingrese nombre de usuario</label>
++                                            <input type="text" id="form2Example17" class="form-control form-control-lg" name="usuario" value="{{usuario}}" required/>
++                                        </div>
++
++                                        <div class="form-outline mb-4">
++                                            <label class="form-label" for="form2Example27">Ingrese una clave</label><br>
++                                            <input type="password" id="form2Example27" class="form-control form-control-lg" name="clave" value="{{clave}}" required/>
++                                            <small class="text-muted">La clave debe tener al menos una mayúscula y al menos un número</small>
++                                        </div>
++
++<!--                                        <div class="form-outline mb-4">
++                                            <label class="form-label" for="form2Example27">Repita la clave</label>
++                                            <input type="password" id="form2Example27" class="form-control form-control-lg" name="clave2" value="{{clave}}" required/>
++                                        </div>
++-->
++                                        <div class="pt-1 mb-4">
++                                            <button class="btn btn-dark btn-lg btn-block" type="submit">{{submitText}}</button>
++                                        </div>
++
++                                    </form>
++
++                                </div>
++                            </div>
++                        </div>
++                    </div>
++                </div>
++            </div>
++        </div>
++    </section>
++</main>
++
++
++
++

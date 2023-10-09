@@ -1,53 +1,27 @@
-
 <main>
+    <form action="">
 
-    <section class="section-vh-50">
-        <div class="container py-5 h-10">
-            <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col col-xl-10">
-                    <div class="card" style="border-radius: 1rem; box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);">
-                        <div class="row g-0">
-                            <div class="col-md-6 col-lg-5 d-none d-md-flex">
-                                <img src="/public/login.png" alt="Preguntados" class="img-fluid img-center" style="border-radius: 1rem 0 0 1rem;" />
-                            </div>
-                            <div class="col-md-6 col-lg-7 d-flex align-items-center">
-                                <div class="card-body p-4 p-lg-5 text-black">
-
-                                    <form>
-
-                                        <div class="d-flex align-items-center mb-3 pb-1">
-                                            <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
-                                            <span class="h1 fw-bold mb-0">Ingresar</span>
-                                        </div>
-
-                                        <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Inicia sesión</h5>
-
-                                        <div class="form-outline mb-4">
-                                            <label class="form-label" for="form2Example17">Nombre de usuario</label>
-                                            <input type="text" id="form2Example17" class="form-control form-control-lg" name="usuario" required/>
-
-                                        </div>
-
-                                        <div class="form-outline mb-4">
-                                            <label class="form-label" for="form2Example27">Clave</label>
-                                            <input type="password" id="form2Example27" class="form-control form-control-lg" name="clave" required/>
-
-                                        </div>
-
-                                        <div class="pt-1 mb-4">
-                                            <button class="btn btn-dark btn-lg btn-block" type="button">Ingresar</button>
-                                        </div>
-
-                                    </form>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="div_form_titulos">
+            <h2>Iniciar Sesion</h2>
         </div>
-    </section>
+
+        <div class="div_form_campos">
+
+            <div class="form-group">
+                <label for="exampleInputEmail1">Usuario</label>
+                <input type="text" name="usuario" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                       placeholder="Ingrese su usuario">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" name="clave" class="form-control" id="exampleInputPassword1" placeholder="Ingrese su contraseña">
+            </div>
+
+        </div>
+
+        <button type="submit" class="btn boton">Ingresar</button>
+
+    </form>
 </main>
 
 

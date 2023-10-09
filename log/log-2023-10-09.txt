@@ -1,0 +1,37 @@
+[2023-10-09][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'rocio1234' 
+[2023-10-09][INFO]Usuario alta: INSERT INTO `usuario` (`nombre`, `apellido`, `anio_nacimiento`, `pais`, `ciudad`, `mail`, `usuario`, `clave` ,`foto_perfil`) 
+        VALUES ('Rocio', 'Crespo', '2000', 'Argentina', 'Buenos Aires', 'rocio@gmail.com', 'rocio1234', '1234Rocio', 'error.jpg')
+[2023-10-09][INFO]Ejecutando Query INSERT INTO `usuario` (`nombre`, `apellido`, `anio_nacimiento`, `pais`, `ciudad`, `mail`, `usuario`, `clave` ,`foto_perfil`) 
+        VALUES ('Rocio', 'Crespo', '2000', 'Argentina', 'Buenos Aires', 'rocio@gmail.com', 'rocio1234', '1234Rocio', 'error.jpg') 
+[2023-10-09][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'rocio1235' 
+[2023-10-09][INFO]Usuario alta: INSERT INTO `usuario` (`nombre`, `apellido`, `anio_nacimiento`, `pais`, `ciudad`, `mail`, `usuario`, `clave` ,`foto_perfil`) 
+        VALUES ('rocio', 'crespo', '516', 'Uruguay', 'Montevideo', 'rocio@gmail.com', 'rocio1235', '1235Rocio', 'marathon.jpg')
+[2023-10-09][INFO]Ejecutando Query INSERT INTO `usuario` (`nombre`, `apellido`, `anio_nacimiento`, `pais`, `ciudad`, `mail`, `usuario`, `clave` ,`foto_perfil`) 
+        VALUES ('rocio', 'crespo', '516', 'Uruguay', 'Montevideo', 'rocio@gmail.com', 'rocio1235', '1235Rocio', 'marathon.jpg') 
+[2023-10-09][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'ergvev' 
+[2023-10-09][INFO]Usuario alta: INSERT INTO `usuario` (`nombre`, `apellido`, `anio_nacimiento`, `pais`, `ciudad`, `mail`, `usuario`, `clave` ,`foto_perfil`) 
+        VALUES ('dsfgvf', 'sfvvd', '3423', 'Uruguay', 'Chihuaha', 'rociod@gmail.com', 'ergvev', '41656UJjj', 'profile.png')
+[2023-10-09][INFO]Ejecutando Query INSERT INTO `usuario` (`nombre`, `apellido`, `anio_nacimiento`, `pais`, `ciudad`, `mail`, `usuario`, `clave` ,`foto_perfil`) 
+        VALUES ('dsfgvf', 'sfvvd', '3423', 'Uruguay', 'Chihuaha', 'rociod@gmail.com', 'ergvev', '41656UJjj', 'profile.png') 
+[2023-10-09][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'user32' 
+[2023-10-09][INFO]Usuario alta: INSERT INTO `usuario` (`nombre`, `apellido`, `anio_nacimiento`, `pais`, `ciudad`, `mail`, `usuario`, `clave` ,`foto_perfil`) 
+        VALUES ('matioas', 'crespo', '2000', 'Chile', 'Valparaíso', 'matias@gmail.com', 'user32', '1234Rocio', 'costume_party.jpg')
+[2023-10-09][INFO]Ejecutando Query INSERT INTO `usuario` (`nombre`, `apellido`, `anio_nacimiento`, `pais`, `ciudad`, `mail`, `usuario`, `clave` ,`foto_perfil`) 
+        VALUES ('matioas', 'crespo', '2000', 'Chile', 'Valparaíso', 'matias@gmail.com', 'user32', '1234Rocio', 'costume_party.jpg') 
+[2023-10-09][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'nico234' 
+[2023-10-09][INFO]Usuario alta: INSERT INTO `usuario` (`nombre`, `apellido`, `anio_nacimiento`, `pais`, `ciudad`, `mail`, `usuario`, `clave` ,`foto_perfil`) 
+        VALUES ('svsdf', 'vsdfvsd', '1999', 'Uruguay', 'Canelones', 'nico@gmail.com', 'nico234', '1234Nico', 'costume_party.jpg')
+[2023-10-09][INFO]Ejecutando Query INSERT INTO `usuario` (`nombre`, `apellido`, `anio_nacimiento`, `pais`, `ciudad`, `mail`, `usuario`, `clave` ,`foto_perfil`) 
+        VALUES ('svsdf', 'vsdfvsd', '1999', 'Uruguay', 'Canelones', 'nico@gmail.com', 'nico234', '1234Nico', 'costume_party.jpg') 
+[2023-10-09][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'nico234' 
+[2023-10-09][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'sandra1234' 
+[2023-10-09][INFO]Usuario alta: INSERT INTO `usuario` (`nombre`, `apellido`, `anio_nacimiento`, `pais`, `ciudad`, `mail`, `usuario`, `clave` ,`foto_perfil`) 
+        VALUES ('snadra', 'ponce', '2000', 'Argentina', 'Córdoba', 'sandra@gmail.com', 'sandra1234', '1234Sandra', 'cinema.jpg')
+[2023-10-09][INFO]Ejecutando Query INSERT INTO `usuario` (`nombre`, `apellido`, `anio_nacimiento`, `pais`, `ciudad`, `mail`, `usuario`, `clave` ,`foto_perfil`) 
+        VALUES ('snadra', 'ponce', '2000', 'Argentina', 'Córdoba', 'sandra@gmail.com', 'sandra1234', '1234Sandra', 'cinema.jpg') 
+[2023-10-09][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'marina123' 
+[2023-10-09][INFO]Usuario alta: INSERT INTO `usuario` (`nombre`, `apellido`, `anio_nacimiento`, `pais`, `ciudad`, `mail`, `usuario`, `clave` ,`foto_perfil`) 
+        VALUES ('fgvdf', 'fdgv', '2001', 'Uruguay', 'Chihuaha', 'marina@gmai.com', 'marina123', '123Marina123', 'costume_party.jpg')
+[2023-10-09][INFO]Ejecutando Query INSERT INTO `usuario` (`nombre`, `apellido`, `anio_nacimiento`, `pais`, `ciudad`, `mail`, `usuario`, `clave` ,`foto_perfil`) 
+        VALUES ('fgvdf', 'fdgv', '2001', 'Uruguay', 'Chihuaha', 'marina@gmai.com', 'marina123', '123Marina123', 'costume_party.jpg') 
+[2023-10-09][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'marina123' 

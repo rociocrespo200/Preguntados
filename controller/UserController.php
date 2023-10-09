@@ -42,8 +42,16 @@ class UserController {
         $mail = $_POST["mail"];
         $usuario = $_POST["usuario"];
         $clave = $_POST['clave'];
-        $clave2 = $_POST['clave2'];
-        $fotoPerfil = $_POST['fotoPerfil'] ?? "error.jpg";
+        //$clave2 = $_POST['clave2'];
+
+        if (isset($_FILES["fileInput"]) && $_FILES["fileInput"]["error"] === UPLOAD_ERR_OK) {
+            move_uploaded_file($_FILES["fileInput"]["tmp_name"] , "./public/usuarios/" . $_FILES['fileInput']['name']);
+            $fotoPerfil = $_FILES['fileInput']['name'];
+        } else {
+            $fotoPerfil =  "profile.png";
+
+        }
+
 
         if(!$this->model->validarUsuario($usuario) ||
             !$this->model->validarCorreo($mail) ||
@@ -52,10 +60,10 @@ class UserController {
             Redirect::to('/user/signin');
         }
 
-        if(!$this->model->compararClaves($clave,$clave2)){
-            $_SESSION["error"] = "Las claves no coinciden";
-            Redirect::to('/user/signin');
-        }
+//        if(!$this->model->compararClaves($clave,$clave2)){
+//            $_SESSION["error"] = "Las claves no coinciden";
+//            Redirect::to('/user/signin');
+//        }
 
         if(!$this->model->buscarUsuario($usuario)){
             $_SESSION["error"] = "El usuario ya existe";
@@ -67,6 +75,10 @@ class UserController {
         Redirect::root();
     }
 
+    public function show() {
+
+        $this->render->printView('home');//crea una vista, con el constructor de esta clase, llamada home
+    }
 
 
 }
