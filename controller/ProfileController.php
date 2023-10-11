@@ -10,14 +10,13 @@ class ProfileController {
     }
 
     public function show() {
-        $this->render->printView('perfil');
+        $this->render->printViewSesion('perfil', $_SESSION['usuario']);
     }
 
-    public function perfil($usuario) {
-
-        $this->render->printView('perfil');
+    public function cerrarSesion(){
+        session_destroy();
+        Redirect::root();
     }
-
 
 
 }

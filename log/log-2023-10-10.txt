@@ -1,0 +1,1 @@
+[2023-10-10][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'rocio1234' AND clave = '1234Rocio' 

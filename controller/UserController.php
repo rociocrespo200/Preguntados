@@ -40,7 +40,7 @@ class UserController {
         }
 
         $_SESSION["usuario"] = $usuarioBuscado;
-        $this->render->printView('home', $_SESSION["usuario"]);
+        $this->render->printViewSesion('home', $_SESSION["usuario"]);
 
     }
 
@@ -106,14 +106,5 @@ class UserController {
         Redirect::root();
     }
 
-
-    public function profile() {
-        $this->render->printView('perfil', $_SESSION['usuario']);
-    }
-
-    public function cerrarSesion(){
-        session_destroy();
-        Redirect::root();
-    }
 
 }

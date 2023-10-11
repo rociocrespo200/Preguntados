@@ -8,8 +8,12 @@ include_once('helper/Redirect.php');
 
 include_once('controller/HomeController.php');
 include_once('controller/UserController.php');
+include_once ('controller/ProfileController.php');
+include_once ('controller/PartidaController.php');
 include_once("model/HomeModel.php");
 include_once("model/UserModel.php");
+include_once("model/ProfileModel.php");
+include_once("model/PartidaModel.php");
 
 
 include_once('third-party/mustache/src/Mustache/Autoloader.php');
@@ -48,6 +52,11 @@ class Configuracion {
     public function getProfileController() {
         $model = new ProfileModel($this->getDatabase());
         return new ProfileController($this->getRender(), $model);
+    }
+
+    public function getPartidaController() {
+        $model = new PartidaModel($this->getDatabase());
+        return new PartidaController($this->getRender(), $model);
     }
     public function getRouter() {
       //crea un objeto de tipo Ruta con un Controller y un metodo por defecto
