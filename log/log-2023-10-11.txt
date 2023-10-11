@@ -13,3 +13,89 @@
 [2023-10-11][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'rocio1234' AND clave = '1234Rociodfbdf' 
 [2023-10-11][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'rocio1234' AND clave = '1234Rocio' 
 [2023-10-11][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'rocio1234' AND clave = '1234Rocio' 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'rocio1234' AND clave = '1234Rocio' 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM pregunta 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM pregunta 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM pregunta 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM pregunta 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM pregunta 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM pregunta 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM pregunta 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM pregunta 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'rocio1234' AND clave = '1234Rocio' 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM pregunta 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM pregunta 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM pregunta 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM pregunta 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'rocio1234' AND clave = '1234Rocio' 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM pregunta 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM pregunta 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'rocio1234' AND clave = '1234Rocio' 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'rocio1234' AND clave = '1234Rocio' 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'rocio1234' AND clave = '1234Rocio' 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM pregunta 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM pregunta 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'rocio1234' AND clave = '1234Rocio' 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM pregunta 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM pregunta 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM respuesta WHERE respuesta.id_pregunta = 55 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM pregunta 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM respuesta WHERE respuesta.id_pregunta = 29 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM pregunta 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM respuesta WHERE respuesta.id_pregunta = 2 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'rocio1234' AND clave = '1234Rocio' 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM pregunta 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM respuesta WHERE respuesta.id_pregunta = 18 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM pregunta 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM respuesta WHERE respuesta.id_pregunta = 51 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM pregunta 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM respuesta WHERE respuesta.id_pregunta = 57 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM pregunta 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM respuesta WHERE respuesta.id_pregunta = 14 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM pregunta 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM respuesta WHERE respuesta.id_pregunta = 59 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM pregunta 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM respuesta WHERE respuesta.id_pregunta = 14 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM pregunta 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM respuesta WHERE respuesta.id_pregunta = 39 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM pregunta 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM respuesta WHERE respuesta.id_pregunta = 72 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM pregunta 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM respuesta WHERE respuesta.id_pregunta = 7 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM pregunta 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM respuesta WHERE respuesta.id_pregunta = 58 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM pregunta 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM respuesta WHERE respuesta.id_pregunta = 55 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM pregunta 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM respuesta WHERE respuesta.id_pregunta = 70 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM pregunta 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM respuesta WHERE respuesta.id_pregunta = 56 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM pregunta 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM respuesta WHERE respuesta.id_pregunta = 21 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM pregunta 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM respuesta WHERE respuesta.id_pregunta = 33 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM pregunta 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM respuesta WHERE respuesta.id_pregunta = 30 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM pregunta 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM respuesta WHERE respuesta.id_pregunta = 5 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM pregunta 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM respuesta WHERE respuesta.id_pregunta = 4 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM pregunta 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM respuesta WHERE respuesta.id_pregunta = 3 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM pregunta 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM respuesta WHERE respuesta.id_pregunta = 50 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'rocio1234' AND clave = '1234Rocio' 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM pregunta 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM respuesta WHERE respuesta.id_pregunta = 25 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM pregunta 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM respuesta WHERE respuesta.id_pregunta = 41 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM pregunta 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM respuesta WHERE respuesta.id_pregunta = 54 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM pregunta 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM respuesta WHERE respuesta.id_pregunta = 8 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM pregunta 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM respuesta WHERE respuesta.id_pregunta = 41 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM pregunta 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM respuesta WHERE respuesta.id_pregunta = 51 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM pregunta 
+[2023-10-11][INFO]Ejecutando Query SELECT * FROM respuesta WHERE respuesta.id_pregunta = 56 

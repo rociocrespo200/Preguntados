@@ -1,0 +1,14 @@
+
+<main>
+    <div class="puntaje">
+        <p class="mb-0">N° pregunta: 10 <br> puntos obtenidos: 200</p>
+    </div>
+    <form class="container_preguntas" method="post" action="">
+
+        <h4 class="pregunta">{{pregunta}}</h4>
+
+        {{#respuestas}}
+            <button type="submit" class="respuesta" name="respuesta" value="{{.}}">{{.}}</button>
+        {{/respuestas}}
+    </form>
+</main>

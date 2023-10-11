@@ -5,210 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="86e8dfa8-f60c-4051-9718-0a89732e3a3f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/controller/PartidaController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/log/log-2023-10-10.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/log/log-2023-10-11.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/PartidaModel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/usuarios/costume_party.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/third-party/mustache.php-main.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/third-party/mustache/.gitattributes" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/view/footer2.mustache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/view/header2.mustache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/view/partidaView.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/partidaView.mustache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/Configuracion.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/Configuracion.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/ProfileController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helper/MustacheRender.php" beforeDir="false" afterPath="$PROJECT_DIR$/helper/MustacheRender.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/.gitmodules" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/.php_cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/.styleci.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/.travis.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/CONTRIBUTING.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/third-party/mustache/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/third-party/mustache/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/bin/build_bootstrap.php" beforeDir="false" afterPath="$PROJECT_DIR$/third-party/mustache/bin/build_bootstrap.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/third-party/mustache/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/phpunit.xml.dist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Autoloader.php" beforeDir="false" afterPath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Autoloader.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Cache.php" beforeDir="false" afterPath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Cache.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Cache/AbstractCache.php" beforeDir="false" afterPath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Cache/AbstractCache.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Cache/FilesystemCache.php" beforeDir="false" afterPath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Cache/FilesystemCache.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Cache/NoopCache.php" beforeDir="false" afterPath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Cache/NoopCache.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Compiler.php" beforeDir="false" afterPath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Compiler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Context.php" beforeDir="false" afterPath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Context.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Engine.php" beforeDir="false" afterPath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Engine.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Exception.php" beforeDir="false" afterPath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Exception.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Exception/InvalidArgumentException.php" beforeDir="false" afterPath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Exception/InvalidArgumentException.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Exception/LogicException.php" beforeDir="false" afterPath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Exception/LogicException.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Exception/RuntimeException.php" beforeDir="false" afterPath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Exception/RuntimeException.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Exception/SyntaxException.php" beforeDir="false" afterPath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Exception/SyntaxException.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Exception/UnknownFilterException.php" beforeDir="false" afterPath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Exception/UnknownFilterException.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Exception/UnknownHelperException.php" beforeDir="false" afterPath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Exception/UnknownHelperException.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Exception/UnknownTemplateException.php" beforeDir="false" afterPath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Exception/UnknownTemplateException.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/src/Mustache/HelperCollection.php" beforeDir="false" afterPath="$PROJECT_DIR$/third-party/mustache/src/Mustache/HelperCollection.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/src/Mustache/LambdaHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/third-party/mustache/src/Mustache/LambdaHelper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Loader.php" beforeDir="false" afterPath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Loader.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Loader/ArrayLoader.php" beforeDir="false" afterPath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Loader/ArrayLoader.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Loader/CascadingLoader.php" beforeDir="false" afterPath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Loader/CascadingLoader.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Loader/FilesystemLoader.php" beforeDir="false" afterPath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Loader/FilesystemLoader.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Loader/InlineLoader.php" beforeDir="false" afterPath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Loader/InlineLoader.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Loader/MutableLoader.php" beforeDir="false" afterPath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Loader/MutableLoader.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Loader/ProductionFilesystemLoader.php" beforeDir="false" afterPath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Loader/ProductionFilesystemLoader.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Loader/StringLoader.php" beforeDir="false" afterPath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Loader/StringLoader.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Logger.php" beforeDir="false" afterPath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Logger.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Logger/AbstractLogger.php" beforeDir="false" afterPath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Logger/AbstractLogger.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Logger/StreamLogger.php" beforeDir="false" afterPath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Logger/StreamLogger.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Parser.php" beforeDir="false" afterPath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Parser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Source.php" beforeDir="false" afterPath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Source.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Source/FilesystemSource.php" beforeDir="false" afterPath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Source/FilesystemSource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Template.php" beforeDir="false" afterPath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Template.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Tokenizer.php" beforeDir="false" afterPath="$PROJECT_DIR$/third-party/mustache/src/Mustache/Tokenizer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/Mustache/Test/AutoloaderTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/Mustache/Test/Cache/AbstractCacheTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/Mustache/Test/Cache/FilesystemCacheTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/Mustache/Test/CompilerTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/Mustache/Test/ContextTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/Mustache/Test/EngineTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/Mustache/Test/Exception/SyntaxExceptionTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/Mustache/Test/Exception/UnknownFilterExceptionTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/Mustache/Test/Exception/UnknownHelperExceptionTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/Mustache/Test/Exception/UnknownTemplateExceptionTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/Mustache/Test/FiveThree/Functional/ClosureQuirksTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/Mustache/Test/FiveThree/Functional/EngineTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/Mustache/Test/FiveThree/Functional/FiltersTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/Mustache/Test/FiveThree/Functional/HigherOrderSectionsTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/Mustache/Test/FiveThree/Functional/LambdaHelperTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/Mustache/Test/FiveThree/Functional/MustacheSpecTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/Mustache/Test/FiveThree/Functional/PartialLambdaIndentTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/Mustache/Test/FiveThree/Functional/StrictCallablesTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/Mustache/Test/Functional/CallTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/Mustache/Test/Functional/ExamplesTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/Mustache/Test/Functional/HigherOrderSectionsTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/Mustache/Test/Functional/InheritanceTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/Mustache/Test/Functional/MustacheInjectionTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/Mustache/Test/Functional/MustacheSpecTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/Mustache/Test/Functional/NestedPartialIndentTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/Mustache/Test/Functional/ObjectSectionTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/Mustache/Test/FunctionalTestCase.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/Mustache/Test/HelperCollectionTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/Mustache/Test/Loader/ArrayLoaderTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/Mustache/Test/Loader/CascadingLoaderTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/Mustache/Test/Loader/FilesystemLoaderTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/Mustache/Test/Loader/InlineLoaderTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/Mustache/Test/Loader/ProductionFilesystemLoaderTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/Mustache/Test/Loader/StringLoaderTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/Mustache/Test/Logger/AbstractLoggerTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/Mustache/Test/Logger/StreamLoggerTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/Mustache/Test/ParserTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/Mustache/Test/Source/FilesystemSourceTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/Mustache/Test/SpecTestCase.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/Mustache/Test/TemplateTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/Mustache/Test/TokenizerTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/bootstrap.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/autoloader/Mustache/Bar.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/autoloader/Mustache/Foo.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/autoloader/NonMustacheClass.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/anchored_dot_notation/AnchoredDotNotation.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/anchored_dot_notation/anchored_dot_notation.mustache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/anchored_dot_notation/anchored_dot_notation.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/anchored_dot_notation/partials/genre.mustache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/blocks/Blocks.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/blocks/blocks.mustache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/blocks/blocks.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/blocks/partials/parent.mustache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/child_context/ChildContext.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/child_context/child_context.mustache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/child_context/child_context.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/comments/Comments.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/comments/comments.mustache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/comments/comments.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/complex/complex.mustache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/complex/complex.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/complex/complex.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/delimiters/Delimiters.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/delimiters/delimiters.mustache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/delimiters/delimiters.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/dot_notation/DotNotation.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/dot_notation/dot_notation.mustache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/dot_notation/dot_notation.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/double_section/DoubleSection.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/double_section/double_section.mustache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/double_section/double_section.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/escaped/Escaped.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/escaped/escaped.mustache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/escaped/escaped.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/filters/Filters.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/filters/filters.mustache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/filters/filters.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/grand_parent_context/GrandParentContext.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/grand_parent_context/grand_parent_context.mustache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/grand_parent_context/grand_parent_context.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/i18n/I18n.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/i18n/i18n.mustache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/i18n/i18n.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/implicit_iterator/ImplicitIterator.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/implicit_iterator/implicit_iterator.mustache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/implicit_iterator/implicit_iterator.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/inverted_double_section/InvertedDoubleSection.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/inverted_double_section/inverted_double_section.mustache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/inverted_double_section/inverted_double_section.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/inverted_section/InvertedSection.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/inverted_section/inverted_section.mustache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/inverted_section/inverted_section.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/nested_partials/NestedPartials.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/nested_partials/nested_partials.mustache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/nested_partials/nested_partials.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/nested_partials/partials/fourth.mustache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/nested_partials/partials/second.mustache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/nested_partials/partials/third.mustache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/partials/Partials.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/partials/partials.mustache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/partials/partials.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/partials/partials/header.mustache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/recursive_partials/RecursivePartials.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/recursive_partials/partials/child.mustache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/recursive_partials/recursive_partials.mustache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/recursive_partials/recursive_partials.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/section_iterator_objects/SectionIteratorObjects.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/section_iterator_objects/section_iterator_objects.mustache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/section_iterator_objects/section_iterator_objects.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/section_magic_objects/SectionMagicObjects.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/section_magic_objects/section_magic_objects.mustache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/section_magic_objects/section_magic_objects.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/section_objects/SectionObjects.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/section_objects/section_objects.mustache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/section_objects/section_objects.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/sections/Sections.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/sections/sections.mustache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/sections/sections.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/sections_nested/SectionsNested.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/sections_nested/sections_nested.mustache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/sections_nested/sections_nested.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/simple/Simple.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/simple/simple.mustache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/simple/simple.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/unescaped/Unescaped.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/unescaped/unescaped.mustache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/unescaped/unescaped.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/utf8/UTF8.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/utf8/utf8.mustache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/utf8/utf8.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/utf8_unescaped/UTF8Unescaped.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/utf8_unescaped/utf8_unescaped.mustache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/utf8_unescaped/utf8_unescaped.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/whitespace/Whitespace.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/whitespace/partials/alphabet.mustache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/whitespace/whitespace.mustache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/examples/whitespace/whitespace.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/templates/alpha.ms" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/templates/beta.ms" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/templates/one.mustache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/third-party/mustache/test/fixtures/templates/two.mustache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/header.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/header.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/PartidaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/PartidaController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/log-2023-10-11.txt" beforeDir="false" afterPath="$PROJECT_DIR$/log/log-2023-10-11.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/PartidaModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/PartidaModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/footer2.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/footer2.mustache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/homeView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/homeView.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/perfilView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/perfilView.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/partidaView.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -267,7 +72,7 @@
       <option name="presentableId" value="Default" />
       <updated>1696797593087</updated>
       <workItem from="1696797594183" duration="4968000" />
-      <workItem from="1696805693007" duration="27498000" />
+      <workItem from="1696805693007" duration="31066000" />
     </task>
     <servers />
   </component>

@@ -245,3 +245,31 @@ a.navegacion:hover{
     background-color: #ab1515;
     scale: 1.02;
 }
+
+/*PARTIDA*/
+div.pregunta, button.respuesta{
+    background-color: var(--violeta-cuatro);
+    padding: 10px;
+    text-align: center;
+    border-radius: 6px;
+    width: 100%;
+}
+
+form button.respuesta{
+    background-color: var(--violeta-cinco);
+    border: 0;
+    font-size: 20px;
+}
+.puntaje{
+    background-color: var(--violeta-cinco);
+    color: rgb(0, 0, 0);
+    width: 300px;
+    padding: 10px 0;
+    text-align: center;
+    margin: auto;
+    font-size: 20px;
+    position: relative;
+    top: 50px;
+    border-radius: 6px;
+    
+}

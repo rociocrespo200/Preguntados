@@ -11,15 +11,22 @@ class PartidaController
     }
 
     public function show() {
-        //crear partida asociada al usuario actual
         $this->generarPregunta();
+        $this->render->printView('partida', $_SESSION['usuario']);
     }
 
     private function generarPregunta()
     {
-        //generara pregunta aleatoria (que no halla salido en la partida actual) con las cuatro respuestas
-        // guardar pregunta en la BD para que no halla repetidas
-        $this->render->printView('partida', $_SESSION['usuario']);
+        $preguntas = [];
+        $respuestas = [];
+
+        $preguntas = $this->model->traerPreguntas();
+
+        $preguntaAleatoria = $preguntas[rand(0,count($preguntas) - 1)];
+    //print_r($preguntaAleatoria) ;
+        $respuestas = $this->model->traerRespuestas($preguntaAleatoria['id']);
+
+        $this->render->printView('partida', $preguntaAleatoria, $respuestas);
     }
 
     public function contestar($idRespuesta){
