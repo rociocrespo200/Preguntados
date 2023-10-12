@@ -10,7 +10,7 @@ class HomeController {
     }
 
     public function show() {
-        $this->render->printView('home');//crea una vista, con el constructor de esta clase, llamada home
+        $this->render->printViewSesion('home');//crea una vista, con el constructor de esta clase, llamada home
     }
 
 

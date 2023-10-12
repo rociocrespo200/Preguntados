@@ -10,7 +10,7 @@ class ProfileController {
     }
 
     public function show() {
-        $this->render->printViewSesion('perfil', $_SESSION['usuario']);
+        $this->render->printViewSesion('perfil');
     }
 
     public function cerrarSesion(){

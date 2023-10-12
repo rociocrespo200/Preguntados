@@ -23,8 +23,8 @@ class UserController {
         $this->render->printView('login', $data);
     }
 
-    public function procesarLogin(){
-        if( empty($_POST['usuario'] ) || empty($_POST['clave'])){
+    public function procesarLogin() {
+        if (empty($_POST['usuario']) || empty($_POST['clave'])) {
             $_SESSION["error"] = "Debe completar todos los campos";
             Redirect::to('/user/login');
         }
@@ -34,15 +34,16 @@ class UserController {
 
         $usuarioBuscado = $this->model->get($usuario, $clave);
 
-        if($usuarioBuscado == null){
+        if ($usuarioBuscado == null) {
             $_SESSION["error"] = "Usuario o contraseña incorrectos";
             Redirect::to('/user/login');
         }
 
         $_SESSION["usuario"] = $usuarioBuscado;
-        $this->render->printViewSesion('home', $_SESSION["usuario"]);
 
+        $this->render->printViewSesion('home');
     }
+
 
     public function signin() {
         $data = [];

@@ -5,28 +5,23 @@ class PartidaController
     private $render;
     private $model;
 
-    public function __construct($render, $model) {
+    public function __construct($render, $model)
+    {
         $this->render = $render;
         $this->model = $model;
     }
 
-    public function show() {
-        $this->generarPregunta();
-        $this->render->printView('partida', $_SESSION['usuario']);
+    public function show()
+    {
+        $datos = $this->generarPregunta(); // Llama a generarPregunta y obtén los datos
+        $this->render->printViewSesion('partida', $datos); // Pasa los datos a la vista
     }
+
 
     private function generarPregunta()
     {
-        $preguntas = [];
-        $respuestas = [];
-
-        $preguntas = $this->model->traerPreguntas();
-
-        $preguntaAleatoria = $preguntas[rand(0,count($preguntas) - 1)];
-    //print_r($preguntaAleatoria) ;
-        $respuestas = $this->model->traerRespuestas($preguntaAleatoria['id']);
-
-        $this->render->printView('partida', $preguntaAleatoria, $respuestas);
+        $datos = $this->model->traerPreguntaConRespuestas();
+        return $datos; // Devuelve los datos para usarlos en el método show
     }
 
     public function contestar($idRespuesta){
@@ -38,7 +33,7 @@ class PartidaController
         }
 
 
-        $this->render->printView('home');
+        $this->render->printViewSesion('home');
     }
 
 

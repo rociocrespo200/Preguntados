@@ -20,7 +20,7 @@ class MustacheRender {
         echo  $this->generateHtmlSesion($contenido, $datos);
     }
 
-    public function generateHtml($contentFile, $data = array()) {
+    public function generateHtml($contentFile, $data = array()) {//recien aca data es un array
         $contentAsString = file_get_contents('view/header.mustache');
         $contentAsString .= file_get_contents('view/' . $contentFile . "View.mustache");
         $contentAsString .= file_get_contents('view/footer.mustache');
