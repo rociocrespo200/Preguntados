@@ -10,7 +10,11 @@ include_once('controller/HomeController.php');
 include_once('controller/UserController.php');
 include_once ('controller/ProfileController.php');
 include_once ('controller/PartidaController.php');
+include_once ('controller/HistorialController.php');
+include_once ('controller/RanckingController.php');
 include_once("model/HomeModel.php");
+include_once("model/RanckingModel.php");
+include_once("model/HistorialModel.php");
 include_once("model/UserModel.php");
 include_once("model/ProfileModel.php");
 include_once("model/PartidaModel.php");
@@ -57,6 +61,16 @@ class Configuracion {
     public function getPartidaController() {
         $model = new PartidaModel($this->getDatabase());
         return new PartidaController($this->getRender(), $model);
+    }
+
+    public function getRanckingController() {
+        $model = new RanckingModel($this->getDatabase());
+        return new RanckingController($this->getRender(), $model);
+    }
+
+    public function getHistorialController() {
+        $model = new HistorialModel($this->getDatabase());
+        return new HistorialController($this->getRender(), $model);
     }
     public function getRouter() {
       //crea un objeto de tipo Ruta con un Controller y un metodo por defecto

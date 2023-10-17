@@ -26,26 +26,39 @@
 
 <body>
 <header class="d-flex">
-    <img class="logo" src="../../public/logo_rainbow.png" alt="">
+
+    <nav id="menu_hamburguesa">
+        <input type="checkbox" id="menu">
+        <label for="menu"> ☰ </label>
+        <ul>
+            <li> <a href="/home/show" >Jugar</a> </li>
+            <li> <a href="/historial/show" >Historial</a> </li>
+            <li> <a href="/rancking/show" >Rancking</a> </li>
+        </ul>
+    </nav>
 
 
-        <nav>
-            <a href="#" class="btn navegacion navegacion_seleccionado">Jugar</a>
-            <a href="#" class="btn  navegacion">Historial de partidas</a>
-            <a href="#" class="btn  navegacion">Rancking global</a>
+    <img class="logo" src="../../public/logo_rainbow.png" alt="" id="logo1">
+    <img class="logo " src="../../public/logo.png" alt=""  id="logo2">
+
+
+        <nav id="menu_normal">
+            <a href="/home/show" class="btn navegacion navegacion_seleccionado">Jugar</a>
+            <a href="/historial/show" class="btn  navegacion">Historial </a>
+            <a href="/rancking/show" class="btn  navegacion">Rancking </a>
         </nav>
 
         <a href="/profile/show" class="header_usuario">
 
             <div id="usuario_divPrincipal">
                 <div id="usuario_divPrincipal_div">
-                    <h5>{{usuario}}  - Nivel I</h5>
+                    <h5>{{usuario}} Nivel {{nivel}}</h5>
                     <progress id="file" max="100" value="70">70%</progress>
-                    <p class="usuario_puntos">pto 1200 / 6000</p>
+                    <p class="usuario_puntos">pto {{usuarioPuntos}} / 6000</p>
                 </div>
                 <img class="" src="../../public/profile.png" alt="">
             </div>
-            <div id="usuario_divSecundario">
+            <div id="usuario_divSecundario" >
                 <p class="usuario_ranking">Jaimito Martinez #1: +400 puntos</p>
                 <p class="usuario_ranking">Rocio Crespo #2:  1200 puntos</p>
                 <p class="usuario_ranking">Romina Santos #3:  -300 puntos</p>

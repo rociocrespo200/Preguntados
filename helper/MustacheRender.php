@@ -28,6 +28,7 @@ class MustacheRender {
     }
 
     public function generateHtmlSesion($contentFile, $data = array()) {
+
         $contentAsString = file_get_contents('view/header2.mustache');
         $contentAsString .= file_get_contents('view/' . $contentFile . "View.mustache");
         $contentAsString .= file_get_contents('view/footer2.mustache');

@@ -11,7 +11,8 @@
     --violeta-tres: #403BBF;
     --violeta-cuatro: #9048D9;
     --violeta-cinco: #BDC0F2;
-    --degradado-violeta: linear-gradient(5deg, rgba(170, 109, 232, 0.58) 0, #2A2C59 100%);;
+    --degradado-violeta: linear-gradient(5deg, rgba(170, 109, 232, 0.58) 0, #2A2C59 100%);
+    --degradado-rojo: linear-gradient(5deg, rgba(255, 0, 0, 0.66) 0, #2A2C59 100%);
 }
 
 body {
@@ -32,16 +33,20 @@ header {
 
 }
 
-main {
+body > main {
     background-color: var(--violeta-uno);
     background-image: url(../fondo_imagen.png);
     background-size: cover;
     background-position: center;
     width: 100%;
     height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-form , .contenedor_centrado {
+form , .contenedor_centrado{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -50,10 +55,6 @@ form , .contenedor_centrado {
     width: 50%;
     padding: 50px 100px;
     border-radius: 6px;
-    margin: auto;
-    position: absolute;
-    left: 27%;
-    top: 25%;
     color: white;
 }
 
@@ -89,6 +90,11 @@ div.header_usuario >p{
     width: 150px;
     height: 150px;
 }
+
+#logo2{
+    display: none;
+}
+
 
 #editarImagen{
     position: relative;
@@ -160,11 +166,16 @@ h2{
     top: 70px;
     margin-bottom: 0;
     z-index: 100;
+    min-width: 310px;
 }
 
 .header_usuario:hover{
     border-bottom: 1px solid var(--violeta-tres);
     color: var(--violeta-cinco);
+}
+
+.header_usuario:hover ~ a.header_usuario > div#usuario_divSecundario{
+   display: block;
 }
 
 header p,
@@ -181,7 +192,12 @@ header a{
     vertical-align: bottom;
 }
 
+#usuario_divPrincipal_div{
+    width: 100%;
+}
+
 div#usuario_divPrincipal {
+    width: 100%;
     background-color: #BDC0F2;
     border-radius: 6px;
     padding: 10px 30px;
@@ -190,6 +206,7 @@ div#usuario_divPrincipal {
     gap: 20px;
     text-align: center;
     color: #000000;
+    justify-content: space-between;
 }
 
 div#usuario_divSecundario {
@@ -247,7 +264,7 @@ a.navegacion:hover{
 }
 
 /*PARTIDA*/
-div.pregunta, button.respuesta{
+div.pregunta, a.respuesta{
     background-color: var(--violeta-cuatro);
     padding: 10px;
     text-align: center;
@@ -255,21 +272,210 @@ div.pregunta, button.respuesta{
     width: 100%;
 }
 
-form button.respuesta{
-    background-color: var(--violeta-cinco);
+form > a.respuesta{
+    background-color: var(--violeta-cuatro);
     border: 0;
     font-size: 20px;
+    color: #1F1E40; !important;
 }
 .puntaje{
-    background-color: var(--violeta-cinco);
     color: rgb(0, 0, 0);
-    width: 300px;
+    width: 50%;
     padding: 10px 0;
     text-align: center;
-    margin: auto;
     font-size: 20px;
-    position: relative;
-    top: 50px;
+    display: flex;
+    gap: 20px;
+}
+
+.puntaje div{
+    background-color: var(--violeta-cinco);
     border-radius: 6px;
-    
+    width: 100%;
+    height: 100px;
+    padding-top: 1rem;
+}
+
+.popup{
+    background: var(--degradado-rojo);
+    gap: 20px;
+    width: 50%;
+    padding: 150px 100px;
+    border-radius: 6px;
+    color: #ffffff;
+    font-size: 22px;
+    position: absolute;
+    top: 30%;
+    left: 25%;
+    text-align: center;
+
+}
+div#popup span {
+    font-size: 30px;
+
+}
+
+.div_tiempo{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    color: white;
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 22px;
+    font-weight: 800;
+}
+
+ .div_tiempo progress{
+    width: 100%;
+    height: 20px;
+}
+
+#barra_progreso {
+    transition: width 1s;
+}
+
+#barra_progreso::-webkit-progress-value {
+    transition: width 1s;
+}
+
+.img_categoria{
+    max-width: 100%;
+    height: 50%;
+}
+
+#Historia{
+    background: linear-gradient(0deg, rgba(238, 255, 45, 0.5) 20%, #2A2C59 90%);
+}
+#Geografía{
+    background: linear-gradient(0deg, rgba(0, 141, 255, 0.5) 20%, #2A2C59 90%);
+}
+#Ciencia{
+    background: linear-gradient(0deg, rgba(16, 255, 0, 0.5) 20%, #2A2C59 90%);
+}
+#Arte{
+    background: linear-gradient(0deg, rgba(255, 0, 0, 0.5) 20%, #2A2C59 90%);
+}
+#Deportes{
+    background: linear-gradient(0deg, rgba(255, 128, 0, 0.5) 20%, #2A2C59 90%);
+}
+#Entretenimiento{
+    background: linear-gradient(0deg, rgba(255, 0, 250, 0.5) 20%, #2A2C59 90%);
+}
+
+@media (max-width: 1600px) {
+    header{
+        padding: 0 20px;
+    }
+
+    a.navegacion{
+        min-width: auto;
+        width: 140px;
+    }
+
+}
+
+@media (max-width: 1200px) {
+    .logo{
+        display: none;
+    }
+
+    form, .contenedor_centrado {
+        width: 75%;
+    }
+
+}
+
+@media (max-width: 800px) {
+    header{
+        padding: 20px;
+    }
+    #logo1{
+        display: none;
+    }
+    header > #menu_hamburguesa{
+        display: block;
+        left: 20px;
+    }
+
+    #menu_normal{
+        display: none;
+    }
+
+    .header_usuario{
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+
+    form, .contenedor_centrado {
+        padding: 35px 50px;
+    }
+}
+
+
+
+#menu_hamburguesa{
+    position: absolute;
+    display: none;
+    text-align: center;
+}
+
+ul{
+    display: none;
+}
+
+input:checked  ~ ul{
+    display:block;
+}
+
+input {
+    display: none;
+}
+
+#menu_hamburguesa label {
+    box-sizing: border-box;
+    display: inline-block;
+    background-color: var(--violeta-uno);
+    color: white;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    user-select: none;
+}
+
+/* Estilo del boton cuando se pasa el mouse por encima*/
+label:hover, input:checked{
+    background: var(--violeta-tres);
+    color: white;
+}
+
+/* Estilo del boton cuando el menú está expandido*/
+input:checked ~ label {
+    background: var(--violeta-cinco);
+    width: 200px;
+}
+
+ul{
+    border-radius: 6px;
+    background-color: rgba(0, 0, 0, 0.28);
+    margin-top:0;
+    padding: 0;
+    width: 200px;
+}
+
+
+#menu_hamburguesa > ul > li {
+
+    display: block;
+    padding: 10px;
+    list-style: none;
+    color: #1F1E40;
+}
+
+/*Estilo cuando el mouse pasa encima de cada link del menu*/
+li:hover {
+   background-color: #403BBF;
 }

@@ -1,14 +1,133 @@
 
-<main>
-    <div class="puntaje">
-        <p class="mb-0">N° pregunta: 10 <br> puntos obtenidos: 200</p>
+<main id="main">
+
+    <div class="div_tiempo">
+        <progress value="0" max="2500" id="barra_progreso"></progress>
+        <p id="p_tiempo">10s</p>
     </div>
-    <form class="container_preguntas" method="post" action="">
 
-        <h4 class="pregunta">{{pregunta}}</h4>
 
-        {{#respuestas}}
-            <button type="submit" class="respuesta" name="respuesta" value="{{.}}">{{.}}</button>
-        {{/respuestas}}
+    <form class="container_preguntas " id="{{categoria.categoria}}" >
+
+        <h4 class="pregunta">{{data.pregunta.pregunta}}</h4>
+
+        {{#data.respuestas}}
+            <a type="submit" class="respuesta" id="{{id}}" name="respuesta" value="{{id}}" onclick="contestar(this.id,{{esCorrecta}})">{{respuesta}}</a>
+        {{/data.respuestas}}
     </form>
+
+    <div class="puntaje">
+        <div class="puntaje_div">
+            <span>#{{partida.preguntasContestadas}}</span>
+            <p>pregunta</p>
+        </div>
+        <div class="puntaje_div">
+            <span>{{partida.puntos}}</span>
+            <p>puntos</p>
+        </div>
+        <div class="puntaje_div">
+            <span>{{categoria.categoria}}</span>
+            <p>Categoria</p>
+        </div>
+        <div class="puntaje_div">
+            <span>{{dificultad.dificultad}}</span>
+            <p>Dificultad</p>
+        </div>
+    </div>
+
+
 </main>
+
+    {{#error}}
+
+        {{#recarga}}
+            <div class="popup"  id="popup_recarga" >
+                <p>¡¡ FIN DE LA PARTIDA !!</p>
+                <p>{{recarga}}</p>
+                <span>{{partida.puntos}} puntos</span>
+            </div>
+        {{/recarga}}
+
+        {{#incorrecta}}
+        <div class="popup" id="popup_incorrecta">
+            <p>¡¡ FIN DE LA PARTIDA !!</p>
+            <p>{{incorrecta}}</p>
+            <span>{{partida.puntos}} puntos</span>
+        </div>
+        {{/incorrecta}}
+
+        {{#tiempo}}
+        <div class="popup" id="popup_tiempo">
+            <p>¡¡ FIN DE LA PARTIDA !!</p>
+            <p>{{tiempo}}</p>
+            <span>{{partida.puntos}} puntos</span>
+        </div>
+        {{/tiempo}}
+
+        <script>
+            var audio_incorrecta = new Audio('../public/sound/respuesta_incorrecta.mp3');
+            audio_incorrecta.play();
+            document.getElementById('main').style.filter = "brightness(0.4)";
+            setTimeout(function() { window.location.href = '/home'}, 3000);
+        </script>
+
+    {{/error}}
+
+<script >
+
+    var popup_incorrecta = document.getElementById("popup_incorrecta")
+    var popup_tiempo = document.getElementById("popup_tiempo")
+    var popup_recarga = document.getElementById("popup_tiempo")
+    var tiempoDeEspera = 500;
+    var audio_corrrecta = new Audio('../public/sound/respuesta_correcta.mp3');
+    var audio_incorrecta = new Audio('../public/sound/respuesta_incorrecta.mp3');
+    var preguntaContestada = false;
+
+
+
+
+    function contestar(idContenedor, esCorrecta){
+        var boton = document.getElementById(idContenedor);
+        preguntaContestada = true;
+        if(esCorrecta === 1){
+            boton.style.backgroundColor = '#0d9849';
+            audio_corrrecta.play();
+
+        }else {
+      tiempoDeEspera = 0;
+        }
+        setTimeout(function() {
+            window.location.href = '/partida/contestar?id=' + idContenedor;
+        }, tiempoDeEspera);
+        return false;
+
+    }
+
+
+    var tiempoTotal = 2500;
+    var tiempoRestante = tiempoTotal;
+    var barraProgreso = document.getElementById('barra_progreso');
+    var p_tiempo = document.getElementById('p_tiempo');
+
+    var intervalo = setInterval(function () {
+        tiempoRestante--;
+        var porcentajeCompletado = tiempoTotal - tiempoRestante
+
+        barraProgreso.value = tiempoTotal - tiempoRestante;
+        if (tiempoRestante <= 0) {
+            clearInterval(intervalo);
+            window.location.href = '/partida/contestar?tiempo_agotado=true';
+
+        }
+    }, 1);
+
+    var tiempoPrueba = 10;
+    var intervalo2 = setInterval(function () {
+        tiempoPrueba--;
+        p_tiempo.textContent = (tiempoPrueba < 0) ? 0 + "s"  : tiempoPrueba + "s";
+    }, 1000);
+
+
+
+
+</script>

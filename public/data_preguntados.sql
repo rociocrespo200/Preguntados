@@ -11,36 +11,85 @@ CREATE TABLE usuario (
     mail VARCHAR(255) NOT NULL,
     usuario VARCHAR(255) NOT NULL,
     clave VARCHAR(255) NOT NULL,
+    puntos INT default 0,
+    nivel INT default 1,
     foto_perfil VARCHAR(255) NOT NULL
 );
 
-SELECT * FROM Usuario;
 
-SELECT
-    P.id AS Pregunta_ID,
-    P.pregunta AS Pregunta,
-    MAX(CASE WHEN R.esCorrecta = 1 THEN R.respuesta END) AS Respuesta_correcta,
-    GROUP_CONCAT(CASE WHEN R.esCorrecta = 0 THEN R.respuesta END ORDER BY R.id) AS Respuestas_incorrectas,
-    C.categoria AS Categoria,
-    D.dificultad AS Nivel_de_Dificultad
-FROM
-    Pregunta AS P
-JOIN Respuesta AS R ON P.id = R.id_pregunta
-JOIN Categoria AS C ON P.id_categoria = C.id
-JOIN Dificultad AS D ON P.id_dificultad = D.id
-GROUP BY P.id, P.pregunta, C.categoria, D.dificultad;
+INSERT INTO usuario (nombre, apellido, anio_nacimiento, pais, ciudad, mail, usuario, clave, foto_perfil)
+VALUES
+	('Rocio', 'Crespo', 2000, 'Argentina', 'Buenos aires', 'rocio@gmail.com', 'rocio123', '1234', 'profile.png'),
+    ('John', 'Doe', 1990, 'Estados Unidos', 'Nueva York', 'johndoe@example.com', 'johndoe123', 'secreto123', 'profile.png'),
+    ('Jane', 'Smith', 1985, 'Reino Unido', 'Londres', 'janesmith@example.com', 'janesmith456', 'contrasena456', 'profile.png'),
+    ('Juan', 'Pérez', 1988, 'España', 'Madrid', 'juanperez@example.com', 'juanperez789', 'clave789', 'profile.png');
+
+CREATE TABLE IF NOT EXISTS Dificultad 
+(
+	id INT PRIMARY KEY auto_increment,
+    valor INT,
+    dificultad VARCHAR(50)
+);
+-- Insertar niveles de dificultad de ejemplo
+INSERT INTO Dificultad (dificultad, valor) VALUES
+    ('Fácil', 10),
+    ('Moderado', 25),
+    ('Difícil', 50);
+    
+CREATE TABLE partida (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
+    id_usuario INT,
+    preguntasContestadas INT default 1,
+    puntos INT DEFAULT 0,
+    id_dificultad INT DEFAULT 1,
+    FOREIGN KEY (id_usuario) REFERENCES Usuario(id),
+    FOREIGN KEY (id_dificultad) REFERENCES Dificultad(id)
+);
+
+INSERT INTO partida (id_usuario, preguntasContestadas) VALUES (1 ,4),(2, 5),(3, 8),(4, 2);
+INSERT INTO partida (id_usuario, preguntasContestadas) VALUES (3 ,4),(2, 5),(3, 8),(1, 2);
+INSERT INTO partida (id_usuario, preguntasContestadas) VALUES (1 ,7),(1, 5),(2, 8),(4, 12);
+INSERT INTO partida (id_usuario, preguntasContestadas) VALUES (3 ,4),(2, 5),(1, 18),(4, 5);
+
+SELECT *
+FROM partida P
+JOIN Dificultad D ON P.id_dificultad = D.id;
+
+/*
+		--------- ACTUALIZAR PUNTOS ---------
+UPDATE `preguntados`.`partida` SET `puntos` = '122' WHERE (`id` = '1');
+
+		--------- ACTUALIZAR preguntasContestadas ---------
+UPDATE `preguntados`.`partida` SET `preguntasContestadas` = '10' WHERE (`id` = '1');
+
+		--------- ACTUALIZAR dificultad ---------
+UPDATE `preguntados`.`partida` SET `dificultad` = 'Dificil' WHERE (`id` = '1');
+*/
+
+-- SELECT * FROM Usuario;
+
+-- SELECT
+--     P.id AS Pregunta_ID,
+--     P.pregunta AS Pregunta,
+--     MAX(CASE WHEN R.esCorrecta = 1 THEN R.respuesta END) AS Respuesta_correcta,
+--     GROUP_CONCAT(CASE WHEN R.esCorrecta = 0 THEN R.respuesta END ORDER BY R.id) AS Respuestas_incorrectas,
+--     C.categoria AS Categoria,
+--     D.dificultad AS Nivel_de_Dificultad
+-- FROM
+--     Pregunta AS P
+-- JOIN Respuesta AS R ON P.id = R.id_pregunta
+-- JOIN Categoria AS C ON P.id_categoria = C.id
+-- JOIN Dificultad AS D ON P.id_dificultad = D.id
+-- GROUP BY P.id, P.pregunta, C.categoria, D.dificultad;
 
 
 CREATE TABLE IF NOT EXISTS Categoria 
 (
 	id INT PRIMARY KEY auto_increment,
-    categoria VARCHAR(50)
-);
-
-CREATE TABLE IF NOT EXISTS Dificultad 
-(
-	id INT PRIMARY KEY auto_increment,
-    dificultad VARCHAR(50)
+    categoria VARCHAR(50),
+    imagen VARCHAR(50)
+    
 );
 
 CREATE TABLE IF NOT EXISTS Pregunta (
@@ -60,21 +109,29 @@ id_pregunta INT,
 FOREIGN KEY (id_pregunta) REFERENCES Pregunta(id)
 );
 
+SELECT d.dificultad, d.valor FROM Pregunta AS p 
+JOIN Dificultad AS d ON d.id = p.id_dificultad
+WHERE p.id = 1;
+
+CREATE TABLE partida_respuestas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_partida INT NOT NULL,
+    id_respuesta INT NOT NULL,
+    FOREIGN KEY (id_partida) REFERENCES partida(id),
+    FOREIGN KEY (id_respuesta) REFERENCES respuesta(id)
+);
+
 -- REGISTROS
 
 -- Insertar categorías de ejemplo
-INSERT INTO Categoria (categoria) VALUES
-    ('Historia'),
-    ('Geografía'),
-    ('Ciencia'),
-    ('Arte'),
-    ('Deportes');
+INSERT INTO Categoria (categoria, imagen) VALUES
+    ('Historia', "icon_historia.png"),
+    ('Geografía', "icon_geografia.png"),
+    ('Ciencia', "icon_ciencias.png"),
+    ('Arte', "icon_arte.png"),
+    ('Deportes', "icon_deportes.png"),
+    ('Entretenimiento', "icon_entretenimiento.png");
 
--- Insertar niveles de dificultad de ejemplo
-INSERT INTO Dificultad (dificultad) VALUES
-    ('Fácil'),
-    ('Moderado'),
-    ('Difícil');
 
 -- Insertar 20 preguntas ficticias y sus respuestas
 -- Pregunta 1

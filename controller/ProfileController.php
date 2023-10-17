@@ -10,7 +10,12 @@ class ProfileController {
     }
 
     public function show() {
-        $this->render->printViewSesion('perfil');
+        $datos = [
+            'usuario' => $_SESSION['usuario']['usuario'],
+            'usuarioPuntos' => $_SESSION['usuario']['puntos'],
+            'nivel' => $_SESSION['usuario']['nivel']
+        ];
+        $this->render->printViewSesion('perfil', $datos);
     }
 
     public function cerrarSesion(){

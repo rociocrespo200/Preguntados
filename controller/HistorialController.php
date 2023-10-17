@@ -1,6 +1,8 @@
 <?php
 
-class HomeController {
+class HistorialController
+{
+
     private $render;
     private $model;
 
@@ -12,11 +14,10 @@ class HomeController {
     public function show() {
         $datos = [
             'usuario' => $_SESSION['usuario']['usuario'],
-            'usuarioPuntos' => $_SESSION['usuario']['puntos']
+            'usuarioPuntos' => $_SESSION['usuario']['puntos'],
+            'nivel' => $_SESSION['usuario']['nivel']
         ];
-        $this->render->printViewSesion('home', $datos);//crea una vista, con el constructor de esta clase, llamada home
+        $this->render->printViewSesion('historial', $datos);//crea una vista, con el constructor de esta clase, llamada home
     }
-
-
 
 }
