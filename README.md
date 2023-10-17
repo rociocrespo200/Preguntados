@@ -5,7 +5,7 @@ Pregundatos es una pagina web inspirada en el clasico juego Preguntados, permite
 Estado: en curso ...
 ```
 
-![Logo](/public/presentacion/home.png)
+![Logo](/public/Presentacion/home.png)
 
 ## Indice
 * [Funcionalidades principales](#funcionalidades-principales)
@@ -26,8 +26,8 @@ Estado: en curso ...
 El proyecto se realizó con el objetivo de desarrollar una pagina con el patron MVC (Modelo-Vista-Controlador) en PHP y empezar a implementar AJAX y Mustache.
 
 ## Screenshots
-![Logo](/public/presentacion/partida.png)
-![Logo](/public/presentacion/perder.png)
+![Logo](/public/Presentacion/partida.png)
+![Logo](/public/Presentacion/perder.png)
 
 ## 🛠 Lenguajes
 HTML, CSS, JavaScript, Bootstrap, PHP, Mustache, AJAX.
