@@ -46,7 +46,7 @@ class ProfileController {
                 $this->render->printViewSesion('perfilUsuario', $data);
             } else {
                 $data = ['error' => "ID de usuario no proporcionado."];
-                $this->render->printViewSesion('perfilUsuario', $data);
+                $this->render->printViewSesion('perfil', $data);
             }
         }
 }
