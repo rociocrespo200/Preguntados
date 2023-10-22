@@ -41,7 +41,13 @@ class UserController {
 
         $_SESSION["usuario"] = $usuarioBuscado;
 
-        $this->render->printViewSesion('home');
+        $datos = [
+            'usuario' => $_SESSION['usuario']['usuario'],
+            'usuarioPuntos' => $_SESSION['usuario']['puntos'],
+            'nivel' => $_SESSION['usuario']['nivel']
+        ];
+
+        $this->render->printViewSesion('home',$datos);
     }
 
 
@@ -57,7 +63,6 @@ class UserController {
         $data['submitText'] = 'Registrarme';
 
         $this->render->printView('registro', $data);
-
     }
 
 
@@ -83,9 +88,7 @@ class UserController {
             $fotoPerfil = $_FILES['fileInput']['name'];
         } else {
             $fotoPerfil =  "profile.png";
-
         }
-
 
         if(!$this->model->validarUsuario($usuario) ||
             !$this->model->validarCorreo($mail) ||
