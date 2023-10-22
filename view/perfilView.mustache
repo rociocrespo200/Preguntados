@@ -1,10 +1,115 @@
-<main>
-    <div class="contenedor_centrado">
-
-        <p>
-            INFORMACION DEL USUARIO</p>
-
-        <a href="/profile/cerrarSesion" type="submit" class="btn btn-danger ">Cerrar sesion</a>
-
+<main style="padding-top: 100px; padding-bottom: 75px;">
+    <div class="puntaje">
+        <div class="puntaje_div">
+            <span>2000</span>
+            <p>nivel</p>
+        </div>
+        <div class="puntaje_div">
+            <span>2000</span>
+            <p>puntos</p>
+        </div>
+        <div class="puntaje_div">
+            <span>2000</span>
+            <p>partidas</p>
+        </div>
+        <div class="puntaje_div">
+            <span>2000</span>
+            <p>preguntas</p>
+        </div>
     </div>
+
+    <form method="post" action="{{action}}" enctype="multipart/form-data" >
+
+        <div class="div_form_titulos">
+            <h2>Datos personales del usuario</h2>
+        </div>
+
+        <div class="div_form_campos">
+
+            <div class="infoBasica">
+                <div id="infoBasica_div1">
+                    <img id="imagen_enviada" src="../public/profile_picture_user_icon_153847.png" alt="">
+                    <div id="editarImagen" >
+                        <img src="../public/icono_editar.png" alt="" class="w-100 p-3">
+                        <input type="file" id="fileInput" name="fileInput" style="display: none;">
+                    </div>
+                </div>
+                <div class="w-100">
+                    <div class="form-row form-group">
+                        <div class="col">
+                            <label for="exampleInputEmail1">Nombre</label>
+                            <input type="text"  name="nombre" value="{{nombre}}" required class="form-control" placeholder="Ingrese su nombre">
+                        </div>
+                        <div class="col">
+                            <label for="exampleInputEmail1">Apellido</label>
+                            <input type="text" name="apellido" value="{{apellido}}" required class="form-control" placeholder="Ingrese su apellido">
+                        </div>
+                    </div>
+                    <div class="form-row form-group">
+                        <div class="col">
+                            <label class="form-label" for="anio_nacimiento">Año de Nacimiento</label>
+                            <input type="number" id="anio_nacimiento" class="form-control " name="anio_nacimiento" value="{{anio_nacimiento}}" required/>
+                        </div>
+                        <div class="col">
+                            <label for="inputState">Genero</label>
+                            <select id="inputState" name="genero" class="form-control">
+                                <option value="masculino">Masculino</option>
+                                <option value="femenino">Fenenino</option>
+                                <option value="">Prefiero no decirlo</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-row form-group">
+                <div class="col">
+                    <label class="form-label" for="pais">País</label>
+                    <select id="pais" class="form-control " name="pais" required>
+                        <option value="Argentina">Argentina</option>
+                        <option value="Uruguay">Uruguay</option>
+                        <option value="Chile">Chile</option>
+                    </select>
+                </div>
+
+                <div class="col">
+                    <label class="form-label" for="ciudad">Ciudad</label>
+                    <select id="ciudad" class="form-control " name="ciudad" required>
+                        <!-- Opciones de ciudad se cargarán dinámicamente aquí -->
+                    </select>
+                </div>
+            </div>
+
+
+
+            <div class="form-row form-group">
+                <div class="col">
+                    <label for="exampleInputEmail1">Usuario</label>
+                    <input type="text" name="usuario" class="form-control" placeholder="Ingrese su usuario">
+                </div>
+                <div class="form-group form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email"  name="mail" value="{{mail}}" required  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese su email">
+                </div>
+            </div>
+
+            <div class="form-row form-group">
+                <div class="col">
+                    <label for="exampleInputEmail1">Contraseña</label>
+                    <input type="text"  name="clave" value="{{clave}}" required  class="form-control" placeholder="Ingrese la contraseña">
+                </div>
+                <div class="col">
+                    <label for="exampleInputEmail1">Contraseña</label>
+                    <input type="text"  name="clave2" value="{{clave2}}" required  class="form-control" placeholder="Repita la contraseña">
+                </div>
+            </div>
+
+        </div>
+
+        <button type="submit" class="btn boton">Modificar datos</button>
+
+    </form>
+
+
 </main>
