@@ -12,7 +12,7 @@ $method = $_GET['method'] ?? 'listar';
 if (!isset($_SESSION['usuario'])) {
 
     // Si la sesión no es válida, verifica si se solicita una vista de inicio de sesión o registro
-    if ($controller === 'user' && in_array($method, ['login', 'signin' ,'procesarLogin'])) {
+    if ($controller === 'user' && in_array($method, ['login', 'signin' ,'procesarLogin', 'procesarAlta'])) {
         // Si la vista es "user/login" o "user/signin," permite el acceso
         $router->route($controller, $method);
         exit;

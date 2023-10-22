@@ -1,0 +1,23 @@
+<main>
+    <div class="contenedor_centrado">
+        {{#error}}
+            <p class="error">{{error}}</p>
+        {{/error}}
+        
+        {{#user}}
+    <div class=>
+        <p>El usuario que quieres visualizar es {{user}}</p>
+
+        <h3> Datos :</h3>
+
+            <div class=>
+                <p>Nombre: {{name}}</p>
+                <p>Apellido: {{surname}}</p>
+                <p>Puntos: {{points}}</p>
+            </div>
+        {{/user}}
+
+
+        <a href="/partida/show" type="submit" class="btn btn-danger">Volver</a>
+    </div>
+</main>

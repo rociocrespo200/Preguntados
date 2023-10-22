@@ -41,7 +41,13 @@ class UserController {
 
         $_SESSION["usuario"] = $usuarioBuscado;
 
-        $this->render->printViewSesion('home');
+        $datos = [
+            'usuario' => $_SESSION['usuario']['usuario'],
+            'usuarioPuntos' => $_SESSION['usuario']['puntos'],
+            'nivel' => $_SESSION['usuario']['nivel']
+        ];
+
+        $this->render->printViewSesion('home',$datos);
     }
 
 
@@ -57,15 +63,16 @@ class UserController {
         $data['submitText'] = 'Registrarme';
 
         $this->render->printView('registro', $data);
-
     }
 
 
     public function procesarAlta(){
+        echo $_POST['nombre'];
         if( empty($_POST['usuario'] ) || empty($_POST['clave'] || empty($_POST['mail']))){
             $_SESSION["error"] = "Alguno de los campos era erroneo o vacio";
             Redirect::to('/user/signin');
         }
+
         $nombre = $_POST["nombre"];
         $apellido = $_POST["apellido"];
         $anioNacimiento = $_POST["anio_nacimiento"];
@@ -81,9 +88,7 @@ class UserController {
             $fotoPerfil = $_FILES['fileInput']['name'];
         } else {
             $fotoPerfil =  "profile.png";
-
         }
-
 
         if(!$this->model->validarUsuario($usuario) ||
             !$this->model->validarCorreo($mail) ||
