@@ -17,7 +17,7 @@
             <p>preguntas</p>
         </div>
     </div>
-
+    {{#user}}
     <form method="post" action="{{action}}" enctype="multipart/form-data" >
 
         <div class="div_form_titulos">
@@ -28,7 +28,7 @@
 
             <div class="infoBasica">
                 <div id="infoBasica_div1">
-                    <img id="imagen_enviada" src="../public/profile_picture_user_icon_153847.png" alt="">
+                    <img id="imagen_enviada" src="../public/usuarios/{{foto_perfil}}" alt="">
                     <div id="editarImagen" >
                         <img src="../public/icono_editar.png" alt="" class="w-100 p-3">
                         <input type="file" id="fileInput" name="fileInput" style="display: none;">
@@ -66,7 +66,7 @@
             <div class="form-row form-group">
                 <div class="col">
                     <label class="form-label" for="pais">País</label>
-                    <select id="pais" class="form-control " name="pais" required>
+                    <select id="pais" class="form-control " name="pais"  required>
                         <option value="Argentina">Argentina</option>
                         <option value="Uruguay">Uruguay</option>
                         <option value="Chile">Chile</option>
@@ -86,7 +86,7 @@
             <div class="form-row form-group">
                 <div class="col">
                     <label for="exampleInputEmail1">Usuario</label>
-                    <input type="text" name="usuario" class="form-control" placeholder="Ingrese su usuario">
+                    <input type="text" name="usuario" class="form-control"  value="{{usuario}}" placeholder="Ingrese su usuario">
                 </div>
                 <div class="form-group form-group">
                     <label for="exampleInputEmail1">Email address</label>
@@ -110,6 +110,6 @@
         <button type="submit" class="btn boton">Modificar datos</button>
 
     </form>
-
+    {{/user}}
 
 </main>

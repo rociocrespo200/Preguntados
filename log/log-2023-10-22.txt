@@ -1,0 +1,17 @@
+[2023-10-22][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 2 
+[2023-10-22][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 2 
+[2023-10-22][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 2 
+[2023-10-22][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 2 
+[2023-10-22][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 2 
+[2023-10-22][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 2 
+[2023-10-22][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 2 
+[2023-10-22][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 2 
+[2023-10-22][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 2 
+[2023-10-22][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 2 
+[2023-10-22][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 2 
+[2023-10-22][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 2 
+[2023-10-22][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 1 
+[2023-10-22][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 3 
+[2023-10-22][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 4 
+[2023-10-22][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 7 
+[2023-10-22][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 1 

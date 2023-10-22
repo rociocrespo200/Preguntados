@@ -32,10 +32,7 @@ class ProfileController {
 
                 if ($usuario) {
                     $data = [
-                        'user' => $usuario["usuario"],
-                        'name' => $usuario["nombre"],
-                        'surname' => $usuario["apellido"],
-                        'points' => $usuario['puntos'],
+                        'user' => $usuario,
                         'usuario' => $_SESSION['usuario']['usuario'],
                         'usuarioPuntos' => $_SESSION['usuario']['puntos'],
                         'nivel' => $_SESSION['usuario']['nivel']
@@ -43,7 +40,7 @@ class ProfileController {
                 } else {
                     $data = ['error' => "El usuario no existe."];
                 }
-                $this->render->printViewSesion('perfilUsuario', $data);
+                $this->render->printViewSesion('perfil', $data);
             } else {
                 $data = ['error' => "ID de usuario no proporcionado."];
                 $this->render->printViewSesion('perfil', $data);
