@@ -62,10 +62,12 @@ class UserController {
 
 
     public function procesarAlta(){
+        echo $_POST['nombre'];
         if( empty($_POST['usuario'] ) || empty($_POST['clave'] || empty($_POST['mail']))){
             $_SESSION["error"] = "Alguno de los campos era erroneo o vacio";
             Redirect::to('/user/signin');
         }
+
         $nombre = $_POST["nombre"];
         $apellido = $_POST["apellido"];
         $anioNacimiento = $_POST["anio_nacimiento"];
