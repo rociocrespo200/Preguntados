@@ -46,5 +46,5 @@ class ProfileController {
                 $this->render->printViewSesion('perfil', $data);
             }
         }
-}
+    }
 }
