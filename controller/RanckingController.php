@@ -6,30 +6,36 @@ class RanckingController
     private $render;
     private $model;
 
-    public function __construct($render, $model) {
+    public function __construct($render, $model)
+    {
         $this->render = $render;
         $this->model = $model;
     }
 
-    public function show() {
+    public function show()
+    {
+        $ranking = $this->model->getRanking();
+        
         $datos = [
             'usuario' => $_SESSION['usuario']['usuario'],
             'usuarioPuntos' => $_SESSION['usuario']['puntos'],
-            'nivel' => $_SESSION['usuario']['nivel']
+            'nivel' => $_SESSION['usuario']['nivel'],
+            'topTres' => [$ranking[0],$ranking[1],$ranking[2]],
+            'ranking' => $this->traerRestoDelRanking($ranking)
         ];
-        $this->render->printViewSesion('rancking', $datos);//crea una vista, con el constructor de esta clase, llamada home
+        
+
+        
+        $this->render->printViewSesion('rancking', $datos); //crea una vista, con el constructor de esta clase, llamada home
     }
 
-    public function traerRankin(){
-        $datos = [
-              'usuario' => $_SESSION['usuario']['usuario'],
-              'usuarioPuntos' => $_SESSION['usuario']['puntos'],
-              'nivel' => $_SESSION['usuario']['nivel']
-          ];
-
-        $datos['ranking'] = $this->model->getRanking();
-
-        $this->render->ranckingView('ranking', $datos);
+    public function traerRestoDelRanking($ranking){
+        $rankingSinTopTres = [];
+        for ($i=3; $i < sizeof($ranking); $i++) { 
+            array_push($rankingSinTopTres, $ranking[$i]);
+        }
+        return $rankingSinTopTres;
     }
+
 
 }
