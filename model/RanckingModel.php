@@ -9,7 +9,7 @@ class RanckingModel
     }
     public function getRanking ()
     {
-        $ranking = $this->database->query("SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', U.usuario, U.nivel, U.puntos, 
+        $ranking = $this->database->query("SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', U.id as 'id', U.usuario, U.nivel, U.puntos, 
                                             COUNT(*) AS 'CantidaddePartidas', SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
                                             FROM usuario U JOIN partida P ON U.id = P.id_usuario 
                                             GROUP BY U.usuario, U.nivel, U.puntos 

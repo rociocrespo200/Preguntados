@@ -31,6 +31,7 @@ class RanckingController
 
     public function traerRestoDelRanking($ranking){
         $rankingSinTopTres = [];
+        var_dump($ranking);
         for ($i=3; $i < sizeof($ranking); $i++) { 
             array_push($rankingSinTopTres, $ranking[$i]);
         }
