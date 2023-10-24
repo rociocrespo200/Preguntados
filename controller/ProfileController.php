@@ -47,4 +47,34 @@ class ProfileController {
             }
         }
     }
+
+    public function modificarUsuario() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_SESSION['usuario']['id'];
+            $nombre = $_POST['nombre'];
+            $apellido = $_POST['apellido'];
+            $anioNacimiento = $_POST['anio_nacimiento'];
+            $pais = $_POST['pais'];
+            $ciudad = $_POST['ciudad'];
+            $mail = $_POST['mail'];
+            $usuario = $_POST['usuario'];
+            $clave = $_POST['clave'];
+
+            $fotoPerfil = $_SESSION['usuario']['foto_perfil']; // Mantén la foto de perfil actual si no se envía una nueva
+
+            if (isset($_FILES["fileInput"]) && $_FILES["fileInput"]["error"] === UPLOAD_ERR_OK) {
+                move_uploaded_file($_FILES["fileInput"]["tmp_name"], "./public/usuarios/" . $_FILES['fileInput']['name']);
+                $fotoPerfil = $_FILES['fileInput']['name'];
+            }
+
+            // se necesita validaciones para modificar el usuario?
+
+            $this->model->modificarUsuario($id, $nombre, $apellido, $anioNacimiento, $pais, $ciudad, $mail, $usuario, $clave, $fotoPerfil);
+            $_SESSION['usuario'] = $this->model->traerUsuario($id); // Actualizar datos de usuario en sesión
+
+            Redirect::to('/perfil');
+        } else {
+            // Manejar solicitud GET si es necesario
+        }
+    }
 }
