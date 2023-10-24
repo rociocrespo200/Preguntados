@@ -276,7 +276,7 @@ form > a.respuesta{
     background-color: var(--violeta-cuatro);
     border: 0;
     font-size: 20px;
-    color: #1F1E40; !important;
+    color: #1F1E40;;
 }
 .puntaje{
     color: rgb(0, 0, 0);
