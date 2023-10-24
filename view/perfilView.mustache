@@ -18,6 +18,7 @@
         </div>
     </div>
   
+  {{#user}}
     <form method="post" action="{{action}}" enctype="multipart/form-data" >
 
         <div class="div_form_titulos">
@@ -38,7 +39,7 @@
                     <div class="form-row form-group">
                         <div class="col">
                             <label for="exampleInputEmail1">Nombre</label>
-                            <input type="text"  name="nombre" value="{{nombre}}" required class="form-control" placeholder="Ingrese su nombre">
+                            <input type="text" disabled  name="nombre" value="{{nombre}}" required class="form-control" placeholder="Ingrese su nombre">
                         </div>
                         <div class="col">
                             <label for="exampleInputEmail1">Apellido</label>
@@ -110,6 +111,6 @@
         <button type="submit" class="btn boton">Modificar datos</button>
 
     </form>
-    
+    {{/user}}
 
 </main>
