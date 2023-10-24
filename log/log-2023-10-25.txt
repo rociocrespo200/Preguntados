@@ -1,0 +1,18 @@
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 5 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 6 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 5 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 3 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 4 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 5 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 6 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 4 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 6 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 6 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 6 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 6 
+[2023-10-25][INFO]Ejecutando Query UPDATE `usuario` SET `nombre`='Duilio', `apellido`='Rubio', `anio_nacimiento`='1992', `pais`='Argentina', `ciudad`='Córdoba', `mail`='drubio950@alumno.unlam.edu.ar', `usuario`='Duilio920', `clave`='Duilio92', `foto_perfil`='profile.png' WHERE `id`='6' 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 6 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 6 
+[2023-10-25][INFO]Ejecutando Query UPDATE `usuario` SET `nombre`='Duilio', `apellido`='Rubio', `anio_nacimiento`='1992', `pais`='Argentina', `ciudad`='Buenos Aires', `mail`='drubio950@alumno.unlam.edu.ar', `usuario`='Duilio92', `clave`='Duilio92', `foto_perfil`='logoJR.jpg' WHERE `id`='6' 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 1 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 6 
