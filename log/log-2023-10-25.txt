@@ -1,0 +1,746 @@
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 5 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 6 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 5 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 3 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 4 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 5 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 6 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 4 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 6 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 6 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 6 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 6 
+[2023-10-25][INFO]Ejecutando Query UPDATE `usuario` SET `nombre`='Duilio', `apellido`='Rubio', `anio_nacimiento`='1992', `pais`='Argentina', `ciudad`='Córdoba', `mail`='drubio950@alumno.unlam.edu.ar', `usuario`='Duilio920', `clave`='Duilio92', `foto_perfil`='profile.png' WHERE `id`='6' 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 6 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 6 
+[2023-10-25][INFO]Ejecutando Query UPDATE `usuario` SET `nombre`='Duilio', `apellido`='Rubio', `anio_nacimiento`='1992', `pais`='Argentina', `ciudad`='Buenos Aires', `mail`='drubio950@alumno.unlam.edu.ar', `usuario`='Duilio92', `clave`='Duilio92', `foto_perfil`='logoJR.jpg' WHERE `id`='6' 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 1 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 6 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', U.usuario, U.nivel, U.puntos, 
+                                            COUNT(*) AS 'CantidaddePartidas', SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', U.usuario, U.nivel, U.puntos, 
+                                            COUNT(*) AS 'CantidaddePartidas', SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', U.usuario, U.nivel, U.puntos, 
+                                            COUNT(*) AS 'CantidaddePartidas', SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', U.usuario, U.nivel, U.puntos, 
+                                            COUNT(*) AS 'CantidaddePartidas', SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 2 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 6 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', U.id, U.usuario, U.nivel, U.puntos, 
+                                            COUNT(*) AS 'CantidaddePartidas', SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', U.id, U.usuario, U.nivel, U.puntos, 
+                                            COUNT(*) AS 'CantidaddePartidas', SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', U.id, U.usuario, U.nivel, U.puntos, 
+                                            COUNT(*) AS 'CantidaddePartidas', SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', U.id, U.usuario, U.nivel, U.puntos, 
+                                            COUNT(*) AS 'CantidaddePartidas', SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', U.id, U.usuario, U.nivel, U.puntos, 
+                                            COUNT(*) AS 'CantidaddePartidas', SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', U.id, U.usuario, U.nivel, U.puntos, 
+                                            COUNT(*) AS 'CantidaddePartidas', SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', U.id, U.usuario, U.nivel, U.puntos, 
+                                            COUNT(*) AS 'CantidaddePartidas', SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'Duilio92' AND clave = 'Duilio92' 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', U.id, U.usuario, U.nivel, U.puntos, 
+                                            COUNT(*) AS 'CantidaddePartidas', SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', U.id, U.usuario, U.nivel, U.puntos, 
+                                            COUNT(*) AS 'CantidaddePartidas', SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', U.id as 'id', U.usuario, U.nivel, U.puntos, 
+                                            COUNT(*) AS 'CantidaddePartidas', SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', U.id as 'id', U.usuario, U.nivel, U.puntos, 
+                                            COUNT(*) AS 'CantidaddePartidas', SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', U.id as 'id', U.usuario, U.nivel, U.puntos, 
+                                            COUNT(*) AS 'CantidaddePartidas', SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 2 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', U.id as 'id', U.usuario, U.nivel, U.puntos, 
+                                            COUNT(*) AS 'CantidaddePartidas', SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'Duilio92' AND clave = 'Duilio92' 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', U.id as 'id', U.usuario, U.nivel, U.puntos, 
+                                            COUNT(*) AS 'CantidaddePartidas', SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', U.id as 'id', U.usuario, U.nivel, U.puntos, 
+                                            COUNT(*) AS 'CantidaddePartidas', SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', U.id as 'id', U.usuario, U.nivel, U.puntos, 
+                                            COUNT(*) AS 'CantidaddePartidas', SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', U.id as 'id', U.usuario, U.nivel, U.puntos, 
+                                            COUNT(*) AS 'CantidaddePartidas', SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', U.id as 'id', U.usuario, U.nivel, U.puntos, 
+                                            COUNT(*) AS 'CantidaddePartidas', SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', U.id as 'id', U.usuario, U.nivel, U.puntos, 
+                                            COUNT(*) AS 'CantidaddePartidas', SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', U.id as 'id', U.usuario, U.nivel, U.puntos, 
+                                            COUNT(*) AS 'CantidaddePartidas', SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', U.id as 'id', U.usuario, U.nivel, U.puntos, 
+                                            COUNT(*) AS 'CantidaddePartidas', SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', U.id as 'id', U.usuario, U.nivel, U.puntos, 
+                                            COUNT(*) AS 'CantidaddePartidas', SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 4 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 4 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 1 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 3 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 2 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 4 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 2 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 2 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 2 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'rocio123' AND clave = '1234' 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'rocio123' AND clave = '1234' 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 1 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 3 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 3 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 2 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 1 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 1 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 2 
+[2023-10-25][INFO]Ejecutando Query UPDATE `usuario` SET `nombre`='', `apellido`='Crespo', `anio_nacimiento`='2000', `pais`='Argentina', `ciudad`='Buenos Aires', `mail`='rocio@gmail.com', `usuario`='rocio123', `clave`='1234', `foto_perfil`='JavaScript-logo (1).png' WHERE `id`='1' 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'rocio123' AND clave = '1234' 
+[2023-10-25][INFO]Ejecutando Query UPDATE `usuario` SET `nombre`='Rocio', `apellido`='Crespo', `anio_nacimiento`='2000', `pais`='Argentina', `ciudad`='Buenos Aires', `mail`='rocio@gmail.com', `usuario`='rocio123', `clave`='1234', `foto_perfil`='JavaScript-logo (1).png' WHERE `id`='1' 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'rocio123' AND clave = '1234' 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 1 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 1 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 1 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 1 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 1 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 1 
+[2023-10-25][INFO]Ejecutando Query UPDATE `usuario` SET `nombre`='Rocio', `apellido`='Crespo', `anio_nacimiento`='2000', `pais`='Argentina', `ciudad`='Buenos Aires', `mail`='rocio@gmail.com', `usuario`='rocio123', `clave`='1234', `foto_perfil`='Bootstrap_logo.svg.png' WHERE `id`='1' 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 1 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 1 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 1 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 1 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 1 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 1 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 1 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 1 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 1 
+[2023-10-25][INFO]Ejecutando Query UPDATE `usuario` SET `nombre`='Rocio', `apellido`='Crespo', `anio_nacimiento`='2000', `pais`='Argentina', `ciudad`='Buenos Aires', `mail`='rocio@gmail.com', `usuario`='rocio123', `clave`='1234', `foto_perfil`='JavaScript-logo (1).png' WHERE `id`='1' 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 1 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 1 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 1 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 1 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 1 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 1 
+[2023-10-25][INFO]Ejecutando Query UPDATE `usuario` SET `nombre`='Rocio', `apellido`='Crespo', `anio_nacimiento`='2000', `pais`='Argentina', `ciudad`='Buenos Aires', `mail`='rocio@gmail.com', `usuario`='rocio123', `clave`='1234', `foto_perfil`='Bootstrap_logo.svg.png' WHERE `id`='1' 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 1 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 1 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 1 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 1 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 1 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 1 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 1 
+[2023-10-25][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 1 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 
+[2023-10-25][INFO]Ejecutando Query SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+                                           U.id as 'id', 
+                                           U.usuario, 
+                                           U.nivel, 
+                                           U.puntos, 
+                                           COUNT(*) AS 'CantidaddePartidas', 
+                                           SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+                                            FROM usuario U 
+                                            JOIN partida P ON U.id = P.id_usuario 
+                                            GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+                                            ORDER BY U.puntos DESC; 

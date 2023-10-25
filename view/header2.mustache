@@ -48,13 +48,14 @@
             <a href="/rancking/show" class="btn  navegacion">Ranking </a>
         </nav>
 
+    {{#user}}
         <a href="/profile/show" class="header_usuario">
 
             <div id="usuario_divPrincipal">
                 <div id="usuario_divPrincipal_div">
                     <h5>{{usuario}} Nivel {{nivel}}</h5>
                     <progress id="file" max="100" value="70">70%</progress>
-                    <p class="usuario_puntos">pto {{usuarioPuntos}} / 6000</p>
+                    <p class="usuario_puntos">pto {{puntos}} / 6000</p>
                 </div>
                 <img class="" src="../../public/profile.png" alt="">
             </div>
@@ -63,7 +64,7 @@
                 <p class="usuario_ranking">Rocio Crespo #2:  1200 puntos</p>
                 <p class="usuario_ranking">Romina Santos #3:  -300 puntos</p>
             </div>
-
+    {{/user}}
         </a>
 
 

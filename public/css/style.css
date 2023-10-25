@@ -256,6 +256,7 @@ a.navegacion:hover{
 
 .btn_danger{
     background-color: #cb1717;
+    width: 200px ;
 }
 
 .btn_danger:hover{
@@ -571,4 +572,9 @@ div.div_ranking_numero2{
 main.main_ranking{
     display: flex;
     gap: 20px;
+}
+
+#form_botones{
+    gap: 10px;
+    justify-content: center;
 }

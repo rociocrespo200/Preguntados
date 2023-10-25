@@ -1,25 +1,28 @@
-<main style="padding-top: 100px; padding-bottom: 75px;">
-    <div class="puntaje">
-        <div class="puntaje_div">
-            <span>2000</span>
-            <p>nivel</p>
+<main style="padding-top: 100px; ">
+    <section id="main_scroll">
+
+    {{#user}}
+        <div class="puntaje">
+            <div class="puntaje_div">
+                <span>{{nivel}}</span>
+                <p>nivel</p>
+            </div>
+            <div class="puntaje_div">
+                <span>{{puntos}}</span>
+                <p>puntos</p>
+            </div>
+            <div class="puntaje_div">
+                <span>2000</span>
+                <p>partidas</p>
+            </div>
+            <div class="puntaje_div">
+                <span>2000</span>
+                <p>preguntas</p>
+            </div>
         </div>
-        <div class="puntaje_div">
-            <span>2000</span>
-            <p>puntos</p>
-        </div>
-        <div class="puntaje_div">
-            <span>2000</span>
-            <p>partidas</p>
-        </div>
-        <div class="puntaje_div">
-            <span>2000</span>
-            <p>preguntas</p>
-        </div>
-    </div>
-  
-  {{#user}}
-    <form method="post" action="{{action}}" enctype="multipart/form-data" >
+
+    <form method="post" action="/profile/modificarUsuario" enctype="multipart/form-data" style="margin-bottom: 75px;" >
+
 
         <div class="div_form_titulos">
             <h2>Datos personales del usuario</h2>
@@ -39,7 +42,7 @@
                     <div class="form-row form-group">
                         <div class="col">
                             <label for="exampleInputEmail1">Nombre</label>
-                            <input type="text" disabled  name="nombre" value="{{nombre}}" required class="form-control" placeholder="Ingrese su nombre">
+                            <input type="text"  name="nombre" value="{{nombre}}" required class="form-control" placeholder="Ingrese su nombre">
                         </div>
                         <div class="col">
                             <label for="exampleInputEmail1">Apellido</label>
@@ -108,9 +111,146 @@
 
         </div>
 
-        <button type="submit" class="btn boton">Modificar datos</button>
+        <div class="d-flex" id="form_botones">
+            <button type="submit" class="btn boton">Modificar datos</button>
+            <a href="/profile/cerrarSesion" type="submit" class="btn btn-danger btn_danger">Cerrar sesion</a>
+        </div>
 
     </form>
+
+
+        <script src="../public/js/administrar.js"></script>
+        <script>
+            const paisSelect = document.getElementById('pais');
+            const ciudadSelect = document.getElementById('ciudad');
+
+            const ciudadesPorPais = {
+                Argentina: ["Buenos Aires", "Córdoba", "Santa Fe"],
+                Uruguay: ["Montevideo", "Canelones", "Chihuaha"],
+                Chile: ["Santiago", "Valparaíso", "La Serena"]
+            };
+
+            function actualizarCiudades() {
+                const paisSeleccionado = paisSelect.value;
+                const ciudades = ciudadesPorPais[paisSeleccionado] || [];
+                // Limpiar las opciones actuales del select de ciudad
+                ciudadSelect.innerHTML = "";
+                ciudades.forEach((ciudad) => {
+                    const option = document.createElement("option");
+                    option.value = ciudad;
+                    option.textContent = ciudad;
+                    ciudadSelect.appendChild(option);
+                });
+            }
+
+            // Asignar un evento de cambio al select de país para actualizar las ciudades
+            paisSelect.addEventListener("change", actualizarCiudades);
+
+            // Llamar a la función una vez para cargar las ciudades iniciales
+            actualizarCiudades();
+        </script>
     {{/user}}
 
+
+    {{#otroUser}}
+        <div class="puntaje">
+            <div class="puntaje_div">
+                <span>{{nivel}}</span>
+                <p>nivel</p>
+            </div>
+            <div class="puntaje_div">
+                <span>{{puntos}}</span>
+                <p>puntos</p>
+            </div>
+            <div class="puntaje_div">
+                <span>2000</span>
+                <p>partidas</p>
+            </div>
+            <div class="puntaje_div">
+                <span>2000</span>
+                <p>preguntas</p>
+            </div>
+        </div>
+
+        <form method="post" action="{{action}}" enctype="multipart/form-data" style="margin-bottom: 75px;" >
+
+            <div class="div_form_titulos">
+                <h2>Datos personales del usuario</h2>
+            </div>
+
+            <div class="div_form_campos">
+
+                <div class="infoBasica">
+                    <div id="infoBasica_div1">
+                        <img id="imagen_enviada" src="../public/usuarios/{{foto_perfil}}" alt="">
+                    </div>
+                    <div class="w-100">
+                        <div class="form-row form-group">
+                            <div class="col">
+                                <label for="exampleInputEmail1">Nombre</label>
+                                <input type="text"  name="nombre" value="{{nombre}}" required class="form-control" placeholder="Ingrese su nombre" disabled>
+                            </div>
+                            <div class="col">
+                                <label for="exampleInputEmail1">Apellido</label>
+                                <input type="text" name="apellido" value="{{apellido}}" required class="form-control" placeholder="Ingrese su apellido" disabled>
+                            </div>
+                        </div>
+                        <div class="form-row form-group">
+                            <div class="col">
+                                <label class="form-label" for="anio_nacimiento">Año de Nacimiento</label>
+                                <input type="number" id="anio_nacimiento" class="form-control " name="anio_nacimiento" value="{{anio_nacimiento}}" disabled required/>
+                            </div>
+                            <div class="col">
+                                <label for="inputState">Genero</label>
+                                <select id="inputState" name="genero" class="form-control">
+                                    <option value="masculino">Masculino</option>
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-row form-group">
+                    <div class="col">
+                        <label class="form-label" for="pais">País</label>
+                        <select id="pais" class="form-control " name="pais"  required>
+                            <option value="Pais">{{pais}}</option>
+
+                        </select>
+                    </div>
+
+                    <div class="col">
+                        <label class="form-label" for="ciudad">Ciudad</label>
+                        <select id="ciudad" class="form-control " name="ciudad" required>
+                            <option value="Ciudad">{{ciudad}}</option>
+                        </select>
+                    </div>
+                </div>
+
+
+
+                <div class="form-row form-group">
+                    <div class="col">
+                        <label for="exampleInputEmail1">Usuario</label>
+                        <input type="text" name="usuario" class="form-control"  value="{{usuario}}" placeholder="Ingrese su usuario" disabled>
+                    </div>
+                    <div class="form-group form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email"  name="mail" value="{{mail}}" required  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese su email" disabled>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </form>
+    {{/otroUser}}
+
+
+</section>
+
 </main>
+

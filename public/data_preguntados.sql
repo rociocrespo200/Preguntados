@@ -17,12 +17,13 @@ CREATE TABLE usuario (
 );
 
 
-INSERT INTO usuario (nombre, apellido, anio_nacimiento, pais, ciudad, mail, usuario, clave, foto_perfil)
+                                            
+INSERT INTO usuario (nombre, apellido, anio_nacimiento, pais, ciudad, mail, usuario, clave, foto_perfil, puntos, nivel)
 VALUES
-	('Rocio', 'Crespo', 2000, 'Argentina', 'Buenos aires', 'rocio@gmail.com', 'rocio123', '1234', 'profile.png'),
-    ('John', 'Doe', 1990, 'Estados Unidos', 'Nueva York', 'johndoe@example.com', 'johndoe123', 'secreto123', 'profile.png'),
-    ('Jane', 'Smith', 1985, 'Reino Unido', 'Londres', 'janesmith@example.com', 'janesmith456', 'contrasena456', 'profile.png'),
-    ('Juan', 'Pérez', 1988, 'España', 'Madrid', 'juanperez@example.com', 'juanperez789', 'clave789', 'profile.png');
+	('Rocio', 'Crespo', 2000, 'Argentina', 'Buenos aires', 'rocio@gmail.com', 'rocio123', '1234', 'profile.png',10700, 9),
+    ('John', 'Doe', 1990, 'Estados Unidos', 'Nueva York', 'johndoe@example.com', 'johndoe123', 'secreto123', 'profile.png',1200, 2),
+    ('Jane', 'Smith', 1985, 'Reino Unido', 'Londres', 'janesmith@example.com', 'janesmith456', 'contrasena456', 'profile.png',7820, 5),
+    ('Juan', 'Pérez', 1988, 'España', 'Madrid', 'juanperez@example.com', 'juanperez789', 'clave789', 'profile.png',100, 1);
 
 CREATE TABLE IF NOT EXISTS Dificultad 
 (
