@@ -21,7 +21,8 @@ class RanckingController
             'usuarioPuntos' => $_SESSION['usuario']['puntos'],
             'nivel' => $_SESSION['usuario']['nivel'],
             'topTres' => [$ranking[0],$ranking[1],$ranking[2]],
-            'ranking' => $this->traerRestoDelRanking($ranking)
+            'ranking' => $this->traerRestoDelRanking($ranking),
+            'user' => $this->model->traerUsuario($_SESSION['usuario']['id'])
         ];
         
 

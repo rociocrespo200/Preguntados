@@ -9,6 +9,13 @@ class PartidaModel
         $this->database = $database;
     }
 
+    public function traerUsuario($id){ //agregado
+        $result = $this->database->query("SELECT * FROM `usuario` WHERE id = $id");
+        if(!empty($result)){
+            return $result[0];
+        }
+    }
+
     public function crearPartida($idUsuario)
     {
         $this->database->query("INSERT INTO partida (id_usuario) VALUES (" . $idUsuario . ")");

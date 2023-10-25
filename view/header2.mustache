@@ -20,6 +20,18 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var currentPath = window.location.pathname; // Obtiene la ruta actual
+            $('#menu_normal a').each(function() {
+                var linkPath = $(this).attr('href'); // Obtiene la ruta del enlace
+                if (currentPath === linkPath) {
+                    $(this).addClass('navegacion_seleccionado');
+                }
+            });
+        });
+    </script>
     <title>Preguntados</title>
 
 </head>
@@ -43,7 +55,7 @@
 
 
         <nav id="menu_normal">
-            <a href="/home/show" class="btn navegacion navegacion_seleccionado">Jugar</a>
+            <a href="/home/show" class="btn navegacion navegacion">Jugar</a>
             <a href="/historial/show" class="btn  navegacion">Historial </a>
             <a href="/rancking/show" class="btn  navegacion">Ranking </a>
         </nav>
@@ -57,7 +69,7 @@
                     <progress id="file" max="100" value="70">70%</progress>
                     <p class="usuario_puntos">pto {{puntos}} / 6000</p>
                 </div>
-                <img class="" src="../../public/profile.png" alt="">
+                <img class="" src="../../public/usuarios/{{foto_perfil}}" alt="">
             </div>
             <div id="usuario_divSecundario" >
                 <p class="usuario_ranking">Jaimito Martinez #1: +400 puntos</p>

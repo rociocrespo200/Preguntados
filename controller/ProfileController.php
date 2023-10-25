@@ -13,7 +13,7 @@ class ProfileController {
         $datos = [
             //'usuario' == $this->model->traerUsuario($_SESSION['usuario']['id']),
             'usuario' => $_SESSION['usuario']['usuario'],
-            'usuarioPuntos' => $_SESSION['usuario']['puntos'],
+            'usuariPuntos' => $_SESSION['usuario']['puntos'],
             'nivel' => $_SESSION['usuario']['nivel'],
             'user' => $this->model->traerUsuario($_SESSION['usuario']['id'])
         ];
@@ -41,7 +41,8 @@ class ProfileController {
                         'otroUser' => $usuario,
                         'usuario' => $_SESSION['usuario']['usuario'],
                         'usuarioPuntos' => $_SESSION['usuario']['puntos'],
-                        'nivel' => $_SESSION['usuario']['nivel']
+                        'nivel' => $_SESSION['usuario']['nivel'],
+                        'user' => $this->model->traerUsuario($_SESSION['usuario']['id']) //agregado
                     ];
                 } else {
                     $data = ['error' => "El usuario no existe."];
@@ -60,6 +61,7 @@ class ProfileController {
             $nombre = $_POST['nombre'];
             $apellido = $_POST['apellido'];
             $anioNacimiento = $_POST['anio_nacimiento'];
+            $genero=$_POST['genero'];
             $pais = $_POST['pais'];
             $ciudad = $_POST['ciudad'];
             $mail = $_POST['mail'];
@@ -75,7 +77,7 @@ class ProfileController {
 
             // se necesita validaciones para modificar el usuario?
             //$_SESSION['usuario'] = $this->model->traerUsuario($id); // Actualizar datos de usuario en sesión
-            $this->model->modificarUsuario($id,$nombre, $apellido, $anioNacimiento, $pais, $ciudad, $mail, $usuario, $clave, $fotoPerfil);
+            $this->model->modificarUsuario($id,$nombre, $apellido, $anioNacimiento, $genero, $pais, $ciudad, $mail, $usuario, $clave, $fotoPerfil);
 
             header('location:/profile/show');
         } else {
