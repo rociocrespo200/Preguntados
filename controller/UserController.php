@@ -42,12 +42,12 @@ class UserController {
         $_SESSION["usuario"] = $usuarioBuscado;
 
         $datos = [
-            'usuario' => $_SESSION['usuario']['usuario'],
-            'usuarioPuntos' => $_SESSION['usuario']['puntos'],
-            'nivel' => $_SESSION['usuario']['nivel']
+            'user' => $this->model->traerUsuario($_SESSION['usuario']['id']),
+            'preguntas' => $this->model->traerListaDePreguntas()
         ];
 
-        $this->render->printViewSesion('home',$datos);
+        if ($_SESSION['usuario']['id_rol'] == 2) $this->render->printViewEditor('homeEditor',$datos);
+        else $this->render->printViewSesion('home',$datos);
     }
 
 
@@ -76,6 +76,7 @@ class UserController {
         $nombre = $_POST["nombre"];
         $apellido = $_POST["apellido"];
         $anioNacimiento = $_POST["anio_nacimiento"];
+        $genero = $_POST["genero"];
         $pais = $_POST["pais"];
         $ciudad = $_POST["ciudad"];
         $mail = $_POST["mail"];
@@ -107,7 +108,7 @@ class UserController {
             Redirect::to('/user/signin');
         }
 
-        $this->model->alta($nombre, $apellido, $anioNacimiento, $pais, $ciudad, $mail, $usuario, $clave, $fotoPerfil);
+        $this->model->alta($nombre, $apellido, $anioNacimiento, $genero, $pais, $ciudad, $mail, $usuario, $clave, $fotoPerfil);
 
         Redirect::root();
     }

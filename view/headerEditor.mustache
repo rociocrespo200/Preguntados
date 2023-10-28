@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSS only -->
     <link rel="stylesheet" href="../public/css/style.css"/>
+    <link rel="stylesheet" href="../public/css/editor.css"/>
     <!--Bootstrap-->
     <link rel="icon" href="./imagenes/favicon.ico" type="image/vnd.microsoft.icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -43,9 +44,9 @@
         <input type="checkbox" id="menu">
         <label for="menu"> ☰ </label>
         <ul>
-            <li> <a href="/home/show" >Jugar</a> </li>
-            <li> <a href="/historial/show" >Historial</a> </li>
-            <li> <a href="/rancking/show" >Ranking</a> </li>
+            <li> <a href="/homeEditor/show">Administrar preguntas</a> </li>
+            <li> <a href="/reportes/show">Reportes</a> </li>
+            <li> <a href="/sugerencias/show">Sugerencias</a> </li>
         </ul>
     </nav>
 
@@ -54,31 +55,22 @@
     <img class="logo " src="../../public/logo.png" alt=""  id="logo2">
 
 
-        <nav id="menu_normal">
-            <a href="/home/show" class="btn navegacion navegacion">Jugar</a>
-            <a href="/historial/show" class="btn  navegacion">Historial </a>
-            <a href="/rancking/show" class="btn  navegacion">Ranking </a>
-        </nav>
+    <nav id="menu_normal">
+        <a href="/homeEditor/show" class="btn navegacion">Administrar preguntas</a>
+        <a href="/reportes/show" class="btn  navegacion">Reportes</a>
+        <a href="/sugerencias/show" class="btn  navegacion">Sugerencias </a>
+    </nav>
 
-    {{#user}}
-        <a href="/profile/show" class="header_usuario">
+    <a href="#" class="header_usuario">
 
-            <div id="usuario_divPrincipal">
-                <div id="usuario_divPrincipal_div">
-                    <h5>{{usuario}} Nivel {{nivel}}</h5>
-                    <progress id="file" max="100" value="70">70%</progress>
-                    <p class="usuario_puntos">pto {{puntos}} / 6000</p>
-                </div>
-                <img class="" src="../../public/usuarios/{{foto_perfil}}" alt="">
+        <div id="usuario_divPrincipal">
+            <div id="usuario_divPrincipal_div">
+                <p>{{user.nombre}} {{user.apellido}} - {{user.usuario}}<br><span class="etiqueta">EDITOR</span></p>
             </div>
-            <div id="usuario_divSecundario" >
-                <p class="usuario_ranking">Jaimito Martinez #1: +400 puntos</p>
-                <p class="usuario_ranking">Rocio Crespo #2:  1200 puntos</p>
-                <p class="usuario_ranking">Romina Santos #3:  -300 puntos</p>
-            </div>
-    {{/user}}
-        </a>
+            <img class="" src="../../public/usuarios/{{user.foto_perfil}}" alt="">
+        </div>
 
 
+    </a>
 
 </header>

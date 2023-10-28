@@ -12,7 +12,9 @@ class HomeController {
     public function show() {
         $datos = [
             'usuario' => $_SESSION['usuario']['usuario'],
-            'usuarioPuntos' => $_SESSION['usuario']['puntos']
+            'usuarioPuntos' => $_SESSION['usuario']['puntos'],
+            'user' => $this->model->traerUsuario($_SESSION['usuario']['id'])//agregado
+
         ];
         $this->render->printViewSesion('home', $datos);//crea una vista, con el constructor de esta clase, llamada home
     }

@@ -14,12 +14,14 @@ class RanckingModel
                                            U.usuario, 
                                            U.nivel, 
                                            U.puntos, 
+                                           U.foto_perfil, 
                                            COUNT(*) AS 'CantidaddePartidas', 
                                            SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
                                             FROM usuario U 
                                             JOIN partida P ON U.id = P.id_usuario 
                                             GROUP BY U.id, U.usuario, U.nivel, U.puntos 
                                             ORDER BY U.puntos DESC;");
+        //  U.foto_perfil,  agregado para que traiga foto perfil
         $result = array();
 
         foreach ($ranking as $rank) {
@@ -29,6 +31,7 @@ class RanckingModel
                 'usuarios' => $rank["usuario"],
                 'nivel' => $rank ["nivel"],
                 'puntos' => $rank["puntos"],
+                'foto_perfil'=>$rank["foto_perfil"],
                 'cantidadDePartidas' => $rank ["CantidaddePartidas"],
                 'preguntas' => $rank["CantidaddePreguntas"]
             ];
@@ -36,4 +39,12 @@ class RanckingModel
         return $result;
 
     }
+
+    public function traerUsuario($id){ //agregado
+        $result = $this->database->query("SELECT * FROM `usuario` WHERE id = $id");
+        if(!empty($result)){
+            return $result[0];
+        }
+    }
+
 }

@@ -15,7 +15,9 @@ class HistorialController
         $datos = [
             'usuario' => $_SESSION['usuario']['usuario'],
             'usuarioPuntos' => $_SESSION['usuario']['puntos'],
-            'nivel' => $_SESSION['usuario']['nivel']
+            'nivel' => $_SESSION['usuario']['nivel'],
+            'user' => $this->model->traerUsuario($_SESSION['usuario']['id'])//agregado
+
         ];
         $this->render->printViewSesion('historial', $datos);//crea una vista, con el constructor de esta clase, llamada home
     }

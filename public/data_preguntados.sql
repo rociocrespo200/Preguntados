@@ -1,6 +1,15 @@
 CREATE DATABASE IF NOT EXISTS preguntados;
 USE preguntados;
 
+CREATE TABLE IF NOT exists Rol(
+	id INT PRIMARY KEY auto_increment,
+	tipo VARCHAR(50)
+);
+
+INSERT INTO Rol (tipo)
+VALUES 
+("USUARIO"), ("EDITOR"), ("ADMINISTRADOR");
+
 CREATE TABLE usuario (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(255) NOT NULL,
@@ -13,8 +22,23 @@ CREATE TABLE usuario (
     clave VARCHAR(255) NOT NULL,
     puntos INT default 0,
     nivel INT default 1,
-    foto_perfil VARCHAR(255) NOT NULL
+    id_rol int default 1,
+    foto_perfil VARCHAR(255) NOT NULL,
+    foreign key (id_rol) references Rol(id)
 );
+
+
+-- SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
+--        U.id as 'id', 
+--        U.usuario, 
+--        U.nivel, 
+--        U.puntos, 
+--        COUNT(*) AS 'CantidaddePartidas', 
+--        SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
+-- FROM usuario U 
+-- JOIN partida P ON U.id = P.id_usuario 
+-- GROUP BY U.id, U.usuario, U.nivel, U.puntos 
+-- ORDER BY U.puntos DESC;
 
 
                                             
@@ -53,9 +77,9 @@ INSERT INTO partida (id_usuario, preguntasContestadas) VALUES (3 ,4),(2, 5),(3, 
 INSERT INTO partida (id_usuario, preguntasContestadas) VALUES (1 ,7),(1, 5),(2, 8),(4, 12);
 INSERT INTO partida (id_usuario, preguntasContestadas) VALUES (3 ,4),(2, 5),(1, 18),(4, 5);
 
-SELECT *
-FROM partida P
-JOIN Dificultad D ON P.id_dificultad = D.id;
+-- SELECT *
+-- FROM partida P
+-- JOIN Dificultad D ON P.id_dificultad = D.id;
 
 /*
 		--------- ACTUALIZAR PUNTOS ---------

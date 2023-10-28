@@ -7,9 +7,9 @@ class UserModel {
         $this->database = $database;
     }
 
-    public function alta($nombre, $apellido, $anioNacimiento, $pais, $ciudad, $mail, $usuario, $clave, $fotoPerfil) {
-        $sql = "INSERT INTO `usuario` (`nombre`, `apellido`, `anio_nacimiento`, `pais`, `ciudad`, `mail`, `usuario`, `clave` ,`foto_perfil`) 
-        VALUES ('$nombre', '$apellido', '$anioNacimiento', '$pais', '$ciudad', '$mail', '$usuario', '$clave', '$fotoPerfil')";
+    public function alta($nombre, $apellido, $anioNacimiento, $genero, $pais, $ciudad, $mail, $usuario, $clave, $fotoPerfil) {
+        $sql = "INSERT INTO `usuario` (`nombre`, `apellido`, `anio_nacimiento`, `genero`, `pais`, `ciudad`, `mail`, `usuario`, `clave` ,`foto_perfil`) 
+        VALUES ('$nombre', '$apellido', '$anioNacimiento', '$pais','$genero', '$ciudad', '$mail', '$usuario', '$clave', '$fotoPerfil')";
         Logger::info('Usuario alta: ' . $sql);
         $this->database->query($sql);
     }
@@ -60,6 +60,14 @@ class UserModel {
         return $result[0];
     }
 
+
+    public function traerUsuario($id){
+        return $this->database->query("SELECT * FROM `usuario` WHERE id = $id")[0];
+    }
+
+    public function traerListaDePreguntas(){
+        return $this->database->query("SELECT * FROM `pregunta`");
+    }
 
 
 
