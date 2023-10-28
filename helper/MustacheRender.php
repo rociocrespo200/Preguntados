@@ -20,6 +20,10 @@ class MustacheRender {
         echo  $this->generateHtmlSesion($contenido, $datos);
     }
 
+    public function printViewEditor($contenido, $datos = null) {
+        echo  $this->generateHtmlEditor($contenido, $datos);
+    }
+
     public function generateHtml($contentFile, $data = array()) {//recien aca data es un array
         $contentAsString = file_get_contents('view/header.mustache');
         $contentAsString .= file_get_contents('view/' . $contentFile . "View.mustache");
@@ -31,7 +35,15 @@ class MustacheRender {
 
         $contentAsString = file_get_contents('view/header2.mustache');
         $contentAsString .= file_get_contents('view/' . $contentFile . "View.mustache");
-        $contentAsString .= file_get_contents('view/footer2.mustache');
+        $contentAsString .= file_get_contents('view/footer.mustache');
+        return $this->mustache->render($contentAsString, $data);
+    }
+
+    public function generateHtmlEditor($contentFile, $data = array()) {
+
+        $contentAsString = file_get_contents('view/headerEditor.mustache');
+        $contentAsString .= file_get_contents('view/' . $contentFile . "View.mustache");
+        $contentAsString .= file_get_contents('view/footer.mustache');
         return $this->mustache->render($contentAsString, $data);
     }
 }

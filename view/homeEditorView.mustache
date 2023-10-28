@@ -1,0 +1,36 @@
+<form class="form-inline w-100 justify-content-center " id="form_filtros">
+    <input class="form-control mr-sm-2 w-75" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+</form>
+
+<main id="main" style="padding-top: 20px; padding-bottom: 195px; justify-content: flex-start;">
+
+
+
+    <section id="main_scroll">
+    {{#preguntas}}
+        <div class="lista" style="padding: 10px 30px 10px 50px ">
+            <p>{{pregunta}}</p>
+            <div>
+                <a href="/homeEditor/administrarPregunta" class="btn boton boton_modificar">Modificar</a>
+                <button class="btn btn-danger btn_danger boton_eliminar" onclick="mostrarPopUp('popup_eliminar')">Eliminar</button>
+            </div>
+        </div>
+    {{/preguntas}}
+
+
+            <div class="popup"  id="popup_eliminar" style="display: none">
+                <a class="popup_cruz" onclick="ocultarPopUp('popup_eliminar')">✖</a>
+                <p>Esta seguro que desea eliminar esta pregunta? Una vez eliminada, tambien se eliminaran las respuestas asociadas a la pregunta y no podra restaurarse la informacion.</p>
+                <div>
+                    <a href="/homeEditor/eliminarPregunta" class="btn btn-danger btn_danger boton_eliminar" onclick="mostrarPopUp('popup_eliminar')">Eliminar</a>
+                </div>
+            </div>
+
+
+    </section>
+
+    <a href="/homeEditor/administrarPregunta" class="btn boton" id="boton_flotante">Agregar pregunta</a>
+</main>
+<script src="../public/js/popup.js"></script>
+

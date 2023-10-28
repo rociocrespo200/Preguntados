@@ -12,6 +12,12 @@ include_once ('controller/ProfileController.php');
 include_once ('controller/PartidaController.php');
 include_once ('controller/HistorialController.php');
 include_once ('controller/RanckingController.php');
+include_once ('controller/HomeEditorController.php');
+include_once ('controller/SugerenciasController.php');
+include_once ('controller/ReportesController.php');
+include_once("model/HomeEditorModel.php");
+include_once("model/SugerenciasModel.php");
+include_once("model/ReportesModel.php");
 include_once("model/HomeModel.php");
 include_once("model/RanckingModel.php");
 include_once("model/HistorialModel.php");
@@ -71,6 +77,21 @@ class Configuracion {
     public function getHistorialController() {
         $model = new HistorialModel($this->getDatabase());
         return new HistorialController($this->getRender(), $model);
+    }
+
+    public function getSugerenciasController() {
+        $model = new SugerenciasModel($this->getDatabase());
+        return new SugerenciasController($this->getRender(), $model);
+    }
+
+    public function getReportesController() {
+        $model = new ReportesModel($this->getDatabase());
+        return new ReportesController($this->getRender(), $model);
+    }
+
+    public function getHomeEditorController() {
+        $model = new HomeEditorModel($this->getDatabase());
+        return new HomeEditorController($this->getRender(), $model);
     }
     public function getRouter() {
       //crea un objeto de tipo Ruta con un Controller y un metodo por defecto

@@ -1,0 +1,64 @@
+<main>
+    <form method="post" action="{{action}}" enctype="multipart/form-data">
+
+        <div class="div_form_titulos">
+            <h2>Agregar pregunta</h2>
+        </div>
+
+        <div class="div_form_campos">
+            <div class="form-group">
+                <label for="pregunta">Pregunta</label>
+                <input type="text" class="form-control" id="pregunta" aria-describedby="emailHelp" placeholder="Ingrese la pregunta">
+            </div>
+
+            <div class="form-row form-group">
+                <div class="col">
+                    <label for="exampleInputEmail1">Respuesta correcta</label>
+                    <input type="text" name="usuario" class="form-control" placeholder="Ingrese la respuesta correcta">
+                </div>
+                <div class="col">
+                    <label for="exampleInputEmail1">Respuesta incorrecta #1</label>
+                    <input type="email"  name="mail" required  class="form-control" id="exampleInputEmail1">
+                </div>
+            </div>
+            <div class="form-row form-group">
+                <div class="col">
+                    <label for="exampleInputEmail1">Respuesta incorrecta #2 <span style="color: rgb(255, 0, 0);">✱</span></label>
+                    <input type="text" name="usuario" class="form-control" >
+                </div>
+                <div class="col">
+                    <label for="exampleInputEmail1">Respuesta incorrecta #3 <span style="color: rgb(255, 0, 0);">✱</span></label>
+                    <input type="email"  name="mail"  required  class="form-control" id="exampleInputEmail1" >
+                </div>
+            </div>
+
+
+            <div class="form-row form-group">
+                <div class="col">
+                    <label class="form-label" for="pais">Categoria</label>
+                    <select id="pais" class="form-control " name="pais" required>
+                        <option value="1">Historia</option>
+                        <option value="2">Geografia</option>
+                        <option value="3">Ciencia</option>
+                        <option value="4">Arte</option>
+                        <option value="5">Deportes</option>
+                        <option value="6">Entretenimiento</option>
+                    </select>
+                </div>
+
+                <div class="col">
+                    <label class="form-label" for="ciudad">Dificultad</label>
+                    <select id="ciudad" class="form-control " name="ciudad" required>
+                        <option value="Facil">Facil</option>
+                        <option value="Moderado">Moderado</option>
+                        <option value="Dificil">Dificil</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+
+        <button type="submit" class="btn boton">Agregar pregunta</button>
+
+    </form>
+</main>
