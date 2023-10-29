@@ -15,6 +15,7 @@ CREATE TABLE usuario (
     nombre VARCHAR(255) NOT NULL,
     apellido VARCHAR(255) NOT NULL,
     anio_nacimiento INT NOT NULL,
+    genero VARCHAR(255) NOT NULL,
     pais VARCHAR(255) NOT NULL,
     ciudad VARCHAR(255) NOT NULL,
     mail VARCHAR(255) NOT NULL,
@@ -42,15 +43,14 @@ CREATE TABLE usuario (
 
 
                                             
-INSERT INTO usuario (nombre, apellido, anio_nacimiento, pais, ciudad, mail, usuario, clave, foto_perfil, puntos, nivel)
+INSERT INTO usuario (nombre, apellido, anio_nacimiento, genero, pais, ciudad, mail, usuario, clave, foto_perfil, puntos, nivel)
 VALUES
-	('Rocio', 'Crespo', 2000, 'Argentina', 'Buenos aires', 'rocio@gmail.com', 'rocio123', '1234', 'profile.png',10700, 9),
-    ('John', 'Doe', 1990, 'Estados Unidos', 'Nueva York', 'johndoe@example.com', 'johndoe123', 'secreto123', 'profile.png',1200, 2),
-    ('Jane', 'Smith', 1985, 'Reino Unido', 'Londres', 'janesmith@example.com', 'janesmith456', 'contrasena456', 'profile.png',7820, 5),
-    ('Juan', 'Pérez', 1988, 'España', 'Madrid', 'juanperez@example.com', 'juanperez789', 'clave789', 'profile.png',100, 1);
-INSERT INTO usuario (nombre, apellido, anio_nacimiento, pais, ciudad, mail, usuario, clave, foto_perfil, id_rol)
+	('Rocio', 'Crespo', 2000, 'femenino',  'Argentina', 'Buenos aires', 'rocio@gmail.com', 'rocio123', '1234', 'profile.png',10700, 9),
+     ('Jane', 'Smith', 1985,'masculino', 'Reino Unido', 'Londres', 'janesmith@example.com', 'janesmith456', 'contrasena456', 'profile.png',7820, 5),
+    ('Juan', 'Pérez', 1988, 'masculino','España', 'Madrid', 'juanperez@example.com', 'juanperez789', 'clave789', 'profile.png',100, 1);
+INSERT INTO usuario (nombre, apellido, anio_nacimiento,genero,  pais, ciudad, mail, usuario, clave, foto_perfil, id_rol)
 VALUES
-	('Rocio', 'Crespo', 2000, 'Argentina', 'Buenos aires', 'belen@gmail.com', 'belen123', '1234', 'profile.png',2);
+	('Rocio', 'Crespo', 2000, 'femenino', 'Argentina', 'Buenos aires', 'belen@gmail.com', 'belen123', '1234', 'profile.png',2);
 
 CREATE TABLE IF NOT EXISTS Dificultad 
 (
@@ -125,6 +125,7 @@ id INT auto_increment PRIMARY KEY,
 pregunta VARCHAR(200),
 id_categoria INT,
 id_dificultad INT,
+habilitada bool default true,
 FOREIGN KEY (id_categoria) REFERENCES Categoria(id),
 FOREIGN KEY (id_dificultad) REFERENCES Dificultad(id)
 );
@@ -137,9 +138,6 @@ id_pregunta INT,
 FOREIGN KEY (id_pregunta) REFERENCES Pregunta(id)
 );
 
-SELECT d.dificultad, d.valor FROM Pregunta AS p 
-JOIN Dificultad AS d ON d.id = p.id_dificultad
-WHERE p.id = 1;
 
 CREATE TABLE partida_respuestas (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -159,10 +157,35 @@ CREATE TABLE partida_preguntas (
     FOREIGN KEY (id_pregunta) REFERENCES pregunta(id)
 );
 
-SELECT * FROM partida_preguntas AS pp 
-JOIN partida AS p ON p.id = pp.id_partida 
-JOIN pregunta AS pr ON pr.id = pp.id_pregunta
-WHERE pp.id_partida = 33;
+CREATE TABLE reporte (
+	    id INT AUTO_INCREMENT PRIMARY KEY,
+        fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
+		id_pregunta INT NOT NULL,
+		motivo VARCHAR(255) NOT NULL,
+        id_usuario INT NOT NULL,
+		FOREIGN KEY (id_pregunta) REFERENCES pregunta(id),
+        FOREIGN KEY (id_usuario) REFERENCES usuario(id)
+);
+
+
+
+CREATE TABLE sugerencia (
+	id INT auto_increment PRIMARY KEY,
+	fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
+	id_usuario INT NOT NULL,
+	pregunta VARCHAR(255) NOT NULL,
+	id_categoria INT NOT NULL,
+	id_dificultad INT NOT NULL,
+	respuestaCorrecta VARCHAR(255) NOT NULL,
+    respuestaIncorrecta1 VARCHAR(255) NOT NULL,
+	respuestaIncorrecta2 VARCHAR(255),
+    respuestaIncorrecta3 VARCHAR(255),
+	FOREIGN KEY (id_categoria) REFERENCES Categoria(id),
+	FOREIGN KEY (id_dificultad) REFERENCES Dificultad(id),
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id)
+);
+
+
 
 -- REGISTROS
 
@@ -1018,3 +1041,9 @@ INSERT INTO Respuesta (id, respuesta, esCorrecta, id_pregunta) VALUES
     (270, 'Falso', 1, 75);
 INSERT INTO Respuesta (id, respuesta, esCorrecta, id_pregunta) VALUES
     (271, 'Verdadero', 0, 75);
+
+INSERT INTO reporte (id_pregunta , motivo, id_usuario) VALUES
+    ('2', 'Es incorrecto el enunciado pancho', 4),
+    ('12', 'No me gusta la pregunta', 3),
+    ('8', 'Muy dificil para el nivel', 1);
+

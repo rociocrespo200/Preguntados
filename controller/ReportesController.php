@@ -15,7 +15,8 @@ class ReportesController
     public function show()
     {
         $datos = [
-            'user' => $this->model->traerUsuario($_SESSION['usuario']['id'])
+            'user' => $this->model->traerUsuario($_SESSION['usuario']['id']),
+            'reportes'=> $this->model->traerReportes()
         ];
         $this->render->printViewEditor('reportes', $datos);
     }
@@ -31,6 +32,30 @@ class ReportesController
         $this->render->printViewEditor('reportar', $datos);
     }
 
+    public function rechazarReporte(){
+        $idReporte=$_GET['id_reporte'];
+        $this->model->eliminarReporte($idReporte);
+        $this->show();
 
+    }
+
+    public function aprobarReporte(){
+        $idPreg=$_GET['id_pregunta'];
+        $idReporte=$_GET['id_reporte'];
+        $this->model->deshabilitarPregunta($idPreg, $idReporte);
+        $this->show();
+    }
+
+    public function agregarReporte(){
+        $idUsuario= $_SESSION['usuario']['id'];
+        $idPregunta= $_POST['id_pregunta'];
+        $motivo=$_POST['motivo'];
+        $this->model->agregarReporte($idUsuario,$idPregunta,$motivo);
+
+        $datos = [
+            'user' => $this->model->traerUsuario($_SESSION['usuario']['id'])
+        ];
+        $this->render->printViewSesion('home', $datos);
+    }
 
 }
