@@ -6,12 +6,12 @@
 <main style="padding-top: 20px; padding-bottom: 150px; justify-content: flex-start;">
 
 
-
+{{#reportadas}}
     <section id="main_scroll">
         <div class="lista">
             <div class="lista_div m-0">
-                <cite>Nro° 1120 - 12/03/2023 11:00 created by: <a href=""><cite>rociocrespo200</cite></a></cite>
-                <p>Pregunta - Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, vero?</p>
+
+                <p>{{pregunta}}</p>
                 <cite>Motivo - Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque, laborum! Rerum
                     saepe asperiores magnam illo quidem a sit, voluptates iste Lorem ipsum dolor sit amet
                     consectetur adipisicing elit. Laborum sequi at dolorem quos rerum expedita a nulla incidunt
@@ -20,10 +20,11 @@
                     impedit doloribus consectetur aut eius delectus.</cite>
             </div>
             <div class="d-flex flex-column lista_botones">
-                <a href="" class="btn btn-success btn_succes">Aprobar</a>
+                <a href="reportes/inhabilitar?="{{id}} class="btn btn-success btn_succes">Aprobar</a>
                 <button onclick="mostrarPopUp('popup_eliminar')" href="" class="btn btn-danger btn_danger boton_eliminar">Rechazar</button>
             </div>
         </div>
+{{/reportadas}}
         <div class="lista">
             <div class="lista_div m-0">
                 <cite>Nro° 1120 - 12/03/2023 11:00 created by: <a href=""><cite>rociocrespo200</cite></a></cite>

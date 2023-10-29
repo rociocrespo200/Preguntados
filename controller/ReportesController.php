@@ -15,9 +15,11 @@ class ReportesController
     public function show()
     {
         $datos = [
-            'user' => $this->model->traerUsuario($_SESSION['usuario']['id'])
+            'user' => $this->model->traerUsuario($_SESSION['usuario']['id']),
+            'reportadas' => $this->model->traerReportadas()
         ];
         $this->render->printViewEditor('reportes', $datos);
     }
+
 
 }

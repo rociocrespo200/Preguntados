@@ -9,7 +9,7 @@ class UserModel {
 
     public function alta($nombre, $apellido, $anioNacimiento, $genero, $pais, $ciudad, $mail, $usuario, $clave, $fotoPerfil) {
         $sql = "INSERT INTO `usuario` (`nombre`, `apellido`, `anio_nacimiento`, `genero`, `pais`, `ciudad`, `mail`, `usuario`, `clave` ,`foto_perfil`) 
-        VALUES ('$nombre', '$apellido', '$anioNacimiento', '$pais','$genero', '$ciudad', '$mail', '$usuario', '$clave', '$fotoPerfil')";
+        VALUES ('$nombre', '$apellido', '$anioNacimiento', '$genero','$pais', '$ciudad', '$mail', '$usuario', '$clave', '$fotoPerfil')";
         Logger::info('Usuario alta: ' . $sql);
         $this->database->query($sql);
     }

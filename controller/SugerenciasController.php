@@ -19,4 +19,7 @@ class SugerenciasController
         ];
         $this->render->printViewEditor('sugerencias', $datos);
     }
+
+
+
 }

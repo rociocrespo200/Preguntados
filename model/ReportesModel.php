@@ -13,4 +13,8 @@ class ReportesModel
         return $this->database->query("SELECT * FROM `usuario` WHERE id = $id")[0];
     }
 
+    public function traerReportadas(){
+        return $this->database->query("SELECT * FROM pregunta WHERE fueReportada = 1");
+    }
+
 }

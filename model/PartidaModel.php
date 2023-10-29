@@ -89,6 +89,10 @@ class PartidaModel
 
     }
 
+    public function reportarPregunta($idPregunta){
+        $this->database->query("UPDATE pregunta SET fueReportada = 1 WHERE id = " . $idPregunta);
+    }
+
 
 
 

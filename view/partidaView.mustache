@@ -7,9 +7,10 @@
     </div>
 
 
-    <form class="container_preguntas " id="{{categoria.categoria}}" >
+    <form class="container_preguntas " id="{{categoria.categoria}}"  >
 
         <h4 class="pregunta">{{data.pregunta.pregunta}}</h4>
+        {{data.pregunta.id}}
 
         {{#data.respuestas}}
             <a type="submit" class="respuesta" id="{{id}}" name="respuesta" value="{{id}}" onclick="contestar(this.id,{{esCorrecta}})">{{respuesta}}</a>
@@ -46,6 +47,7 @@
                 <p>{{recarga}}</p>
                 <span>{{partida.puntos}} puntos</span>
             </div>
+
         {{/recarga}}
 
         {{#incorrecta}}
@@ -53,7 +55,12 @@
             <p>¡¡ FIN DE LA PARTIDA !!</p>
             <p>{{incorrecta}}</p>
             <span>{{partida.puntos}} puntos</span>
+            <div>
+                <a type="link" href="/partida/reportar?id={{data.pregunta.id}}" class="btn boton">Reportar pregunta</a>
+            </div>
+
         </div>
+
         {{/incorrecta}}
 
         {{#tiempo}}
@@ -63,6 +70,7 @@
             <span>{{partida.puntos}} puntos</span>
         </div>
         {{/tiempo}}
+
 
         <script>
             var audio_incorrecta = new Audio('../public/sound/respuesta_incorrecta.mp3');

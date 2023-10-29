@@ -93,6 +93,15 @@ class PartidaController
         }
     }
 
+    public function reportar(){
+        if (isset($_GET['id'])) {
+            $idPregunta = $_GET['id'];
+        }
+        var_dump($idPregunta);
+
+        $this->model->reportarPregunta($idPregunta);
+    }
+
 
 
 
