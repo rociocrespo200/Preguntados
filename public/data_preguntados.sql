@@ -48,6 +48,9 @@ VALUES
     ('John', 'Doe', 1990, 'Estados Unidos', 'Nueva York', 'johndoe@example.com', 'johndoe123', 'secreto123', 'profile.png',1200, 2),
     ('Jane', 'Smith', 1985, 'Reino Unido', 'Londres', 'janesmith@example.com', 'janesmith456', 'contrasena456', 'profile.png',7820, 5),
     ('Juan', 'Pérez', 1988, 'España', 'Madrid', 'juanperez@example.com', 'juanperez789', 'clave789', 'profile.png',100, 1);
+INSERT INTO usuario (nombre, apellido, anio_nacimiento, pais, ciudad, mail, usuario, clave, foto_perfil, id_rol)
+VALUES
+	('Rocio', 'Crespo', 2000, 'Argentina', 'Buenos aires', 'belen@gmail.com', 'belen123', '1234', 'profile.png',2);
 
 CREATE TABLE IF NOT EXISTS Dificultad 
 (
@@ -142,9 +145,24 @@ CREATE TABLE partida_respuestas (
     id INT AUTO_INCREMENT PRIMARY KEY,
     id_partida INT NOT NULL,
     id_respuesta INT NOT NULL,
+	fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (id_partida) REFERENCES partida(id),
     FOREIGN KEY (id_respuesta) REFERENCES respuesta(id)
 );
+
+CREATE TABLE partida_preguntas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_partida INT NOT NULL,
+    id_pregunta INT NOT NULL,
+	fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_partida) REFERENCES partida(id),
+    FOREIGN KEY (id_pregunta) REFERENCES pregunta(id)
+);
+
+SELECT * FROM partida_preguntas AS pp 
+JOIN partida AS p ON p.id = pp.id_partida 
+JOIN pregunta AS pr ON pr.id = pp.id_pregunta
+WHERE pp.id_partida = 33;
 
 -- REGISTROS
 

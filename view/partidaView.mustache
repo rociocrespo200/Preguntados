@@ -36,6 +36,7 @@
         </div>
     </div>
 
+    <a href="/reportes/vistaFormReporte?preguntaActual={{data.pregunta.id}}" class="btn btn-danger  btn_danger" id="boton_flotante">Reportar pregunta</a>
 
 </main>
 
@@ -55,9 +56,6 @@
             <p>¡¡ FIN DE LA PARTIDA !!</p>
             <p>{{incorrecta}}</p>
             <span>{{partida.puntos}} puntos</span>
-            <div>
-                <a type="link" href="/partida/reportar?id={{data.pregunta.id}}" class="btn boton">Reportar pregunta</a>
-            </div>
 
         </div>
 
@@ -83,59 +81,59 @@
 
 <script >
 
-    var popup_incorrecta = document.getElementById("popup_incorrecta")
-    var popup_tiempo = document.getElementById("popup_tiempo")
-    var popup_recarga = document.getElementById("popup_tiempo")
-    var tiempoDeEspera = 500;
-    var audio_corrrecta = new Audio('../public/sound/respuesta_correcta.mp3');
-    var audio_incorrecta = new Audio('../public/sound/respuesta_incorrecta.mp3');
-    var preguntaContestada = false;
-
-
-
-
-    function contestar(idContenedor, esCorrecta){
-        var boton = document.getElementById(idContenedor);
-        preguntaContestada = true;
-        if(esCorrecta === 1){
-            boton.style.backgroundColor = '#0d9849';
-            audio_corrrecta.play();
-
-        }else {
-      tiempoDeEspera = 0;
-        }
-        setTimeout(function() {
-            window.location.href = '/partida/contestar?id=' + idContenedor;
-        }, tiempoDeEspera);
-        return false;
-
-    }
-
-
-    var tiempoTotal = 2500;
-    var tiempoRestante = tiempoTotal;
-    var barraProgreso = document.getElementById('barra_progreso');
-    var p_tiempo = document.getElementById('p_tiempo');
-
-    var intervalo = setInterval(function () {
-        tiempoRestante--;
-        var porcentajeCompletado = tiempoTotal - tiempoRestante
-
-        barraProgreso.value = tiempoTotal - tiempoRestante;
-        if (tiempoRestante <= 0) {
-            clearInterval(intervalo);
-            window.location.href = '/partida/contestar?tiempo_agotado=true';
-
-        }
-    }, 1);
-
-    var tiempoPrueba = 10;
-    var intervalo2 = setInterval(function () {
-        tiempoPrueba--;
-        p_tiempo.textContent = (tiempoPrueba < 0) ? 0 + "s"  : tiempoPrueba + "s";
-    }, 1000);
-
-
+    // var popup_incorrecta = document.getElementById("popup_incorrecta")
+    // var popup_tiempo = document.getElementById("popup_tiempo")
+    // var popup_recarga = document.getElementById("popup_tiempo")
+    // var tiempoDeEspera = 500;
+    // var audio_corrrecta = new Audio('../public/sound/respuesta_correcta.mp3');
+    // var audio_incorrecta = new Audio('../public/sound/respuesta_incorrecta.mp3');
+    // var preguntaContestada = false;
+    //
+    //
+    //
+    //
+    // function contestar(idContenedor, esCorrecta){
+    //     var boton = document.getElementById(idContenedor);
+    //     preguntaContestada = true;
+    //     if(esCorrecta === 1){
+    //         boton.style.backgroundColor = '#0d9849';
+    //         audio_corrrecta.play();
+    //
+    //     }else {
+    //   tiempoDeEspera = 0;
+    //     }
+    //     setTimeout(function() {
+    //         window.location.href = '/partida/contestar?id=' + idContenedor;
+    //     }, tiempoDeEspera);
+    //     return false;
+    //
+    // }
+    //
+    //
+    // var tiempoTotal = 2500;
+    // var tiempoRestante = tiempoTotal;
+    // var barraProgreso = document.getElementById('barra_progreso');
+    // var p_tiempo = document.getElementById('p_tiempo');
+    //
+    // var intervalo = setInterval(function () {
+    //     tiempoRestante--;
+    //     var porcentajeCompletado = tiempoTotal - tiempoRestante
+    //
+    //     barraProgreso.value = tiempoTotal - tiempoRestante;
+    //     if (tiempoRestante <= 0) {
+    //         clearInterval(intervalo);
+    //         window.location.href = '/partida/contestar?tiempo_agotado=true';
+    //
+    //     }
+    // }, 1);
+    //
+    // var tiempoPrueba = 10;
+    // var intervalo2 = setInterval(function () {
+    //     tiempoPrueba--;
+    //     p_tiempo.textContent = (tiempoPrueba < 0) ? 0 + "s"  : tiempoPrueba + "s";
+    // }, 1000);
+    //
+    //
 
 
 </script>

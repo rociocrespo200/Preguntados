@@ -1,0 +1,31 @@
+<main>
+    <form method="post" action="{{action}}" enctype="multipart/form-data">
+
+        <div class="div_form_titulos">
+            <h2>Reportar pregunta</h2>
+        </div>
+
+        <div class="div_form_campos">
+            <div class="form-group">
+                <label for="pregunta">Pregunta</label>
+                <select id="pais" class="form-control " name="pais" required>
+                    <option selected value="{{preguntaActual.id}}">{{preguntaActual.pregunta}}</option>
+                    {{#preguntas}}
+                        <option value="{{id}}">{{pregunta}}</option>
+                    {{/preguntas}}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Indique el motivo del reporte</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+        </div>
+
+        <div class="div_botones">
+            <a href="/homeEditor/administrarPregunta" class="btn boton boton_modificar">Volver</a>
+            <button class="btn btn-danger btn_danger boton_eliminar" onclick="mostrarPopUp('popup_eliminar')">Enviar reporte</button>
+        </div>
+
+    </form>
+</main>

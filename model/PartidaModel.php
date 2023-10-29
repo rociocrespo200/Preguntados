@@ -48,6 +48,7 @@ class PartidaModel
 
     public function agregarRespuestaALaPartida($partida, $idRespuesta)
     {
+        //$respuesta = $this->buscarRespuestaPorId($idRespuesta);
         $this->database->query("UPDATE `preguntados`.`partida` SET `preguntasContestadas` = '" . ($partida['preguntasContestadas'] + 1) . "' WHERE `id` =" . $partida['id']);
         $this->database->query("INSERT INTO partida_respuestas (id_partida, id_respuesta) VALUES (" . $partida['id'] . "," . $idRespuesta . ")");
     }
@@ -71,20 +72,18 @@ class PartidaModel
 
     public function traerPreguntaConRespuestas($partida)
     {
-        // Obtén la pregunta aleatoria
-        $preguntas = $this->database->query("SELECT * FROM Pregunta");
+        $dificultad = $this ->validarDificultadQueCorresponde($partida);
+        $preguntas = $this->database->query("SELECT * FROM Pregunta WHERE Pregunta.id_dificultad = ". $dificultad );
         $preguntaAleatoria = $preguntas[rand(0, count($preguntas) - 1)];
+        $this->database->query("INSERT INTO partida_preguntas (id_partida, id_pregunta) VALUES (". $partida['id'] ."," . $preguntaAleatoria['id'] . ")");
 
-        // Obtén las respuestas asociadas a la pregunta aleatoria
         $respuestas = $this->database->query("SELECT *  FROM Respuesta WHERE id_pregunta = " . $preguntaAleatoria['id']);
 
-        // Construye un array que contiene la pregunta y sus respuestas
         $result = [
             'pregunta' => $preguntaAleatoria,
             'respuestas' => $respuestas
         ];
 
-        //SACAR ESTO DE ACA Y PONERLO EN EL CONTROLADOR
        return $result;
 
     }
@@ -94,7 +93,28 @@ class PartidaModel
     }
 
 
+    public function validarDificultadQueCorresponde($partida){
 
+        $query1 = "SELECT COUNT(pr.id_dificultad) AS dificultad FROM partida_preguntas AS pp JOIN partida AS p ON p.id = pp.id_partida JOIN pregunta AS pr ON pr.id = pp.id_pregunta WHERE pr.id_dificultad = 1 AND pp.id_partida = " . $partida['id'];
+        $query2 = "SELECT COUNT(pr.id_dificultad) AS dificultad FROM partida_preguntas AS pp JOIN partida AS p ON p.id = pp.id_partida JOIN pregunta AS pr ON pr.id = pp.id_pregunta WHERE pr.id_dificultad = 2 AND pp.id_partida = " . $partida['id'];
+        $query3 = "SELECT COUNT(pr.id_dificultad) AS dificultad FROM partida_preguntas AS pp JOIN partida AS p ON p.id = pp.id_partida JOIN pregunta AS pr ON pr.id = pp.id_pregunta WHERE pr.id_dificultad = 3 AND pp.id_partida = " . $partida['id'];
+
+
+        $result1 = (int)$this->database->query($query1)[0][0];
+        $result2 = (int)$this->database->query($query2)[0][0];
+        $result3 = (int)$this->database->query($query3)[0][0];
+
+
+        if ($result1 < 5) {
+            return 1;
+        }
+        else if ($result2 < 5) {
+            return 2;
+        }
+        else {
+            return 3;
+        }
+    }
 
 
 
