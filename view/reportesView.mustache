@@ -8,65 +8,35 @@
 
 
     <section id="main_scroll">
-        <div class="lista">
-            <div class="lista_div m-0">
-                <cite>Nro° 1120 - 12/03/2023 11:00 created by: <a href=""><cite>rociocrespo200</cite></a></cite>
-                <p>Pregunta - Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, vero?</p>
-                <cite>Motivo - Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque, laborum! Rerum
-                    saepe asperiores magnam illo quidem a sit, voluptates iste Lorem ipsum dolor sit amet
-                    consectetur adipisicing elit. Laborum sequi at dolorem quos rerum expedita a nulla incidunt
-                    atque. Sequi facere odio numquam, possimus, voluptates laudantium corporis sapiente, ex earum
-                    nobis natus ut? Quia, placeat non, dolor atque rem accusantium, harum in excepturi ratione
-                    impedit doloribus consectetur aut eius delectus.</cite>
+        {{#reportes}}
+            <div class="lista">
+                <div class="lista_div m-0">
+                    <cite>Nro° {{id}} - {{fecha}} created by: <a href="/profile/verperfil?id={{id_usuario}}"><cite>{{usuario}}</cite></a></cite>
+                    <p>Pregunta - {{pregunta}}</p>
+                    <cite>Motivo - {{motivo}}</cite>
+                </div>
+                <div class="d-flex flex-column lista_botones">
+                    <a href="/reportes/aprobarReporte?id_pregunta={{id_pregunta}}&id_reporte={{id}}" class="btn btn-success btn_succes">Aprobar</a>
+                    <a href="/reportes/rechazarReporte?id_reporte={{id}}" class="btn btn-danger btn_danger boton_eliminar" onclick="mostrarPopUp('popup_eliminar')">Rechazar</a>
+<!--                    <button onclick="mostrarPopUp('popup_eliminar')" href="" class="btn btn-danger btn_danger boton_eliminar">Rechazar</button>-->
+                </div>
             </div>
-            <div class="d-flex flex-column lista_botones">
-                <a href="" class="btn btn-success btn_succes">Aprobar</a>
-                <button onclick="mostrarPopUp('popup_eliminar')" href="" class="btn btn-danger btn_danger boton_eliminar">Rechazar</button>
+
+            <div class="popup"  id="popup_eliminar" style="display: none">
+                <a class="popup_cruz" onclick="ocultarPopUp('popup_eliminar')">✖</a>
+                <p>Esta seguro que desea eliminar este reporte? Una vez eliminado, no podra restaurarse la informacion.</p>
+                <div>
+<!--                    <a href="/reportes/rechazarReporte?id_reporte={{id}}" class="btn btn-danger btn_danger boton_eliminar" onclick="mostrarPopUp('popup_eliminar')">Rechazar</a>-->
+                </div>
             </div>
-        </div>
-        <div class="lista">
-            <div class="lista_div m-0">
-                <cite>Nro° 1120 - 12/03/2023 11:00 created by: <a href=""><cite>rociocrespo200</cite></a></cite>
-                <p>Pregunta - Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, vero?</p>
-                <cite>Motivo - Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque, laborum! Rerum
-                    saepe asperiores magnam illo quidem a sit, voluptates iste Lorem ipsum dolor sit amet
-                    consectetur adipisicing elit. Laborum sequi at dolorem quos rerum expedita a nulla incidunt
-                    atque. Sequi facere odio numquam, possimus, voluptates laudantium corporis sapiente, ex earum
-                    nobis natus ut? Quia, placeat non, dolor atque rem accusantium, harum in excepturi ratione
-                    impedit doloribus consectetur aut eius delectus.</cite>
-            </div>
-            <div class="d-flex flex-column lista_botones">
-                <a href="" class="btn btn-success btn_succes">Aprobar</a>
-                <button onclick="mostrarPopUp('popup_eliminar')" href="" class="btn btn-danger btn_danger boton_eliminar">Rechazar</button>
-            </div>
-        </div>
-        <div class="lista">
-            <div class="lista_div m-0">
-                <cite>Nro° 1120 - 12/03/2023 11:00 created by: <a href=""><cite>rociocrespo200</cite></a></cite>
-                <p>Pregunta - Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, vero?</p>
-                <cite>Motivo - Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque, laborum! Rerum
-                    saepe asperiores magnam illo quidem a sit, voluptates iste Lorem ipsum dolor sit amet
-                    consectetur adipisicing elit. Laborum sequi at dolorem quos rerum expedita a nulla incidunt
-                    atque. Sequi facere odio numquam, possimus, voluptates laudantium corporis sapiente, ex earum
-                    nobis natus ut? Quia, placeat non, dolor atque rem accusantium, harum in excepturi ratione
-                    impedit doloribus consectetur aut eius delectus.</cite>
-            </div>
-            <div class="d-flex flex-column lista_botones">
-                <a href="" class="btn btn-success btn_succes">Aprobar</a>
-                <button onclick="mostrarPopUp('popup_eliminar')" href="" class="btn btn-danger btn_danger boton_eliminar">Rechazar</button>
-            </div>
-        </div>
+        {{/reportes}}
+
+
     </section>
 
-    <div class="popup"  id="popup_eliminar" style="display: none">
-        <a class="popup_cruz" onclick="ocultarPopUp('popup_eliminar')">✖</a>
-        <p>Esta seguro que desea eliminar este reporte? Una vez eliminado, no podra restaurarse la informacion.</p>
-        <div>
-            <a href="/homeEditor/eliminarPregunta" class="btn btn-danger btn_danger boton_eliminar" onclick="mostrarPopUp('popup_eliminar')">Rechazar</a>
-        </div>
-    </div>
+
 
 
 </main>
 
-<script src="../public/js/popup.js"></script>
+<script src="../public/js/popup.js"> </script>

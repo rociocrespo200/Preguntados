@@ -73,7 +73,7 @@ class PartidaModel
     public function traerPreguntaConRespuestas($partida)
     {
         $dificultad = $this ->validarDificultadQueCorresponde($partida);
-        $preguntas = $this->database->query("SELECT * FROM Pregunta WHERE Pregunta.id_dificultad = ". $dificultad );
+        $preguntas = $this->database->query("SELECT * FROM Pregunta WHERE Pregunta.id_dificultad = ". $dificultad . " AND Pregunta.habilitada=1 " );
         $preguntaAleatoria = $preguntas[rand(0, count($preguntas) - 1)];
         $this->database->query("INSERT INTO partida_preguntas (id_partida, id_pregunta) VALUES (". $partida['id'] ."," . $preguntaAleatoria['id'] . ")");
 
