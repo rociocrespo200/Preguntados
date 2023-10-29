@@ -14,10 +14,6 @@ class PartidaController
 
     public function show() { //aca no muestra el cartelito que sí muestra profilecontroller
         $datos = [
-            //'usuario' == $this->model->traerUsuario($_SESSION['usuario']['id']),
-            'usuario' => $_SESSION['usuario']['usuario'],
-            'usuariPuntos' => $_SESSION['usuario']['puntos'],
-            'nivel' => $_SESSION['usuario']['nivel'],
             'user' => $this->model->traerUsuario($_SESSION['usuario']['id'])
         ];
         $this->render->printViewSesion('partida', $datos);
@@ -35,12 +31,9 @@ class PartidaController
     private function traerDatos()
     {
         $partida = $this->model->obtenerPartidaActual($_SESSION['usuario']['id']);
+        $preguntaRandom = $this->model->traerPreguntaConRespuestas($partida[0]);
         $datos = [
-            'data' => $this->model->traerPreguntaConRespuestas($partida[0]),
-            'partida' => $partida[0],
-            'usuario' => $_SESSION['usuario']['usuario'],
-            'usuarioPuntos' => $_SESSION['usuario']['puntos'],
-            'nivel' => $_SESSION['usuario']['nivel'],
+            'data' => $preguntaRandom,
             'user' => $this->model->traerUsuario($_SESSION['usuario']['id'])//agregado
         ];
         $datos['dificultad'] = $this->model->obtenerDificultad($datos['data']['pregunta']['id_dificultad'])[0];

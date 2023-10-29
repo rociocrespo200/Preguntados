@@ -20,4 +20,17 @@ class ReportesController
         $this->render->printViewEditor('reportes', $datos);
     }
 
+    public function vistaFormReporte()
+    {
+        $datos = [
+            'user' => $this->model->traerUsuario($_SESSION['usuario']['id']),
+            'preguntaActual' => $this->model->buscarPreguntaPorId($_GET['preguntaActual']),
+            'preguntas' => $this->model->traerListaDePreguntas($_SESSION['usuario']['id'])
+        ];
+
+        $this->render->printViewEditor('reportar', $datos);
+    }
+
+
+
 }
