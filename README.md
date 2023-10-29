@@ -11,16 +11,61 @@ Estado: en curso ...
 * [Funcionalidades principales](#funcionalidades-principales)
 * [Objetivo](#objetivo)
 * [Screenshots](#screenshots)
-* [Lenguajes](#-Lenguajes)
+* [Lenguajes](#-lenguajes)
 * [Como ejecutar](#como-ejecutar)
-* [Colaboradores](#colaboradores)
+* [Autores](#Autores)
 
 ## Funcionalidades principales
-- Jugar partida
-- Visualizar rancking global
-- Visualizar historial de partidas
-- Ingresar al perfil de otros usuarios
-- Estadisticas del jugador
+1. **Jugar Partida:**
+   - Los usuarios no verán preguntas ya respondidas.
+   - La dificultad de las preguntas se ajusta según el rendimiento.
+
+2. **Sistema de Puntaje:**
+   - Asignación de puntos basada en la dificultad de las preguntas.
+   - Ajuste dinámico de la dificultad según el porcentaje de respuestas correctas.
+
+3. **Trampitas:**
+   - Opción para comprar pistas que revelen la respuesta correcta.
+   - Acceso a trucos que pueden proporcionar información adicional.
+
+4. **Temporizador de Respuesta:**
+   - Establecimiento de un límite de tiempo de 10 segundos para responder cada pregunta.
+
+5. **Ranking Global:**
+   - Generación de un ranking global de jugadores.
+   - Uso de códigos QR para acceder directamente a los perfiles de los jugadores.
+
+6. **Historial de Partidas:**
+   - Ordenamiento del historial por fecha o puntuación.
+   - Representación gráfica del rendimiento por categorías.
+
+7. **Perfil de Usuario:**
+   - Edición de la información de la cuenta de usuario.
+   - Visualización de estadísticas detalladas del rendimiento del jugador.
+  
+### ROL EDITOR
+1. **Administrar Preguntas en la Base de Datos:**
+   - Agregar, eliminar y modificar preguntas existentes en la base de datos.
+   - Asegurar que la base de datos esté actualizada y contenga preguntas relevantes y precisas.
+
+2. **Administrar Reportes de Preguntas:**
+   - Revisar las preguntas que han sido reportadas por los usuarios.
+   - Tomar medidas adecuadas como aprobar o eliminar las preguntas en función de la revisión.
+
+3. **Administrar Solicitudes de Nuevas Preguntas:**
+   - Evaluar y aprobar las preguntas sugeridas por los usuarios.
+   - Mantener una comunicación clara con los usuarios para proporcionar retroalimentación sobre sus sugerencias.
+
+### ROL ADMINISTRADOR
+1. **Estadísticas de Jugadores:**
+   - Cantidad total de usuarios registrados en la aplicación.
+   - Número de usuarios nuevos que se han unido recientemente.
+   - Distribución de usuarios por país, género y edad.
+
+2. **Estadísticas del Juego:**
+   - Número total de partidas jugadas en la aplicación.
+   - Cantidad de preguntas disponibles en la base de datos.
+   - Porcentaje de preguntas acertadas e incorrectas durante las partidas.
 
 ## Objetivo
 El proyecto se realizó con el objetivo de desarrollar una pagina con el patron MVC (Modelo-Vista-Controlador) en PHP y empezar a implementar AJAX y Mustache.
