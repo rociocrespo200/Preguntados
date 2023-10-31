@@ -17,7 +17,15 @@ class ProfileController {
             'nivel' => $_SESSION['usuario']['nivel'],
             'user' => $this->model->traerUsuario($_SESSION['usuario']['id'])
         ];
-        $this->render->printViewSesion('perfil', $datos);
+
+        if($_SESSION['usuario']['id_rol'] == 1){
+            $datos['estadisticas'] = true;
+            $this->render->printViewSesion('perfil', $datos);
+        }else{
+            $this->render->printViewEditor('perfil', $datos);
+        }
+
+
     }
 
     public function cerrarSesion(){
@@ -84,4 +92,6 @@ class ProfileController {
             // Manejar solicitud GET si es necesario
         }
     }
+
+
 }

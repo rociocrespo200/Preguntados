@@ -13,7 +13,7 @@ class HomeEditorModel
     }
 
     public function traerListaDePreguntas(){
-        return $this->database->query("SELECT * FROM `pregunta`");
+        return $this->database->query("SELECT * FROM `pregunta` WHERE habilitada = 1");
     }
 
     public function traerPregunta($id){
@@ -48,6 +48,27 @@ class HomeEditorModel
         $this->database->query("DELETE from respuesta WHERE id_pregunta=$idPreg");
         $this->database->query("INSERT INTO respuesta (respuesta, esCorrecta, id_pregunta) VALUES ('$correcta', '1', '$idPreg'),
                                                                                                   ('$incorrecta1', '0', '$idPreg')");
+    }
+
+    public function agregarPregunta($respuestasCant,$pregunta,$correcta,$incorrecta1,$incorrecta2,$incorrecta3, $categoria,$dificultad){
+
+        $this->database->query("INSERT INTO pregunta (pregunta, id_categoria, id_dificultad) VALUES ('$pregunta','$categoria','$dificultad')");
+        $ultimaPregunta = $this->database->query("SELECT * FROM pregunta ORDER BY id DESC LIMIT 1")[0];
+
+        $idPreg = $ultimaPregunta['id'];
+
+        if($respuestasCant == 2){
+            $this->database->query("INSERT INTO respuesta (respuesta, esCorrecta, id_pregunta) VALUES ('$correcta', '1', '$idPreg'),('$incorrecta1', '0', '$idPreg')");
+        }else if($respuestasCant == 3){
+            $this->database->query("INSERT INTO respuesta (respuesta, esCorrecta, id_pregunta) VALUES ('$correcta', '1', '$idPreg'),('$incorrecta1', '0', '$idPreg'),('$incorrecta2', '0', '$idPreg')");
+        }else{
+            $this->database->query("INSERT INTO respuesta (respuesta, esCorrecta, id_pregunta) VALUES ('$correcta', '1', '$idPreg'),('$incorrecta1', '0', '$idPreg'),('$incorrecta2', '0', '$idPreg'),('$incorrecta3', '0', '$idPreg')");
+        }
+    }
+
+    public function eliminarPregunta($idPregunta){
+        $this->database->query("UPDATE pregunta SET habilitada = 0 WHERE id = $idPregunta");
+
     }
 
 

@@ -2,24 +2,27 @@
     <section id="main_scroll">
 
     {{#user}}
-        <div class="puntaje">
-            <div class="puntaje_div">
-                <span>{{nivel}}</span>
-                <p>nivel</p>
+        {{#estadisticas}}
+            <div class="puntaje">
+                <div class="puntaje_div">
+                    <span>{{nivel}}</span>
+                    <p>nivel</p>
+                </div>
+                <div class="puntaje_div">
+                    <span>{{puntos}}</span>
+                    <p>puntos</p>
+                </div>
+                <div class="puntaje_div">
+                    <span>2000</span>
+                    <p>partidas</p>
+                </div>
+                <div class="puntaje_div">
+                    <span>2000</span>
+                    <p>preguntas</p>
+                </div>
             </div>
-            <div class="puntaje_div">
-                <span>{{puntos}}</span>
-                <p>puntos</p>
-            </div>
-            <div class="puntaje_div">
-                <span>2000</span>
-                <p>partidas</p>
-            </div>
-            <div class="puntaje_div">
-                <span>2000</span>
-                <p>preguntas</p>
-            </div>
-        </div>
+        {{/estadisticas}}
+
 
     <form method="post" action="/profile/modificarUsuario" enctype="multipart/form-data" style="margin-bottom: 75px;" >
 

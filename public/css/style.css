@@ -591,3 +591,10 @@ a.popup_cruz{
     gap: 10px;
     justify-content: center;
 }
+
+a#agregarSugerencia{
+    position: absolute;
+    bottom: 15px;
+    text-decoration: dashed;
+    right: 15px;
+}
