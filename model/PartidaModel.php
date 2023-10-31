@@ -51,6 +51,9 @@ class PartidaModel
         //$respuesta = $this->buscarRespuestaPorId($idRespuesta);
         $this->database->query("UPDATE `preguntados`.`partida` SET `preguntasContestadas` = '" . ($partida['preguntasContestadas'] + 1) . "' WHERE `id` =" . $partida['id']);
         $this->database->query("INSERT INTO partida_respuestas (id_partida, id_respuesta) VALUES (" . $partida['id'] . "," . $idRespuesta . ")");
+
+        $this->actualizarDificultad($this->buscarRespuestaPorId($idRespuesta));
+
     }
 
     public function obtenerDificultad($id)
@@ -112,9 +115,24 @@ class PartidaModel
         }
     }
 
+    private function actualizarDificultad($respuesta)
+    {
+        $vecesContestada = (int) $this->database->query("SELECT count(*) FROM partida_respuestas pr JOIN respuesta r ON r.id = pr.id_respuesta WHERE r.id_pregunta =" . $respuesta['id_pregunta'])[0][0];
+        $correctas = (int) $this->database->query("SELECT count(*) FROM partida_respuestas pr JOIN respuesta r ON r.id = pr.id_respuesta WHERE r.esCorrecta = 1 AND r.id_pregunta =" . $respuesta['id_pregunta'])[0][0];
 
+        $promedioCorrectas = $vecesContestada * $correctas / 100;
 
-
+        if($promedioCorrectas > 60){
+            //FACIL
+            $this->database->query("UPDATE `preguntados`.`pregunta` SET `id_dificultad` = '1' WHERE `id` =" . $respuesta['id_pregunta']);
+        }else if($promedioCorrectas > 30){
+            //MODERADO
+            $this->database->query("UPDATE `preguntados`.`pregunta` SET `id_dificultad` = '2' WHERE `id` =" . $respuesta['id_pregunta']);
+        }else{
+            $this->database->query("UPDATE `preguntados`.`pregunta` SET `id_dificultad` = '3' WHERE `id` =" . $respuesta['id_pregunta']);
+            //DIFICIL
+        }
+    }
 
 
 }
