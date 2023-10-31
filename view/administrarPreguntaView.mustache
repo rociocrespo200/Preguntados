@@ -4,41 +4,49 @@
         <form method="post" action="{{action}}" enctype="multipart/form-data">
 
             <div class="div_form_titulos">
-                <h2>Agregar pregunta</h2>
+                <h2>{{titulo}} pregunta</h2>
             </div>
 
             <div class="div_form_campos">
                 <div class="form-group">
                     <label for="pregunta">Pregunta</label>
-                    <input type="text" class="form-control" id="pregunta" aria-describedby="emailHelp" placeholder="Ingrese la pregunta">
+                    <input type="text" class="form-control" id="pregunta" name="pregunta" aria-describedby="emailHelp" value="{{pregunta}}">
                 </div>
 
                 <div class="form-row form-group">
                     <div class="col">
                         <label for="exampleInputEmail1">Respuesta correcta</label>
-                        <input type="text" name="usuario" class="form-control" placeholder="Ingrese la respuesta correcta">
+                        <input type="text" name="correcta" class="form-control" value="{{respuesta1.respuesta}}" required>
+
                     </div>
                     <div class="col">
-                        <label for="exampleInputEmail1">Respuesta incorrecta #1</label>
-                        <input type="email"  name="mail" required  class="form-control" id="exampleInputEmail1">
+                        <label for="resp-incorrecta">Respuesta incorrecta <span style="color: rgb(255, 0, 0);">✱</span></label>
+                        <input type="text"  name="incorrecta1" required  class="form-control" id="resp-incorrecta" value="{{respuesta2.respuesta}}" >
+
                     </div>
                 </div>
                 <div class="form-row form-group">
-                    <div class="col">
-                        <label for="exampleInputEmail1">Respuesta incorrecta #2 <span style="color: rgb(255, 0, 0);">✱</span></label>
-                        <input type="text" name="usuario" class="form-control" >
-                    </div>
-                    <div class="col">
-                        <label for="exampleInputEmail1">Respuesta incorrecta #3 <span style="color: rgb(255, 0, 0);">✱</span></label>
-                        <input type="email"  name="mail"  required  class="form-control" id="exampleInputEmail1" >
-                    </div>
+                    {{#respuesta3}}
+                        <div class="col">
+                            <label for="exampleInputEmail1">Respuesta incorrecta <span style="color: rgb(255, 0, 0);">✱</span></label>
+                            <input type="text" name="incorrecta2" class="form-control" value="{{respuesta}}" required>
+                        </div>
+                    {{/respuesta3}}
+
+                    {{#respuesta4}}
+                        <div class="col">
+                            <label for="exampleInputEmail1">Respuesta incorrecta <span style="color: rgb(255, 0, 0);">✱</span></label>
+                            <input type="text" name="incorrecta3" class="form-control" value="{{respuesta}}" required>
+                        </div>
+                    {{/respuesta4}}
                 </div>
 
 
                 <div class="form-row form-group">
                     <div class="col">
-                        <label class="form-label" for="pais">Categoria</label>
-                        <select id="pais" class="form-control " name="pais" required>
+                        <label class="form-label" for="categoria">Categoria</label>
+                        <select id="categoria" class="form-control " name="categoria" required>
+                            <option value="{{categoria.id}}">{{categoria.categoria}}</option>
                             <option value="1">Historia</option>
                             <option value="2">Geografia</option>
                             <option value="3">Ciencia</option>
@@ -49,8 +57,9 @@
                     </div>
 
                     <div class="col">
-                        <label class="form-label" for="ciudad">Dificultad</label>
-                        <select id="ciudad" class="form-control " name="ciudad" required>
+                        <label class="form-label" for="dificultad">Dificultad</label>
+                        <select id="dificultad" class="form-control " name="dificultad" required>
+                            <option value="{{dificultad.id}}">{{dificultad.dificultad}}</option>
                             <option value="Facil">Facil</option>
                             <option value="Moderado">Moderado</option>
                             <option value="Dificil">Dificil</option>
@@ -60,7 +69,7 @@
 
             </div>
 
-            <button type="submit" class="btn boton">Agregar pregunta</button>
+            <button type="submit" class="btn boton">{{titulo}} pregunta</button>
 
         </form>
     {{/pregunta}}
