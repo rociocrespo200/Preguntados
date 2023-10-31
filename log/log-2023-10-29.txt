@@ -3436,3 +3436,64 @@
 [2023-10-29][INFO]Ejecutando Query SELECT * FROM `pregunta` 
 [2023-10-29][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 5 
 [2023-10-29][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 5 
+[2023-10-29][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 5 
+[2023-10-29][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 5 
+[2023-10-29][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 5 
+[2023-10-29][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 5 
+[2023-10-29][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 5 
+[2023-10-29][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 5 
+[2023-10-29][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 5 
+[2023-10-29][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 5 
+[2023-10-29][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 5 
+[2023-10-29][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 5 
+[2023-10-29][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 5 
+[2023-10-29][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'user9876' 
+[2023-10-29][INFO]Usuario alta: INSERT INTO `usuario` (`nombre`, `apellido`, `anio_nacimiento`, `genero`, `pais`, `ciudad`, `mail`, `usuario`, `clave` ,`foto_perfil`) 
+        VALUES ('rocio', 'belen', '2000', 'Uruguay','femenino', 'Canelones', 'fan1casiangeles@gmail.com', 'user9876', '1234UNlaM', 'Editor de fotos_SUlxSi.png')
+[2023-10-29][INFO]Ejecutando Query INSERT INTO `usuario` (`nombre`, `apellido`, `anio_nacimiento`, `genero`, `pais`, `ciudad`, `mail`, `usuario`, `clave` ,`foto_perfil`) 
+        VALUES ('rocio', 'belen', '2000', 'Uruguay','femenino', 'Canelones', 'fan1casiangeles@gmail.com', 'user9876', '1234UNlaM', 'Editor de fotos_SUlxSi.png') 
+[2023-10-29][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'user9876' 
+[2023-10-29][INFO]Usuario alta: INSERT INTO `usuario` (`nombre`, `apellido`, `anio_nacimiento`, `genero`, `pais`, `ciudad`, `mail`, `usuario`, `clave` ,`foto_perfil`,`token`) 
+        VALUES ('rocio', 'belen', '2000', 'Uruguay','femenino', 'Canelones', 'fan1casiangeles@gmail.com', 'user9876', '1234UNlaM', 'Editor de fotos_SUlxSi.png', '6587fa6a8cf8883574dbc7b543afb57c67f43925bf9f9b126ec4d42e9ecf4cfb')
+[2023-10-29][INFO]Ejecutando Query INSERT INTO `usuario` (`nombre`, `apellido`, `anio_nacimiento`, `genero`, `pais`, `ciudad`, `mail`, `usuario`, `clave` ,`foto_perfil`,`token`) 
+        VALUES ('rocio', 'belen', '2000', 'Uruguay','femenino', 'Canelones', 'fan1casiangeles@gmail.com', 'user9876', '1234UNlaM', 'Editor de fotos_SUlxSi.png', '6587fa6a8cf8883574dbc7b543afb57c67f43925bf9f9b126ec4d42e9ecf4cfb') 
+[2023-10-29][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'user9876' 
+[2023-10-29][INFO]Usuario alta: INSERT INTO `usuario` (`nombre`, `apellido`, `anio_nacimiento`, `genero`, `pais`, `ciudad`, `mail`, `usuario`, `clave` ,`foto_perfil`,`token`) 
+        VALUES ('rocio', 'belen', '2000', 'Uruguay','femenino', 'Córdoba', 'fan1casiangeles@gmail.com', 'user9876', '1234UNlaM', 'Editor de fotos_SUlxSi.png', 'aadd38862b1bfd4b2bb8d8ec4103538608e368a08b86945fe9720a02b793a296')
+[2023-10-29][INFO]Ejecutando Query INSERT INTO `usuario` (`nombre`, `apellido`, `anio_nacimiento`, `genero`, `pais`, `ciudad`, `mail`, `usuario`, `clave` ,`foto_perfil`,`token`) 
+        VALUES ('rocio', 'belen', '2000', 'Uruguay','femenino', 'Córdoba', 'fan1casiangeles@gmail.com', 'user9876', '1234UNlaM', 'Editor de fotos_SUlxSi.png', 'aadd38862b1bfd4b2bb8d8ec4103538608e368a08b86945fe9720a02b793a296') 
+[2023-10-29][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'user9876' 
+[2023-10-29][INFO]Usuario alta: INSERT INTO `usuario` (`nombre`, `apellido`, `anio_nacimiento`, `genero`, `pais`, `ciudad`, `mail`, `usuario`, `clave` ,`foto_perfil`,`token`) 
+        VALUES ('rocio', 'belen', '2000', 'Uruguay','femenino', 'Córdoba', 'fan1casiangeles@gmail.com', 'user9876', '1234UNlaM', 'Editor de fotos_SUlxSi.png', '4458c1bf3d7ed6ad3861ed741431a1045656ff6b228f4b61ffdc897f74d16025')
+[2023-10-29][INFO]Ejecutando Query INSERT INTO `usuario` (`nombre`, `apellido`, `anio_nacimiento`, `genero`, `pais`, `ciudad`, `mail`, `usuario`, `clave` ,`foto_perfil`,`token`) 
+        VALUES ('rocio', 'belen', '2000', 'Uruguay','femenino', 'Córdoba', 'fan1casiangeles@gmail.com', 'user9876', '1234UNlaM', 'Editor de fotos_SUlxSi.png', '4458c1bf3d7ed6ad3861ed741431a1045656ff6b228f4b61ffdc897f74d16025') 
+[2023-10-29][INFO]Ejecutando Query SELECT token FROM `usuario` WHERE usuario = user9876 
+[2023-10-29][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'user9876' 
+[2023-10-29][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'usuario5463' 
+[2023-10-29][INFO]Usuario alta: INSERT INTO `usuario` (`nombre`, `apellido`, `anio_nacimiento`, `genero`, `pais`, `ciudad`, `mail`, `usuario`, `clave` ,`foto_perfil`,`token`) 
+        VALUES ('rocio', 'crespo1', '2000', 'Argentina','femenino', 'Córdoba', 'fan1casiangeles@gmail.com', 'usuario5463', '1234UNlaM', 'Editor de fotos_SUlxSi.png', 'f77057ea1aff73f2d5fdf66a7dad8674705fd56a864950e6175d9b84e0e60b53')
+[2023-10-29][INFO]Ejecutando Query INSERT INTO `usuario` (`nombre`, `apellido`, `anio_nacimiento`, `genero`, `pais`, `ciudad`, `mail`, `usuario`, `clave` ,`foto_perfil`,`token`) 
+        VALUES ('rocio', 'crespo1', '2000', 'Argentina','femenino', 'Córdoba', 'fan1casiangeles@gmail.com', 'usuario5463', '1234UNlaM', 'Editor de fotos_SUlxSi.png', 'f77057ea1aff73f2d5fdf66a7dad8674705fd56a864950e6175d9b84e0e60b53') 
+[2023-10-29][INFO]Ejecutando Query SELECT token FROM `usuario` WHERE usuario = usuario5463 
+[2023-10-29][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'usuario5463' 
+[2023-10-29][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'ajkshgdxjaks2345' 
+[2023-10-29][INFO]Usuario alta: INSERT INTO `usuario` (`nombre`, `apellido`, `anio_nacimiento`, `genero`, `pais`, `ciudad`, `mail`, `usuario`, `clave` ,`foto_perfil`,`token`) 
+        VALUES ('rocio', 'crespo', '2000', 'Uruguay','femenino', 'Canelones', 'fan1casiangeles@gmail.com', 'ajkshgdxjaks2345', '1234UnlaM', 'profile.png', '380aa8441653a5708564206137bfa89201f42b9bd0d1e69728c26d6fe81fff88')
+[2023-10-29][INFO]Ejecutando Query INSERT INTO `usuario` (`nombre`, `apellido`, `anio_nacimiento`, `genero`, `pais`, `ciudad`, `mail`, `usuario`, `clave` ,`foto_perfil`,`token`) 
+        VALUES ('rocio', 'crespo', '2000', 'Uruguay','femenino', 'Canelones', 'fan1casiangeles@gmail.com', 'ajkshgdxjaks2345', '1234UnlaM', 'profile.png', '380aa8441653a5708564206137bfa89201f42b9bd0d1e69728c26d6fe81fff88') 
+[2023-10-29][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'ajkshgdxjaks2345' 
+[2023-10-29][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'daslcjdk231' 
+[2023-10-29][INFO]Usuario alta: INSERT INTO `usuario` (`nombre`, `apellido`, `anio_nacimiento`, `genero`, `pais`, `ciudad`, `mail`, `usuario`, `clave` ,`foto_perfil`,`token`) 
+        VALUES ('fvsd', 'dcsv', '2000', 'Uruguay','femenino', 'Canelones', 'fan1casiangeles@gmail.com', 'daslcjdk231', '1234UNlaM', 'profile.png', '1abf303c8906423738d47f51453bd7f752e70d74b82ff8556a2afe1c9f17ecbc')
+[2023-10-29][INFO]Ejecutando Query INSERT INTO `usuario` (`nombre`, `apellido`, `anio_nacimiento`, `genero`, `pais`, `ciudad`, `mail`, `usuario`, `clave` ,`foto_perfil`,`token`) 
+        VALUES ('fvsd', 'dcsv', '2000', 'Uruguay','femenino', 'Canelones', 'fan1casiangeles@gmail.com', 'daslcjdk231', '1234UNlaM', 'profile.png', '1abf303c8906423738d47f51453bd7f752e70d74b82ff8556a2afe1c9f17ecbc') 
+[2023-10-29][INFO]Ejecutando Query SELECT token FROM `usuarios` WHERE usuario = 'daslcjdk231' 
+[2023-10-29][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'daslcjdk231' 
+[2023-10-29][INFO]Ejecutando Query SELECT * FROM usuario WHERE usuario = 'usuario5463' AND clave = '1234UNlaM' 
+[2023-10-29][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id =7 
+[2023-10-29][INFO]Ejecutando Query SELECT * FROM `pregunta` 
+[2023-10-29][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 7 
+[2023-10-29][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 7 
+[2023-10-29][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 7 
+[2023-10-29][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 7 
+[2023-10-29][INFO]Ejecutando Query SELECT * FROM `usuario` WHERE id = 7 

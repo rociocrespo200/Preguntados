@@ -7,9 +7,9 @@ class UserModel {
         $this->database = $database;
     }
 
-    public function alta($nombre, $apellido, $anioNacimiento, $genero, $pais, $ciudad, $mail, $usuario, $clave, $fotoPerfil) {
-        $sql = "INSERT INTO `usuario` (`nombre`, `apellido`, `anio_nacimiento`, `genero`, `pais`, `ciudad`, `mail`, `usuario`, `clave` ,`foto_perfil`) 
-        VALUES ('$nombre', '$apellido', '$anioNacimiento', '$pais','$genero', '$ciudad', '$mail', '$usuario', '$clave', '$fotoPerfil')";
+    public function alta($nombre, $apellido, $anioNacimiento, $genero, $pais, $ciudad, $mail, $usuario, $clave, $fotoPerfil, $token) {
+        $sql = "INSERT INTO `usuario` (`nombre`, `apellido`, `anio_nacimiento`, `genero`, `pais`, `ciudad`, `mail`, `usuario`, `clave` ,`foto_perfil`,`token`) 
+        VALUES ('$nombre', '$apellido', '$anioNacimiento', '$pais','$genero', '$ciudad', '$mail', '$usuario', '$clave', '$fotoPerfil', '$token')";
         Logger::info('Usuario alta: ' . $sql);
         $this->database->query($sql);
     }
@@ -62,7 +62,7 @@ class UserModel {
 
 
     public function traerUsuario($id){
-        return $this->database->query("SELECT * FROM `usuario` WHERE id = $id")[0];
+        return $this->database->query("SELECT * FROM `usuario` WHERE id =" .  $id)[0];
     }
 
     public function traerListaDePreguntas(){
@@ -71,5 +71,20 @@ class UserModel {
 
 
 
+//    public function obtenerTocken($usuario) {
+//        $query = "SELECT token FROM `usuario` WHERE usuario = '$usuario'";
+//        $result = $this->database->query($query);
+//
+//        if ($result && $result->num_rows > 0) {
+//            $row = $result->fetch_assoc();
+//            return $row['token'];
+//        } else {
+//            return null;
+//        }
+//    }
+
+    public function validarMailUsuario($usuario){
+        return $this->database->query("UPDATE `preguntados`.`usuario` SET `validado` = '1' WHERE usuario = " . $usuario)[0];
+    }
 
 }

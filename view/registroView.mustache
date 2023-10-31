@@ -99,6 +99,11 @@
 
     </form>
 
+    {{#validarMail}}
+        <div class="popup"  id="popup_recarga" >
+            <p>Email de validacion enviado a: {{validarMail}}</p>
+        </div>
+    {{/validarMail}}
     <script src="../public/js/administrar.js"></script>
 
                                     <script>
