@@ -21,4 +21,25 @@ class ReportesModel
         return $this->database->query("SELECT *  FROM Pregunta WHERE Pregunta.id = " . $id)[0];
     }
 
+    public function traerReportes(){
+        return $this->database->query("select r.id as id, r.fecha as fecha, r.motivo as motivo, p.id as id_pregunta, p.pregunta as pregunta, u.id as id_usuario, u.usuario as usuario 
+                                        from reporte as r join usuario as u on r.id_usuario = u.id join pregunta as p on r.id_pregunta = p.id
+                                        order by fecha");
+    }
+
+    public function eliminarReporte($id){
+        $this->database->query("DELETE FROM `preguntados`.`reporte` WHERE `id` = " . (int)$id);
+
+    }
+    public function deshabilitarPregunta($idPreg, $idReporte){
+        $this->database->query("UPDATE `preguntados`.`pregunta` SET `habilitada` = 0 WHERE `id` = " . $idPreg);
+
+        $this->eliminarReporte($idReporte);
+
+    }
+
+    public function agregarReporte($idUsuario, $idPregunta, $motivo){
+        $this->database->query("INSERT into reporte (id_pregunta, motivo, id_usuario) VALUES (" . $idPregunta . ", '" . $motivo . "', " . $idUsuario . ")");
+    }
+
 }
