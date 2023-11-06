@@ -15,6 +15,7 @@ class RanckingModel
                                            U.nivel, 
                                            U.puntos, 
                                            U.foto_perfil, 
+                                           U.foto_qr,
                                            COUNT(*) AS 'CantidaddePartidas', 
                                            SUM(P.preguntasContestadas) AS 'CantidaddePreguntas' 
                                             FROM usuario U 
@@ -25,6 +26,8 @@ class RanckingModel
         $result = array();
 
         foreach ($ranking as $rank) {
+            $foto_qr = empty($rank["foto_qr"]) ? "qr.png" : $rank["foto_qr"];
+
             $result[] = [
                 'id' => $rank["id"],
                 'posicion' => $rank["Posicion"],
@@ -32,9 +35,13 @@ class RanckingModel
                 'nivel' => $rank ["nivel"],
                 'puntos' => $rank["puntos"],
                 'foto_perfil'=>$rank["foto_perfil"],
+                'foto_qr'=>$foto_qr,
                 'cantidadDePartidas' => $rank ["CantidaddePartidas"],
                 'preguntas' => $rank["CantidaddePreguntas"]
             ];
+            //if(!isset($result['foto_qr'])){
+             //   $result['foto_qr'] = "qr.png";
+            //
         }
         return $result;
 

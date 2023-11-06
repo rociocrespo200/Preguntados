@@ -27,6 +27,9 @@ CREATE TABLE usuario (
     token VARCHAR(255),
 	validado bool default false,
     foto_perfil VARCHAR(255) NOT NULL,
+    foto_qr VARCHAR(255),
+    token VARCHAR(255),
+	validado bool default false,
     foreign key (id_rol) references Rol(id)
 );
 
@@ -1053,3 +1056,4 @@ INSERT INTO reporte (id_pregunta , motivo, id_usuario) VALUES
     ('12', 'No me gusta la pregunta', 3),
     ('8', 'Muy dificil para el nivel', 1);
 
+SELECT * FROM usuario;

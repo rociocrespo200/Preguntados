@@ -1,17 +1,22 @@
 <?php
+include('lib/full/qrlib.php');
+
 
 use PHPMailer\PHPMailer\PHPMailer;
 
-class UserController {
+class UserController
+{
     private $render;
     private $model;
 
-    public function __construct($render, $model) {
+    public function __construct($render, $model)
+    {
         $this->render = $render;
         $this->model = $model;
     }
 
-    public function login() {
+    public function login()
+    {
         $data = [];
 
         if (!empty($_SESSION['error'])) {
@@ -25,7 +30,8 @@ class UserController {
         $this->render->printView('login', $data);
     }
 
-    public function procesarLogin() {
+    public function procesarLogin()
+    {
         if (empty($_POST['usuario']) || empty($_POST['clave'])) {
             $_SESSION["error"] = "Debe completar todos los campos";
             Redirect::to('/user/login');
@@ -48,12 +54,13 @@ class UserController {
             'preguntas' => $this->model->traerListaDePreguntas()
         ];
 
-        if ($_SESSION['usuario']['id_rol'] == 2) $this->render->printViewEditor('homeEditor',$datos);
-        else $this->render->printViewSesion('home',$datos);
+        if ($_SESSION['usuario']['id_rol'] == 2) $this->render->printViewEditor('homeEditor', $datos);
+        else $this->render->printViewSesion('home', $datos);
     }
 
 
-    public function signin() {
+    public function signin()
+    {
         $data = [];
 
         if (!empty($_SESSION['error'])) {
@@ -68,9 +75,10 @@ class UserController {
     }
 
 
-    public function procesarAlta(){
+    public function procesarAlta()
+    {
         echo $_POST['nombre'];
-        if( empty($_POST['usuario'] ) || empty($_POST['clave'] || empty($_POST['mail']))){
+        if (empty($_POST['usuario']) || empty($_POST['clave'] || empty($_POST['mail']))) {
             $_SESSION["error"] = "Alguno de los campos era erroneo o vacio";
             Redirect::to('/user/signin');
         }
@@ -89,42 +97,47 @@ class UserController {
 
 
         if (isset($_FILES["fileInput"]) && $_FILES["fileInput"]["error"] === UPLOAD_ERR_OK) {
-            move_uploaded_file($_FILES["fileInput"]["tmp_name"] , "./public/usuarios/" . $_FILES['fileInput']['name']);
+            move_uploaded_file($_FILES["fileInput"]["tmp_name"], "./public/usuarios/" . $_FILES['fileInput']['name']);
             $fotoPerfil = $_FILES['fileInput']['name'];
         } else {
-            $fotoPerfil =  "profile.png";
+            $fotoPerfil = "profile.png";
         }
 
-        if(!$this->model->validarUsuario($usuario) ||
+        if (!$this->model->validarUsuario($usuario) ||
             !$this->model->validarCorreo($mail) ||
-            !$this->model->validarClave($clave)){
+            !$this->model->validarClave($clave)) {
             $_SESSION["error"] = "Alguno de los campos era erroneo o vacio";
             Redirect::to('/user/signin');
         }
 
-        if(!$this->model->compararClaves($clave,$clave2)){
+        if (!$this->model->compararClaves($clave, $clave2)) {
             $_SESSION["error"] = "Las claves no coinciden";
             Redirect::to('/user/signin');
         }
 
-        if(!$this->model->buscarUsuario($usuario)){
+        if (!$this->model->buscarUsuario($usuario)) {
             $_SESSION["error"] = "El usuario ya existe";
             Redirect::to('/user/signin');
         }
-
         $this->model->alta($nombre, $apellido, $anioNacimiento, $genero, $pais, $ciudad, $mail, $usuario, $clave, $fotoPerfil, $token);
 
+        $idPerfil = $this->model->obtenerUltimoRegistrado();
+        $fotoQR = $this->generarQR($idPerfil); // Llama a generarQR() para obtener el código QR
+        $this->model->actualizarDatos($idPerfil, $fotoQR);
+        //var_dump($fotoQR);
+        //var_dump($idPerfil);
         Redirect::root();
 
 
     }
 
-    public function enviarMailDeValidacion() {
+    public function enviarMailDeValidacion()
+    {
 
         $mail = new PHPMailer(true);
         try {
             $token = $_SESSION['usuario']['token'];
-            $from = "roccrespo@alumno.unlam.edu.ar";
+            $from = "drubio950@alumno.unlam.edu.ar";
             $to = $_SESSION['usuario']['mail'];
             $subject = "Checking PHP mail";
             $message = "Estimado usuario, haga clic en el siguiente enlace para validar su cuenta: http://localhost/user/validarTocken?token=" . $token;
@@ -132,8 +145,8 @@ class UserController {
             $mail->isSMTP();
             $mail->Host = 'smtp-mail.outlook.com';
             $mail->SMTPAuth = true;
-            $mail->Username = 'roccrespo@alumno.unlam.edu.ar'; // Reemplaza con tu dirección de correo electrónico de Outlook
-            $mail->Password = 'tu_contraseña_de gmail'; // Reemplaza con tu contraseña
+            $mail->Username = 'drubio950@alumno.unlam.edu.ar'; // Reemplaza con tu dirección de correo electrónico de Outlook
+            $mail->Password = '37241950Duilio'; // Reemplaza con tu contraseña
             $mail->SMTPSecure = 'tls';
             $mail->Port = 587;
 
@@ -153,7 +166,6 @@ class UserController {
         }
 
 
-
     }
 
     public function generateRandomToken()
@@ -163,12 +175,28 @@ class UserController {
 
     }
 
-    public function validarTocken(){
-        if($_SESSION['usuario']['token'] == $_GET['token']){
+    public function validarTocken()
+    {
+        if ($_SESSION['usuario']['token'] == $_GET['token']) {
             $this->model->validarMailUsuario($_SESSION['usuario']['id']);
         }
 
         Redirect::root();
+    }
+
+    public function generarQR($idPerfil) {
+        $url = "/profile/verperfil?id=" . $idPerfil;
+        $tamano = 8;
+        $nivel_correccion = 'H';
+
+        ob_start();
+        QRcode::png($url, null, $nivel_correccion, $tamano);
+        $foto_qr = ob_get_clean();
+
+        $rutaQR = "codigo_qr_" . $idPerfil . ".png";
+        file_put_contents("./public/qrs/".$rutaQR, $foto_qr);
+
+        return $rutaQR;
     }
 
 }

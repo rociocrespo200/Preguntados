@@ -12,6 +12,8 @@ class UserModel {
         VALUES ('$nombre', '$apellido', '$anioNacimiento', '$pais','$genero', '$ciudad', '$mail', '$usuario', '$clave', '$fotoPerfil', '$token')";
         Logger::info('Usuario alta: ' . $sql);
         $this->database->query($sql);
+
+
     }
 
     public function compararClaves($clave1, $clave2){
@@ -86,5 +88,15 @@ class UserModel {
     public function validarMailUsuario($usuario){
         return $this->database->query("UPDATE `preguntados`.`usuario` SET `validado` = '1' WHERE id = " . $usuario)[0];
     }
+
+    public function obtenerUltimoRegistrado(){
+        return $this->database->query("SELECT id from Usuario ORDER BY id desc LIMIT 1 ")[0][0];
+    }
+
+    public function actualizarDatos($idActual,$fotoQR){
+        $this->database->query("UPDATE `preguntados`.`usuario` SET `foto_qr` = '$fotoQR' WHERE `id` = $idActual");
+    }
+
+
 
 }
