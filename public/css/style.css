@@ -598,3 +598,16 @@ a#agregarSugerencia{
     text-decoration: dashed;
     right: 15px;
 }
+
+.verificado{
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    margin-right: 7px;
+}
+
+#p_verificado{
+    display: inline;
+    color: #80c1ff;
+    font-size: 18px;
+}

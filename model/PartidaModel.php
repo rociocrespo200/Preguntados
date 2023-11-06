@@ -48,11 +48,24 @@ class PartidaModel
 
     public function agregarRespuestaALaPartida($partida, $idRespuesta)
     {
+        if($this->validarTiempo($partida['id'])){
         //$respuesta = $this->buscarRespuestaPorId($idRespuesta);
         $this->database->query("UPDATE `preguntados`.`partida` SET `preguntasContestadas` = '" . ($partida['preguntasContestadas'] + 1) . "' WHERE `id` =" . $partida['id']);
         $this->database->query("INSERT INTO partida_respuestas (id_partida, id_respuesta) VALUES (" . $partida['id'] . "," . $idRespuesta . ")");
 
         $this->actualizarDificultad($this->buscarRespuestaPorId($idRespuesta));
+        }else{
+            $this->agregarRespuestaNulaALaPartida($partida, $idRespuesta);
+        }
+    }
+
+    public function agregarRespuestaNulaALaPartida($partida)
+    {
+        //$respuesta = $this->buscarRespuestaPorId($idRespuesta);
+        $this->database->query("UPDATE `preguntados`.`partida` SET `preguntasContestadas` = '" . ($partida['preguntasContestadas'] + 1) . "' WHERE `id` =" . $partida['id']);
+        $this->database->query("INSERT INTO partida_respuestas (id_partida) VALUES (" .$partida['id']. ")");
+
+        //$this->actualizarDificultad($this->buscarRespuestaPorId($idRespuesta));
 
     }
 
@@ -132,6 +145,22 @@ class PartidaModel
             $this->database->query("UPDATE `preguntados`.`pregunta` SET `id_dificultad` = '3' WHERE `id` =" . $respuesta['id_pregunta']);
             //DIFICIL
         }
+    }
+
+    private function validarTiempo($partida)
+    {
+        $fecha = $this->database->query(" SELECT fecha FROM partida_preguntas WHERE id_partida = '$partida' ORDER BY fecha DESC LIMIT 1")[0][0];
+        $fecha_actual = new DateTime();
+        $fecha_ultima_pregunta = new DateTime($fecha);
+        $intervalo = $fecha_actual->getTimestamp() - $fecha_ultima_pregunta->getTimestamp();
+        echo '$fecha_actual->getTimestamp() = ' .$fecha_actual->getTimestamp(). "<br>";
+        echo '$fecha_ultima_pregunta->getTimestamp() = ' . $fecha_ultima_pregunta->getTimestamp(). "<br>";
+        echo '$intervalo = ' . $intervalo . "<br>";
+        if ($intervalo > 10) {
+            return false;
+        }
+
+        return true;
     }
 
 

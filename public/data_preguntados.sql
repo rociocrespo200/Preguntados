@@ -24,6 +24,8 @@ CREATE TABLE usuario (
     puntos INT default 0,
     nivel INT default 1,
     id_rol int default 1,
+    token VARCHAR(255),
+	validado bool default false,
     foto_perfil VARCHAR(255) NOT NULL,
     foreign key (id_rol) references Rol(id)
 );
@@ -43,11 +45,11 @@ CREATE TABLE usuario (
 
 
                                             
-INSERT INTO usuario (nombre, apellido, anio_nacimiento, genero, pais, ciudad, mail, usuario, clave, foto_perfil, puntos, nivel)
+INSERT INTO usuario (nombre, apellido, anio_nacimiento, genero, pais, ciudad, mail, usuario, clave, foto_perfil, puntos, nivel, token)
 VALUES
-	('Rocio', 'Crespo', 2000, 'femenino',  'Argentina', 'Buenos aires', 'rocio@gmail.com', 'rocio123', '1234', 'profile.png',10700, 9),
-     ('Jane', 'Smith', 1985,'masculino', 'Reino Unido', 'Londres', 'janesmith@example.com', 'janesmith456', 'contrasena456', 'profile.png',7820, 5),
-    ('Juan', 'Pérez', 1988, 'masculino','España', 'Madrid', 'juanperez@example.com', 'juanperez789', 'clave789', 'profile.png',100, 1);
+	('Rocio', 'Crespo', 2000, 'femenino',  'Argentina', 'Buenos aires', 'fan1casiangeles@gmail.com', 'rocio123', '1234', 'profile.png',10700, 9, "7e3ec5530d7e3a4d460857cf96824a67"),
+     ('Jane', 'Smith', 1985,'masculino', 'Reino Unido', 'Londres', 'janesmith@example.com', 'janesmith456', 'contrasena456', 'profile.png',7820, 5, "9766ee80a3a2d8eb56a59f43b174ac0a"),
+    ('Juan', 'Pérez', 1988, 'masculino','España', 'Madrid', 'juanperez@example.com', 'juanperez789', 'clave789', 'profile.png',100, 1, "8a83d994f94d1bf2c495b048f7e12f65");
 INSERT INTO usuario (nombre, apellido, anio_nacimiento,genero,  pais, ciudad, mail, usuario, clave, foto_perfil, id_rol)
 VALUES
 	('Rocio', 'Crespo', 2000, 'femenino', 'Argentina', 'Buenos aires', 'belen@gmail.com', 'belen123', '1234', 'profile.png',2);
@@ -74,6 +76,8 @@ CREATE TABLE partida (
     FOREIGN KEY (id_usuario) REFERENCES Usuario(id),
     FOREIGN KEY (id_dificultad) REFERENCES Dificultad(id)
 );
+
+-- SELECT count(*) FROM partida_respuestas pr JOIN respuesta r ON r.id = pr.id_respuesta WHERE r.esCorrecta = 1 AND r.id_pregunta = 69;
 
 INSERT INTO partida (id_usuario, preguntasContestadas) VALUES (1 ,4),(2, 5),(3, 8),(4, 2);
 INSERT INTO partida (id_usuario, preguntasContestadas) VALUES (3 ,4),(2, 5),(3, 8),(1, 2);
@@ -142,7 +146,7 @@ FOREIGN KEY (id_pregunta) REFERENCES Pregunta(id)
 CREATE TABLE partida_respuestas (
     id INT AUTO_INCREMENT PRIMARY KEY,
     id_partida INT NOT NULL,
-    id_respuesta INT NOT NULL,
+    id_respuesta INT ,
 	fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (id_partida) REFERENCES partida(id),
     FOREIGN KEY (id_respuesta) REFERENCES respuesta(id)
@@ -156,6 +160,8 @@ CREATE TABLE partida_preguntas (
     FOREIGN KEY (id_partida) REFERENCES partida(id),
     FOREIGN KEY (id_pregunta) REFERENCES pregunta(id)
 );
+
+SELECT * FROM partida_preguntas WHERE id_partida = 19 ORDER BY fecha DESC LIMIT 1;
 
 CREATE TABLE reporte (
 	    id INT AUTO_INCREMENT PRIMARY KEY,

@@ -84,7 +84,7 @@ class UserModel {
 //    }
 
     public function validarMailUsuario($usuario){
-        return $this->database->query("UPDATE `preguntados`.`usuario` SET `validado` = '1' WHERE usuario = " . $usuario)[0];
+        return $this->database->query("UPDATE `preguntados`.`usuario` SET `validado` = '1' WHERE id = " . $usuario)[0];
     }
 
 }

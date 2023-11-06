@@ -28,7 +28,7 @@
 
 
         <div class="div_form_titulos">
-            <h2>Datos personales del usuario</h2>
+            <h2>Datos personales del usuario </h2>
         </div>
 
         <div class="div_form_campos">
@@ -95,8 +95,8 @@
                     <label for="exampleInputEmail1">Usuario</label>
                     <input type="text" name="usuario" class="form-control"  value="{{usuario}}" placeholder="Ingrese su usuario">
                 </div>
-                <div class="form-group form-group">
-                    <label for="exampleInputEmail1">Email address</label>
+                <div class="col">
+                    <label for="exampleInputEmail1">Email address {{^validar}}<img class="verificado" src="../public/icon_verificado.png"><p id="p_verificado">verificado</p>{{/validar}}</label>
                     <input type="email"  name="mail" value="{{mail}}" required  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese su email">
                 </div>
             </div>
@@ -116,7 +116,7 @@
 
         <div class="d-flex" id="form_botones">
             <button type="submit" class="btn boton">Modificar datos</button>
-            <a href="/user/enviarMailDeValidacion" type="submit" class="btn btn-danger btn_danger">Validar mail</a>
+            {{#validar}}<a href="/user/enviarMailDeValidacion" type="submit" class="btn btn-danger btn_danger">Validar mail</a>{{/validar}}
             <a href="/profile/cerrarSesion" type="submit" class="btn btn-danger btn_danger">Cerrar sesion</a>
         </div>
 

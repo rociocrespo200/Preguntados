@@ -20,8 +20,12 @@ class ProfileController {
 
         if($_SESSION['usuario']['id_rol'] == 1){
             $datos['estadisticas'] = true;
+            if( $datos['user']['validado'] == 0){
+                $datos['validar'] = true;
+            }
             $this->render->printViewSesion('perfil', $datos);
         }else{
+
             $this->render->printViewEditor('perfil', $datos);
         }
 
