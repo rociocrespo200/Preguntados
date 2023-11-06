@@ -15,7 +15,7 @@ class RanckingController
     public function show()
     {
         $ranking = $this->model->getRanking();
-        
+
         $datos = [
             'usuario' => $_SESSION['usuario']['usuario'],
             'usuarioPuntos' => $_SESSION['usuario']['puntos'],
@@ -24,9 +24,8 @@ class RanckingController
             'ranking' => $this->traerRestoDelRanking($ranking),
             'user' => $this->model->traerUsuario($_SESSION['usuario']['id'])
         ];
-        
 
-        
+
         $this->render->printViewSesion('rancking', $datos); //crea una vista, con el constructor de esta clase, llamada home
     }
 

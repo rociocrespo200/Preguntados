@@ -84,4 +84,7 @@ class ProfileController {
             // Manejar solicitud GET si es necesario
         }
     }
+
+
+
 }

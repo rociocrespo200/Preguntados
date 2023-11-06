@@ -1,4 +1,6 @@
 <?php
+include('lib/full/qrlib.php');
+
 
 class UserController {
     private $render;
@@ -109,9 +111,13 @@ class UserController {
             $_SESSION["error"] = "El usuario ya existe";
             Redirect::to('/user/signin');
         }
-
         $this->model->alta($nombre, $apellido, $anioNacimiento, $genero, $pais, $ciudad, $mail, $usuario, $clave, $fotoPerfil, $token);
 
+        $idPerfil = $this->model->obtenerUltimoRegistrado();
+        $fotoQR = $this->generarQR($idPerfil); // Llama a generarQR() para obtener el código QR
+        $this->model->actualizarDatos($idPerfil,$fotoQR);
+        //var_dump($fotoQR);
+        //var_dump($idPerfil);
         Redirect::root();
 
 
@@ -210,4 +216,30 @@ class UserController {
 ////            echo "Hubo un error al enviar el correo de validación.";
 ////        }
 //    }
+
+   /* public function generarQR($idPerfil) {
+        $url = "/profile/verperfil?id=" . $idPerfil;
+        $tamano = 8;
+        $nivel_correccion = 'H';
+        ob_start();
+        QRcode::png($url, null, $nivel_correccion, $tamano);
+        $foto_qr = ob_get_clean();
+        return $foto_qr;
+    }
+*/
+
+    public function generarQR($idPerfil) {
+        $url = "/profile/verperfil?id=" . $idPerfil;
+        $tamano = 8;
+        $nivel_correccion = 'H';
+
+        ob_start();
+        QRcode::png($url, null, $nivel_correccion, $tamano);
+        $foto_qr = ob_get_clean();
+
+        $rutaQR = "codigo_qr_" . $idPerfil . ".png";
+        file_put_contents("./public/qrs/".$rutaQR, $foto_qr);
+
+        return $rutaQR;
+    }
 }
