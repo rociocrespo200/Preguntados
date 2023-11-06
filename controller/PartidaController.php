@@ -42,27 +42,36 @@ class PartidaController
     }
 
     public function contestar(){
+        $partida = $this->model->obtenerPartidaActual($_SESSION['usuario']['id']);
         if (isset($_GET['tiempo_agotado']) && $_GET['tiempo_agotado']){ //SI SE AGOTA EL TIEMPO MANDAR AL HOME
             $datos['error'] = true;
             $datos['tiempo'] = "El tiempo se ha agotado tu puntaje es: ";
+            $this->model->agregarRespuestaNulaALaPartida($partida[0]);
             $this->render->printViewSesion('partida', $datos);
         }
-        $partida = $this->model->obtenerPartidaActual($_SESSION['usuario']['id']);
+
         $respuesta = $this->model->buscarRespuestaPorId($_GET['id']);
 
 
         $datos = $this->traerDatos();
 
             if(!$this->model->validarRecargoDePagina($partida[0]['id'], $respuesta['id'])){
-                $this->model->agregarRespuestaALaPartida($partida[0],$_GET['id']);
-                $this->actualizarPuntaje($partida[0], $respuesta);
+                if($this->model->agregarRespuestaALaPartida($partida[0],$_GET['id'])) {
+                    $this->actualizarPuntaje($partida[0], $respuesta);
 
-                if(!$respuesta['esCorrecta'] == 1) {
-                    $datos['error'] = true;
-                    $datos['incorrecta'] = "La respuesta es incorrecta";
-                    $this->render->printViewSesion('partida', $datos);
+                    if (!$respuesta['esCorrecta'] == 1) {
+                        $datos['error'] = true;
+                        $datos['incorrecta'] = "La respuesta es incorrecta";
+                        $this->render->printViewSesion('partida', $datos);
+                    }
+                }else{
+//                    $datos['error'] = true;
+//                    $datos['tiempo'] = "El tiempo se ha agotado tu puntaje es: ";
+//                    $this->model->agregarRespuestaNulaALaPartida($partida[0]);
+//                    $this->render->printViewSesion('partida', $datos);
                 }
             }else{
+                $this->model->agregarRespuestaNulaALaPartida($partida[0]);
                 $datos['error'] = true;
                 $datos['recarga'] = "Si recargas la pagina perderas el progreso";
             }

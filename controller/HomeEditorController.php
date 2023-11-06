@@ -48,6 +48,17 @@ class HomeEditorController
                 $datos['respuesta4'] = $respuestas[3];
             }
 
+        }else if(isset($_GET['editor']) && $_GET['editor'] == "true"){
+            $datos = [
+                'titulo'=>'Agregar',
+                'action'=> '/HomeEditor/agregarPregunta'
+
+            ];
+        }else if(isset($_GET['editor']) && $_GET['editor'] == "false"){
+            $datos = [
+                'titulo'=>'Sugerir',
+                'action'=> '/Sugerencias/agregarSugerencia'
+            ];
         }
 
 
@@ -59,6 +70,38 @@ class HomeEditorController
 
         $this->render->printViewEditor('administrarPregunta', $datos);
     }
+
+    public function agregarPregunta(){
+        $pregunta = $_POST['pregunta'];
+        $correcta = $_POST['correcta'];
+        $incorrecta1 = $_POST['incorrecta1'];
+        $incorrecta2 = $_POST['incorrecta2'];
+        $incorrecta3 = $_POST['incorrecta3'];
+        $categoria = $_POST['categoria'];
+        $dificultad = $_POST['dificultad'];
+        $respuestasCant = 2;
+
+        if($_POST['incorrecta3'] != ""){
+            $respuestasCant++;
+        }
+        if($_POST['incorrecta2'] != ""){
+            $respuestasCant++;
+        }
+//        echo $respuestasCant . "<br>";
+//        echo $_POST['incorrecta2'];
+//
+
+        $this->model->agregarPregunta($respuestasCant,$pregunta,$correcta,$incorrecta1,$incorrecta2,$incorrecta3, $categoria,$dificultad);
+
+        $this->show();
+    }
+
+    public function eliminarPregunta(){
+        $this->model->eliminarPregunta($_GET['id']);
+
+        $this->show();
+    }
+
 
     public function modificarPregunta(){
         $idPreg=$_GET['id'];
@@ -78,8 +121,6 @@ class HomeEditorController
         $this->show();
     }
 
-    public function agregarPregunta(){
-        $this->render->printViewEditor('administrarPregunta');
-    }
+
 
 }

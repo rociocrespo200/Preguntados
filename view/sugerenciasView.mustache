@@ -8,82 +8,28 @@
 
 
     <section id="main_scroll">
-        <div class="lista">
-            <div class="d-flex align-items-center">
-                <div class="dificultad">
-                    <img src="../public/icon_ciencias.png" alt="">
+
+        {{#sugerencias}}
+            <div class="lista">
+                <div class="d-flex align-items-center">
+                    <div class="dificultad">
+                        <img src="../public/{{imagen}}" alt="">
+                    </div>
+                    <div class="lista_div m-0">
+                        <cite>Nro° {{id}} - {{fecha}} created by: <a href=""><cite>{{usuario}}</cite></a></cite>
+                        <p>Pregunta - {{pregunta}}</p>
+                        <p style="text-indent: 50px;">- {{respuestaCorrecta}}. ✔️</p>
+                        <p style="text-indent: 50px;">- {{respuestaIncorrecta1}}.</p>
+                        <p style="text-indent: 50px;">- {{respuestaIncorrecta2}}.</p>
+                        <p style="text-indent: 50px;">- {{respuestaIncorrecta3}}.</p>
+                    </div>
                 </div>
-                <div class="lista_div m-0">
-                    <cite>Nro° 1120 - 12/03/2023 11:00 created by: <a href=""><cite>rociocrespo200</cite></a></cite>
-                    <p>Pregunta - Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, vero?</p>
-                    <p style="text-indent: 50px;">- Lorem ipsum dolor sit amet. ✔️</p>
-                    <p style="text-indent: 50px;">- Lorem ipsum dolor sit.</p>
-                    <p style="text-indent: 50px;">- Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-                    <p style="text-indent: 50px;">- Lorem, ipsum dolor.</p>
-                </div>
-            </div>
-            <div class="d-flex flex-column lista_botones">
-                <a href="" class="btn btn-success btn_succes">Aprobar</a>
-                <button class="btn btn-danger btn_danger boton_eliminar" onclick="mostrarPopUp('popup_eliminar')">Rechazar</button>
-            </div>
-        </div>
-        <div class="lista">
-            <div class="d-flex align-items-center">
-                <div class="dificultad">
-                    <img src="../public/icon_arte.png" alt="">
-                </div>
-                <div class="lista_div m-0">
-                    <cite>Nro° 1120 - 12/03/2023 11:00 created by: <a href=""><cite>rociocrespo200</cite></a></cite>
-                    <p>Pregunta - Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, vero?</p>
-                    <p style="text-indent: 50px;">- Lorem ipsum dolor sit amet. ✔️</p>
-                    <p style="text-indent: 50px;">- Lorem ipsum dolor sit.</p>
-                    <p style="text-indent: 50px;">- Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-                    <p style="text-indent: 50px;">- Lorem, ipsum dolor.</p>
+                <div class="d-flex flex-column lista_botones">
+                    <a href="/sugerencias/aprobarSugerencia?id={{id}}" class="btn btn-success btn_succes">Aprobar</a>
+                    <a  href="/sugerencias/eliminarSugerencia?id={{id}}" class="btn btn-danger btn_danger boton_eliminar" onclick="mostrarPopUp('popup_eliminar')">Rechazar</a>
                 </div>
             </div>
-            <div class="d-flex flex-column lista_botones">
-                <a href="" class="btn btn-success btn_succes">Aprobar</a>
-                <button class="btn btn-danger btn_danger boton_eliminar" onclick="mostrarPopUp('popup_eliminar')">Rechazar</button>
-            </div>
-        </div>
-        <div class="lista">
-            <div class="d-flex align-items-center">
-                <div class="dificultad">
-                    <img src="../public/icon_deportes.png" alt="">
-                </div>
-                <div class="lista_div m-0">
-                    <cite>Nro° 1120 - 12/03/2023 11:00 created by: <a href=""><cite>rociocrespo200</cite></a></cite>
-                    <p>Pregunta - Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, vero?</p>
-                    <p style="text-indent: 50px;">- Lorem ipsum dolor sit amet. ✔️</p>
-                    <p style="text-indent: 50px;">- Lorem ipsum dolor sit.</p>
-                    <p style="text-indent: 50px;">- Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-                    <p style="text-indent: 50px;">- Lorem, ipsum dolor.</p>
-                </div>
-            </div>
-            <div class="d-flex flex-column lista_botones">
-                <a href="" class="btn btn-success btn_succes">Aprobar</a>
-                <button class="btn btn-danger btn_danger boton_eliminar" onclick="mostrarPopUp('popup_eliminar')">Rechazar</button>
-            </div>
-        </div>
-        <div class="lista">
-            <div class="d-flex align-items-center">
-                <div class="dificultad">
-                    <img src="../public/icon_entretenimiento.png" alt="">
-                </div>
-                <div class="lista_div m-0">
-                    <cite>Nro° 1120 - 12/03/2023 11:00 created by: <a href=""><cite>rociocrespo200</cite></a></cite>
-                    <p>Pregunta - Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, vero?</p>
-                    <p style="text-indent: 50px;">- Lorem ipsum dolor sit amet. ✔️</p>
-                    <p style="text-indent: 50px;">- Lorem ipsum dolor sit.</p>
-                    <p style="text-indent: 50px;">- Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-                    <p style="text-indent: 50px;">- Lorem, ipsum dolor.</p>
-                </div>
-            </div>
-            <div class="d-flex flex-column lista_botones">
-                <a href="" class="btn btn-success btn_succes">Aprobar</a>
-                <button class="btn btn-danger btn_danger boton_eliminar" onclick="mostrarPopUp('popup_eliminar')">Rechazar</button>
-            </div>
-        </div>
+        {{/sugerencias}}
 
         <div class="popup"  id="popup_eliminar" style="display: none">
             <a class="popup_cruz" onclick="ocultarPopUp('popup_eliminar')">✖</a>

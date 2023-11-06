@@ -2,30 +2,33 @@
     <section id="main_scroll">
 
     {{#user}}
-        <div class="puntaje">
-            <div class="puntaje_div">
-                <span>{{nivel}}</span>
-                <p>nivel</p>
+        {{#estadisticas}}
+            <div class="puntaje">
+                <div class="puntaje_div">
+                    <span>{{nivel}}</span>
+                    <p>nivel</p>
+                </div>
+                <div class="puntaje_div">
+                    <span>{{puntos}}</span>
+                    <p>puntos</p>
+                </div>
+                <div class="puntaje_div">
+                    <span>2000</span>
+                    <p>partidas</p>
+                </div>
+                <div class="puntaje_div">
+                    <span>2000</span>
+                    <p>preguntas</p>
+                </div>
             </div>
-            <div class="puntaje_div">
-                <span>{{puntos}}</span>
-                <p>puntos</p>
-            </div>
-            <div class="puntaje_div">
-                <span>2000</span>
-                <p>partidas</p>
-            </div>
-            <div class="puntaje_div">
-                <span>2000</span>
-                <p>preguntas</p>
-            </div>
-        </div>
+        {{/estadisticas}}
+
 
     <form method="post" action="/profile/modificarUsuario" enctype="multipart/form-data" style="margin-bottom: 75px;" >
 
 
         <div class="div_form_titulos">
-            <h2>Datos personales del usuario</h2>
+            <h2>Datos personales del usuario </h2>
         </div>
 
         <div class="div_form_campos">
@@ -92,8 +95,8 @@
                     <label for="exampleInputEmail1">Usuario</label>
                     <input type="text" name="usuario" class="form-control"  value="{{usuario}}" placeholder="Ingrese su usuario">
                 </div>
-                <div class="form-group form-group">
-                    <label for="exampleInputEmail1">Email address</label>
+                <div class="col">
+                    <label for="exampleInputEmail1">Email address {{^validar}}<img class="verificado" src="../public/icon_verificado.png"><p id="p_verificado">verificado</p>{{/validar}}</label>
                     <input type="email"  name="mail" value="{{mail}}" required  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese su email">
                 </div>
             </div>
@@ -113,7 +116,7 @@
 
         <div class="d-flex" id="form_botones">
             <button type="submit" class="btn boton">Modificar datos</button>
-            <a href="/user/enviarMailDeValidacion" type="submit" class="btn btn-danger btn_danger">Validar mail</a>
+            {{#validar}}<a href="/user/enviarMailDeValidacion" type="submit" class="btn btn-danger btn_danger">Validar mail</a>{{/validar}}
             <a href="/profile/cerrarSesion" type="submit" class="btn btn-danger btn_danger">Cerrar sesion</a>
         </div>
 

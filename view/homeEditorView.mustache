@@ -13,7 +13,7 @@
             <p>{{pregunta}}</p>
             <div>
                 <a href="/homeEditor/administrarPregunta?id={{id}}" class="btn boton boton_modificar">Modificar</a>
-                <button class="btn btn-danger btn_danger boton_eliminar" onclick="mostrarPopUp('popup_eliminar')">Eliminar</button>
+                <a href="/homeEditor/eliminarPregunta?id={{id}}" class="btn btn-danger btn_danger boton_eliminar">Eliminar</a>
             </div>
         </div>
     {{/preguntas}}
@@ -30,7 +30,7 @@
 
     </section>
 
-    <a href="/homeEditor/administrarPregunta" class="btn boton" id="boton_flotante">Agregar pregunta</a>
+    <a href="/homeEditor/administrarPregunta?editor=true" class="btn boton" id="boton_flotante">Agregar pregunta</a>
 </main>
 <script src="../public/js/popup.js"></script>
 
