@@ -10,7 +10,7 @@ INSERT INTO Rol (tipo)
 VALUES 
 ("USUARIO"), ("EDITOR"), ("ADMINISTRADOR");
 
-CREATE TABLE usuario (
+CREATE TABLE IF NOT EXISTS usuario (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(255) NOT NULL,
     apellido VARCHAR(255) NOT NULL,
@@ -21,17 +21,24 @@ CREATE TABLE usuario (
     mail VARCHAR(255) NOT NULL,
     usuario VARCHAR(255) NOT NULL,
     clave VARCHAR(255) NOT NULL,
-    puntos INT default 0,
-    nivel INT default 1,
-    id_rol int default 1,
+    puntos INT DEFAULT 0,
+    nivel INT DEFAULT 1,
+    id_rol INT DEFAULT 1,
     token VARCHAR(255),
-	validado bool default false,
+    validado BOOLEAN DEFAULT FALSE,
     foto_perfil VARCHAR(255) NOT NULL,
     foto_qr VARCHAR(255),
-    token VARCHAR(255),
-	validado bool default false,
-    foreign key (id_rol) references Rol(id)
-);
+    latitud DECIMAL(10, 8),
+    longitud DECIMAL(11, 8),
+    FOREIGN KEY (id_rol) REFERENCES Rol(id)
+);                                            
+
+INSERT INTO usuario (nombre, apellido, anio_nacimiento, genero, pais, ciudad, mail, usuario, clave, foto_perfil, puntos, nivel, token, validado, latitud, longitud)
+VALUES
+    ('Rocio', 'Crespo', 2000, 'femenino', 'Argentina', 'Buenos Aires', 'fan1casiangeles@gmail.com', 'rocio123', '1234', 'profile.png', 10700, 9, '7e3ec5530d7e3a4d460857cf96824a67', TRUE, -34.6037, -58.3816),
+    ('Jane', 'Smith', 1985, 'masculino', 'Reino Unido', 'Londres', 'janesmith@example.com', 'janesmith456', 'contrasena456', 'profile.png', 7820, 5, '9766ee80a3a2d8eb56a59f43b174ac0a', TRUE, 51.5074, -0.1278),
+    ('Juan', 'Pérez', 1988, 'masculino', 'España', 'Madrid', 'juanperez@example.com', 'juanperez789', 'clave789', 'profile.png', 100, 1, '8a83d994f94d1bf2c495b048f7e12f65', TRUE, 40.4168, -3.7038),
+    ('Rocio', 'Crespo', 2000, 'femenino', 'Argentina', 'Buenos Aires', 'belen@gmail.com', 'belen123', '1234', 'profile.png', 2, 1, '', TRUE, 0, 0);
 
 
 -- SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
@@ -46,16 +53,6 @@ CREATE TABLE usuario (
 -- GROUP BY U.id, U.usuario, U.nivel, U.puntos 
 -- ORDER BY U.puntos DESC;
 
-
-                                            
-INSERT INTO usuario (nombre, apellido, anio_nacimiento, genero, pais, ciudad, mail, usuario, clave, foto_perfil, puntos, nivel, token)
-VALUES
-	('Rocio', 'Crespo', 2000, 'femenino',  'Argentina', 'Buenos aires', 'fan1casiangeles@gmail.com', 'rocio123', '1234', 'profile.png',10700, 9, "7e3ec5530d7e3a4d460857cf96824a67"),
-     ('Jane', 'Smith', 1985,'masculino', 'Reino Unido', 'Londres', 'janesmith@example.com', 'janesmith456', 'contrasena456', 'profile.png',7820, 5, "9766ee80a3a2d8eb56a59f43b174ac0a"),
-    ('Juan', 'Pérez', 1988, 'masculino','España', 'Madrid', 'juanperez@example.com', 'juanperez789', 'clave789', 'profile.png',100, 1, "8a83d994f94d1bf2c495b048f7e12f65");
-INSERT INTO usuario (nombre, apellido, anio_nacimiento,genero,  pais, ciudad, mail, usuario, clave, foto_perfil, id_rol)
-VALUES
-	('Rocio', 'Crespo', 2000, 'femenino', 'Argentina', 'Buenos aires', 'belen@gmail.com', 'belen123', '1234', 'profile.png',2);
 
 CREATE TABLE IF NOT EXISTS Dificultad 
 (

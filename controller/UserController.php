@@ -74,13 +74,12 @@ class UserController
         $this->render->printView('registro', $data);
     }
 
-
     public function procesarAlta()
     {
-        echo $_POST['nombre'];
-        if (empty($_POST['usuario']) || empty($_POST['clave'] || empty($_POST['mail']))) {
-            $_SESSION["error"] = "Alguno de los campos era erroneo o vacio";
+        if (empty($_POST['nombre']) || empty($_POST['usuario']) || empty($_POST['clave']) || empty($_POST['mail']) || empty($_POST['latitud']) || empty($_POST['longitud'])) {
+            $_SESSION["error"] = "Todos los campos son obligatorios, incluyendo la ubicación en el mapa.";
             Redirect::to('/user/signin');
+            return;
         }
 
         $nombre = $_POST["nombre"];
@@ -93,8 +92,15 @@ class UserController
         $usuario = $_POST["usuario"];
         $clave = $_POST['clave'];
         $clave2 = $_POST['clave2'];
-        $token = $this->generateRandomToken();
+        $latitud = $_POST["latitud"];
+        $longitud = $_POST["longitud"];
 
+        // Verificar si se han proporcionado latitud y longitud
+        if (empty($latitud) || empty($longitud)) {
+            $_SESSION["error"] = "Por favor, selecciona una ubicación en el mapa.";
+            Redirect::to('/user/signin');
+            return;
+        }
 
         if (isset($_FILES["fileInput"]) && $_FILES["fileInput"]["error"] === UPLOAD_ERR_OK) {
             move_uploaded_file($_FILES["fileInput"]["tmp_name"], "./public/usuarios/" . $_FILES['fileInput']['name']);
@@ -119,7 +125,7 @@ class UserController
             $_SESSION["error"] = "El usuario ya existe";
             Redirect::to('/user/signin');
         }
-        $this->model->alta($nombre, $apellido, $anioNacimiento, $genero, $pais, $ciudad, $mail, $usuario, $clave, $fotoPerfil, $token);
+        $this->model->alta($nombre, $apellido, $anioNacimiento, $genero, $pais, $ciudad, $mail, $usuario, $clave, $fotoPerfil, $token, $latitud, $longitud);
 
         $idPerfil = $this->model->obtenerUltimoRegistrado();
         $fotoQR = $this->generarQR($idPerfil); // Llama a generarQR() para obtener el código QR
