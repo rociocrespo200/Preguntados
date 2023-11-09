@@ -56,9 +56,12 @@ class HomeEditorController
             ];
         }else if(isset($_GET['editor']) && $_GET['editor'] == "false"){
             $datos = [
+                'user' => $this->model->traerUsuario($_SESSION['usuario']['id']),
                 'titulo'=>'Sugerir',
                 'action'=> '/Sugerencias/agregarSugerencia'
             ];
+            $this->render->printViewSesion('administrarPregunta', $datos);
+
         }
 
 
