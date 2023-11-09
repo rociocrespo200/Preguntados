@@ -47,7 +47,7 @@ CREATE TABLE usuario (
 -- ORDER BY U.puntos DESC;
 
 
-                                            
+
 INSERT INTO usuario (nombre, apellido, anio_nacimiento, genero, pais, ciudad, mail, usuario, clave, foto_perfil, puntos, nivel, token)
 VALUES
 	('Rocio', 'Crespo', 2000, 'femenino',  'Argentina', 'Buenos aires', 'fan1casiangeles@gmail.com', 'rocio123', '1234', 'profile.png',10700, 9, "7e3ec5530d7e3a4d460857cf96824a67"),
@@ -57,7 +57,7 @@ INSERT INTO usuario (nombre, apellido, anio_nacimiento,genero,  pais, ciudad, ma
 VALUES
 	('Rocio', 'Crespo', 2000, 'femenino', 'Argentina', 'Buenos aires', 'belen@gmail.com', 'belen123', '1234', 'profile.png',2);
 
-CREATE TABLE IF NOT EXISTS Dificultad 
+CREATE TABLE IF NOT EXISTS Dificultad
 (
 	id INT PRIMARY KEY auto_increment,
     valor INT,

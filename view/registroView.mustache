@@ -1,5 +1,6 @@
 <main>
-
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSHHRCnBk-jtnX3bJ4gUgcRifJG5OrNwE&callback=initMap" async defer></script>
+   
     <div class="text-danger">
         {{error}}
     </div>
@@ -84,18 +85,53 @@
                     <input type="text"  name="clave" value="{{clave}}" required  class="form-control" placeholder="Ingrese la contraseña">
                 </div>
                 <div class="col">
-                    <label for="exampleInputEmail1">Contraseña</label>
+                    <label for="exampleInputEmail1">Repita Contraseña</label>
                     <input type="text"  name="clave2" value="{{clave2}}" required  class="form-control" placeholder="Repita la contraseña">
                 </div>
             </div>
-
-
-
-
-
         </div>
 
+                <body onload="initMap()">
+        <div id="mapa" style="width: 500px; height: 400px;"></div>
+        <!-- Campos ocultos para latitud y longitud -->
+        <input type="hidden" id="latitud" name="latitud">
+        <input type="hidden" id="longitud" name="longitud">
+
         <button type="submit" class="btn boton">Registrarse</button>
+
+<script>
+    var mapa;
+    var marcador;
+
+    function initMap() {
+        // Configuración inicial del mapa
+        var mapaConfig = {
+            center: { lat: -34.6686986, lng: -58.5614947 },
+            zoom: 12
+        };
+        mapa = new google.maps.Map(document.getElementById('mapa'), mapaConfig);
+
+        // Manejar la selección de ubicación en el mapa
+        mapa.addListener('click', function(event) {
+            placeMarker(event.latLng);
+        });
+    }
+
+    function placeMarker(location) {
+        if (marcador) {
+            marcador.setPosition(location);
+        } else {
+            marcador = new google.maps.Marker({
+                position: location,
+                map: mapa
+            });
+        }
+
+        // Actualizar los campos ocultos de latitud y longitud
+        document.getElementById('latitud').value = location.lat();
+        document.getElementById('longitud').value = location.lng();
+    }
+</script>
 
     </form>
 
