@@ -153,7 +153,7 @@ class UserController
             $mail->Host = 'smtp-mail.outlook.com';
             $mail->SMTPAuth = true;
             $mail->Username = 'roccrespo@alumno.unlam.edu.ar'; // Reemplaza con tu dirección de correo electrónico de Outlook
-            $mail->Password = 'H2O_46521541'; // Reemplaza con tu contraseña
+            $mail->Password = ''; // Reemplaza con tu contraseña
             $mail->SMTPSecure = 'tls';
             $mail->Port = 587;
 
