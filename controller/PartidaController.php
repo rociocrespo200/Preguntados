@@ -53,13 +53,15 @@ class PartidaController
         $respuesta = $this->model->buscarRespuestaPorId($_GET['id']);
 
 
+
         $datos = $this->traerDatos();
 
             if(!$this->model->validarRecargoDePagina($partida[0]['id'], $respuesta['id'])){
                 if($this->model->agregarRespuestaALaPartida($partida[0],$_GET['id'])) {
                     $this->actualizarPuntaje($partida[0], $respuesta);
 
-                    if (!$respuesta['esCorrecta'] == 1) {
+                    echo $respuesta['esCorrecta'];
+                    if ($respuesta['esCorrecta'] == 0) {
                         $datos['error'] = true;
                         $datos['incorrecta'] = "La respuesta es incorrecta";
                         $this->render->printViewSesion('partida', $datos);

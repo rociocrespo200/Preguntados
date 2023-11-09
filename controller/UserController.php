@@ -131,13 +131,12 @@ class UserController
 
     }
 
-    public function enviarMailDeValidacion()
-    {
+    public function enviarMailDeValidacion() {
 
         $mail = new PHPMailer(true);
         try {
             $token = $_SESSION['usuario']['token'];
-            $from = "drubio950@alumno.unlam.edu.ar";
+            $from = "roccrespo@alumno.unlam.edu.ar";
             $to = $_SESSION['usuario']['mail'];
             $subject = "Checking PHP mail";
             $message = "Estimado usuario, haga clic en el siguiente enlace para validar su cuenta: http://localhost/user/validarTocken?token=" . $token;
@@ -145,8 +144,8 @@ class UserController
             $mail->isSMTP();
             $mail->Host = 'smtp-mail.outlook.com';
             $mail->SMTPAuth = true;
-            $mail->Username = 'drubio950@alumno.unlam.edu.ar'; // Reemplaza con tu dirección de correo electrónico de Outlook
-            $mail->Password = '37241950Duilio'; // Reemplaza con tu contraseña
+            $mail->Username = 'roccrespo@alumno.unlam.edu.ar'; // Reemplaza con tu dirección de correo electrónico de Outlook
+            $mail->Password = 'H2O_46521541'; // Reemplaza con tu contraseña
             $mail->SMTPSecure = 'tls';
             $mail->Port = 587;
 
@@ -164,6 +163,7 @@ class UserController
         } catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
+
 
 
     }
