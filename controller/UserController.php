@@ -109,22 +109,22 @@ class UserController
             $fotoPerfil = "profile.png";
         }
 
-        if (!$this->model->validarUsuario($usuario) ||
-            !$this->model->validarCorreo($mail) ||
-            !$this->model->validarClave($clave)) {
-            $_SESSION["error"] = "Alguno de los campos era erroneo o vacio";
-            Redirect::to('/user/signin');
-        }
-
-        if (!$this->model->compararClaves($clave, $clave2)) {
-            $_SESSION["error"] = "Las claves no coinciden";
-            Redirect::to('/user/signin');
-        }
-
-        if (!$this->model->buscarUsuario($usuario)) {
-            $_SESSION["error"] = "El usuario ya existe";
-            Redirect::to('/user/signin');
-        }
+//        if (!$this->model->validarUsuario($usuario) ||
+//            !$this->model->validarCorreo($mail) ||
+//            !$this->model->validarClave($clave)) {
+//            $_SESSION["error"] = "Alguno de los campos era erroneo o vacio";
+//            Redirect::to('/user/signin');
+//        }
+//
+//        if (!$this->model->compararClaves($clave, $clave2)) {
+//            $_SESSION["error"] = "Las claves no coinciden";
+//            Redirect::to('/user/signin');
+//        }
+//
+//        if (!$this->model->buscarUsuario($usuario)) {
+//            $_SESSION["error"] = "El usuario ya existe";
+//            Redirect::to('/user/signin');
+//        }
         $this->model->alta($nombre, $apellido, $anioNacimiento, $genero, $pais, $ciudad, $mail, $usuario, $clave, $fotoPerfil, $token, $latitud, $longitud);
 
         $idPerfil = $this->model->obtenerUltimoRegistrado();

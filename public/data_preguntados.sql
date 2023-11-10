@@ -120,7 +120,8 @@ CREATE TABLE IF NOT EXISTS Categoria
 (
 	id INT PRIMARY KEY auto_increment,
     categoria VARCHAR(50),
-    imagen VARCHAR(50)
+    imagen VARCHAR(50),
+    habilitada bool default true
     
 );
 

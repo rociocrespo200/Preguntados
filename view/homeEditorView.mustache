@@ -1,7 +1,8 @@
 <form class="form-inline w-100 justify-content-center " id="form_filtros">
-    <input class="form-control mr-sm-2 w-75" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+    <a href="/homeEditor/verHome?tipo=pregunta" class="btn btn-outline-light my-2 my-sm-0" type="submit">Preguntas</a>
+    <a href="/homeEditor/verHome?tipo=categoria" class="btn btn-outline-light my-2 my-sm-0" type="submit">Categorias</a>
 </form>
+<!--cambios ..-->
 
 <main id="main" style="padding-top: 20px; padding-bottom: 195px; justify-content: flex-start;">
 
@@ -18,19 +19,77 @@
         </div>
     {{/preguntas}}
 
+        {{#categorias}}
+            <div class="lista " style="padding: 10px 30px 10px 50px ">
 
-            <div class="popup"  id="popup_eliminar" style="display: none">
-                <a class="popup_cruz" onclick="ocultarPopUp('popup_eliminar')">✖</a>
-                <p>Esta seguro que desea eliminar esta pregunta? Una vez eliminada, tambien se eliminaran las respuestas asociadas a la pregunta y no podra restaurarse la informacion.</p>
+                    <img class="icon" src="../public/{{imagen}}" alt="" style="width: 50px; height: 50px">
+
+                <p>{{categoria}}</p>
                 <div>
-                    <a href="/homeEditor/eliminarPregunta" class="btn btn-danger btn_danger boton_eliminar" onclick="mostrarPopUp('popup_eliminar')">Eliminar</a>
+<!--                    <a href="/homeEditor/administrarCategoria?id={{id}}" class="btn boton boton_modificar">Modificar</a>-->
+                    <a onclick="mostrarPopUp('popup_modificar')" class="btn boton boton_modificar">Modificar</a>
+                    <a href="/homeEditor/eliminarCategoria?id={{id}}" class="btn btn-danger btn_danger boton_eliminar">Eliminar</a>
                 </div>
             </div>
 
 
+        <form class="popup2"  id="popup_modificar" style="display: none; top: 15%" action="/homeEditor/modificarCategoria?id={{id}}" method="post" enctype="multipart/form-data">
+            <a class="popup_cruz" onclick="ocultarPopUp('popup_modificar')">✖</a>
+            <p>Modificar categoria</p>
+            <form class="infoBasica" style="align-items: baseline">
+                <div id="infoBasica_div1">
+                    <img id="imagen_enviada" src="../public/{{imagen}}" alt="">
+                    <div id="editarImagen" >
+                        <img src="../public/icono_editar.png" alt="" class="w-100 p-3">
+                        <input type="file" value="{{imagen}}" id="fileInput" name="fileInput" style="display: none;">
+                    </div>
+                </div>
+                <div class="w-100">
+                    <div class="form-row form-group">
+                        <div class="col">
+                            <input type="text"  name="categoria" value="{{categoria}}" required class="form-control" placeholder="Ingrese su nombre">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button type="submit" class="btn boton boton_modificar">Modificar</button>
+                </div>
+            </form>
+            </form>
+
+            <form class="popup2"  id="popup_agregar" style="display: none; top: 15%" action="/homeEditor/modificarCategoria" method="post" enctype="multipart/form-data">
+            <a class="popup_cruz" onclick="ocultarPopUp('popup_agregar')">✖</a>
+            <p>Agregar categoria</p>
+            <form class="infoBasica" style="align-items: baseline">
+                <div id="infoBasica_div1">
+                    <img id="imagen_enviada" src="../public/categoria.png" alt="">
+                    <div id="editarImagen" >
+                        <img src="../public/icono_editar.png" alt="" class="w-100 p-3">
+                        <input type="file"  id="fileInput" name="fileInput" style="display: none;">
+                    </div>
+                </div>
+                <div class="w-100">
+                    <div class="form-row form-group">
+                        <div class="col">
+                            <input type="text"  name="categoria"  required class="form-control" placeholder="Ingrese su nombre">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button type="submit" class="btn boton boton_modificar">Agregar</button>
+                </div>
+            </form>
+            </form>
+        {{/categorias}}
+
+
+
     </section>
 
-    <a href="/homeEditor/administrarPregunta?editor=true" class="btn boton" id="boton_flotante">Agregar pregunta</a>
-</main>
-<script src="../public/js/popup.js"></script>
+    {{#preguntas}}<a href="/homeEditor/administrarPregunta?editor=true" class="btn boton" id="boton_flotante">Agregar pregunta</a>{{/preguntas}}
+    {{#categorias}}<a onclick="mostrarPopUp('popup_agregar')" class="btn boton" id="boton_flotante">Agregar categoria</a>{{/categorias}}
 
+
+</main>
+<script src="../public/js/administrar.js"></script>
+<script src="../public/js/popup.js"></script>
