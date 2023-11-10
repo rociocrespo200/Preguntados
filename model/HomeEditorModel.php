@@ -16,6 +16,10 @@ class HomeEditorModel
         return $this->database->query("SELECT * FROM `pregunta` WHERE habilitada = 1");
     }
 
+    public function traerListaDeCategorias(){
+        return $this->database->query("SELECT * FROM `categoria` WHERE habilitada = 1");
+    }
+
     public function traerPregunta($id){
         return $this->database->query("SELECT * FROM `pregunta` WHERE id = $id")[0];
     }
@@ -73,5 +77,19 @@ class HomeEditorModel
 
 
 
+    public function actualizarCategoria($idCategoria,$categoria,$fotoCategoria){
+        $this->database->query("UPDATE categoria SET categoria = '$categoria', imagen = '$fotoCategoria'  WHERE id = $idCategoria");
+    }
 
+    public function agregarCategoria($categoria,$fotoCategoria){
+
+        $this->database->query("INSERT INTO categoria (categoria, imagen) VALUES ('$categoria','$fotoCategoria')");
+
+    }
+
+    public function eliminarCategoria($idCategoria){
+        $this->database->query("UPDATE pregunta SET habilitada = 0 WHERE id_categoria = $idCategoria");
+        $this->database->query("UPDATE categoria SET habilitada = 0 WHERE id = $idCategoria");
+
+    }
 }

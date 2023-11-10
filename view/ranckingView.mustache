@@ -3,34 +3,39 @@
         
     {{#topTres}}
         <section class="ranking_global">
-            <a href="/profile/verperfil?id={{id}}" class="a_ranking">
+            <div class="a_ranking">
                 <div class="div_ranking rounded-left div_ranking_numero"><span>#{{posicion}}</span></div>
                 <div class="div_ranking div_ranking_nombre" ><img class="img_perfil" src="../public/usuarios/{{foto_perfil}}" alt=""> <span class="nombre">{{usuarios}}</span></div>
                 <div class="div_ranking" style="border-left: 3px solid #733bac ;"><span>{{puntos}}</span> puntos</div>
                 <div class="div_ranking" style="border-left: 3px solid #733bac ;"><span>{{nivel}}</span> nivel</div>
                 <div class="div_ranking" style="border-left: 3px solid #733bac ;"><span>{{cantidadDePartidas}}</span> partidas</div>
                 <div class="div_ranking" style="border-left: 3px solid #733bac ;" ><span>{{preguntas}}</span> preguntas</div>
-                <div class="div_ranking rounded-right" style="border-left: 3px solid #733bac ;" ><img src="../public/qrs/{{foto_qr}}" alt=""></div>
-            </a>
+                <div class="div_ranking rounded-right" style="border-left: 3px solid #733bac ;" ><button onclick="mostrarPopUp('popup_qr')" class="btn btn-outline-light my-2 my-sm-0 m-3">Ver QR</button></div>
+            </div>
         </section>
     {{/topTres}}
 
     {{#ranking}}
         <section class="ranking_global">
-            <a href="/profile/verperfil?id={{id}}" class="a_ranking">
+            <div class="a_ranking">
                 <div class="div_ranking2 rounded-left div_ranking_numero2"><span>#{{posicion}}</span></div>
                 <div class="div_ranking2 div_ranking_nombre" ><img class="img_perfil" src="../public/usuarios/{{foto_perfil}}" alt=""> <span class="nombre">{{usuarios}}</span></div>
                 <div class="div_ranking2" style="border-left: 3px solid #3d4079 ;"><span>{{puntos}}</span> puntos</div>
                 <div class="div_ranking2" style="border-left: 3px solid #3d4079 ;"><span>{{nivel}}</span> nivel</div>
                 <div class="div_ranking2" style="border-left: 3px solid #3d4079 ;"><span>{{cantidadDePartidas}}</span> partidas</div>
                 <div class="div_ranking2" style="border-left: 3px solid #3d4079 ;" ><span>{{preguntas}}</span> preguntas</div>
-                <div class="div_ranking2 rounded-right" style="border-left: 3px solid #3d4079 ;" ><img src="../public/qrs/{{foto_qr}}" alt=""></div>
+                <div class="div_ranking2 rounded-right" style="border-left: 3px solid #3d4079 ;" ><button onclick="mostrarPopUp('popup_qr')" class="btn btn-outline-light my-2 my-sm-0 m-3">Ver QR</button></div>
 
-            </a>
+            </div>
         </section>
+
+
+        <div class="popup2"  id="popup_qr" style="display: none; top: 15%; max-width: 600px; left: auto">
+            <a class="popup_cruz" onclick="ocultarPopUp('popup_qr')">✖</a>
+            <img src="../public/qrs/{{foto_qr}}" alt="" style="width: 100%; min-width: 300px">
+        </div>
     {{/ranking}}
-        
-        
+
 
     </section>
 
@@ -38,3 +43,5 @@
 
 
 </main>
+
+<script src="../public/js/popup.js"></script>

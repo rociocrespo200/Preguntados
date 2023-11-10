@@ -111,6 +111,7 @@ class UserController
             $fotoPerfil = "profile.png";
         }
 
+
         if (!$this->model->validarUsuario($usuario) ||
             !$this->model->validarCorreo($mail) ||
             !$this->model->validarClave($clave)) {
@@ -128,6 +129,7 @@ class UserController
             Redirect::to('/user/signin');
         }
         $this->model->alta($nombre, $apellido, $anioNacimiento, $genero, $pais, $ciudad, $mail, $usuario, $clave, $fotoPerfil, $token);
+
 
         $idPerfil = $this->model->obtenerUltimoRegistrado();
         $fotoQR = $this->generarQR($idPerfil); // Llama a generarQR() para obtener el código QR

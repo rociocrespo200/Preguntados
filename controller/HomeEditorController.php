@@ -20,6 +20,26 @@ class HomeEditorController
         $this->render->printViewEditor('homeEditor', $datos);
     }
 
+    public function verHome()
+    {
+        if($_GET['tipo'] == "pregunta"){
+            $datos = [
+                'user' => $this->model->traerUsuario($_SESSION['usuario']['id']),
+                'preguntas' => $this->model->traerListaDePreguntas()
+            ];
+            $this->render->printViewEditor('homeEditor', $datos);
+        }
+        if($_GET['tipo'] == "categoria"){
+            $datos = [
+                'user' => $this->model->traerUsuario($_SESSION['usuario']['id']),
+                'categorias' => $this->model->traerListaDeCategorias()
+            ];
+            $this->render->printViewEditor('homeEditor', $datos);
+        }
+
+    }
+
+
     public function administrarPregunta(){
 
         if(isset($_GET['id'])){
@@ -121,6 +141,37 @@ class HomeEditorController
         } else {
             $this->model->actualizarPregunta2($idPreg,$pregunta,$correcta,$incorrecta1,$categoria,$dificultad);
         }
+        $this->show();
+    }
+
+
+
+    public function eliminarCategoria(){
+        $this->model->eliminarCategoria($_GET['id']);
+
+        $this->show();
+    }
+
+
+    public function modificarCategoria(){
+        $categoria = $_POST['categoria'];
+
+        if (isset($_FILES["fileInput"]) && $_FILES["fileInput"]["error"] === UPLOAD_ERR_OK) {
+            move_uploaded_file($_FILES["fileInput"]["tmp_name"], "./public/" . $_FILES['fileInput']['name']);
+            $fotoCategoria = $_FILES['fileInput']['name'];
+        } else {
+            $fotoCategoria = "categoria.png";
+        }
+
+        if(isset($_GET['id'])){
+            $idPreg=$_GET['id'];
+            $this->model->actualizarCategoria($idPreg,$categoria,$fotoCategoria);
+        }else{
+            $this->model->agregarCategoria($categoria,$fotoCategoria);
+        }
+
+
+
         $this->show();
     }
 

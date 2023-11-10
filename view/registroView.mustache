@@ -1,6 +1,6 @@
 <main>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSHHRCnBk-jtnX3bJ4gUgcRifJG5OrNwE&callback=initMap" async defer></script>
-   
+
     <div class="text-danger">
         {{error}}
     </div>
@@ -50,20 +50,18 @@
             </div>
 
             <div class="form-row form-group">
+                <div class="col" style="display: flex; align-items: flex-end">
+                    <a onclick="mostrarPopUp('popup_mapa')" class="btn btn-outline-light my-2 my-sm-0 m-3">Seleccionar ubicaion en un mapa</a>
+
+                </div>
                 <div class="col">
-                    <label class="form-label" for="pais">País</label>
-                    <select id="pais" class="form-control " name="pais" required>
-                        <option value="Argentina">Argentina</option>
-                        <option value="Uruguay">Uruguay</option>
-                        <option value="Chile">Chile</option>
-                    </select>
+                    <label class="form-label" for="pais">Latitud</label>
+                    <input id="latitud" name="latitud"  class="form-control" readonly >
                 </div>
 
                 <div class="col">
-                    <label class="form-label" for="ciudad">Ciudad</label>
-                    <select id="ciudad" class="form-control " name="ciudad" required>
-                        <!-- Opciones de ciudad se cargarán dinámicamente aquí -->
-                    </select>
+                    <label class="form-label" for="ciudad">Longitud</label>
+                    <input id="longitud" name="longitud"  class="form-control" readonly>
                 </div>
             </div>
 
@@ -91,14 +89,18 @@
             </div>
         </div>
 
-                <body onload="initMap()">
-        <div id="mapa" style="width: 500px; height: 400px;"></div>
-        <!-- Campos ocultos para latitud y longitud -->
-        <input type="hidden" id="latitud" name="latitud">
-        <input type="hidden" id="longitud" name="longitud">
 
         <button type="submit" class="btn boton">Registrarse</button>
 
+        <div class="popup2"  id="popup_mapa" style="display: none; top: 15%; max-width: 600px; left: auto">
+            <a class="popup_cruz" onclick="ocultarPopUp('popup_mapa')">✖</a>
+            <body onload="initMap()">
+            <div id="mapa" style="width: 500px; height: 400px;"></div>
+            <!-- Campos ocultos para latitud y longitud -->
+        </div>
+
+
+        <script src="../public/js/popup.js"></script>
 <script>
     var mapa;
     var marcador;
