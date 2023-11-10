@@ -74,6 +74,7 @@ class UserController
         $this->render->printView('registro', $data);
     }
 
+
     public function procesarAlta()
     {
         if (empty($_POST['nombre']) || empty($_POST['usuario']) || empty($_POST['clave']) || empty($_POST['mail']) || empty($_POST['latitud']) || empty($_POST['longitud'])) {
@@ -92,6 +93,7 @@ class UserController
         $usuario = $_POST["usuario"];
         $clave = $_POST['clave'];
         $clave2 = $_POST['clave2'];
+        $token = $this->generateRandomToken();
         $latitud = $_POST["latitud"];
         $longitud = $_POST["longitud"];
 
@@ -109,23 +111,25 @@ class UserController
             $fotoPerfil = "profile.png";
         }
 
-//        if (!$this->model->validarUsuario($usuario) ||
-//            !$this->model->validarCorreo($mail) ||
-//            !$this->model->validarClave($clave)) {
-//            $_SESSION["error"] = "Alguno de los campos era erroneo o vacio";
-//            Redirect::to('/user/signin');
-//        }
-//
-//        if (!$this->model->compararClaves($clave, $clave2)) {
-//            $_SESSION["error"] = "Las claves no coinciden";
-//            Redirect::to('/user/signin');
-//        }
-//
-//        if (!$this->model->buscarUsuario($usuario)) {
-//            $_SESSION["error"] = "El usuario ya existe";
-//            Redirect::to('/user/signin');
-//        }
-        $this->model->alta($nombre, $apellido, $anioNacimiento, $genero, $pais, $ciudad, $mail, $usuario, $clave, $fotoPerfil, $token, $latitud, $longitud);
+
+        if (!$this->model->validarUsuario($usuario) ||
+            !$this->model->validarCorreo($mail) ||
+            !$this->model->validarClave($clave)) {
+            $_SESSION["error"] = "Alguno de los campos era erroneo o vacio";
+            Redirect::to('/user/signin');
+        }
+
+        if (!$this->model->compararClaves($clave, $clave2)) {
+            $_SESSION["error"] = "Las claves no coinciden";
+            Redirect::to('/user/signin');
+        }
+
+        if (!$this->model->buscarUsuario($usuario)) {
+            $_SESSION["error"] = "El usuario ya existe";
+            Redirect::to('/user/signin');
+        }
+        $this->model->alta($nombre, $apellido, $anioNacimiento, $genero, $pais, $ciudad, $mail, $usuario, $clave, $fotoPerfil, $token);
+
 
         $idPerfil = $this->model->obtenerUltimoRegistrado();
         $fotoQR = $this->generarQR($idPerfil); // Llama a generarQR() para obtener el código QR
@@ -137,13 +141,12 @@ class UserController
 
     }
 
-    public function enviarMailDeValidacion()
-    {
+    public function enviarMailDeValidacion() {
 
         $mail = new PHPMailer(true);
         try {
             $token = $_SESSION['usuario']['token'];
-            $from = "drubio950@alumno.unlam.edu.ar";
+            $from = "roccrespo@alumno.unlam.edu.ar";
             $to = $_SESSION['usuario']['mail'];
             $subject = "Checking PHP mail";
             $message = "Estimado usuario, haga clic en el siguiente enlace para validar su cuenta: http://localhost/user/validarTocken?token=" . $token;
@@ -151,8 +154,8 @@ class UserController
             $mail->isSMTP();
             $mail->Host = 'smtp-mail.outlook.com';
             $mail->SMTPAuth = true;
-            $mail->Username = 'drubio950@alumno.unlam.edu.ar'; // Reemplaza con tu dirección de correo electrónico de Outlook
-            $mail->Password = '37241950Duilio'; // Reemplaza con tu contraseña
+            $mail->Username = 'roccrespo@alumno.unlam.edu.ar'; // Reemplaza con tu dirección de correo electrónico de Outlook
+            $mail->Password = ''; // Reemplaza con tu contraseña
             $mail->SMTPSecure = 'tls';
             $mail->Port = 587;
 
@@ -170,6 +173,7 @@ class UserController
         } catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
+
 
 
     }

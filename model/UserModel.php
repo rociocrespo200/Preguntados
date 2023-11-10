@@ -13,6 +13,8 @@ class UserModel {
         VALUES ('$nombre', '$apellido', '$anioNacimiento', '$pais','$genero', '$ciudad', '$mail', '$usuario', '$clave', '$fotoPerfil', '$token', '$latitud', '$longitud')";
         Logger::info('Usuario alta: ' . $sql);
         $this->database->query($sql);
+
+
     }
 
     public function compararClaves($clave1, $clave2){

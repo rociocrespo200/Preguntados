@@ -52,10 +52,11 @@ class PartidaModel
         //$respuesta = $this->buscarRespuestaPorId($idRespuesta);
         $this->database->query("UPDATE `preguntados`.`partida` SET `preguntasContestadas` = '" . ($partida['preguntasContestadas'] + 1) . "' WHERE `id` =" . $partida['id']);
         $this->database->query("INSERT INTO partida_respuestas (id_partida, id_respuesta) VALUES (" . $partida['id'] . "," . $idRespuesta . ")");
-
         $this->actualizarDificultad($this->buscarRespuestaPorId($idRespuesta));
+            return true;
         }else{
             $this->agregarRespuestaNulaALaPartida($partida, $idRespuesta);
+            return false;
         }
     }
 
@@ -156,7 +157,7 @@ class PartidaModel
         echo '$fecha_actual->getTimestamp() = ' .$fecha_actual->getTimestamp(). "<br>";
         echo '$fecha_ultima_pregunta->getTimestamp() = ' . $fecha_ultima_pregunta->getTimestamp(). "<br>";
         echo '$intervalo = ' . $intervalo . "<br>";
-        if ($intervalo > 10) {
+        if ($intervalo > 500000) {
             return false;
         }
 
