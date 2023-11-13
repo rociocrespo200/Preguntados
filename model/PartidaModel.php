@@ -80,10 +80,12 @@ class PartidaModel
         return $this->database->query("SELECT * FROM Categoria  WHERE Categoria.id =" . $id);
     }
 
-    public function sumarPuntos($partida, $puntosPartida, $puntosUsuario)
-    {
-        $this->database->query("UPDATE `preguntados`.`partida` SET `puntos` = '" . $puntosPartida . "' WHERE `id` =" . $partida['id']);
-        $this->database->query("UPDATE `preguntados`.`usuario` SET `puntos` = '" . $puntosUsuario . "' WHERE `id` =" . $partida['id_usuario']);
+    public function sumarPuntos($partida, $puntosPartida){
+
+        $this->database->query("UPDATE `preguntados`.`partida` SET `puntos` = `puntos` + '" . $puntosPartida . "' WHERE `id` =" . $partida['id']);
+        $this->database->query("UPDATE `preguntados`.`usuario` SET `puntos` = `puntos` + '" . $puntosPartida . "' WHERE `id` =" . $partida['id_usuario']);
+        $devolver = $this->database->query("select PUNTOS from usuario WHERE `id` =" . $partida['id_usuario']);
+        return $devolver;
     }
 
 
@@ -134,12 +136,12 @@ class PartidaModel
         $vecesContestada = (int) $this->database->query("SELECT count(*) FROM partida_respuestas pr JOIN respuesta r ON r.id = pr.id_respuesta WHERE r.id_pregunta =" . $respuesta['id_pregunta'])[0][0];
         $correctas = (int) $this->database->query("SELECT count(*) FROM partida_respuestas pr JOIN respuesta r ON r.id = pr.id_respuesta WHERE r.esCorrecta = 1 AND r.id_pregunta =" . $respuesta['id_pregunta'])[0][0];
 
-        $promedioCorrectas = $vecesContestada * $correctas / 100;
-
-        if($promedioCorrectas > 60){
+        $promedioCorrectas = (100 * $correctas)/ $vecesContestada;
+        echo $promedioCorrectas . " Estoy acaaaaa ";
+        if($promedioCorrectas > 80){
             //FACIL
             $this->database->query("UPDATE `preguntados`.`pregunta` SET `id_dificultad` = '1' WHERE `id` =" . $respuesta['id_pregunta']);
-        }else if($promedioCorrectas > 30){
+        }else if($promedioCorrectas > 60){
             //MODERADO
             $this->database->query("UPDATE `preguntados`.`pregunta` SET `id_dificultad` = '2' WHERE `id` =" . $respuesta['id_pregunta']);
         }else{
