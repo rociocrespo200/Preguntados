@@ -1,4 +1,6 @@
 <main style="padding-top: 100px; ">
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSHHRCnBk-jtnX3bJ4gUgcRifJG5OrNwE&callback=initMap" async defer></script>
+
     <section id="main_scroll">
 
     {{#user}}
@@ -23,136 +25,143 @@
             </div>
         {{/estadisticas}}
 
+        <form method="post" action="/profile/modificarUsuario" enctype="multipart/form-data" style="margin-bottom: 75px;" >
 
-    <form method="post" action="/profile/modificarUsuario" enctype="multipart/form-data" style="margin-bottom: 75px;" >
+            <div class="div_form_titulos">
+                <h2>Datos personales del usuario </h2>
+            </div>
 
+            <div class="div_form_campos">
 
-        <div class="div_form_titulos">
-            <h2>Datos personales del usuario </h2>
-        </div>
-
-        <div class="div_form_campos">
-
-            <div class="infoBasica">
-                <div id="infoBasica_div1">
-                    <img id="imagen_enviada" src="../public/usuarios/{{foto_perfil}}" alt="">
-                    <div id="editarImagen" >
-                        <img src="../public/icono_editar.png" alt="" class="w-100 p-3">
-                        <input type="file" id="fileInput" name="fileInput" style="display: none;">
-                    </div>
-                </div>
-                <div class="w-100">
-                    <div class="form-row form-group">
-                        <div class="col">
-                            <label for="exampleInputEmail1">Nombre</label>
-                            <input type="text"  name="nombre" value="{{nombre}}" required class="form-control" placeholder="Ingrese su nombre">
-                        </div>
-                        <div class="col">
-                            <label for="exampleInputEmail1">Apellido</label>
-                            <input type="text" name="apellido" value="{{apellido}}" required class="form-control" placeholder="Ingrese su apellido">
+                <div class="infoBasica">
+                    <div id="infoBasica_div1">
+                        <img id="imagen_enviada" src="../public/usuarios/{{foto_perfil}}" alt="">
+                        <div id="editarImagen" >
+                            <img src="../public/icono_editar.png" alt="" class="w-100 p-3">
+                            <input type="file" id="fileInput" name="fileInput" style="display: none;">
                         </div>
                     </div>
-                    <div class="form-row form-group">
-                        <div class="col">
-                            <label class="form-label" for="anio_nacimiento">Año de Nacimiento</label>
-                            <input type="number" id="anio_nacimiento" class="form-control " name="anio_nacimiento" value="{{anio_nacimiento}}" required/>
+                    <div class="w-100">
+                        <div class="form-row form-group">
+                            <div class="col">
+                                <label for="exampleInputEmail1">Nombre</label>
+                                <input type="text"  name="nombre" value="{{nombre}}" required class="form-control" placeholder="Ingrese su nombre">
+                            </div>
+                            <div class="col">
+                                <label for="exampleInputEmail1">Apellido</label>
+                                <input type="text" name="apellido" value="{{apellido}}" required class="form-control" placeholder="Ingrese su apellido">
+                            </div>
                         </div>
-                        <div class="col">
-                            <label for="inputState">Genero</label>
-                            <select id="inputState" name="genero" class="form-control">
-                                <option value="masculino">Masculino</option>
-                                <option value="femenino">Fenenino</option>
-                                <option value="">Prefiero no decirlo</option>
-                            </select>
+                        <div class="form-row form-group">
+                            <div class="col">
+                                <label class="form-label" for="anio_nacimiento">Año de Nacimiento</label>
+                                <input type="number" id="anio_nacimiento" class="form-control " name="anio_nacimiento" value="{{anio_nacimiento}}" required/>
+                            </div>
+                            <div class="col">
+                                <label for="inputState">Genero</label>
+                                <select id="inputState" name="genero" class="form-control">
+                                    <option value="masculino">Masculino</option>
+                                    <option value="femenino">Femenino</option>
+                                    <option value="">Prefiero no decirlo</option>
+                                </select>
+                            </div>
                         </div>
+                    </div>
+                </div>
+
+                <div class="form-row form-group">
+                    <div class="col" style="display: flex; align-items: flex-end">
+                        <a onclick="mostrarPopUp('popup_mapa')" class="btn btn-outline-light my-2 my-sm-0 m-3">Seleccionar ubicacion en un mapa</a>
+                    </div>
+                    <div class="col">
+                        <label class="form-label" for="latitud">Latitud</label>
+                        <input id="latitud" name="latitud" class="form-control" value="{{latitud}}" readonly>
+                    </div>
+                    <div class="col">
+                        <label class="form-label" for="longitud">Longitud</label>
+                        <input id="longitud" name="longitud" class="form-control" value="{{longitud}}" readonly>
+                    </div>
+                </div>
+
+                <div class="form-row form-group">
+                    <div class="col">
+                        <label for="exampleInputEmail1">Usuario</label>
+                        <input type="text" name="usuario" class="form-control"  value="{{usuario}}" placeholder="Ingrese su usuario">
+                    </div>
+                    <div class="col">
+                        <label for="exampleInputEmail1">Email address {{^validar}}<img class="verificado" src="../public/icon_verificado.png"><p id="p_verificado">verificado</p>{{/validar}}</label>
+                        <input type="email"  name="mail" value="{{mail}}" required  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese su email">
+                    </div>
+                </div>
+
+                <div class="form-row form-group">
+                    <div class="col">
+                        <label for="exampleInputEmail1">Contraseña</label>
+                        <input type="text"  name="clave" value="{{clave}}" required  class="form-control" placeholder="Ingrese la contraseña">
+                    </div>
+                    <div class="col">
+                        <label for="exampleInputEmail1">Contraseña</label>
+                        <input type="text"  name="clave2" value="{{clave2}}" required  class="form-control" placeholder="Repita la contraseña">
                     </div>
                 </div>
 
             </div>
 
-            <div class="form-row form-group">
-                <div class="col">
-                    <label class="form-label" for="pais">País</label>
-                    <select id="pais" class="form-control " name="pais"  required>
-                        <option value="Argentina">Argentina</option>
-                        <option value="Uruguay">Uruguay</option>
-                        <option value="Chile">Chile</option>
-                    </select>
-                </div>
-
-                <div class="col">
-                    <label class="form-label" for="ciudad">Ciudad</label>
-                    <select id="ciudad" class="form-control " name="ciudad" required>
-                        <!-- Opciones de ciudad se cargarán dinámicamente aquí -->
-                    </select>
-                </div>
+            <div class="d-flex" id="form_botones">
+                <button type="submit" class="btn boton">Modificar datos</button>
+                {{#validar}}<a href="/user/enviarMailDeValidacion" type="submit" class="btn btn-danger btn_danger">Validar mail</a>{{/validar}}
+                <a href="/profile/cerrarSesion" type="submit" class="btn btn-danger btn_danger">Cerrar sesion</a>
             </div>
 
+        </form>
 
-
-            <div class="form-row form-group">
-                <div class="col">
-                    <label for="exampleInputEmail1">Usuario</label>
-                    <input type="text" name="usuario" class="form-control"  value="{{usuario}}" placeholder="Ingrese su usuario">
-                </div>
-                <div class="col">
-                    <label for="exampleInputEmail1">Email address {{^validar}}<img class="verificado" src="../public/icon_verificado.png"><p id="p_verificado">verificado</p>{{/validar}}</label>
-                    <input type="email"  name="mail" value="{{mail}}" required  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese su email">
-                </div>
-            </div>
-
-            <div class="form-row form-group">
-                <div class="col">
-                    <label for="exampleInputEmail1">Contraseña</label>
-                    <input type="text"  name="clave" value="{{clave}}" required  class="form-control" placeholder="Ingrese la contraseña">
-                </div>
-                <div class="col">
-                    <label for="exampleInputEmail1">Contraseña</label>
-                    <input type="text"  name="clave2" value="{{clave2}}" required  class="form-control" placeholder="Repita la contraseña">
-                </div>
-            </div>
-
+        <div class="popup2" id="popup_mapa" style="display: none; top: 15%; max-width: 600px; left: auto">
+            <a class="popup_cruz" onclick="ocultarPopUp('popup_mapa')">✖</a>
+            <body onload="initMap()">
+                <div id="mapa" style="width: 500px; height: 400px;"></div>
+                <!-- Campos ocultos para latitud y longitud -->
+            </body>
         </div>
 
-        <div class="d-flex" id="form_botones">
-            <button type="submit" class="btn boton">Modificar datos</button>
-            {{#validar}}<a href="/user/enviarMailDeValidacion" type="submit" class="btn btn-danger btn_danger">Validar mail</a>{{/validar}}
-            <a href="/profile/cerrarSesion" type="submit" class="btn btn-danger btn_danger">Cerrar sesion</a>
-        </div>
+    <script src="../public/js/popup.js"></script>
+<script src="../public/js/administrar.js"></script>
+<script>
+    var mapa;
+    var marcador;
 
-    </form>
+    function initMap() {
+        // Configuración inicial del mapa
+        var mapaConfig = {
+            center: { lat: -34.6686986, lng: -58.5614947 },
+            zoom: 12
+        };
+        mapa = new google.maps.Map(document.getElementById('mapa'), mapaConfig);
 
+        // Manejar la selección de ubicación en el mapa
+        mapa.addListener('click', function (event) {
+            placeMarker(event.latLng);
+        });
+    }
 
-        <script src="../public/js/administrar.js"></script>
-        <script>
-            const paisSelect = document.getElementById('pais');
-            const ciudadSelect = document.getElementById('ciudad');
+    function placeMarker(location) {
+        if (marcador) {
+            marcador.setPosition(location);
+        } else {
+            marcador = new google.maps.Marker({
+                position: location,
+                map: mapa
+            });
+        }
 
-            const ciudadesPorPais = {
-                Argentina: ["Buenos Aires", "Córdoba", "Santa Fe"],
-                Uruguay: ["Montevideo", "Canelones", "Chihuaha"],
-                Chile: ["Santiago", "Valparaíso", "La Serena"]
-            };
+        // Actualizar los campos ocultos de latitud y longitud
+        document.getElementById('latitud').value = location.lat();
+        document.getElementById('longitud').value = location.lng();
+    }
 
-            function actualizarCiudades() {
-                const paisSeleccionado = paisSelect.value;
-                const ciudades = ciudadesPorPais[paisSeleccionado] || [];
-                // Limpiar las opciones actuales del select de ciudad
-                ciudadSelect.innerHTML = "";
-                ciudades.forEach((ciudad) => {
-                    const option = document.createElement("option");
-                    option.value = ciudad;
-                    option.textContent = ciudad;
-                    ciudadSelect.appendChild(option);
-                });
-            }
+    // Llamar a initMap después de cargar la página
+    window.onload = initMap;
+</script>
 
-            // Asignar un evento de cambio al select de país para actualizar las ciudades
-            paisSelect.addEventListener("change", actualizarCiudades);
-
-            // Llamar a la función una vez para cargar las ciudades iniciales
-            actualizarCiudades();
-        </script>
     {{/user}}
 
 
@@ -217,21 +226,20 @@
                 </div>
 
                 <div class="form-row form-group">
-                    <div class="col">
-                        <label class="form-label" for="pais">País</label>
-                        <select id="pais" class="form-control " name="pais"  required>
-                            <option value="Pais">{{pais}}</option>
+                <div class="col" style="display: flex; align-items: flex-end">
+                    <a onclick="mostrarPopUp('popup_mapa')" class="btn btn-outline-light my-2 my-sm-0 m-3">Ver ubicacion en un mapa</a>
 
-                        </select>
-                    </div>
-
-                    <div class="col">
-                        <label class="form-label" for="ciudad">Ciudad</label>
-                        <select id="ciudad" class="form-control " name="ciudad" required>
-                            <option value="Ciudad">{{ciudad}}</option>
-                        </select>
-                    </div>
                 </div>
+                <div class="col">
+                    <label class="form-label" for="pais">Latitud</label>
+                    <input id="latitud" name="latitud"  class="form-control" readonly >
+                </div>
+
+                <div class="col">
+                    <label class="form-label" for="ciudad">Longitud</label>
+                    <input id="longitud" name="longitud"  class="form-control" readonly>
+                </div>
+            </div>
 
 
 
@@ -245,16 +253,19 @@
                         <input type="email"  name="mail" value="{{mail}}" required  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese su email" disabled>
                     </div>
                 </div>
-
-
             </div>
-
-
         </form>
+    
+            <div class="popup2"  id="popup_mapa" style="display: none; top: 15%; max-width: 600px; left: auto">
+            <a class="popup_cruz" onclick="ocultarPopUp('popup_mapa')">✖</a>
+            <body onload="initMap()">
+            <div id="mapa" style="width: 500px; height: 400px;"></div>
+            <!-- Campos ocultos para latitud y longitud -->
+        </div>
+
     {{/otroUser}}
 
 
 </section>
 
 </main>
-
