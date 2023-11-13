@@ -631,3 +631,34 @@ a.btn-outline-light:hover{
     background-color: rgba(0, 0, 0, 0.3);
 }
 
+.section_historial{
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin: 100px ;
+    margin-bottom: 50px;
+    gap: 10px;
+    overflow-y: scroll;
+    height: 100vh;
+    justify-content: center;
+}
+
+.historial{
+    width: 400px;
+    height: 390px;
+    padding: 0 30px;
+    background-color: #2A2C59;
+    color: rgb(255, 255, 255);
+    border-radius: 6px ;
+}
+.historial_desc{
+    padding-top: 10px;
+}
+.historial_puntos{
+    font-size: 22px;
+    color: greenyellow;
+}
+
+.historial_fecha{
+    border-bottom: 3px solid #393b75;
+}

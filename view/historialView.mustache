@@ -1,7 +1,23 @@
 <main>
-    <div class="contenedor_centrado">
+    <section class="section_historial">
+        {{#historial}}
+            <div class="historial">
+                <div class="historial_fecha p-3 text-center">{{fecha}}</div>
+                <div class="historial_desc d-flex justify-content-between align-items-center">
+                    <p>Preguntas contestadas: {{preguntasContestadas}} <br>
+                        Mejor categoria: Arte <br>
+                        Peor categoria: Deportes</p>
+                    <p class="historial_puntos text-center">
+                        <span>+{{puntos}}</span> <br>
+                        puntos
+                    </p>
+                </div>
+                <div class="pb-4 pt-4 text-center">
+                    <h6>Preguntas correctas por categoria</h6>
+                    <img class="w-100" src="../public/grafico.png" alt="">
+                </div>
+            </div>
+        {{/historial}}
 
-        <p>HISTORIAL DE PARTIDAS DEL USUARIO</p>
-
-    </div>
+    </section>
 </main>
