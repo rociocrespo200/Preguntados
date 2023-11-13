@@ -87,8 +87,6 @@ class UserController
         $apellido = $_POST["apellido"];
         $anioNacimiento = $_POST["anio_nacimiento"];
         $genero = $_POST["genero"];
-        $pais = $_POST["pais"];
-        $ciudad = $_POST["ciudad"];
         $mail = $_POST["mail"];
         $usuario = $_POST["usuario"];
         $clave = $_POST['clave'];
@@ -128,7 +126,7 @@ class UserController
             $_SESSION["error"] = "El usuario ya existe";
             Redirect::to('/user/signin');
         }
-        $this->model->alta($nombre, $apellido, $anioNacimiento, $genero, $pais, $ciudad, $mail, $usuario, $clave, $fotoPerfil, $token);
+        $this->model->alta($nombre, $apellido, $anioNacimiento, $genero, $latitud, $mail, $longitud, $usuario, $clave, $fotoPerfil, $token);
 
 
         $idPerfil = $this->model->obtenerUltimoRegistrado();
