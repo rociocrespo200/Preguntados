@@ -16,8 +16,8 @@ CREATE TABLE usuario (
     apellido VARCHAR(255) NOT NULL,
     anio_nacimiento INT NOT NULL,
     genero VARCHAR(255) NOT NULL,
-    pais VARCHAR(255) NOT NULL,
-    ciudad VARCHAR(255) NOT NULL,
+   latitud DECIMAL(15, 10) NOT NULL,
+    longitud DECIMAL(15, 10) NOT NULL,
     mail VARCHAR(255) NOT NULL,
     usuario VARCHAR(255) NOT NULL,
     clave VARCHAR(255) NOT NULL,
@@ -28,8 +28,6 @@ CREATE TABLE usuario (
 	validado bool default false,
     foto_perfil VARCHAR(255) NOT NULL,
     foto_qr VARCHAR(255),
-    token VARCHAR(255),
-	validado bool default false,
     foreign key (id_rol) references Rol(id)
 );
 
@@ -48,14 +46,14 @@ CREATE TABLE usuario (
 
 
 
-INSERT INTO usuario (nombre, apellido, anio_nacimiento, genero, pais, ciudad, mail, usuario, clave, foto_perfil, puntos, nivel, token)
+INSERT INTO usuario (nombre, apellido, anio_nacimiento, genero, latitud, longitud, mail, usuario, clave, foto_perfil, puntos, nivel, token)
 VALUES
-	('Rocio', 'Crespo', 2000, 'femenino',  'Argentina', 'Buenos aires', 'fan1casiangeles@gmail.com', 'rocio123', '1234', 'profile.png',10700, 9, "7e3ec5530d7e3a4d460857cf96824a67"),
-     ('Jane', 'Smith', 1985,'masculino', 'Reino Unido', 'Londres', 'janesmith@example.com', 'janesmith456', 'contrasena456', 'profile.png',7820, 5, "9766ee80a3a2d8eb56a59f43b174ac0a"),
-    ('Juan', 'Pérez', 1988, 'masculino','España', 'Madrid', 'juanperez@example.com', 'juanperez789', 'clave789', 'profile.png',100, 1, "8a83d994f94d1bf2c495b048f7e12f65");
-INSERT INTO usuario (nombre, apellido, anio_nacimiento,genero,  pais, ciudad, mail, usuario, clave, foto_perfil, id_rol)
+	('Rocio', 'Crespo', 2000, 'femenino',-34.67854116939218, -58.56046473173828, 'fan1casiangeles@gmail.com', 'rocio123', '1234', 'profile.png',10700, 9, "7e3ec5530d7e3a4d460857cf96824a67"),
+     ('Jane', 'Smith', 1985,'masculino',-34.67854116939218, -58.56046473173828, 'janesmith@example.com', 'janesmith456', 'contrasena456', 'profile.png',7820, 5, "9766ee80a3a2d8eb56a59f43b174ac0a"),
+    ('Juan', 'Pérez', 1988, 'masculino',-34.67854116939218, -58.56046473173828, 'juanperez@example.com', 'juanperez789', 'clave789', 'profile.png',100, 1, "8a83d994f94d1bf2c495b048f7e12f65");
+INSERT INTO usuario (nombre, apellido, anio_nacimiento,genero, latitud, longitud, mail, usuario, clave, foto_perfil, id_rol)
 VALUES
-	('Rocio', 'Crespo', 2000, 'femenino', 'Argentina', 'Buenos aires', 'belen@gmail.com', 'belen123', '1234', 'profile.png',2);
+	('Rocio', 'Crespo', 2000, 'femenino',-34.67854116939218, -58.56046473173828, 'belen@gmail.com', 'belen123', '1234', 'profile.png',2);
 
 CREATE TABLE IF NOT EXISTS Dificultad
 (
