@@ -20,6 +20,8 @@ include_once ('controller/RanckingController.php');
 include_once ('controller/HomeEditorController.php');
 include_once ('controller/SugerenciasController.php');
 include_once ('controller/ReportesController.php');
+include_once ('controller/GraficosController.php');
+include_once("model/GraficosModel.php");
 include_once("model/HomeEditorModel.php");
 include_once("model/SugerenciasModel.php");
 include_once("model/ReportesModel.php");
@@ -57,6 +59,11 @@ class Configuracion {
     public function getHomeController() {
         $model = new HomeModel($this->getDatabase());
         return new HomeController($this->getRender(), $model);
+    }
+
+    public function getGraficosController() {
+        $model = new GraficosModel($this->getDatabase());
+        return new GraficosController($this->getRender(), $model);
     }
 
     public function getUserController() {

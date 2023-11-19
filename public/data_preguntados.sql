@@ -53,7 +53,8 @@ VALUES
     ('Juan', 'Pérez', 1988, 'masculino',-34.67854116939218, -58.56046473173828, 'juanperez@example.com', 'juanperez789', 'clave789', 'profile.png',100, 1, "8a83d994f94d1bf2c495b048f7e12f65");
 INSERT INTO usuario (nombre, apellido, anio_nacimiento,genero, latitud, longitud, mail, usuario, clave, foto_perfil, id_rol)
 VALUES
-	('Rocio', 'Crespo', 2000, 'femenino',-34.67854116939218, -58.56046473173828, 'belen@gmail.com', 'belen123', '1234', 'profile.png',2);
+	('Rocio', 'Crespo', 2000, 'femenino',-34.67854116939218, -58.56046473173828, 'belen@gmail.com', 'belen123', '1234', 'profile.png',2),
+    ('Rocio', 'Crespo', 2000, 'femenino',-34.67854116939218, -58.56046473173828, 'administrador123@gmail.com', 'administrador123', '1234', 'profile.png',3);
 
 CREATE TABLE IF NOT EXISTS Dificultad
 (

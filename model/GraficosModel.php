@@ -1,6 +1,6 @@
 <?php
 
-class HistorialModel
+class GraficosModel
 {
     private $database;
 
@@ -16,9 +16,5 @@ class HistorialModel
     }
 
 
-    public function traerHistorial($id){ //agregado
 
-        return $this->database->query("SELECT * FROM `partida` WHERE id_usuario = $id ORDER BY fecha DESC");
-
-    }
 }

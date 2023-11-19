@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link rel="stylesheet" href="../public/css/style.css"/>
+    <link rel="stylesheet" href="../public/css/editor.css"/>
+    <!--Bootstrap-->
+    <link rel="icon" href="./imagenes/favicon.ico" type="image/vnd.microsoft.icon">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var currentPath = window.location.pathname; // Obtiene la ruta actual
+            $('#menu_normal a').each(function() {
+                var linkPath = $(this).attr('href'); // Obtiene la ruta del enlace
+                if (currentPath === linkPath) {
+                    $(this).addClass('navegacion_seleccionado');
+                }
+            });
+        });
+    </script>
+    <title>Preguntados</title>
+
+</head>
+
+<body>
+<header class="d-flex">
+
+    <nav id="menu_hamburguesa">
+        <input type="checkbox" id="menu">
+        <label for="menu"> ☰ </label>
+        <ul>
+            <li> <a href="/homeEditor/show">Graficos</a> </li>
+        </ul>
+    </nav>
+
+
+    <img class="logo" src="../../public/logo_rainbow.png" alt="" id="logo1">
+    <img class="logo " src="../../public/logo.png" alt=""  id="logo2">
+
+
+    <nav id="menu_normal">
+        <a href="/homeEditor/show" class="btn navegacion">Graficos</a>
+    </nav>
+
+    <a href="/profile/show" class="header_usuario">
+
+        <div id="usuario_divPrincipal">
+            <div id="usuario_divPrincipal_div">
+                <p>{{user.nombre}} {{user.apellido}} - {{user.usuario}}<br><span class="etiqueta">ADMINISTRADOR</span></p>
+            </div>
+            <img class="" src="../../public/usuarios/{{user.foto_perfil}}" alt="">
+        </div>
+
+
+    </a>
+
+</header>
