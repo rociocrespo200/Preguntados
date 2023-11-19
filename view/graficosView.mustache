@@ -19,35 +19,42 @@
 
 
 
-        let grafico1 = document.getElementById('miGrafico').getContext('2d');
 
-        // Crea un objeto de gráfico de barras
+
+        // GRAFICO DE BARRAS
+        let grafico1 = document.getElementById('miGrafico').getContext('2d');
         let graficoFunct1 = new Chart(grafico1, {
             type: 'bar',
             data: {
-                labels: ['Etiqueta 1', 'Etiqueta 2', 'Etiqueta 3'],
+                labels: ['Menores', 'Adultos', 'Jubilados'],
                 datasets: [{
-                    label: 'Mi Primer Gráfico',
+                    label: "Grupos de edad",
                     data: [10, 20, 15],
                     backgroundColor: ['red', 'blue', 'green']
                 }]
             }
         });
 
-    let grafico2 = document.getElementById('miGrafico2').getContext('2d');
 
-    // Crea un objeto de gráfico de barras
-    let graficoFunct2 = new Chart(grafico2, {
-        type: 'bar',
-        data: {
-            labels: ['Etiqueta 1', 'Etiqueta 2', 'Etiqueta 3'],
-            datasets: [{
-                label: 'Mi Primer Gráfico',
-                data: [10, 20, 15],
-                backgroundColor: ['red', 'blue', 'green']
-            }]
-        }
-    });
+        //GRAFICO DE TORTA
+        var contextoTorta = document.getElementById('miGrafico2').getContext('2d');
+
+        // Crea un gráfico de torta
+        var graficoTorta = new Chart(contextoTorta, {
+            type: 'doughnut', // Tipo de gráfico de torta
+            data: {
+                labels: ['Mujeres', 'Hombres'],
+                datasets: [{
+                    data: [30, 50], // Valores para cada categoría
+                    backgroundColor: ['pink', 'blue'] // Colores para cada categoría
+                }]
+            },
+            options: {
+                // Puedes agregar opciones adicionales aquí, como leyenda, título, etc.
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
 
 
 
