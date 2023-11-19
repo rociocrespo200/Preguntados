@@ -662,3 +662,8 @@ a.btn-outline-light:hover{
 .historial_fecha{
     border-bottom: 3px solid #393b75;
 }
+.div_graficos{
+    width: 40%;
+    padding: 20px;
+    border-radius: 6px;
+}

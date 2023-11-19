@@ -1,5 +1,60 @@
-<main>
-    <div class="contenedor_centrado">
-        Graficos
+<form class="form-inline w-100 justify-content-center " id="form_filtros" action="/graficos/traerDatos" method="post">
+    <input class="form-control mr-sm-2 w-25" type="number" id="dia" name="dia"  placeholder="dia" aria-label="Search">
+    <input class="form-control mr-sm-2 w-25" type="number" id="mes" name="mes"  placeholder="mes" aria-label="Search">
+    <input class="form-control mr-sm-2 w-25" type="number" id="anio"  name="anio" placeholder="año" aria-label="Search">
+    <button class="btn btn-outline-light my-2 my-sm-0" type="submit" >Buscar</button>
+    <p id="fecha">{{dia}}</p>
+</form>
+<main id="main" style="display: flex; flex-direction: row; gap: 15px">
+
+    <div class="div_graficos" style="background: #cad0f3">
+        <canvas id="miGrafico" style="color: white"></canvas>
+    </div>
+    <div class="div_graficos" style="background: #cad0f3">
+        <canvas id="miGrafico2" style="color: white"></canvas>
     </div>
 </main>
+
+<script>
+
+
+
+        let grafico1 = document.getElementById('miGrafico').getContext('2d');
+
+        // Crea un objeto de gráfico de barras
+        let graficoFunct1 = new Chart(grafico1, {
+            type: 'bar',
+            data: {
+                labels: ['Etiqueta 1', 'Etiqueta 2', 'Etiqueta 3'],
+                datasets: [{
+                    label: 'Mi Primer Gráfico',
+                    data: [10, 20, 15],
+                    backgroundColor: ['red', 'blue', 'green']
+                }]
+            }
+        });
+
+    let grafico2 = document.getElementById('miGrafico2').getContext('2d');
+
+    // Crea un objeto de gráfico de barras
+    let graficoFunct2 = new Chart(grafico2, {
+        type: 'bar',
+        data: {
+            labels: ['Etiqueta 1', 'Etiqueta 2', 'Etiqueta 3'],
+            datasets: [{
+                label: 'Mi Primer Gráfico',
+                data: [10, 20, 15],
+                backgroundColor: ['red', 'blue', 'green']
+            }]
+        }
+    });
+
+
+
+
+
+
+
+
+
+</script>
