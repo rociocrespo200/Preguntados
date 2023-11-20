@@ -17,8 +17,12 @@ class GraficosController
             'usuarioPuntos' => $_SESSION['usuario']['puntos'],
             'nivel' => $_SESSION['usuario']['nivel'],
             'user' => $this->model->traerUsuario($_SESSION['usuario']['id']),//agregado
-
+            'graficos' => [
+                'cantGenero' => $this->model->genero(null),
+                'cantEdad' => $this->model->edad(null),
+            ]
         ];
+
         $this->render->printViewAdmin('graficos', $datos);//crea una vista, con el constructor de esta clase, llamada home
     }
 

@@ -3,7 +3,7 @@
     <input class="form-control mr-sm-2 w-25" type="number" id="mes" name="mes"  placeholder="mes" aria-label="Search">
     <input class="form-control mr-sm-2 w-25" type="number" id="anio"  name="anio" placeholder="año" aria-label="Search">
     <button class="btn btn-outline-light my-2 my-sm-0" type="submit" >Buscar</button>
-    <p id="fecha">{{dia}}</p>
+    <p id="fecha">{{graficos.cantGenero.femeninos}}</p>
 </form>
 <main id="main" style="display: flex; flex-direction: row; gap: 15px">
 
@@ -29,8 +29,8 @@
                 labels: ['Menores', 'Adultos', 'Jubilados'],
                 datasets: [{
                     label: "Grupos de edad",
-                    data: [10, 20, 15],
-                    backgroundColor: ['red', 'blue', 'green']
+                    data: [{{graficos.cantEdad.menores}}, {{graficos.cantEdad.adultos}}, {{graficos.cantEdad.jubilados}}],
+                    backgroundColor: ['#dc5b5b', '#ceb522', '#d77041']
                 }]
             }
         });
@@ -45,8 +45,8 @@
             data: {
                 labels: ['Mujeres', 'Hombres'],
                 datasets: [{
-                    data: [30, 50], // Valores para cada categoría
-                    backgroundColor: ['pink', 'blue'] // Colores para cada categoría
+                    data: [{{graficos.cantGenero.femeninos}}, {{graficos.cantGenero.masculinos}}], // Valores para cada categoría
+                    backgroundColor: ['#da74a2', '#3aa9b9'] // Colores para cada categoría
                 }]
             },
             options: {
@@ -55,6 +55,7 @@
                 maintainAspectRatio: false
             }
         });
+
 
 
 
