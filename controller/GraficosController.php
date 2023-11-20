@@ -20,8 +20,13 @@ class GraficosController
             'graficos' => [
                 'cantGenero' => $this->model->genero(null),
                 'cantEdad' => $this->model->edad(null),
+                'porcentajeCorrectas' => $this->model->porcentajeCorrectas(null),
             ]
         ];
+
+
+
+        //print_r($datos);
 
         $this->render->printViewAdmin('graficos', $datos);//crea una vista, con el constructor de esta clase, llamada home
     }

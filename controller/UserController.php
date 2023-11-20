@@ -55,7 +55,7 @@ class UserController
         ];
 
         if ($_SESSION['usuario']['id_rol'] == 2) $this->render->printViewEditor('homeEditor', $datos);
-        if ($_SESSION['usuario']['id_rol'] == 3) $this->render->printViewAdmin('graficos', $datos);
+        if ($_SESSION['usuario']['id_rol'] == 3) Redirect::to('/graficos/show');
         else $this->render->printViewSesion('home', $datos);
     }
 

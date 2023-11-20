@@ -5,14 +5,36 @@
     <button class="btn btn-outline-light my-2 my-sm-0" type="submit" >Buscar</button>
     <p id="fecha">{{graficos.cantGenero.femeninos}}</p>
 </form>
-<main id="main" style="display: flex; flex-direction: row; gap: 15px">
+<main id="main" style=" gap: 15px">
 
-    <div class="div_graficos" style="background: #cad0f3">
-        <canvas id="miGrafico" style="color: white"></canvas>
-    </div>
-    <div class="div_graficos" style="background: #cad0f3">
-        <canvas id="miGrafico2" style="color: white"></canvas>
-    </div>
+    <section id="main_scroll">
+        <div class="puntaje">
+            <div class="puntaje_div">
+                <span></span>
+                <p>cantidad de preguntas creadas</p>
+            </div>
+            <div class="puntaje_div">
+                <span></span>
+                <p>cantidad de usuarios nuevos</p>
+            </div>
+        </div>
+        <div class="w-100 d-flex justify-content-center " style="gap: 20px;">
+            <div class="div_graficos" style="background: rgba(202,208,243,0.93)">
+                <canvas id="miGrafico" style="color: white"></canvas>
+
+            </div>
+            <div class="div_graficos" style="background: #cad0f3">
+                <canvas id="miGrafico2" style="color: white"></canvas>
+            </div>
+        </div>
+        <div class="w-100 d-flex justify-content-center " style="gap: 20px;">
+            <div class="div_graficos" style="background: #cad0f3">
+                <canvas id="miGrafico3" style="color: white"></canvas>
+            </div>
+        </div>
+
+    </section>
+
 </main>
 
 <script>
@@ -24,7 +46,7 @@
         // GRAFICO DE BARRAS
         let grafico1 = document.getElementById('miGrafico').getContext('2d');
         let graficoFunct1 = new Chart(grafico1, {
-            type: 'bar',
+            type: 'pie',
             data: {
                 labels: ['Menores', 'Adultos', 'Jubilados'],
                 datasets: [{
@@ -34,6 +56,32 @@
                 }]
             }
         });
+
+        let grafico3 = document.getElementById('miGrafico3').getContext('2d');
+        let porcentajeGrafico3 = [];
+        let nombreGrafico3 = [];
+
+            {{#graficos.porcentajeCorrectas}}
+            porcentajeGrafico3.push({{porcentajes}})
+            nombreGrafico3.push("{{usuarios}}")
+            {{/graficos.porcentajeCorrectas}};
+
+        console.log(porcentajeGrafico3);
+        console.log(nombreGrafico3);
+        let graficoFunct3 = new Chart(grafico3, {
+            type: 'bar',
+            data: {
+                labels: nombreGrafico3,
+                datasets: [{
+                    label: "Porcentaje de preguntas",
+                    data: porcentajeGrafico3,
+                    backgroundColor: ['rgba(0,210,239,0.19)'],
+                    borderColor: 'rgba(0,182,206,0.53)',// Color del borde
+                    borderWidth: 2,// Ancho del borde
+                }]
+            }
+        });
+
 
 
         //GRAFICO DE TORTA

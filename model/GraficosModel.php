@@ -29,4 +29,24 @@ class GraficosModel
              FROM usuario;")[0];
     }
 
+    public function porcentajeCorrectas($fecha)
+    {
+        $vecesContestada = $this->database->query("SELECT  COUNT(*) AS totales, u.usuario FROM partida p JOIN partida_respuestas pr ON p.id = pr.id_partida JOIN usuario u  ON u.id = p.id_usuario GROUP BY u.id;");
+        $correctas = $this->database->query("SELECT COUNT(*) AS correctas, u.usuario FROM partida p JOIN partida_respuestas pr ON p.id = pr.id_partida JOIN usuario u ON u.id = p.id_usuario JOIN respuesta r ON r.id = pr.id_respuesta WHERE r.esCorrecta = 1 GROUP BY u.id");
+
+        $result = [];
+
+        for ($i = 0; $i < sizeof($vecesContestada); $i++) {
+            $promedioCorrectas = (100 * $correctas[$i]['correctas'])/ $vecesContestada[$i]['totales'];
+            $obj = [
+                'usuarios' => $vecesContestada[$i]['usuario'],
+                'porcentajes' => $promedioCorrectas
+                ];
+            array_push($result,$obj);
+        }
+
+
+        return $result;
+    }
+
 }
