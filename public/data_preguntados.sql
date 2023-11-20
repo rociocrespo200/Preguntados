@@ -22,7 +22,7 @@ CREATE TABLE usuario (
     usuario VARCHAR(255) NOT NULL,
     clave VARCHAR(255) NOT NULL,
     puntos INT default 0,
-    nivel INT default 1,
+    nivel varchar(50) default "Novato",
     id_rol int default 1,
     token VARCHAR(255),
 	validado bool default false,
