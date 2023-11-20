@@ -1,6 +1,39 @@
 
 <main id="main">
 
+    <div class="popup2"  id="popup_rep" style="display: none; top: 15%; padding:0; max-width: 100%; left: auto">
+        <form method="post" action="/reportes/agregarReporte" style="margin:auto; width:100%" enctype="multipart/form-data">
+
+            <div class="div_form_titulos">
+                <h2>Reportar pregunta</h2>
+            </div>
+
+            <div class="div_form_campos">
+                <div class="form-group">
+                    <label for="pregunta">Pregunta</label>
+                    <select id="preguntas" class="form-control" name="id_pregunta" required>
+                        <option selected value="{{preguntaActual.id}}">{{preguntaActual.pregunta}}</option>
+                        {{#preguntas}}
+                            <option value="{{id}}">{{pregunta}}</option>
+                        {{/preguntas}}
+                    </select>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="motivo">Indique el motivo del reporte</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" maxlength="250" name="motivo" required placeholder="Maximo de 250 caracteres"></textarea>
+                </div>
+            </div>
+
+            <div class="div_botones">
+                <a href="/home/show" class="btn boton boton_modificar">Volver</a>
+                <button type="submit" onclick="terminarPartida()"  class="btn btn-danger btn_danger boton_eliminar" >Enviar reporte</button>
+            </div>
+
+        </form>
+    </div>
+
     <div class="div_tiempo">
         <progress value="0" max="2500" id="barra_progreso"></progress>
         <p id="p_tiempo">10s</p>
@@ -35,47 +68,50 @@
         </div>
     </div>
 
-    <a href="/reportes/vistaFormReporte?preguntaActual={{data.pregunta.id}}" class="btn btn-danger  btn_danger" onclick="mandarConAJAX({{data.pregunta.id}})" id="boton_flotante">Reportar pregunta</a>
+    <!-- <a  class="btn btn-danger  btn_danger" onclick="sugerirPreg({{data.pregunta.id}})" id="boton_flotante">Reportar pregunta</a>-->
+    <a href="#" class="btn btn-danger btn_danger" onclick="mostrarPopUp('popup_rep', {{data.pregunta.id}})" id="boton_flotante">Reportar pregunta</a>
 
 </main>
+<div id="popupContainer" style="display: none;"></div>
 
-    {{#error}}
+{{#error}}
 
-        {{#recarga}}
-            <div class="popup"  id="popup_recarga" >
-                <p>¡¡ FIN DE LA PARTIDA !!</p>
-                <p>{{recarga}}</p>
-                <span>{{partida.puntos}} puntos</span>
-            </div>
-        {{/recarga}}
+    {{#recarga}}
+        <div class="popup"  id="popup_recarga" >
+            <p>¡¡ FIN DE LA PARTIDA !!</p>
+            <p>{{recarga}}</p>
+            <span>{{partida.puntos}} puntos</span>
+        </div>
+    {{/recarga}}
 
-        {{#incorrecta}}
+    {{#incorrecta}}
         <div class="popup" id="popup_incorrecta">
             <p>¡¡ FIN DE LA PARTIDA !!</p>
             <p>{{incorrecta}}</p>
             <span>{{partida.puntos}} puntos</span>
         </div>
-        {{/incorrecta}}
+    {{/incorrecta}}
 
-        {{#tiempo}}
+    {{#tiempo}}
         <div class="popup" id="popup_tiempo">
             <p>¡¡ FIN DE LA PARTIDA !!</p>
             <p>{{tiempo}}</p>
             <span>{{partida.puntos}} puntos</span>
         </div>
-        {{/tiempo}}
+    {{/tiempo}}
 
-        <script>
-            var audio_incorrecta = new Audio('../public/sound/respuesta_incorrecta.mp3');
-            audio_incorrecta.play();
-            document.getElementById('main').style.filter = "brightness(0.4)";
-            setTimeout(function() { window.location.href = '/home'}, 3000);
-        </script>
+    <script>
+        var audio_incorrecta = new Audio('../public/sound/respuesta_incorrecta.mp3');
+        audio_incorrecta.play();
+        document.getElementById('main').style.filter = "brightness(0.4)";
+        setTimeout(function() { window.location.href = '/home'}, 3000);
+    </script>
 
-    {{/error}}
+{{/error}}
 
 <script >
 
+    var tiempoDetenido = false;
     var popup_incorrecta = document.getElementById("popup_incorrecta")
     var popup_tiempo = document.getElementById("popup_tiempo")
     var popup_recarga = document.getElementById("popup_tiempo")
@@ -83,8 +119,6 @@
     var audio_corrrecta = new Audio('../public/sound/respuesta_correcta.mp3');
     var audio_incorrecta = new Audio('../public/sound/respuesta_incorrecta.mp3');
     var preguntaContestada = false;
-
-
 
 
     function contestar(idContenedor, esCorrecta){
@@ -95,7 +129,7 @@
             audio_corrrecta.play();
 
         }else {
-      tiempoDeEspera = 0;
+            tiempoDeEspera = 0;
         }
         setTimeout(function() {
             window.location.href = '/partida/contestar?id=' + idContenedor;
@@ -104,21 +138,21 @@
 
     }
 
-
     var tiempoTotal = 2500;
     var tiempoRestante = tiempoTotal;
     var barraProgreso = document.getElementById('barra_progreso');
     var p_tiempo = document.getElementById('p_tiempo');
 
     var intervalo = setInterval(function () {
-        tiempoRestante--;
-        var porcentajeCompletado = tiempoTotal - tiempoRestante
+        if (!tiempoDetenido) {
+            tiempoRestante--;
+            var porcentajeCompletado = tiempoTotal - tiempoRestante;
 
-        barraProgreso.value = tiempoTotal - tiempoRestante;
-        if (tiempoRestante <= 0) {
-            clearInterval(intervalo);
-            window.location.href = '/partida/contestar?tiempo_agotado=true';
-
+            barraProgreso.value = tiempoTotal - tiempoRestante;
+            if (tiempoRestante <= 0) {
+                clearInterval(intervalo);
+                window.location.href = '/partida/contestar?tiempo_agotado=true';
+            }
         }
     }, 1);
 
@@ -128,6 +162,71 @@
         p_tiempo.textContent = (tiempoPrueba < 0) ? 0 + "s"  : tiempoPrueba + "s";
     }, 1000);
 
+
+
+
+</script>
+<script src="../public/js/popup.js">
+</script>
+
+
+<script>
+
+    function mostrarPopUp(idPopUp,idPregActual) {
+        console.log(idPopUp);
+        tiempoDetenido = true;
+        let popup = document.getElementById(idPopUp);
+        popup.style.display = "flex";
+        cargarPreguntas(idPregActual);
+    }
+
+    function cerrarPopUp(idPopUp) {
+        let popup = document.getElementById(idPopUp);
+        popup.style.display = "none";
+        tiempoDetenido = false; // Reanudar el tiempo
+    }
+
+    function cargarPreguntas(idPregActual) {
+        console.log(idPregActual);
+        var xhr = new XMLHttpRequest();
+        var url = `http://localhost/reportes/traerPreguntas?idPreguntaActual=${idPregActual}`;
+
+        xhr.open('GET', url, true);
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    var data = JSON.parse(xhr.responseText);
+                    console.log(data);
+                    llenarSelect(data);
+
+                } else {
+                    console.error('Error en la solicitud:', xhr.status);
+                }
+            }
+        };
+
+        xhr.send();
+    }
+
+    function llenarSelect(data) {
+        var select = document.getElementById('preguntas');
+        select.innerHTML = '';
+
+        var preguntaActual = data.preguntaActual;
+
+        var optionActual = document.createElement('option');
+        optionActual.value = preguntaActual.id;
+        optionActual.textContent = preguntaActual.pregunta;
+        select.appendChild(optionActual);
+
+        data.preguntas.forEach(function (pregunta) {
+            var option = document.createElement('option');
+            option.value = pregunta.id;
+            option.textContent = pregunta.pregunta;
+            select.appendChild(option);
+        });
+    }
 
 
 
