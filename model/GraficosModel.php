@@ -49,4 +49,12 @@ class GraficosModel
         return $result;
     }
 
+    public function preguntasCreadas($fecha){ //agregado
+        return $this->database->query("SELECT COUNT(*) AS cantidad_sugerencias_aprobadas FROM sugerencia WHERE aprobada = true;")[0][0];
+   }
+    public function usuariosNuevos($fecha){ //agregado
+        return $this->database->query("SELECT COUNT(*) FROM usuario WHERE fecha >= DATE_SUB(NOW(), INTERVAL 1 MONTH);")[0][0];
+    }
+
+
 }

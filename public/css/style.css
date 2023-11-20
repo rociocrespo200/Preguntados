@@ -663,7 +663,7 @@ a.btn-outline-light:hover{
     border-bottom: 3px solid #393b75;
 }
 .div_graficos{
-    width: 40%;
+    max-height: 500px;
     padding: 20px;
     border-radius: 6px;
 }

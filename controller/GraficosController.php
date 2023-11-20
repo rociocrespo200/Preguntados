@@ -21,6 +21,8 @@ class GraficosController
                 'cantGenero' => $this->model->genero(null),
                 'cantEdad' => $this->model->edad(null),
                 'porcentajeCorrectas' => $this->model->porcentajeCorrectas(null),
+                'usuariosNuevos' => $this->model->usuariosNuevos(null),
+                'preguntasCreadas' => $this->model->preguntasCreadas(null),
             ]
         ];
 

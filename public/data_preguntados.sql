@@ -28,6 +28,7 @@ CREATE TABLE usuario (
 	validado bool default false,
     foto_perfil VARCHAR(255) NOT NULL,
     foto_qr VARCHAR(255),
+	fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
     foreign key (id_rol) references Rol(id)
 );
 
@@ -79,43 +80,12 @@ CREATE TABLE partida (
     FOREIGN KEY (id_dificultad) REFERENCES Dificultad(id)
 );
 
--- SELECT count(*) FROM partida_respuestas pr JOIN respuesta r ON r.id = pr.id_respuesta WHERE r.esCorrecta = 1 AND r.id_pregunta = 69;
 
 INSERT INTO partida (id_usuario, preguntasContestadas) VALUES (1 ,4),(2, 5),(3, 8),(4, 2);
 INSERT INTO partida (id_usuario, preguntasContestadas) VALUES (3 ,4),(2, 5),(3, 8),(1, 2);
 INSERT INTO partida (id_usuario, preguntasContestadas) VALUES (1 ,7),(1, 5),(2, 8),(4, 12);
 INSERT INTO partida (id_usuario, preguntasContestadas) VALUES (3 ,4),(2, 5),(1, 18),(4, 5);
 
--- SELECT *
--- FROM partida P
--- JOIN Dificultad D ON P.id_dificultad = D.id;
-
-/*
-		--------- ACTUALIZAR PUNTOS ---------
-UPDATE `preguntados`.`partida` SET `puntos` = '122' WHERE (`id` = '1');
-
-		--------- ACTUALIZAR preguntasContestadas ---------
-UPDATE `preguntados`.`partida` SET `preguntasContestadas` = '10' WHERE (`id` = '1');
-
-		--------- ACTUALIZAR dificultad ---------
-UPDATE `preguntados`.`partida` SET `dificultad` = 'Dificil' WHERE (`id` = '1');
-*/
-
--- SELECT * FROM Usuario;
-
--- SELECT
---     P.id AS Pregunta_ID,
---     P.pregunta AS Pregunta,
---     MAX(CASE WHEN R.esCorrecta = 1 THEN R.respuesta END) AS Respuesta_correcta,
---     GROUP_CONCAT(CASE WHEN R.esCorrecta = 0 THEN R.respuesta END ORDER BY R.id) AS Respuestas_incorrectas,
---     C.categoria AS Categoria,
---     D.dificultad AS Nivel_de_Dificultad
--- FROM
---     Pregunta AS P
--- JOIN Respuesta AS R ON P.id = R.id_pregunta
--- JOIN Categoria AS C ON P.id_categoria = C.id
--- JOIN Dificultad AS D ON P.id_dificultad = D.id
--- GROUP BY P.id, P.pregunta, C.categoria, D.dificultad;
 
 
 CREATE TABLE IF NOT EXISTS Categoria 
@@ -181,6 +151,7 @@ CREATE TABLE reporte (
 CREATE TABLE sugerencia (
 	id INT auto_increment PRIMARY KEY,
 	fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
+    aprobada bool default false,
 	id_usuario INT NOT NULL,
 	pregunta VARCHAR(255) NOT NULL,
 	id_categoria INT NOT NULL,

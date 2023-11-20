@@ -3,32 +3,30 @@
     <input class="form-control mr-sm-2 w-25" type="number" id="mes" name="mes"  placeholder="mes" aria-label="Search">
     <input class="form-control mr-sm-2 w-25" type="number" id="anio"  name="anio" placeholder="año" aria-label="Search">
     <button class="btn btn-outline-light my-2 my-sm-0" type="submit" >Buscar</button>
-    <p id="fecha">{{graficos.cantGenero.femeninos}}</p>
 </form>
 <main id="main" style=" gap: 15px">
 
     <section id="main_scroll">
         <div class="puntaje">
             <div class="puntaje_div">
-                <span></span>
-                <p>cantidad de preguntas creadas</p>
+                <span>{{graficos.preguntasCreadas}}</span>
+                <p>Preguntas creadas (sugeridas)</p>
             </div>
             <div class="puntaje_div">
-                <span></span>
-                <p>cantidad de usuarios nuevos</p>
+                <span>{{graficos.usuariosNuevos}}</span>
+                <p>Usuarios del ultimo mes</p>
             </div>
         </div>
-        <div class="w-100 d-flex justify-content-center " style="gap: 20px;">
+        <div class="w-100 d-flex justify-content-center " style="gap: 20px; flex-wrap: wrap">
             <div class="div_graficos" style="background: rgba(202,208,243,0.93)">
                 <canvas id="miGrafico" style="color: white"></canvas>
-
             </div>
             <div class="div_graficos" style="background: #cad0f3">
                 <canvas id="miGrafico2" style="color: white"></canvas>
             </div>
         </div>
         <div class="w-100 d-flex justify-content-center " style="gap: 20px;">
-            <div class="div_graficos" style="background: #cad0f3">
+            <div class="div_graficos w-50" style="background: #cad0f3">
                 <canvas id="miGrafico3" style="color: white"></canvas>
             </div>
         </div>
