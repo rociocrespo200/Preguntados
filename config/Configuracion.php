@@ -8,6 +8,8 @@ include_once('helper/Redirect.php');
 include_once('third-party/PHPMailer/src/PHPMailer.php');
 include_once('third-party/PHPMailer/src/SMTP.php');
 include_once('third-party/PHPMailer/src/Exception.php');
+include_once('third-party/fpdf/fpdf.php');
+
 //include_once('third-party/PHPMailer/src/OAuth.php');
 //include_once('third-party/PHPMailer/src/OAuthTokenProvider.php');
 
