@@ -47,11 +47,11 @@ CREATE TABLE usuario (
 
 
 
-INSERT INTO usuario (nombre, apellido, anio_nacimiento, genero, latitud, longitud, mail, usuario, clave, foto_perfil, puntos, nivel, token)
+INSERT INTO usuario (nombre, apellido, anio_nacimiento, genero, latitud, longitud, mail, usuario, clave, foto_perfil, puntos, token)
 VALUES
-	('Rocio', 'Crespo', 2000, 'femenino',-34.67854116939218, -58.56046473173828, 'fan1casiangeles@gmail.com', 'rocio123', '1234', 'profile.png',10700, 9, "7e3ec5530d7e3a4d460857cf96824a67"),
-     ('Jane', 'Smith', 1985,'masculino',-34.67854116939218, -58.56046473173828, 'janesmith@example.com', 'janesmith456', 'contrasena456', 'profile.png',7820, 5, "9766ee80a3a2d8eb56a59f43b174ac0a"),
-    ('Juan', 'Pérez', 1988, 'masculino',-34.67854116939218, -58.56046473173828, 'juanperez@example.com', 'juanperez789', 'clave789', 'profile.png',100, 1, "8a83d994f94d1bf2c495b048f7e12f65");
+	('Rocio', 'Crespo', 2000, 'femenino',-34.67854116939218, -58.56046473173828, 'fan1casiangeles@gmail.com', 'rocio123', '1234', 'profile.png',10700, "7e3ec5530d7e3a4d460857cf96824a67"),
+     ('Jane', 'Smith', 1985,'masculino',-34.67854116939218, -58.56046473173828, 'janesmith@example.com', 'janesmith456', 'contrasena456', 'profile.png',7820, "9766ee80a3a2d8eb56a59f43b174ac0a"),
+    ('Juan', 'Pérez', 1988, 'masculino',-34.67854116939218, -58.56046473173828, 'juanperez@example.com', 'juanperez789', 'clave789', 'profile.png',100, "8a83d994f94d1bf2c495b048f7e12f65");
 INSERT INTO usuario (nombre, apellido, anio_nacimiento,genero, latitud, longitud, mail, usuario, clave, foto_perfil, id_rol)
 VALUES
 	('Rocio', 'Crespo', 2000, 'femenino',-34.67854116939218, -58.56046473173828, 'belen@gmail.com', 'belen123', '1234', 'profile.png',2),
