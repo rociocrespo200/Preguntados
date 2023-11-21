@@ -39,9 +39,7 @@ class PartidaModel
 
     public function validarRecargoDePagina($idpartida, $idRespuesta){
         $respuestas = $this->database->query("SELECT * FROM partida_respuestas WHERE id_partida = " . $idpartida);
-//
-//        print_r($respuestas);
-//        echo "tamaño " . sizeof($respuestas);
+
         if (sizeof($respuestas) != 0 && $respuestas[sizeof($respuestas)-1]['id_respuesta'] == $idRespuesta) return true;
         return false;
     }
@@ -115,6 +113,7 @@ class PartidaModel
         $this->database->query("INSERT INTO partida_preguntas (id_partida, id_pregunta) VALUES (". $partida['id'] ."," . $preguntaAleatoria['id'] . ")");
 
         $respuestas = $this->database->query("SELECT *  FROM Respuesta WHERE id_pregunta = " . $preguntaAleatoria['id']);
+        shuffle($respuestas);
 
         $result = [
             'pregunta' => $preguntaAleatoria,
@@ -155,7 +154,7 @@ class PartidaModel
         $correctas = (int) $this->database->query("SELECT count(*) FROM partida_respuestas pr JOIN respuesta r ON r.id = pr.id_respuesta WHERE r.esCorrecta = 1 AND r.id_pregunta =" . $respuesta['id_pregunta'])[0][0];
 
         $promedioCorrectas = (100 * $correctas)/ $vecesContestada;
-        echo $promedioCorrectas . " Estoy acaaaaa ";
+
         if($promedioCorrectas > 80){
             //FACIL
             $this->database->query("UPDATE `preguntados`.`pregunta` SET `id_dificultad` = '1' WHERE `id` =" . $respuesta['id_pregunta']);
@@ -174,9 +173,7 @@ class PartidaModel
         $fecha_actual = new DateTime();
         $fecha_ultima_pregunta = new DateTime($fecha);
         $intervalo = $fecha_actual->getTimestamp() - $fecha_ultima_pregunta->getTimestamp();
-        echo '$fecha_actual->getTimestamp() = ' .$fecha_actual->getTimestamp(). "<br>";
-        echo '$fecha_ultima_pregunta->getTimestamp() = ' . $fecha_ultima_pregunta->getTimestamp(). "<br>";
-        echo '$intervalo = ' . $intervalo . "<br>";
+
         if ($intervalo > 500000) {
             return false;
         }
@@ -185,12 +182,9 @@ class PartidaModel
     }
     private function actualizarNivelUsuario($idActual){
         $totalDePreguntas = $this->database->query("select Sum(preguntasContestadas) as 'cantidad total de preguntas' from partida where id_usuario = $idActual;");
-        var_dump("preguntas ", $totalDePreguntas[0][0]);
         $totalPreguntasContestadas = $this->database->query("select Count(preguntasContestadas) from partida p left join partida_respuestas pr on pr.id_partida = p.id where id_usuario=$idActual;");
-        var_dump(" respuestas ",$totalPreguntasContestadas[0][0]);
         $promedio = ($totalPreguntasContestadas[0][0]*100)/$totalDePreguntas[0][0];
         $nivel = number_format($promedio, 2, ',', '.');
-        var_dump(" calculo ",$nivel);
         $jugador = "";
         if($nivel > 70){
             $jugador = "Veterano";
