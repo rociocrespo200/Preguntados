@@ -1031,22 +1031,22 @@ SELECT * FROM usuario;
 
 INSERT INTO usuario (nombre, apellido, anio_nacimiento, genero, latitud, longitud, mail, usuario, clave, foto_perfil, puntos, token, fecha)
 VALUES
-    ('Usuario1', 'Apellido1', 1920, 'femenino', -34.67854116939218, -58.56046473173828, 'usuario1@example.com', 'usuario1', 'clave1', 'perfil.png', 1500, 'token1', '2020-01-15 10:30:00'),
-    ('Usuario2', 'Apellido2', 1930, 'masculino', -34.67854116939218, -58.56046473173828, 'usuario2@example.com', 'usuario2', 'clave2', 'perfil.png', 2000, 'token2', '2021-05-20 15:45:00'),
-    ('Usuario3', 'Apellido3', 1980, 'femenino', -34.67854116939218, -58.56046473173828, 'usuario3@example.com', 'usuario3', 'clave3', 'perfil.png', 300, 'token3', '2022-09-01 08:00:00'),
-    ('Usuario4', 'Apellido4', 1998, 'masculino', -34.67854116939218, -58.56046473173828, 'usuario4@example.com', 'usuario4', 'clave4', 'perfil.png', 500, 'token4', '2023-12-05 20:15:00'),
-    ('Usuario5', 'Apellido5', 1990, 'femenino', -34.67854116939218, -58.56046473173828, 'usuario5@example.com', 'usuario5', 'clave5', 'perfil.png', 1000, 'token5', '2021-03-10 12:30:00'),
-    ('Usuario6', 'Apellido6', 2005, 'masculino', -34.67854116939218, -58.56046473173828, 'usuario6@example.com', 'usuario6', 'clave6', 'perfil.png', 2500, 'token6', '2022-08-22 18:20:00'),
-    ('Usuario7', 'Apellido7', 1988, 'femenino', -34.67854116939218, -58.56046473173828, 'usuario7@example.com', 'usuario7', 'clave7', 'perfil.png', 1800, 'token7', '2020-11-30 09:45:00'),
-    ('Usuario8', 'Apellido8', 2000, 'masculino', -34.67854116939218, -58.56046473173828, 'usuario8@example.com', 'usuario8', 'clave8', 'perfil.png', 900, 'token8', '2023-02-14 16:10:00'),
-      ('Usuario9', 'Apellido9', 1995, 'femenino', -34.67854116939218, -58.56046473173828, 'usuario9@example.com', 'usuario9', 'clave9', 'perfil9.png', 500, 'token9', '2022-05-18 14:55:00'),
-    ('Usuario10', 'Apellido10', 1980, 'masculino', -34.67854116939218, -58.56046473173828, 'usuario10@example.com', 'usuario10', 'clave10', 'perfil10.png', 1200, 'token10', '2021-07-07 08:40:00'),
-    ('Usuario11', 'Apellido11', 2010, 'femenino', -34.67854116939218, -58.56046473173828, 'usuario11@example.com', 'usuario11', 'clave11', 'perfil11.png', 800, 'token11', '2020-12-25 20:15:00'),
-    ('Usuario12', 'Apellido12', 2003, 'masculino', -34.67854116939218, -58.56046473173828, 'usuario12@example.com', 'usuario12', 'clave12', 'perfil12.png', 1500, 'token12', '2023-01-30 11:05:00'),
-    ('Usuario13', 'Apellido13', 1990, 'femenino', -34.67854116939218, -58.56046473173828, 'usuario13@example.com', 'usuario13', 'clave13', 'perfil13.png', 900, 'token13', '2020-09-15 18:30:00'),
-    ('Usuario14', 'Apellido14', 1982, 'masculino', -34.67854116939218, -58.56046473173828, 'usuario14@example.com', 'usuario14', 'clave14', 'perfil14.png', 2000, 'token14', '2022-03-10 09:20:00'),
-    ('Usuario15', 'Apellido15', 1996, 'femenino', -34.67854116939218, -58.56046473173828, 'usuario15@example.com', 'usuario15', 'clave15', 'perfil15.png', 1100, 'token15', '2021-11-05 14:45:00'),
-    ('Usuario16', 'Apellido16', 2013, 'masculino', -34.67854116939218, -58.56046473173828, 'usuario16@example.com', 'usuario16', 'clave16', 'perfil16.png', 1700, 'token16', '2023-02-28 22:10:00');
+    ('Usuario1', 'Apellido1', 1920, 'femenino', -34.67854116939218, -58.56046473173828, 'usuario1@example.com', 'usuario1', 'clave1', 'profile.png', 1500, 'token1', '2020-01-15 10:30:00'),
+    ('Usuario2', 'Apellido2', 1930, 'masculino', -34.67854116939218, -58.56046473173828, 'usuario2@example.com', 'usuario2', 'clave2', 'profile.png', 2000, 'token2', '2021-05-20 15:45:00'),
+    ('Usuario3', 'Apellido3', 1980, 'femenino', -34.67854116939218, -58.56046473173828, 'usuario3@example.com', 'usuario3', 'clave3', 'profile.png', 300, 'token3', '2022-09-01 08:00:00'),
+    ('Usuario4', 'Apellido4', 1998, 'masculino', -34.67854116939218, -58.56046473173828, 'usuario4@example.com', 'usuario4', 'clave4', 'profile.png', 500, 'token4', '2023-12-05 20:15:00'),
+    ('Usuario5', 'Apellido5', 1990, 'femenino', -34.67854116939218, -58.56046473173828, 'usuario5@example.com', 'usuario5', 'clave5', 'profile.png', 1000, 'token5', '2021-03-10 12:30:00'),
+    ('Usuario6', 'Apellido6', 2005, 'masculino', -34.67854116939218, -58.56046473173828, 'usuario6@example.com', 'usuario6', 'clave6', 'profile.png', 2500, 'token6', '2022-08-22 18:20:00'),
+    ('Usuario7', 'Apellido7', 1988, 'femenino', -34.67854116939218, -58.56046473173828, 'usuario7@example.com', 'usuario7', 'clave7', 'profile.png', 1800, 'token7', '2020-11-30 09:45:00'),
+    ('Usuario8', 'Apellido8', 2000, 'masculino', -34.67854116939218, -58.56046473173828, 'usuario8@example.com', 'usuario8', 'clave8', 'profile.png', 900, 'token8', '2023-02-14 16:10:00'),
+	('Usuario9', 'Apellido9', 1995, 'femenino', -34.67854116939218, -58.56046473173828, 'usuario9@example.com', 'usuario9', 'clave9', 'profile.png', 500, 'token9', '2022-05-18 14:55:00'),
+    ('Usuario10', 'Apellido10', 1980, 'masculino', -34.67854116939218, -58.56046473173828, 'usuario10@example.com', 'usuario10', 'clave10', 'profile.png', 1200, 'token10', '2021-07-07 08:40:00'),
+    ('Usuario11', 'Apellido11', 2010, 'femenino', -34.67854116939218, -58.56046473173828, 'usuario11@example.com', 'usuario11', 'clave11', 'profile.png', 800, 'token11', '2020-12-25 20:15:00'),
+    ('Usuario12', 'Apellido12', 2003, 'masculino', -34.67854116939218, -58.56046473173828, 'usuario12@example.com', 'usuario12', 'clave12', 'profile.png', 1500, 'token12', '2023-01-30 11:05:00'),
+    ('Usuario13', 'Apellido13', 1990, 'femenino', -34.67854116939218, -58.56046473173828, 'usuario13@example.com', 'usuario13', 'clave13', 'profile.png', 900, 'token13', '2020-09-15 18:30:00'),
+    ('Usuario14', 'Apellido14', 1982, 'masculino', -34.67854116939218, -58.56046473173828, 'usuario14@example.com', 'usuario14', 'clave14', 'profile.png', 2000, 'token14', '2022-03-10 09:20:00'),
+    ('Usuario15', 'Apellido15', 1996, 'femenino', -34.67854116939218, -58.56046473173828, 'usuario15@example.com', 'usuario15', 'clave15', 'profile.png', 1100, 'token15', '2021-11-05 14:45:00'),
+    ('Usuario16', 'Apellido16', 2013, 'masculino', -34.67854116939218, -58.56046473173828, 'usuario16@example.com', 'usuario16', 'clave16', 'profile.png', 1700, 'token16', '2023-02-28 22:10:00');
     
     INSERT INTO partida (fecha, id_usuario, preguntasContestadas, puntos, id_dificultad) VALUES
     ('2020-01-15 10:30:00', 1, 5, 100, 1),

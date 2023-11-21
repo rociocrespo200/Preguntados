@@ -22,14 +22,14 @@ if (!isset($_SESSION['usuario'])) {
     $method = "login";
 
 } else if($_SESSION['usuario']['id_rol']==3){//admin
-    if ($controller === 'graficos') {
+    if ($controller === 'profile' ||$controller === 'user' || $controller === 'graficos') {
         $router->route($controller, $method);
         exit;
     }
     $controller = "graficos";
     $method = "show";
 } else if($_SESSION['usuario']['id_rol']==2){//editor
-    if ($controller === 'homeEditor' && !in_array($method, ['administrarPregunta']) || $controller === 'reportes' && !in_array($method, ['agregarReporte']) || $controller==='sugerencias' && !in_array($method, ['agregarSugerencia']))  {
+    if ($controller === 'profile' ||$controller === 'user' || $controller === 'homeEditor' && !in_array($method, ['administrarPregunta']) || $controller === 'reportes' && !in_array($method, ['agregarReporte']) || $controller==='sugerencias' && !in_array($method, ['agregarSugerencia']))  {
         $router->route($controller, $method);
         exit;
     }
@@ -37,7 +37,7 @@ if (!isset($_SESSION['usuario'])) {
     $method = "show";
 
 } else if($_SESSION['usuario']['id_rol']==1) {//usuario logeado
-    if ($controller === 'homeEditor' && in_array($method, ['administrarPregunta']) || $controller === 'home' || $controller === 'reportes' && in_array($method, ['agregarReporte','traerPreguntas']) || $controller === 'partida' || $controller === 'historial' || $controller === 'rancking' || $controller==='sugerencias' && in_array($method, ['agregarSugerencia'])) {//ver ´xq no anda
+    if ($controller === 'profile' ||$controller === 'user' || $controller === 'homeEditor' && in_array($method, ['administrarPregunta']) || $controller === 'home' || $controller === 'reportes' && in_array($method, ['agregarReporte','traerPreguntas']) || $controller === 'partida' || $controller === 'historial' || $controller === 'rancking' || $controller==='sugerencias' && in_array($method, ['agregarSugerencia'])) {//ver ´xq no anda
         $router->route($controller, $method);
         exit;
     }
