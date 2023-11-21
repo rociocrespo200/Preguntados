@@ -23,6 +23,9 @@ class GraficosController
                 'porcentajeCorrectas' => $this->model->porcentajeCorrectas(null),
                 'usuariosNuevos' => $this->model->usuariosNuevos(null),
                 'preguntasCreadas' => $this->model->preguntasCreadas(null),
+                'cantJugadores' => $this->model->cantJugadores(null),
+                'cantPartidas' => $this->model->cantPartidas(null),
+                'cantPreguntas' => $this->model->cantPreguntas(null),
             ]
         ];
 

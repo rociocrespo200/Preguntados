@@ -56,5 +56,16 @@ class GraficosModel
         return $this->database->query("SELECT COUNT(*) FROM usuario WHERE fecha >= DATE_SUB(NOW(), INTERVAL 1 MONTH);")[0][0];
     }
 
+    public function cantJugadores($fecha){ //agregado
+        return $this->database->query("SELECT COUNT(*) FROM usuario WHERE id_rol = 1;")[0][0];
+    }
+
+    public function cantPartidas($fecha){ //agregado
+        return $this->database->query("SELECT COUNT(*) FROM partida")[0][0];
+    }
+
+    public function cantPreguntas($fecha){ //agregado
+        return $this->database->query("SELECT COUNT(*) FROM pregunta")[0][0];
+    }
 
 }

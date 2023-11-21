@@ -4,17 +4,43 @@
     <input class="form-control mr-sm-2 w-25" type="number" id="anio"  name="anio" placeholder="año" aria-label="Search">
     <button class="btn btn-outline-light my-2 my-sm-0" type="submit" >Buscar</button>
 </form>
-<main id="main" style=" gap: 15px">
 
+<style>
+    div.puntaje_div{
+        width: 250px;
+        height: auto;
+    }
+    div.puntaje_div p{
+        padding: 5px;
+        font-size: 16px;
+    }
+    div.puntaje_div span{
+        font-size: 30px;
+    }
+
+</style>
+<main id="main" style=" gap: 15px">
     <section id="main_scroll">
-        <div class="puntaje">
+        <div class="puntaje w-75" style="flex-wrap: wrap; justify-content: center">
+            <div class="puntaje_div">
+                <span>{{graficos.cantPartidas}}</span>
+                <p>Partidas realizadas</p>
+            </div>
+            <div class="puntaje_div">
+                <span>{{graficos.cantPreguntas}}</span>
+                <p>Preguntas totales</p>
+            </div>
             <div class="puntaje_div">
                 <span>{{graficos.preguntasCreadas}}</span>
                 <p>Preguntas creadas (sugeridas)</p>
             </div>
             <div class="puntaje_div">
+                <span>{{graficos.cantJugadores}}</span>
+                <p>Jugadores</p>
+            </div>
+            <div class="puntaje_div">
                 <span>{{graficos.usuariosNuevos}}</span>
-                <p>Usuarios del ultimo mes</p>
+                <p>Jugadores del ultimo mes</p>
             </div>
         </div>
         <div class="w-100 d-flex justify-content-center " style="gap: 20px; flex-wrap: wrap">
@@ -41,7 +67,7 @@
 
 
 
-        // GRAFICO DE BARRAS
+        // GRAFICO DE TORTA EDAD
         let grafico1 = document.getElementById('miGrafico').getContext('2d');
         let graficoFunct1 = new Chart(grafico1, {
             type: 'pie',
@@ -50,11 +76,14 @@
                 datasets: [{
                     label: "Grupos de edad",
                     data: [{{graficos.cantEdad.menores}}, {{graficos.cantEdad.adultos}}, {{graficos.cantEdad.jubilados}}],
-                    backgroundColor: ['#dc5b5b', '#ceb522', '#d77041']
+                    backgroundColor: ['rgba(220,91,91,0.54)', 'rgba(206,181,34,0.51)', 'rgba(215,112,65,0.5)'],
+                    borderColor: ['rgb(208,84,84)', 'rgba(197,174,34,0.89)', 'rgb(201,101,57)'],// Color del borde
+                    borderWidth: 2,// Ancho del borde
                 }]
             }
         });
 
+        // GRAFICO DE BARRAS PORCENTAJE DE PREGUNTAS
         let grafico3 = document.getElementById('miGrafico3').getContext('2d');
         let porcentajeGrafico3 = [];
         let nombreGrafico3 = [];
@@ -78,29 +107,39 @@
                     borderWidth: 2,// Ancho del borde
                 }]
             }
+
         });
 
 
 
-        //GRAFICO DE TORTA
+
+        //GRAFICO DE TORTA CIRCULO SEXO
         var contextoTorta = document.getElementById('miGrafico2').getContext('2d');
+
+        var mujeres = {{graficos.cantGenero.femeninos}};
+        var hombres = {{graficos.cantGenero.masculinos}};
+        var totalUsuarios = mujeres + hombres;
+
+        // Calcula porcentajes
+        var porcentajeMujeres = ((mujeres / totalUsuarios) * 100);
+        var porcentajeHombres = ((hombres / totalUsuarios) * 100);
 
         // Crea un gráfico de torta
         var graficoTorta = new Chart(contextoTorta, {
-            type: 'doughnut', // Tipo de gráfico de torta
+            type: 'doughnut',
             data: {
-                labels: ['Mujeres', 'Hombres'],
+                labels: ['Mujeres ' + porcentajeMujeres + '%', 'Hombres ' + porcentajeHombres + '%'],
                 datasets: [{
-                    data: [{{graficos.cantGenero.femeninos}}, {{graficos.cantGenero.masculinos}}], // Valores para cada categoría
-                    backgroundColor: ['#da74a2', '#3aa9b9'] // Colores para cada categoría
+                    data: [mujeres, hombres],
+                    backgroundColor: ['#da74a2', '#3aa9b9']
                 }]
             },
             options: {
-                // Puedes agregar opciones adicionales aquí, como leyenda, título, etc.
                 responsive: true,
                 maintainAspectRatio: false
             }
         });
+
 
 
 
