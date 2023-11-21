@@ -26,8 +26,6 @@ class GraficosController
             ]
         ];
 
-
-
         //print_r($datos);
 
         $this->render->printViewAdmin('graficos', $datos);//crea una vista, con el constructor de esta clase, llamada home

@@ -64,7 +64,7 @@
     function mostrarRanking(inicio, limite){
         console.log("hola");
         var xhr = new XMLHttpRequest();
-        var url = `http://localhost/rancking/traerRanking?inicio=${inicio}&limite=${limite}`;
+        var url = `http://localhost:8080/rancking/traerRanking?inicio=${inicio}&limite=${limite}`;
         xhr.open("GET", url, true);
         xhr.onreadystatechange = function () {
             if (this.readyState === XMLHttpRequest.DONE) {

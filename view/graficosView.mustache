@@ -42,7 +42,7 @@
         event.preventDefault();
 
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'http://localhost/graficos/descargarPDF', true);
+        xhr.open('GET', 'http://localhost:8080/graficos/descargarPDF', true);
         xhr.responseType = 'blob'; // Importante para manejar archivos binarios como PDF
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {

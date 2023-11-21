@@ -18,6 +18,7 @@ class ProfileController {
             'user' => $this->model->traerUsuario($_SESSION['usuario']['id'])
         ];
 
+
         if($_SESSION['usuario']['id_rol'] == 1){
             $datos['estadisticas'] = true;
             if( $datos['user']['validado'] == 0){

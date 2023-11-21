@@ -37,7 +37,7 @@ if (!isset($_SESSION['usuario'])) {
     $method = "show";
 
 } else if($_SESSION['usuario']['id_rol']==1) {//usuario logeado
-    if ($controller === 'homeEditor' && in_array($method, ['administrarPregunta']) || $controller === 'home' || $controller === 'reportes' && in_array($method, ['agregarReporte','traerPreguntas']) || $controller === 'partida' || $controller === 'historial' || $controller === 'rancking' || $controller==='sugerencias' && in_array($method, ['agregarSugerencia'])) {//ver ´xq no anda
+    if ($controller === 'homeEditor' && in_array($method, ['administrarPregunta']) || $controller === 'home' || $controller === 'reportes' && in_array($method, ['agregarReporte','traerPreguntas']) || $controller === 'partida' || $controller === 'historial' || $controller === 'rancking' || $controller==='sugerencias' && in_array($method, ['agregarSugerencia']) || $controller==='profile') {//ver ´xq no anda
         $router->route($controller, $method);
         exit;
     }
