@@ -14,8 +14,8 @@ class ProfileModel {
         }
     }
 
-    public function modificarUsuario($id, $nombre, $apellido, $anioNacimiento, $genero, $pais, $ciudad, $mail, $usuario, $clave, $fotoPerfil) {
-        $sql = "UPDATE `usuario` SET `nombre`='$nombre', `apellido`='$apellido', `anio_nacimiento`='$anioNacimiento', `genero`='$genero',`pais`='$pais', `ciudad`='$ciudad', `mail`='$mail', `usuario`='$usuario', `clave`='$clave', `foto_perfil`='$fotoPerfil' WHERE `id`='$id'";
+    public function modificarUsuario($id, $nombre, $apellido, $anioNacimiento, $genero, $mail, $usuario, $clave, $fotoPerfil, $latitud, $longitud) {
+        $sql = "UPDATE `usuario` SET `nombre`='$nombre', `apellido`='$apellido', `anio_nacimiento`='$anioNacimiento', `genero`='$genero', `mail`='$mail', `usuario`='$usuario', `clave`='$clave', `foto_perfil`='$fotoPerfil', `latitud`='$latitud', `longitud`='$longitud' WHERE `id`='$id'";
         $this->database->query($sql);
     }
 

@@ -13,7 +13,7 @@ class ProfileController {
         $datos = [
             //'usuario' == $this->model->traerUsuario($_SESSION['usuario']['id']),
             'usuario' => $_SESSION['usuario']['usuario'],
-            'usuariPuntos' => $_SESSION['usuario']['puntos'],
+            'usuarioPuntos' => $_SESSION['usuario']['puntos'],
             'nivel' => $_SESSION['usuario']['nivel'],
             'user' => $this->model->traerUsuario($_SESSION['usuario']['id'])
         ];
@@ -74,11 +74,11 @@ class ProfileController {
             $apellido = $_POST['apellido'];
             $anioNacimiento = $_POST['anio_nacimiento'];
             $genero=$_POST['genero'];
-            $pais = $_POST['pais'];
-            $ciudad = $_POST['ciudad'];
             $mail = $_POST['mail'];
             $usuario = $_POST['usuario'];
             $clave = $_POST['clave'];
+            $latitud = $_POST['latitud']; 
+            $longitud = $_POST['longitud'];
 
            $fotoPerfil = $_SESSION['usuario']['foto_perfil']; // Mantén la foto de perfil actual si no se envía una nueva
 
@@ -89,7 +89,7 @@ class ProfileController {
 
             // se necesita validaciones para modificar el usuario?
             //$_SESSION['usuario'] = $this->model->traerUsuario($id); // Actualizar datos de usuario en sesión
-            $this->model->modificarUsuario($id,$nombre, $apellido, $anioNacimiento, $genero, $pais, $ciudad, $mail, $usuario, $clave, $fotoPerfil);
+            $this->model->modificarUsuario($id, $nombre, $apellido, $anioNacimiento, $genero, $mail, $usuario, $clave, $fotoPerfil, $latitud, $longitud);
 
             header('location:/profile/show');
         } else {

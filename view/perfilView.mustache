@@ -124,21 +124,40 @@
         </div>
 
     <script src="../public/js/popup.js"></script>
-<script src="../public/js/administrar.js"></script>
-<script>
+        <script src="../public/js/administrar.js"></script>
+        
+    
+
+       <script>
+    function mostrarPopUp(idPopup) {
+        // Lógica para mostrar el popup del mapa
+        document.getElementById(idPopup).style.display = 'block';
+        initMap();
+    }
+
     var mapa;
     var marcador;
 
     function initMap() {
+        var latitud = parseFloat(document.getElementById('latitud').value);
+    var longitud = parseFloat(document.getElementById('longitud').value);
+
         // Configuración inicial del mapa
         var mapaConfig = {
-            center: { lat: -34.6686986, lng: -58.5614947 },
+            center: { lat: latitud, lng: longitud },
             zoom: 12
         };
         mapa = new google.maps.Map(document.getElementById('mapa'), mapaConfig);
 
+        // Crear el marcador en una ubicación predeterminada al iniciar
+        var ubicacionInicial = new google.maps.LatLng(latitud, longitud);
+        marcador = new google.maps.Marker({
+            position: ubicacionInicial,
+            map: mapa
+        });
+
         // Manejar la selección de ubicación en el mapa
-        mapa.addListener('click', function (event) {
+        mapa.addListener('click', function(event) {
             placeMarker(event.latLng);
         });
     }
@@ -157,9 +176,6 @@
         document.getElementById('latitud').value = location.lat();
         document.getElementById('longitud').value = location.lng();
     }
-
-    // Llamar a initMap después de cargar la página
-    window.onload = initMap;
 </script>
 
     {{/user}}
@@ -227,18 +243,17 @@
 
                 <div class="form-row form-group">
                 <div class="col" style="display: flex; align-items: flex-end">
-                    <a onclick="mostrarPopUp('popup_mapa')" class="btn btn-outline-light my-2 my-sm-0 m-3">Ver ubicacion en un mapa</a>
-
+                    <a onclick="mostrarPopupMapaOtroUsuario('{{latitud}}', '{{longitud}}')" class="btn btn-outline-light my-2 my-sm-0 m-3">Ver ubicación en un mapa</a>
                 </div>
+                
                 <div class="col">
-                    <label class="form-label" for="pais">Latitud</label>
-                    <input id="latitud" name="latitud"  class="form-control" readonly >
-                </div>
-
-                <div class="col">
-                    <label class="form-label" for="ciudad">Longitud</label>
-                    <input id="longitud" name="longitud"  class="form-control" readonly>
-                </div>
+            <label class="form-label" for="latitud">Latitud</label>
+            <input id="latitud" name="latitud" class="form-control" value="{{latitud}}" readonly>
+        </div>
+        <div class="col">
+            <label class="form-label" for="longitud">Longitud</label>
+            <input id="longitud" name="longitud" class="form-control" value="{{longitud}}" readonly>
+        </div>
             </div>
 
 
@@ -253,16 +268,39 @@
                         <input type="email"  name="mail" value="{{mail}}" required  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese su email" disabled>
                     </div>
                 </div>
-            </div>
-        </form>
-    
-            <div class="popup2"  id="popup_mapa" style="display: none; top: 15%; max-width: 600px; left: auto">
-            <a class="popup_cruz" onclick="ocultarPopUp('popup_mapa')">✖</a>
-            <body onload="initMap()">
-            <div id="mapa" style="width: 500px; height: 400px;"></div>
-            <!-- Campos ocultos para latitud y longitud -->
-        </div>
 
+
+            </div>
+<div class="popup2" id="popup_mapa_otro" style="display: none; top: 15%; max-width: 600px; left: auto">
+    <a class="popup_cruz" onclick="ocultarPopUp('popup_mapa_otro')">✖</a>
+    <div id="mapa_otro_usuario" style="width: 500px; height: 400px;"></div>
+</div>
+<script>
+    function mostrarPopupMapaOtroUsuario(latitud, longitud) {
+        // Lógica para mostrar el popup del mapa del segundo usuario
+        document.getElementById('popup_mapa_otro').style.display = 'block';
+        initMapOtroUsuario(latitud, longitud);
+    }
+
+    var mapaOtroUsuario;
+    var marcadorOtroUsuario;
+
+    function initMapOtroUsuario(latitud, longitud) {
+        var mapaConfig = {
+            center: { lat: parseFloat(latitud), lng: parseFloat(longitud) },
+            zoom: 12
+        };
+        mapaOtroUsuario = new google.maps.Map(document.getElementById('mapa_otro_usuario'), mapaConfig);
+
+        // Crear el marcador en la ubicación proporcionada
+        marcadorOtroUsuario = new google.maps.Marker({
+            position: { lat: parseFloat(latitud), lng: parseFloat(longitud) },
+            map: mapaOtroUsuario
+        });
+    }
+    </script>
+    </form>
+        
     {{/otroUser}}
 
 
