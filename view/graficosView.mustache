@@ -194,22 +194,24 @@
         //GRAFICO DE TORTA CIRCULO SEXO
         var contextoTorta = document.getElementById('miGrafico2').getContext('2d');
 
-        var mujeres = {{graficos.cantGenero.femeninos}};
-        var hombres = {{graficos.cantGenero.masculinos}};
+        var mujeres = {{#graficos.cantGenero.femeninos}}{{.}}{{/graficos.cantGenero.femeninos}} {{^graficos.cantGenero.femeninos}}0{{/graficos.cantGenero.femeninos}};
+        var hombres = {{#graficos.cantGenero.masculinos}}{{.}}{{/graficos.cantGenero.masculinos}} {{^graficos.cantGenero.masculinos}}0{{/graficos.cantGenero.masculinos}};
         var totalUsuarios = mujeres + hombres;
 
         // Calcula porcentajes
         var porcentajeMujeres = ((mujeres / totalUsuarios) * 100);
         var porcentajeHombres = ((hombres / totalUsuarios) * 100);
 
-        // Crea un gráfico de torta
+        var porcentajeAD = (isNaN(porcentajeMujeres) && isNaN(porcentajeMujeres))? 100 : 0;
+
+
         var graficoTorta = new Chart(contextoTorta, {
             type: 'doughnut',
             data: {
-                labels: ['Mujeres ' + porcentajeMujeres + '%', 'Hombres ' + porcentajeHombres + '%'],
+                labels: (porcentajeAD === 0)? ['Mujeres ' + porcentajeMujeres + '%', 'Hombres ' + porcentajeHombres + '%'] : ["no hay usuarios"],
                 datasets: [{
-                    data: [mujeres, hombres],
-                    backgroundColor: ['#da74a2', '#3aa9b9']
+                    data: (porcentajeAD === 0)? [mujeres, hombres] : [porcentajeAD],
+                    backgroundColor:  (porcentajeAD === 0)? ['#da74a2', '#3aa9b9'] :['rgba(134,134,134,0.12)']
                 }]
             },
             options: {

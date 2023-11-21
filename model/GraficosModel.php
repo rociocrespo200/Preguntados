@@ -15,10 +15,22 @@ class GraficosModel
         }
     }
 
-        public function genero($fecha){ //agregado
+    public function genero($fecha){ //agregado
 
-            return $this->database->query("SELECT SUM(CASE WHEN genero = 'Masculino' THEN 1 ELSE 0 END) AS masculinos, SUM(CASE WHEN genero = 'Femenino' THEN 1 ELSE 0 END) AS femeninos FROM usuario;")[0];
+        if ($fecha == null) {
+            $result = $this->database->query("SELECT SUM(CASE WHEN genero = 'Masculino' THEN 1 ELSE 0 END) AS masculinos, SUM(CASE WHEN genero = 'Femenino' THEN 1 ELSE 0 END) AS femeninos FROM usuario WHERE id_rol = 1;")[0];
+        } else if (sizeof($fecha) == 1) {
+            $fecha = $fecha[0];
+            $result = $this->database->query("SELECT SUM(CASE WHEN genero = 'Masculino' THEN 1 ELSE 0 END) AS masculinos, SUM(CASE WHEN genero = 'Femenino' THEN 1 ELSE 0 END) AS femeninos FROM usuario WHERE id_rol = 1 AND fecha = '$fecha';")[0];
+        } else {
+            $fechaInicio = $fecha[0];
+            $fechaFin = $fecha[1];
+            $result = $this->database->query("SELECT SUM(CASE WHEN genero = 'Masculino' THEN 1 ELSE 0 END) AS masculinos, SUM(CASE WHEN genero = 'Femenino' THEN 1 ELSE 0 END) AS femeninos  FROM usuario WHERE id_rol = 1 AND fecha BETWEEN '$fechaInicio' AND '$fechaFin';")[0];
         }
+
+        return $result;
+
+    }
 
     public function edad($fecha){ //agregado
 
@@ -27,6 +39,8 @@ class GraficosModel
             SUM(CASE WHEN YEAR(CURDATE()) - anio_nacimiento BETWEEN 18 AND 64 THEN 1 ELSE 0 END) AS adultos,
             SUM(CASE WHEN YEAR(CURDATE()) - anio_nacimiento >= 65 THEN 1 ELSE 0 END) AS jubilados
              FROM usuario;")[0];
+
+
     }
 
     public function porcentajeCorrectas($fecha)
@@ -50,21 +64,63 @@ class GraficosModel
     }
 
     public function preguntasCreadas($fecha){ //agregado
-        return $this->database->query("SELECT COUNT(*) AS cantidad_sugerencias_aprobadas FROM sugerencia WHERE aprobada = true;")[0][0];
+
+        if ($fecha == null) {
+            $result = $this->database->query("SELECT COUNT(*) FROM sugerencia WHERE aprobada = true")[0][0];
+        } else if (sizeof($fecha) == 1) {
+            $fecha = $fecha[0];
+            $result = $this->database->query("SELECT COUNT(*) FROM sugerencia WHERE aprobada = true && fecha = '$fecha';")[0][0];
+        } else {
+            $fechaInicio = $fecha[0];
+            $fechaFin = $fecha[1];
+            $result = $this->database->query("SELECT COUNT(*) FROM sugerencia WHERE aprobada = true && fecha BETWEEN '$fechaInicio' AND '$fechaFin';")[0][0];
+        }
+
+        return $result;
    }
     public function usuariosNuevos($fecha){ //agregado
-        return $this->database->query("SELECT COUNT(*) FROM usuario WHERE fecha >= DATE_SUB(NOW(), INTERVAL 1 MONTH);")[0][0];
+
+        if($fecha == null) $result = $this->database->query("SELECT COUNT(*) FROM usuario WHERE fecha >= DATE_SUB(NOW(), INTERVAL 1 MONTH);")[0][0];
+        else{
+            $fechaInicio = $fecha[0];
+            $result = $this->database->query("SELECT COUNT(*) FROM usuario WHERE fecha >= DATE_SUB('$fechaInicio', INTERVAL 1 MONTH);")[0][0];
+        }
+        return $result;
     }
 
-    public function cantJugadores($fecha){ //agregado
-        return $this->database->query("SELECT COUNT(*) FROM usuario WHERE id_rol = 1;")[0][0];
+    public function cantJugadores($fecha) {
+        if ($fecha == null) {
+            $result = $this->database->query("SELECT COUNT(*) FROM usuario WHERE id_rol = 1;")[0][0];
+        } else if (sizeof($fecha) == 1) {
+            $fecha = $fecha[0];
+            $result = $this->database->query("SELECT COUNT(*) FROM usuario WHERE id_rol = 1 AND fecha = '$fecha';")[0][0];
+        } else {
+            $fechaInicio = $fecha[0];
+            $fechaFin = $fecha[1];
+            $result = $this->database->query("SELECT COUNT(*) FROM usuario WHERE id_rol = 1 AND fecha BETWEEN '$fechaInicio' AND '$fechaFin';")[0][0];
+        }
+
+        return $result;
     }
+
 
     public function cantPartidas($fecha){ //agregado
-        return $this->database->query("SELECT COUNT(*) FROM partida")[0][0];
+        if ($fecha == null) {
+            $result = $this->database->query("SELECT COUNT(*) FROM partida")[0][0];
+        } else if (sizeof($fecha) == 1) {
+            $fecha = $fecha[0];
+            $result = $this->database->query("SELECT COUNT(*) FROM partida WHERE fecha = '$fecha';")[0][0];
+        } else {
+            $fechaInicio = $fecha[0];
+            $fechaFin = $fecha[1];
+            $result = $this->database->query("SELECT COUNT(*) FROM partida WHERE fecha BETWEEN '$fechaInicio' AND '$fechaFin';")[0][0];
+        }
+
+        return $result;
     }
 
     public function cantPreguntas($fecha){ //agregado
+
         return $this->database->query("SELECT COUNT(*) FROM pregunta")[0][0];
     }
 
