@@ -21,7 +21,7 @@ class GraficosModel
             $result = $this->database->query("SELECT SUM(CASE WHEN genero = 'Masculino' THEN 1 ELSE 0 END) AS masculinos, SUM(CASE WHEN genero = 'Femenino' THEN 1 ELSE 0 END) AS femeninos FROM usuario WHERE id_rol = 1;")[0];
         } else if (sizeof($fecha) == 1) {
             $fecha = $fecha[0];
-            $result = $this->database->query("SELECT SUM(CASE WHEN genero = 'Masculino' THEN 1 ELSE 0 END) AS masculinos, SUM(CASE WHEN genero = 'Femenino' THEN 1 ELSE 0 END) AS femeninos FROM usuario WHERE id_rol = 1 AND fecha = '$fecha';")[0];
+            $result = $this->database->query("SELECT SUM(CASE WHEN genero = 'Masculino' THEN 1 ELSE 0 END) AS masculinos, SUM(CASE WHEN genero = 'Femenino' THEN 1 ELSE 0 END) AS femeninos FROM usuario WHERE id_rol = 1 AND DATE(fecha) = '$fecha';")[0];
         } else {
             $fechaInicio = $fecha[0];
             $fechaFin = $fecha[1];
@@ -41,7 +41,7 @@ class GraficosModel
             $result = $this->database->query("SELECT $calcularEdad FROM usuario WHERE id_rol = 1;")[0];
         } else if (sizeof($fecha) == 1) {
             $fecha = $fecha[0];
-            $result = $this->database->query("SELECT $calcularEdad FROM usuario WHERE id_rol = 1 AND fecha = '$fecha';")[0];
+            $result = $this->database->query("SELECT $calcularEdad FROM usuario WHERE id_rol = 1 AND DATE(fecha) = '$fecha';")[0];
         } else {
             $fechaInicio = $fecha[0];
             $fechaFin = $fecha[1];
@@ -60,8 +60,8 @@ class GraficosModel
 
         } else if (sizeof($fecha) == 1) {
             $fecha = $fecha[0];
-            $vecesContestada = $this->database->query("SELECT  COUNT(*) AS totales, u.usuario FROM partida p JOIN partida_respuestas pr ON p.id = pr.id_partida JOIN usuario u  ON u.id = p.id_usuario WHERE u.id_rol = 1 AND u.fecha = '$fecha'  GROUP BY u.id ORDER BY u.usuario ASC;");
-            $correctas = $this->database->query("SELECT COUNT(*) AS correctas, u.usuario FROM partida p JOIN partida_respuestas pr ON p.id = pr.id_partida JOIN usuario u ON u.id = p.id_usuario JOIN respuesta r ON r.id = pr.id_respuesta WHERE u.id_rol = 1 AND r.esCorrecta = 1 AND u.fecha = '$fecha' GROUP BY u.id ORDER BY u.usuario ASC");
+            $vecesContestada = $this->database->query("SELECT  COUNT(*) AS totales, u.usuario FROM partida p JOIN partida_respuestas pr ON p.id = pr.id_partida JOIN usuario u  ON u.id = p.id_usuario WHERE u.id_rol = 1 AND DATE(u.fecha) = '$fecha'  GROUP BY u.id ORDER BY u.usuario ASC;");
+            $correctas = $this->database->query("SELECT COUNT(*) AS correctas, u.usuario FROM partida p JOIN partida_respuestas pr ON p.id = pr.id_partida JOIN usuario u ON u.id = p.id_usuario JOIN respuesta r ON r.id = pr.id_respuesta WHERE u.id_rol = 1 AND r.esCorrecta = 1 AND DATE(u.fecha) = '$fecha' GROUP BY u.id ORDER BY u.usuario ASC");
         } else {
             $fechaInicio = $fecha[0];
             $fechaFin = $fecha[1];
@@ -90,7 +90,7 @@ class GraficosModel
             $result = $this->database->query("SELECT COUNT(*) FROM sugerencia WHERE aprobada = true")[0][0];
         } else if (sizeof($fecha) == 1) {
             $fecha = $fecha[0];
-            $result = $this->database->query("SELECT COUNT(*) FROM sugerencia WHERE aprobada = true && fecha = '$fecha';")[0][0];
+            $result = $this->database->query("SELECT COUNT(*) FROM sugerencia WHERE aprobada = true && DATE(fecha) = '$fecha';")[0][0];
         } else {
             $fechaInicio = $fecha[0];
             $fechaFin = $fecha[1];
@@ -114,7 +114,7 @@ class GraficosModel
             $result = $this->database->query("SELECT COUNT(*) FROM usuario WHERE id_rol = 1;")[0][0];
         } else if (sizeof($fecha) == 1) {
             $fecha = $fecha[0];
-            $result = $this->database->query("SELECT COUNT(*) FROM usuario WHERE id_rol = 1 AND fecha = '$fecha';")[0][0];
+            $result = $this->database->query("SELECT COUNT(*) FROM usuario WHERE id_rol = 1 AND DATE(fecha) = '$fecha';")[0][0];
         } else {
             $fechaInicio = $fecha[0];
             $fechaFin = $fecha[1];
@@ -130,7 +130,7 @@ class GraficosModel
             $result = $this->database->query("SELECT COUNT(*) FROM partida")[0][0];
         } else if (sizeof($fecha) == 1) {
             $fecha = $fecha[0];
-            $result = $this->database->query("SELECT COUNT(*) FROM partida WHERE fecha = '$fecha';")[0][0];
+            $result = $this->database->query("SELECT COUNT(*) FROM partida WHERE DATE(fecha) = '$fecha';")[0][0];
         } else {
             $fechaInicio = $fecha[0];
             $fechaFin = $fecha[1];

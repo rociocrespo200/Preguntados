@@ -34,7 +34,6 @@
         <option value="29">29</option>
         <option value="30">30</option>
     </select>
-
     <!-- Select para el mes -->
     <select class="form-control mr-sm-2 w-25" id="mes" name="mes">
         <!-- Opciones de enero a diciembre -->
@@ -52,7 +51,6 @@
         <option value="11">Noviembre</option>
         <option value="12">Diciembre</option>
     </select>
-
     <!-- Select para el año -->
     <select class="form-control mr-sm-2 w-25" id="anio" name="anio" required>
         <!-- Opciones del 2020 al 2023 -->
@@ -147,16 +145,30 @@
 
         // GRAFICO DE TORTA EDAD
         let grafico1 = document.getElementById('miGrafico').getContext('2d');
+
+    var menores = {{#graficos.cantEdad.menores}}{{.}}{{/graficos.cantEdad.menores}} {{^graficos.cantEdad.menores}}0{{/graficos.cantEdad.menores}};
+    var adultos = {{#graficos.cantEdad.adultos}}{{.}}{{/graficos.cantEdad.adultos}} {{^graficos.cantEdad.adultos}}0{{/graficos.cantEdad.adultos}};
+    var jubilados = {{#graficos.cantEdad.jubilados}}{{.}}{{/graficos.cantEdad.jubilados}} {{^graficos.cantEdad.jubilados}}0{{/graficos.cantEdad.jubilados}};
+
+    var totalEdad = menores + adultos + jubilados;
+
+        // Calcula porcentajes
+        var porcentajeMenores = ((menores / totalEdad) * 100);
+        var porcentajeAdultos = ((adultos / totalEdad) * 100);
+        var porcentajeJubilados = ((jubilados / totalEdad) * 100);
+
+        var porcentajeAD = (isNaN(porcentajeMenores) && isNaN(porcentajeAdultos) && isNaN(porcentajeJubilados) )? 100 : 0;
+
         let graficoFunct1 = new Chart(grafico1, {
             type: 'pie',
             data: {
-                labels: ['Menores', 'Adultos', 'Jubilados'],
+                labels: (porcentajeAD === 0)? ['Menores ' + porcentajeMenores.toFixed(0) + '%', 'Adultos ' + porcentajeAdultos.toFixed(0) + '%', 'Jubilados ' + porcentajeJubilados.toFixed(0) + '%'] : ["no hay usuarios"],
                 datasets: [{
                     label: "Grupos de edad",
-                    data: [{{graficos.cantEdad.menores}}, {{graficos.cantEdad.adultos}}, {{graficos.cantEdad.jubilados}}],
-                    backgroundColor: ['rgba(220,91,91,0.54)', 'rgba(206,181,34,0.51)', 'rgba(215,112,65,0.5)'],
-                    borderColor: ['rgb(208,84,84)', 'rgba(197,174,34,0.89)', 'rgb(201,101,57)'],// Color del borde
-                    borderWidth: 2,// Ancho del borde
+                    data: (porcentajeAD === 0)? [{{graficos.cantEdad.menores}}, {{graficos.cantEdad.adultos}}, {{graficos.cantEdad.jubilados}}] : [porcentajeAD],
+                    backgroundColor: (porcentajeAD === 0)? ['rgba(216,241,65,0.54)', 'rgb(83,182,194)', 'rgba(215,65,65,0.5)'] :['rgba(134,134,134,0.12)'],
+                    borderColor: (porcentajeAD === 0)? ['rgba(166,185,50,0.54)', 'rgba(69,158,164,0.85)', 'rgba(157,47,47,0.38)']:['rgba(255,255,255,0.58)'],// Color del borde
+                    borderWidth: 3,// Ancho del borde
                 }]
             }
         });
@@ -178,12 +190,21 @@
             data: {
                 labels: nombreGrafico3,
                 datasets: [{
-                    label: "Porcentaje de preguntas",
+                    label: (porcentajeAD === 0)? "Porcentaje de preguntas": ["no hay usuarios"],
                     data: porcentajeGrafico3,
-                    backgroundColor: ['rgba(0,210,239,0.19)'],
-                    borderColor: 'rgba(0,182,206,0.53)',// Color del borde
+                    backgroundColor: (porcentajeAD === 0)?  ['rgba(0,210,239,0.19)'] :['rgba(34,134,134,0.12)'],
+                    borderColor:  (porcentajeAD === 0)? 'rgba(0,182,206,0.53)':['rgba(255,255,255,0.58)'],// Color del borde
                     borderWidth: 2,// Ancho del borde
                 }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        stepSize: 10
+                    }
+                }
             }
 
         });
@@ -202,13 +223,13 @@
         var porcentajeMujeres = ((mujeres / totalUsuarios) * 100);
         var porcentajeHombres = ((hombres / totalUsuarios) * 100);
 
-        var porcentajeAD = (isNaN(porcentajeMujeres) && isNaN(porcentajeMujeres))? 100 : 0;
+
 
 
         var graficoTorta = new Chart(contextoTorta, {
             type: 'doughnut',
             data: {
-                labels: (porcentajeAD === 0)? ['Mujeres ' + porcentajeMujeres + '%', 'Hombres ' + porcentajeHombres + '%'] : ["no hay usuarios"],
+                labels: (porcentajeAD === 0)? ['Mujeres ' + porcentajeMujeres.toFixed(0) + '%', 'Hombres ' + porcentajeHombres.toFixed(0) + '%'] : ["no hay usuarios"],
                 datasets: [{
                     data: (porcentajeAD === 0)? [mujeres, hombres] : [porcentajeAD],
                     backgroundColor:  (porcentajeAD === 0)? ['#da74a2', '#3aa9b9'] :['rgba(134,134,134,0.12)']

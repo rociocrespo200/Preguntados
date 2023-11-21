@@ -25,10 +25,6 @@ class GraficosController
                 $datos['error'] = "Si ingresa el dia debe indicar mes y año";
                 $this->render->printViewAdmin('graficos', $datos);
             }
-            //DIA MES Y ANIO
-            echo $_POST['dia'] . "<br>";
-            echo $_POST['mes'] . "<br>";
-            echo $_POST['anio'] . "<br>";
 
             $fechas[] = $this->formatDate($_POST['dia'], $_POST['mes'], $_POST['anio']);
         }
