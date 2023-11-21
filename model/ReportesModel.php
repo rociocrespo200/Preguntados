@@ -42,4 +42,23 @@ class ReportesModel
         $this->database->query("INSERT into reporte (id_pregunta, motivo, id_usuario) VALUES (" . $idPregunta . ", '" . $motivo . "', " . $idUsuario . ")");
     }
 
+    public function terminarPartida($idUsuario){
+       $partidaAct= $this->obtenerPartidaActual($idUsuario);
+       $this->agregarRespuestaNulaALaPartida($partidaAct);
+    }
+
+    public function obtenerPartidaActual($idUsuario)
+    {
+        return $this->database->query("SELECT * FROM partida WHERE id_usuario = " . $idUsuario . " ORDER BY fecha DESC LIMIT 1")[0];
+    }
+
+    public function agregarRespuestaNulaALaPartida($partida){
+        //print_r($partida[0]);
+        $this->database->query("UPDATE `preguntados`.`partida` SET `preguntasContestadas` = '" . ($partida['preguntasContestadas'] + 1) . "' WHERE `id` =" . $partida['id']);
+        $this->database->query("INSERT INTO partida_respuestas (id_partida) VALUES (" .$partida['id']. ")");
+
+    }
+
+
+
 }

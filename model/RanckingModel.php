@@ -7,7 +7,7 @@ class RanckingModel
     public function __construct($database) {
         $this->database = $database;
     }
-    public function getRanking ()
+    public function getRanking ($inicio, $limite)
     {
         $ranking = $this->database->query("SELECT ROW_NUMBER() OVER (ORDER BY U.puntos DESC) AS 'Posicion', 
                                            U.id as 'id', 
@@ -21,7 +21,8 @@ class RanckingModel
                                             FROM usuario U 
                                             JOIN partida P ON U.id = P.id_usuario 
                                             GROUP BY U.id, U.usuario, U.nivel, U.puntos 
-                                            ORDER BY U.puntos DESC;");
+                                            ORDER BY U.puntos DESC
+                                            LIMIT $limite OFFSET $inicio;");
         //  U.foto_perfil,  agregado para que traiga foto perfil
         $result = array();
 
@@ -31,7 +32,7 @@ class RanckingModel
             $result[] = [
                 'id' => $rank["id"],
                 'posicion' => $rank["Posicion"],
-                'usuarios' => $rank["usuario"],
+                'usuario' => $rank["usuario"],
                 'nivel' => $rank ["nivel"],
                 'puntos' => $rank["puntos"],
                 'foto_perfil'=>$rank["foto_perfil"],

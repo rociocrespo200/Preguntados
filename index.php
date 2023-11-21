@@ -17,16 +17,34 @@ if (!isset($_SESSION['usuario'])) {
         $router->route($controller, $method);
         exit;
     }
-
     // Si la sesión no es válida y no se solicita "user/login" o "user/signin," redirige a la página de inicio de sesión por defecto
-
-
-
-   //descomentar esto
     $controller = "user";
     $method = "login";
-}
 
+} else if($_SESSION['usuario']['id_rol']==3){//admin
+    if ($controller === 'graficos') {
+        $router->route($controller, $method);
+        exit;
+    }
+    $controller = "graficos";
+    $method = "show";
+} else if($_SESSION['usuario']['id_rol']==2){//editor
+    if ($controller === 'homeEditor' && !in_array($method, ['administrarPregunta']) || $controller === 'reportes' && !in_array($method, ['agregarReporte']) || $controller==='sugerencias' && !in_array($method, ['agregarSugerencia']))  {
+        $router->route($controller, $method);
+        exit;
+    }
+    $controller = "homeEditor";
+    $method = "show";
+
+} else if($_SESSION['usuario']['id_rol']==1) {//usuario logeado
+    if ($controller === 'homeEditor' && in_array($method, ['administrarPregunta']) || $controller === 'home' || $controller === 'reportes' && in_array($method, ['agregarReporte','traerPreguntas']) || $controller === 'partida' || $controller === 'historial' || $controller === 'rancking' || $controller==='sugerencias' && in_array($method, ['agregarSugerencia'])) {//ver ´xq no anda
+        $router->route($controller, $method);
+        exit;
+    }
+    $controller = "home";
+    $method = "show";
+
+}
 // Si la sesión es válida, permite el acceso a la ruta deseada
 $router->route($controller, $method);
 

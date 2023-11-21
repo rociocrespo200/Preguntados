@@ -14,14 +14,10 @@ class RanckingController
 
     public function show()
     {
-        $ranking = $this->model->getRanking();
-
         $datos = [
             'usuario' => $_SESSION['usuario']['usuario'],
             'usuarioPuntos' => $_SESSION['usuario']['puntos'],
             'nivel' => $_SESSION['usuario']['nivel'],
-            'topTres' => [$ranking[0],$ranking[1],$ranking[2]],
-            'ranking' => $this->traerRestoDelRanking($ranking),
             'user' => $this->model->traerUsuario($_SESSION['usuario']['id'])
         ];
 
@@ -29,13 +25,20 @@ class RanckingController
         $this->render->printViewSesion('rancking', $datos); //crea una vista, con el constructor de esta clase, llamada home
     }
 
-    public function traerRestoDelRanking($ranking){
-        $rankingSinTopTres = [];
-        for ($i=3; $i < sizeof($ranking); $i++) { 
-            array_push($rankingSinTopTres, $ranking[$i]);
-        }
-        return $rankingSinTopTres;
+    public function traerRanking(){
+        $inicio = $_GET['inicio'];
+        $limite = $_GET['limite'];
+
+        $ranking = $this->model->getRanking($inicio, $limite);
+
+        header('Content-Type: application/json');
+
+        // Devuelve el array codificado como JSON
+        echo json_encode($ranking);
     }
+
+
+
 
 
 }

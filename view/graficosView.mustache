@@ -56,6 +56,7 @@
                 <canvas id="miGrafico3" style="color: white"></canvas>
             </div>
         </div>
+        <a href="#" class="btn boton" id="descargarPDFBtn" style="margin-bottom: 20px">Descargar gráficos</a>
 
     </section>
 
@@ -63,7 +64,23 @@
 
 <script>
 
+    document.getElementById('descargarPDFBtn').addEventListener('click', function(event) {
+        event.preventDefault();
 
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'http://localhost/graficos/descargarPDF', true);
+        xhr.responseType = 'blob'; // Importante para manejar archivos binarios como PDF
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                var blob = new Blob([xhr.response], { type: 'application/pdf' });
+                var link = document.createElement('a');
+                link.href = window.URL.createObjectURL(blob);
+                link.download = 'Informe_de_Graficos.pdf';
+                link.click();
+            }
+        };
+        xhr.send();
+    });
 
 
 

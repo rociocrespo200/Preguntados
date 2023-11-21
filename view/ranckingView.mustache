@@ -1,7 +1,14 @@
-<main style="padding-top: 100px; padding-bottom: 75px;">
-    <section id="main_scroll">
-        
-    {{#topTres}}
+
+
+<main  style="padding-top: 100px; padding-bottom: 75px;">
+    <section  id="main_scroll">
+
+        <div class="popup2"  id="popup_qr" style="display: none; top: 15%; max-width: 600px; left: auto">
+            <a class="popup_cruz" onclick="ocultarPopUp('popup_qr')">✖</a>
+            <img id="img_qr" src="" alt="" style="width: 100%; min-width: 300px">
+        </div>
+
+    <!--{{#topTres}}
         <section class="ranking_global">
             <div class="a_ranking">
                 <div class="div_ranking rounded-left div_ranking_numero"><span>#{{posicion}}</span></div>
@@ -13,9 +20,9 @@
                 <div class="div_ranking rounded-right" style="border-left: 3px solid #733bac ;" ><button onclick="mostrarPopUp('popup_qr')" class="btn btn-outline-light my-2 my-sm-0 m-3">Ver QR</button></div>
             </div>
         </section>
-    {{/topTres}}
+    {{/topTres}}-->
 
-    {{#ranking}}
+    <!--{{#ranking}}
         <section class="ranking_global">
             <div class="a_ranking">
                 <div class="div_ranking2 rounded-left div_ranking_numero2"><span>#{{posicion}}</span></div>
@@ -30,18 +37,105 @@
         </section>
 
 
-        <div class="popup2"  id="popup_qr" style="display: none; top: 15%; max-width: 600px; left: auto">
-            <a class="popup_cruz" onclick="ocultarPopUp('popup_qr')">✖</a>
-            <img src="../public/qrs/{{foto_qr}}" alt="" style="width: 100%; min-width: 300px">
-        </div>
-    {{/ranking}}
+
+    {{/ranking}}-->
+
 
 
     </section>
+    <button id="ver_mas" class="btn btn-outline-light my-2 my-sm-0 m-3" onclick="mostrarRanking(3,3000)">Ver más...</button>
 
 
 
 
 </main>
 
-<script src="../public/js/popup.js"></script>
+
+<script>
+
+
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+        mostrarRanking(0, 3);
+    });
+
+
+    function mostrarRanking(inicio, limite){
+        console.log("hola");
+        var xhr = new XMLHttpRequest();
+        var url = `http://localhost/rancking/traerRanking?inicio=${inicio}&limite=${limite}`;
+        xhr.open("GET", url, true);
+        xhr.onreadystatechange = function () {
+            if (this.readyState === XMLHttpRequest.DONE) {
+                if (this.status === 200) {
+                    let ranking = JSON.parse(this.responseText);
+                    console.log(ranking);
+                    generarRanking(ranking);
+
+                } else {
+                    console.error("Error en la solicitud:", this.status);
+                }
+            }
+        };
+        xhr.send();
+    }
+
+    function generarRanking(ranking) {
+
+        ranking.forEach((jugador) => {
+            const divRanking = document.createElement('section');
+            divRanking.classList.add('ranking_global');
+            var fotoqr = `${jugador.foto_qr}`;
+            const contenido = `
+             <div class="a_ranking">
+            <div class="div_ranking2 rounded-left div_ranking_numero2"><span>#${jugador.posicion}</span></div>
+            <div class="div_ranking2 div_ranking_nombre">
+                <img class="img_perfil" src="../public/usuarios/${jugador.foto_perfil}" alt="">
+                <span class="nombre">${jugador.usuario}</span>
+            </div>
+            <div class="div_ranking2" style="border-left: 3px solid #3d4079;"><span>${jugador.puntos}</span> puntos</div>
+            <div class="div_ranking2" style="border-left: 3px solid #3d4079;"><span>${jugador.nivel}</span> nivel</div>
+            <div class="div_ranking2" style="border-left: 3px solid #3d4079;"><span>${jugador.cantidadDePartidas}</span> partidas</div>
+            <div class="div_ranking2" style="border-left: 3px solid #3d4079;"><span>${jugador.preguntas}</span> preguntas</div>
+            <div class="div_ranking2 rounded-right" style="border-left: 3px solid #3d4079;">
+                <button onclick="mostrarPopUp('popup_qr', '${fotoqr}')" class="btn btn-outline-light my-2 my-sm-0 m-3">Ver QR</button>
+            </div>
+                </div>
+
+        `;
+
+            console.log(fotoqr);
+
+            divRanking.innerHTML = contenido;
+            //contenedorRanking.appendChild(divRanking);
+            document.getElementById('main_scroll').appendChild(divRanking);
+
+
+
+
+        });
+
+
+
+    }
+
+    document.getElementById('ver_mas').addEventListener('click', function() {
+            document.getElementById('ver_mas').style.display='none';  // Llamada a la función cuando el DOM esté listo
+        });
+
+
+
+        function mostrarPopUp(idPopUp, src) {
+            console.log(src);
+            document.getElementById('img_qr').src = `../public/qrs/${src}`;
+            let popup = document.getElementById(idPopUp);
+            popup.style.display = "flex";
+        }
+
+        function ocultarPopUp(idPopUp){
+            let popup = document.getElementById(idPopUp);
+            popup.style.display = "none";
+        }
+
+</script>

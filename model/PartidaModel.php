@@ -53,9 +53,11 @@ class PartidaModel
         $this->database->query("UPDATE `preguntados`.`partida` SET `preguntasContestadas` = '" . ($partida['preguntasContestadas'] + 1) . "' WHERE `id` =" . $partida['id']);
         $this->database->query("INSERT INTO partida_respuestas (id_partida, id_respuesta) VALUES (" . $partida['id'] . "," . $idRespuesta . ")");
         $this->actualizarDificultad($this->buscarRespuestaPorId($idRespuesta));
+        $this->actualizarNivelUsuario($_SESSION['usuario']['id']);
             return true;
         }else{
             $this->agregarRespuestaNulaALaPartida($partida, $idRespuesta);
+            $this->actualizarNivelUsuario($_SESSION['usuario']['id']);
             return false;
         }
     }
@@ -165,6 +167,25 @@ class PartidaModel
 
         return true;
     }
+    private function actualizarNivelUsuario($idActual){
+        $totalDePreguntas = $this->database->query("select Sum(preguntasContestadas) as 'cantidad total de preguntas' from partida where id_usuario = $idActual;");
+        var_dump("preguntas ", $totalDePreguntas[0][0]);
+        $totalPreguntasContestadas = $this->database->query("select Count(preguntasContestadas) from partida p left join partida_respuestas pr on pr.id_partida = p.id where id_usuario=$idActual;");
+        var_dump(" respuestas ",$totalPreguntasContestadas[0][0]);
+        $promedio = ($totalPreguntasContestadas[0][0]*100)/$totalDePreguntas[0][0];
+        $nivel = number_format($promedio, 2, ',', '.');
+        var_dump(" calculo ",$nivel);
+        $jugador = "";
+        if($nivel > 70){
+            $jugador = "Veterano";
+        }
+        elseif ($nivel > 40 && $nivel< 70){
+            $jugador = "Experimentado";
+        }else{
+            $jugador = "Novato";
+        }
+        $this->database->query ("update usuario set nivel = '$jugador' where id = $idActual");
 
+    }
 
 }

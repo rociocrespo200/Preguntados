@@ -21,22 +21,24 @@ class ReportesController
         $this->render->printViewEditor('reportes', $datos);
     }
 
-    public function vistaFormReporte()
+    public function traerPreguntas()
     {
+        $preguntaActual = $this->model->buscarPreguntaPorId($_GET['idPreguntaActual']);
+        $preguntas = $this->model->traerListaDePreguntas($_SESSION['usuario']['id']);
+
         $datos = [
-            'user' => $this->model->traerUsuario($_SESSION['usuario']['id']),
-            'preguntaActual' => $this->model->buscarPreguntaPorId($_GET['preguntaActual']),
-            'preguntas' => $this->model->traerListaDePreguntas($_SESSION['usuario']['id'])
+            'preguntaActual' => $preguntaActual,
+            'preguntas' => $preguntas
         ];
 
-        $this->render->printViewEditor('reportar', $datos);
+        header('Content-Type: application/json');
+        echo json_encode($datos);
     }
 
     public function rechazarReporte(){
         $idReporte=$_GET['id_reporte'];
         $this->model->eliminarReporte($idReporte);
         $this->show();
-
     }
 
     public function aprobarReporte(){
@@ -51,7 +53,7 @@ class ReportesController
         $idPregunta= $_POST['id_pregunta'];
         $motivo=$_POST['motivo'];
         $this->model->agregarReporte($idUsuario,$idPregunta,$motivo);
-
+        $this->model->terminarPartida($idUsuario);
         $datos = [
             'user' => $this->model->traerUsuario($_SESSION['usuario']['id'])
         ];
