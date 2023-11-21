@@ -12,6 +12,7 @@ class GraficosController
     }
 
     public function show() {
+        //$this->obtenerDatos(null);
         $this->render->printViewAdmin('graficos', $this->obtenerDatos(null));//crea una vista, con el constructor de esta clase, llamada home
     }
 

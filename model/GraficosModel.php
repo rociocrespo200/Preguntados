@@ -33,32 +33,53 @@ class GraficosModel
     }
 
     public function edad($fecha){ //agregado
+        $calcularEdad = "SUM(CASE WHEN YEAR(CURDATE()) - anio_nacimiento < 18 THEN 1 ELSE 0 END) AS menores, 
+                        SUM(CASE WHEN YEAR(CURDATE()) - anio_nacimiento BETWEEN 18 AND 64 THEN 1 ELSE 0 END) AS adultos,
+                        SUM(CASE WHEN YEAR(CURDATE()) - anio_nacimiento >= 65 THEN 1 ELSE 0 END) AS jubilados";
 
-        return $this->database->query("SELECT 
-            SUM(CASE WHEN YEAR(CURDATE()) - anio_nacimiento < 18 THEN 1 ELSE 0 END) AS menores,
-            SUM(CASE WHEN YEAR(CURDATE()) - anio_nacimiento BETWEEN 18 AND 64 THEN 1 ELSE 0 END) AS adultos,
-            SUM(CASE WHEN YEAR(CURDATE()) - anio_nacimiento >= 65 THEN 1 ELSE 0 END) AS jubilados
-             FROM usuario;")[0];
-
-
+        if ($fecha == null) {
+            $result = $this->database->query("SELECT $calcularEdad FROM usuario WHERE id_rol = 1;")[0];
+        } else if (sizeof($fecha) == 1) {
+            $fecha = $fecha[0];
+            $result = $this->database->query("SELECT $calcularEdad FROM usuario WHERE id_rol = 1 AND fecha = '$fecha';")[0];
+        } else {
+            $fechaInicio = $fecha[0];
+            $fechaFin = $fecha[1];
+            $result = $this->database->query("SELECT $calcularEdad FROM usuario WHERE id_rol = 1 AND fecha BETWEEN '$fechaInicio' AND '$fechaFin';")[0];
+        }
+        return $result;
     }
 
     public function porcentajeCorrectas($fecha)
     {
-        $vecesContestada = $this->database->query("SELECT  COUNT(*) AS totales, u.usuario FROM partida p JOIN partida_respuestas pr ON p.id = pr.id_partida JOIN usuario u  ON u.id = p.id_usuario GROUP BY u.id;");
-        $correctas = $this->database->query("SELECT COUNT(*) AS correctas, u.usuario FROM partida p JOIN partida_respuestas pr ON p.id = pr.id_partida JOIN usuario u ON u.id = p.id_usuario JOIN respuesta r ON r.id = pr.id_respuesta WHERE r.esCorrecta = 1 GROUP BY u.id");
+
+
+        if ($fecha == null) {
+            $vecesContestada = $this->database->query("SELECT  COUNT(*) AS totales, u.usuario FROM partida p JOIN partida_respuestas pr ON p.id = pr.id_partida JOIN usuario u  ON u.id = p.id_usuario WHERE u.id_rol = 1  GROUP BY u.id ORDER BY u.usuario ASC;");
+            $correctas = $this->database->query("SELECT COUNT(*) AS correctas, u.usuario FROM partida p JOIN partida_respuestas pr ON p.id = pr.id_partida JOIN usuario u ON u.id = p.id_usuario JOIN respuesta r ON r.id = pr.id_respuesta WHERE u.id_rol = 1 AND r.esCorrecta = 1 GROUP BY u.id ORDER BY u.usuario ASC");
+
+        } else if (sizeof($fecha) == 1) {
+            $fecha = $fecha[0];
+            $vecesContestada = $this->database->query("SELECT  COUNT(*) AS totales, u.usuario FROM partida p JOIN partida_respuestas pr ON p.id = pr.id_partida JOIN usuario u  ON u.id = p.id_usuario WHERE u.id_rol = 1 AND u.fecha = '$fecha'  GROUP BY u.id ORDER BY u.usuario ASC;");
+            $correctas = $this->database->query("SELECT COUNT(*) AS correctas, u.usuario FROM partida p JOIN partida_respuestas pr ON p.id = pr.id_partida JOIN usuario u ON u.id = p.id_usuario JOIN respuesta r ON r.id = pr.id_respuesta WHERE u.id_rol = 1 AND r.esCorrecta = 1 AND u.fecha = '$fecha' GROUP BY u.id ORDER BY u.usuario ASC");
+        } else {
+            $fechaInicio = $fecha[0];
+            $fechaFin = $fecha[1];
+            $vecesContestada = $this->database->query("SELECT  COUNT(*) AS totales, u.usuario FROM partida p JOIN partida_respuestas pr ON p.id = pr.id_partida JOIN usuario u  ON u.id = p.id_usuario WHERE u.id_rol = 1 AND u.fecha BETWEEN '$fechaInicio' AND '$fechaFin'  GROUP BY u.id ORDER BY u.usuario ASC;");
+            $correctas = $this->database->query("SELECT COUNT(*) AS correctas, u.usuario FROM partida p JOIN partida_respuestas pr ON p.id = pr.id_partida JOIN usuario u ON u.id = p.id_usuario JOIN respuesta r ON r.id = pr.id_respuesta WHERE u.id_rol = 1 AND r.esCorrecta = 1 AND u.fecha BETWEEN '$fechaInicio' AND '$fechaFin'  GROUP BY u.id ORDER BY u.usuario ASC");
+        }
 
         $result = [];
 
+;
         for ($i = 0; $i < sizeof($vecesContestada); $i++) {
-            $promedioCorrectas = (100 * $correctas[$i]['correctas'])/ $vecesContestada[$i]['totales'];
+            $promedioCorrectas = (100 * $correctas[$i]['correctas']) / $vecesContestada[$i]['totales'];
             $obj = [
                 'usuarios' => $vecesContestada[$i]['usuario'],
                 'porcentajes' => $promedioCorrectas
                 ];
             array_push($result,$obj);
         }
-
 
         return $result;
     }
