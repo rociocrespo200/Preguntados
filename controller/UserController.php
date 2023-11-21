@@ -48,6 +48,7 @@ class UserController
         }
 
         $_SESSION["usuario"] = $usuarioBuscado;
+        $_SESSION['preguntas'] = array();
 
         $datos = [
             'user' => $this->model->traerUsuario($_SESSION['usuario']['id']),

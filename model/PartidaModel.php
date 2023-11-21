@@ -94,8 +94,24 @@ class PartidaModel
     public function traerPreguntaConRespuestas($partida)
     {
         $dificultad = $this ->validarDificultadQueCorresponde($partida);
+
+
         $preguntas = $this->database->query("SELECT * FROM Pregunta WHERE Pregunta.id_dificultad = ". $dificultad . " AND Pregunta.habilitada=1 " );
-        $preguntaAleatoria = $preguntas[rand(0, count($preguntas) - 1)];
+
+
+        for ($i = 0; $i < sizeof($preguntas); $i++) {
+            if (!isset($_SESSION['preguntas']) || !in_array($preguntas[$i], $_SESSION['preguntas'], true)) {
+                $_SESSION['preguntas'][] = $preguntas[$i];
+                $preguntaAleatoria = $preguntas[$i];
+                break;
+            }
+        }
+
+        if(!isset($preguntaAleatoria)){
+            $_SESSION['preguntas'] = array();
+            $preguntaAleatoria = $preguntas[rand(0, count($preguntas) - 1)];
+            $_SESSION['preguntas'][] = $preguntaAleatoria;
+        }
         $this->database->query("INSERT INTO partida_preguntas (id_partida, id_pregunta) VALUES (". $partida['id'] ."," . $preguntaAleatoria['id'] . ")");
 
         $respuestas = $this->database->query("SELECT *  FROM Respuesta WHERE id_pregunta = " . $preguntaAleatoria['id']);
