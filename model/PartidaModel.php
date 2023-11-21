@@ -39,9 +39,7 @@ class PartidaModel
 
     public function validarRecargoDePagina($idpartida, $idRespuesta){
         $respuestas = $this->database->query("SELECT * FROM partida_respuestas WHERE id_partida = " . $idpartida);
-//
-//        print_r($respuestas);
-//        echo "tamaño " . sizeof($respuestas);
+
         if (sizeof($respuestas) != 0 && $respuestas[sizeof($respuestas)-1]['id_respuesta'] == $idRespuesta) return true;
         return false;
     }
@@ -53,9 +51,11 @@ class PartidaModel
         $this->database->query("UPDATE `preguntados`.`partida` SET `preguntasContestadas` = '" . ($partida['preguntasContestadas'] + 1) . "' WHERE `id` =" . $partida['id']);
         $this->database->query("INSERT INTO partida_respuestas (id_partida, id_respuesta) VALUES (" . $partida['id'] . "," . $idRespuesta . ")");
         $this->actualizarDificultad($this->buscarRespuestaPorId($idRespuesta));
+        $this->actualizarNivelUsuario($_SESSION['usuario']['id']);
             return true;
         }else{
             $this->agregarRespuestaNulaALaPartida($partida, $idRespuesta);
+            $this->actualizarNivelUsuario($_SESSION['usuario']['id']);
             return false;
         }
     }
@@ -92,11 +92,28 @@ class PartidaModel
     public function traerPreguntaConRespuestas($partida)
     {
         $dificultad = $this ->validarDificultadQueCorresponde($partida);
+
+
         $preguntas = $this->database->query("SELECT * FROM Pregunta WHERE Pregunta.id_dificultad = ". $dificultad . " AND Pregunta.habilitada=1 " );
-        $preguntaAleatoria = $preguntas[rand(0, count($preguntas) - 1)];
+
+
+        for ($i = 0; $i < sizeof($preguntas); $i++) {
+            if (!isset($_SESSION['preguntas']) || !in_array($preguntas[$i], $_SESSION['preguntas'], true)) {
+                $_SESSION['preguntas'][] = $preguntas[$i];
+                $preguntaAleatoria = $preguntas[$i];
+                break;
+            }
+        }
+
+        if(!isset($preguntaAleatoria)){
+            $_SESSION['preguntas'] = array();
+            $preguntaAleatoria = $preguntas[rand(0, count($preguntas) - 1)];
+            $_SESSION['preguntas'][] = $preguntaAleatoria;
+        }
         $this->database->query("INSERT INTO partida_preguntas (id_partida, id_pregunta) VALUES (". $partida['id'] ."," . $preguntaAleatoria['id'] . ")");
 
         $respuestas = $this->database->query("SELECT *  FROM Respuesta WHERE id_pregunta = " . $preguntaAleatoria['id']);
+        shuffle($respuestas);
 
         $result = [
             'pregunta' => $preguntaAleatoria,
@@ -137,7 +154,7 @@ class PartidaModel
         $correctas = (int) $this->database->query("SELECT count(*) FROM partida_respuestas pr JOIN respuesta r ON r.id = pr.id_respuesta WHERE r.esCorrecta = 1 AND r.id_pregunta =" . $respuesta['id_pregunta'])[0][0];
 
         $promedioCorrectas = (100 * $correctas)/ $vecesContestada;
-        echo $promedioCorrectas . " Estoy acaaaaa ";
+
         if($promedioCorrectas > 80){
             //FACIL
             $this->database->query("UPDATE `preguntados`.`pregunta` SET `id_dificultad` = '1' WHERE `id` =" . $respuesta['id_pregunta']);
@@ -156,15 +173,29 @@ class PartidaModel
         $fecha_actual = new DateTime();
         $fecha_ultima_pregunta = new DateTime($fecha);
         $intervalo = $fecha_actual->getTimestamp() - $fecha_ultima_pregunta->getTimestamp();
-        echo '$fecha_actual->getTimestamp() = ' .$fecha_actual->getTimestamp(). "<br>";
-        echo '$fecha_ultima_pregunta->getTimestamp() = ' . $fecha_ultima_pregunta->getTimestamp(). "<br>";
-        echo '$intervalo = ' . $intervalo . "<br>";
+
         if ($intervalo > 500000) {
             return false;
         }
 
         return true;
     }
+    private function actualizarNivelUsuario($idActual){
+        $totalDePreguntas = $this->database->query("select Sum(preguntasContestadas) as 'cantidad total de preguntas' from partida where id_usuario = $idActual;");
+        $totalPreguntasContestadas = $this->database->query("select Count(preguntasContestadas) from partida p left join partida_respuestas pr on pr.id_partida = p.id where id_usuario=$idActual;");
+        $promedio = ($totalPreguntasContestadas[0][0]*100)/$totalDePreguntas[0][0];
+        $nivel = number_format($promedio, 2, ',', '.');
+        $jugador = "";
+        if($nivel > 70){
+            $jugador = "Veterano";
+        }
+        elseif ($nivel > 40 && $nivel< 70){
+            $jugador = "Experimentado";
+        }else{
+            $jugador = "Novato";
+        }
+        $this->database->query ("update usuario set nivel = '$jugador' where id = $idActual");
 
+    }
 
 }

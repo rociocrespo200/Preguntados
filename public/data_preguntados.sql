@@ -22,7 +22,7 @@ CREATE TABLE usuario (
     usuario VARCHAR(255) NOT NULL,
     clave VARCHAR(255) NOT NULL,
     puntos INT default 0,
-    nivel INT default 1,
+    nivel varchar(50) default "Novato",
     id_rol int default 1,
     token VARCHAR(255),
 	validado bool default false,
@@ -47,11 +47,11 @@ CREATE TABLE usuario (
 
 
 
-INSERT INTO usuario (nombre, apellido, anio_nacimiento, genero, latitud, longitud, mail, usuario, clave, foto_perfil, puntos, nivel, token)
+INSERT INTO usuario (nombre, apellido, anio_nacimiento, genero, latitud, longitud, mail, usuario, clave, foto_perfil, puntos, token)
 VALUES
-	('Rocio', 'Crespo', 2000, 'femenino',-34.67854116939218, -58.56046473173828, 'fan1casiangeles@gmail.com', 'rocio123', '1234', 'profile.png',10700, 9, "7e3ec5530d7e3a4d460857cf96824a67"),
-     ('Jane', 'Smith', 1985,'masculino',-34.67854116939218, -58.56046473173828, 'janesmith@example.com', 'janesmith456', 'contrasena456', 'profile.png',7820, 5, "9766ee80a3a2d8eb56a59f43b174ac0a"),
-    ('Juan', 'Pérez', 1988, 'masculino',-34.67854116939218, -58.56046473173828, 'juanperez@example.com', 'juanperez789', 'clave789', 'profile.png',100, 1, "8a83d994f94d1bf2c495b048f7e12f65");
+	('Rocio', 'Crespo', 2000, 'femenino',-34.67854116939218, -58.56046473173828, 'fan1casiangeles@gmail.com', 'rocio123', '1234', 'profile.png',10700, "7e3ec5530d7e3a4d460857cf96824a67"),
+     ('Jane', 'Smith', 1985,'masculino',-34.67854116939218, -58.56046473173828, 'janesmith@example.com', 'janesmith456', 'contrasena456', 'profile.png',7820, "9766ee80a3a2d8eb56a59f43b174ac0a"),
+    ('Juan', 'Pérez', 1988, 'masculino',-34.67854116939218, -58.56046473173828, 'juanperez@example.com', 'juanperez789', 'clave789', 'profile.png',100, "8a83d994f94d1bf2c495b048f7e12f65");
 INSERT INTO usuario (nombre, apellido, anio_nacimiento,genero, latitud, longitud, mail, usuario, clave, foto_perfil, id_rol)
 VALUES
 	('Rocio', 'Crespo', 2000, 'femenino',-34.67854116939218, -58.56046473173828, 'belen@gmail.com', 'belen123', '1234', 'profile.png',2),
@@ -118,9 +118,9 @@ FOREIGN KEY (id_pregunta) REFERENCES Pregunta(id)
 
 CREATE TABLE partida_respuestas (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    id_partida INT NOT NULL,
-    id_respuesta INT ,
-	fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
+    id_partida INT NOT NULL, -- 1 a 61
+    id_respuesta INT , -- = 268
+	fecha DATETIME DEFAULT CURRENT_TIMESTAMP, -- 2020 a 2023
     FOREIGN KEY (id_partida) REFERENCES partida(id),
     FOREIGN KEY (id_respuesta) REFERENCES respuesta(id)
 );
@@ -150,7 +150,7 @@ CREATE TABLE reporte (
 
 CREATE TABLE sugerencia (
 	id INT auto_increment PRIMARY KEY,
-	fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
+	fecha DATETIME DEFAULT CURRENT_TIMESTAMP, -- 2020 a 2023
     aprobada bool default false,
 	id_usuario INT NOT NULL,
 	pregunta VARCHAR(255) NOT NULL,
@@ -160,9 +160,9 @@ CREATE TABLE sugerencia (
     respuestaIncorrecta1 VARCHAR(255) NOT NULL,
 	respuestaIncorrecta2 VARCHAR(255),
     respuestaIncorrecta3 VARCHAR(255),
-	FOREIGN KEY (id_categoria) REFERENCES Categoria(id),
-	FOREIGN KEY (id_dificultad) REFERENCES Dificultad(id),
-    FOREIGN KEY (id_usuario) REFERENCES usuario(id)
+	FOREIGN KEY (id_categoria) REFERENCES Categoria(id), -- 1 a 6
+	FOREIGN KEY (id_dificultad) REFERENCES Dificultad(id), -- 1 a 3
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id) -- 1 a 19
 );
 
 
@@ -1028,3 +1028,180 @@ INSERT INTO reporte (id_pregunta , motivo, id_usuario) VALUES
     ('8', 'Muy dificil para el nivel', 1);
 
 SELECT * FROM usuario;
+
+INSERT INTO usuario (nombre, apellido, anio_nacimiento, genero, latitud, longitud, mail, usuario, clave, foto_perfil, puntos, token, fecha)
+VALUES
+    ('Usuario1', 'Apellido1', 1920, 'femenino', -34.67854116939218, -58.56046473173828, 'usuario1@example.com', 'usuario1', 'clave1', 'profile.png', 1500, 'token1', '2020-01-15 10:30:00'),
+    ('Usuario2', 'Apellido2', 1930, 'masculino', -34.67854116939218, -58.56046473173828, 'usuario2@example.com', 'usuario2', 'clave2', 'profile.png', 2000, 'token2', '2021-05-20 15:45:00'),
+    ('Usuario3', 'Apellido3', 1980, 'femenino', -34.67854116939218, -58.56046473173828, 'usuario3@example.com', 'usuario3', 'clave3', 'profile.png', 300, 'token3', '2022-09-01 08:00:00'),
+    ('Usuario4', 'Apellido4', 1998, 'masculino', -34.67854116939218, -58.56046473173828, 'usuario4@example.com', 'usuario4', 'clave4', 'profile.png', 500, 'token4', '2023-12-05 20:15:00'),
+    ('Usuario5', 'Apellido5', 1990, 'femenino', -34.67854116939218, -58.56046473173828, 'usuario5@example.com', 'usuario5', 'clave5', 'profile.png', 1000, 'token5', '2021-03-10 12:30:00'),
+    ('Usuario6', 'Apellido6', 2005, 'masculino', -34.67854116939218, -58.56046473173828, 'usuario6@example.com', 'usuario6', 'clave6', 'profile.png', 2500, 'token6', '2022-08-22 18:20:00'),
+    ('Usuario7', 'Apellido7', 1988, 'femenino', -34.67854116939218, -58.56046473173828, 'usuario7@example.com', 'usuario7', 'clave7', 'profile.png', 1800, 'token7', '2020-11-30 09:45:00'),
+    ('Usuario8', 'Apellido8', 2000, 'masculino', -34.67854116939218, -58.56046473173828, 'usuario8@example.com', 'usuario8', 'clave8', 'profile.png', 900, 'token8', '2023-02-14 16:10:00'),
+	('Usuario9', 'Apellido9', 1995, 'femenino', -34.67854116939218, -58.56046473173828, 'usuario9@example.com', 'usuario9', 'clave9', 'profile.png', 500, 'token9', '2022-05-18 14:55:00'),
+    ('Usuario10', 'Apellido10', 1980, 'masculino', -34.67854116939218, -58.56046473173828, 'usuario10@example.com', 'usuario10', 'clave10', 'profile.png', 1200, 'token10', '2021-07-07 08:40:00'),
+    ('Usuario11', 'Apellido11', 2010, 'femenino', -34.67854116939218, -58.56046473173828, 'usuario11@example.com', 'usuario11', 'clave11', 'profile.png', 800, 'token11', '2020-12-25 20:15:00'),
+    ('Usuario12', 'Apellido12', 2003, 'masculino', -34.67854116939218, -58.56046473173828, 'usuario12@example.com', 'usuario12', 'clave12', 'profile.png', 1500, 'token12', '2023-01-30 11:05:00'),
+    ('Usuario13', 'Apellido13', 1990, 'femenino', -34.67854116939218, -58.56046473173828, 'usuario13@example.com', 'usuario13', 'clave13', 'profile.png', 900, 'token13', '2020-09-15 18:30:00'),
+    ('Usuario14', 'Apellido14', 1982, 'masculino', -34.67854116939218, -58.56046473173828, 'usuario14@example.com', 'usuario14', 'clave14', 'profile.png', 2000, 'token14', '2022-03-10 09:20:00'),
+    ('Usuario15', 'Apellido15', 1996, 'femenino', -34.67854116939218, -58.56046473173828, 'usuario15@example.com', 'usuario15', 'clave15', 'profile.png', 1100, 'token15', '2021-11-05 14:45:00'),
+    ('Usuario16', 'Apellido16', 2013, 'masculino', -34.67854116939218, -58.56046473173828, 'usuario16@example.com', 'usuario16', 'clave16', 'profile.png', 1700, 'token16', '2023-02-28 22:10:00');
+    
+    INSERT INTO partida (fecha, id_usuario, preguntasContestadas, puntos, id_dificultad) VALUES
+    ('2020-01-15 10:30:00', 1, 5, 100, 1),
+    ('2020-02-20 12:45:00', 2, 7, 150, 2),
+    ('2020-03-25 15:00:00', 3, 6, 120, 1),
+    ('2020-04-30 18:15:00', 4, 8, 180, 2),
+    ('2020-05-05 20:30:00', 5, 7, 150, 1),
+    ('2020-06-10 22:45:00', 6, 6, 120, 2),
+    ('2020-07-15 01:00:00', 7, 9, 200, 1),
+    ('2020-08-20 03:15:00', 8, 8, 180, 2),
+    ('2020-09-25 05:30:00', 9, 7, 150, 1),
+    ('2020-10-30 07:45:00', 10, 10, 250, 2),
+    ('2020-11-05 10:00:00', 11, 9, 200, 1),
+    ('2020-12-10 12:15:00', 12, 8, 180, 2),
+    ('2021-01-15 02:30:00', 13, 11, 300, 1),
+    ('2021-02-20 04:45:00', 14, 10, 250, 2),
+    ('2021-03-25 07:00:00', 15, 9, 200, 1),
+    ('2021-04-30 09:15:00', 1, 12, 350, 2),
+    ('2021-05-05 11:30:00', 2, 11, 300, 1),
+    ('2021-06-10 13:45:00', 3, 10, 250, 2),
+    ('2021-07-15 16:00:00', 4, 13, 400, 1),
+    ('2021-08-20 18:15:00', 5, 12, 350, 2),
+    ('2021-09-25 20:30:00', 6, 11, 300, 1),
+    ('2021-10-30 22:45:00', 7, 14, 450, 2),
+    ('2021-11-05 01:00:00', 8, 13, 400, 1),
+    ('2021-12-10 03:15:00', 9, 12, 350, 2),
+    ('2022-01-15 05:30:00', 10, 15, 500, 1),
+    ('2022-02-20 07:45:00', 11, 14, 450, 2),
+    ('2022-03-25 10:00:00', 12, 13, 400, 1),
+    ('2022-04-30 12:15:00', 13, 12, 350, 2),
+    ('2022-05-05 02:30:00', 14, 1, 550, 1),
+    ('2022-06-10 04:45:00', 15, 14, 450, 2),
+    ('2022-07-15 07:00:00', 1, 13, 400, 1),
+    ('2022-08-20 09:15:00', 2, 12, 350, 2),
+    ('2022-09-25 11:30:00', 3, 15, 500, 1),
+    ('2022-10-30 13:45:00', 4, 14, 450, 2),
+    ('2022-11-05 16:00:00', 5, 13, 400, 1),
+    ('2022-12-10 18:15:00', 6, 12, 350, 2),
+    ('2023-01-15 20:30:00', 7, 1, 550, 1),
+    ('2023-02-20 22:45:00', 8, 2, 600, 2),
+    ('2023-03-25 01:00:00', 9, 3, 650, 1),
+    ('2023-04-30 03:15:00', 10, 4, 700, 2),
+    ('2023-05-05 05:30:00', 11, 5, 750, 1),
+    ('2023-06-10 07:45:00', 12, 6, 800, 2),
+    ('2023-07-15 10:00:00', 13, 7, 850, 1),
+    ('2023-08-20 12:15:00', 14, 8, 900, 2),
+    ('2023-09-25 02:30:00', 15, 9, 950, 1);
+    
+INSERT INTO sugerencia (fecha, aprobada, id_usuario, pregunta, id_categoria, id_dificultad, respuestaCorrecta, respuestaIncorrecta1, respuestaIncorrecta2, respuestaIncorrecta3) VALUES
+    ('2020-01-15 10:30:00', false, 1, 'Pregunta 1', 1, 1, 'Respuesta 1 Correcta', 'Incorrecta 1', 'Incorrecta 2', 'Incorrecta 3'),
+    ('2020-02-20 12:45:00', true, 2, 'Pregunta 2', 2, 2, 'Respuesta 2 Correcta', 'Incorrecta 1', 'Incorrecta 2', 'Incorrecta 3'),
+    ('2020-03-25 15:00:00', false, 3, 'Pregunta 3', 3, 3, 'Respuesta 3 Correcta', 'Incorrecta 1', 'Incorrecta 2', 'Incorrecta 3'),
+    ('2020-04-30 18:15:00', true, 4, 'Pregunta 4', 4, 1, 'Respuesta 4 Correcta', 'Incorrecta 1', 'Incorrecta 2', 'Incorrecta 3'),
+    ('2020-05-05 20:30:00', false, 5, 'Pregunta 5', 5, 2, 'Respuesta 5 Correcta', 'Incorrecta 1', 'Incorrecta 2', 'Incorrecta 3'),
+    ('2020-06-10 22:45:00', true, 6, 'Pregunta 6', 6, 3, 'Respuesta 6 Correcta', 'Incorrecta 1', 'Incorrecta 2', 'Incorrecta 3'),
+    ('2020-07-15 01:00:00', false, 7, 'Pregunta 7', 1, 1, 'Respuesta 7 Correcta', 'Incorrecta 1', 'Incorrecta 2', 'Incorrecta 3'),
+    ('2020-08-20 03:15:00', true, 8, 'Pregunta 8', 2, 2, 'Respuesta 8 Correcta', 'Incorrecta 1', 'Incorrecta 2', 'Incorrecta 3'),
+    ('2020-09-25 05:30:00', false, 9, 'Pregunta 9', 3, 3, 'Respuesta 9 Correcta', 'Incorrecta 1', 'Incorrecta 2', 'Incorrecta 3'),
+    ('2020-10-30 07:45:00', true, 10, 'Pregunta 10', 4, 1, 'Respuesta 10 Correcta', 'Incorrecta 1', 'Incorrecta 2', 'Incorrecta 3'),
+    ('2023-01-15 10:30:00', false, 15, 'Pregunta 15', 6, 3, 'Respuesta 15 Correcta', 'Incorrecta 1', 'Incorrecta 2', 'Incorrecta 3'), 
+    ('2021-02-22 14:30:00', true, 11, 'Pregunta 11', 1, 2, 'Respuesta 11 Correcta', 'Incorrecta 1', 'Incorrecta 2', 'Incorrecta 3'),
+    ('2021-03-18 16:45:00', false, 12, 'Pregunta 12', 2, 3, 'Respuesta 12 Correcta', 'Incorrecta 1', 'Incorrecta 2', 'Incorrecta 3'),
+    ('2021-04-14 19:00:00', true, 13, 'Pregunta 13', 3, 1, 'Respuesta 13 Correcta', 'Incorrecta 1', 'Incorrecta 2', 'Incorrecta 3'),
+    ('2021-05-10 21:15:00', false, 14, 'Pregunta 14', 4, 2, 'Respuesta 14 Correcta', 'Incorrecta 1', 'Incorrecta 2', 'Incorrecta 3'),
+    ('2021-06-05 23:30:00', true, 15, 'Pregunta 15', 5, 3, 'Respuesta 15 Correcta', 'Incorrecta 1', 'Incorrecta 2', 'Incorrecta 3'),
+    ('2022-02-22 14:30:00', false, 1, 'Pregunta 16', 6, 1, 'Respuesta 16 Correcta', 'Incorrecta 1', 'Incorrecta 2', 'Incorrecta 3'),
+    ('2022-03-18 16:45:00', true, 2, 'Pregunta 17', 1, 2, 'Respuesta 17 Correcta', 'Incorrecta 1', 'Incorrecta 2', 'Incorrecta 3'),
+    ('2022-04-14 19:00:00', false, 3, 'Pregunta 18', 2, 3, 'Respuesta 18 Correcta', 'Incorrecta 1', 'Incorrecta 2', 'Incorrecta 3'),
+    ('2022-05-10 21:15:00', true, 4, 'Pregunta 19', 3, 1, 'Respuesta 19 Correcta', 'Incorrecta 1', 'Incorrecta 2', 'Incorrecta 3'),
+    ('2022-06-05 23:30:00', false, 5, 'Pregunta 20', 4, 2, 'Respuesta 20 Correcta', 'Incorrecta 1', 'Incorrecta 2', 'Incorrecta 3'),
+    ('2023-02-22 14:30:00', true, 6, 'Pregunta 21', 5, 3, 'Respuesta 21 Correcta', 'Incorrecta 1', 'Incorrecta 2', 'Incorrecta 3'),
+    ('2023-03-18 16:45:00', false, 7, 'Pregunta 22', 6, 1, 'Respuesta 22 Correcta', 'Incorrecta 1', 'Incorrecta 2', 'Incorrecta 3'),
+    ('2023-04-14 19:00:00', true, 8, 'Pregunta 23', 1, 2, 'Respuesta 23 Correcta', 'Incorrecta 1', 'Incorrecta 2', 'Incorrecta 3'),
+    ('2023-05-10 21:15:00', false, 9, 'Pregunta 24', 2, 3, 'Respuesta 24 Correcta', 'Incorrecta 1', 'Incorrecta 2', 'Incorrecta 3'),
+    ('2023-06-05 23:30:00', true, 10, 'Pregunta 25', 3, 1, 'Respuesta 25 Correcta', 'Incorrecta 1', 'Incorrecta 2', 'Incorrecta 3');    
+
+INSERT INTO partida_respuestas (id_partida, id_respuesta, fecha)
+VALUES 
+    (1, 268, '2020-01-15 10:30:00'),
+    (2, 268, '2021-05-20 15:45:00'),
+    (3, 268, '2022-09-01 08:00:00'),
+    (36, 268, '2023-12-05 20:15:00'),
+    (38, 268, '2021-03-10 12:30:00'),
+	(1, 242, '2020-01-15 10:30:00'),
+    (2, 242, '2021-05-20 15:45:00'),
+    (3, 242, '2022-09-01 08:00:00'),
+    (36, 242, '2023-12-05 20:15:00'),
+    (38, 242, '2021-03-10 12:30:00'),
+	(1, 246, '2020-01-15 10:30:00'),
+    (2, 246, '2021-05-20 15:45:00'),
+    (3, 246, '2022-09-01 08:00:00'),
+    (36, 246, '2023-12-05 20:15:00'),
+    (38, 246, '2021-03-10 12:30:00'),
+	(1, 37, '2020-01-15 10:30:00'),
+    (2, 37, '2021-05-20 15:45:00'),
+    (3, 37, '2022-09-01 08:00:00'),
+    (36, 37, '2023-12-05 20:15:00'),
+	(1, 33, '2020-01-15 10:30:00'),
+    (2, 33, '2021-05-20 15:45:00'),
+    (3, 33, '2022-09-01 08:00:00'),
+	(1, 13, '2020-01-15 10:30:00'),
+    (2, 13, '2021-05-20 15:45:00'),
+    
+	(1, 241, '2020-01-15 10:30:00'),
+    (2, 241, '2021-05-20 15:45:00'),
+    (3, 241, '2022-09-01 08:00:00'),
+    (36, 241, '2023-12-05 20:15:00'),
+    (38, 241, '2021-03-10 12:30:00'),
+  
+  -- relleno
+   (26, 268, '2020-03-05 10:15:00'),
+    (27, 268, '2021-06-12 14:30:00'),
+    (28, 268, '2022-09-18 16:45:00'),
+    (29, 268, '2023-12-25 20:00:00'),
+    (30, 268, '2021-02-28 22:30:00'),
+    (31, 268, '2020-04-15 12:00:00'),
+    (32, 268, '2022-07-20 18:15:00'),
+    (33, 268, '2023-10-22 16:30:00'),
+    (34, 268, '2020-12-10 14:45:00'),
+    (35, 268, '2022-05-07 08:00:00'),
+    (36, 268, '2023-08-14 10:45:00'),
+    (37, 268, '2021-11-30 16:00:00'),
+    (38, 268, '2020-09-25 20:15:00'),
+    (39, 268, '2022-02-15 22:30:00'),
+    (40, 268, '2023-05-01 12:45:00'),
+     (26, 13, '2020-03-05 10:15:00'),
+    (27, 13, '2021-06-12 14:30:00'),
+    (28, 13, '2022-09-18 16:45:00'),
+    (29, 13, '2023-12-25 20:00:00'),
+    (30, 13, '2021-02-28 22:30:00'),
+    (31, 13, '2020-04-15 12:00:00'),
+    (38, 13, '2020-09-25 20:15:00'),
+    (39, 13, '2022-02-15 22:30:00'),
+    (40, 13, '2023-05-01 12:45:00'),
+    (26, 33, '2020-03-05 10:15:00'),
+    (27, 33, '2021-06-12 14:30:00'),
+    (28, 33, '2022-09-18 16:45:00'),
+    (29, 33, '2023-12-25 20:00:00'),
+    (30, 33, '2021-02-28 22:30:00'),
+    (31, 33, '2020-04-15 12:00:00'),
+    (32, 33, '2022-07-20 18:15:00'),
+    (33, 33, '2023-10-22 16:30:00'),
+    
+    (26, 241, '2020-03-05 10:15:00'),
+    (27, 241, '2021-06-12 14:30:00'),
+    (28, 241, '2022-09-18 16:45:00'),
+    (29, 241, '2023-12-25 20:00:00'),
+    (30, 241, '2021-02-28 22:30:00'),
+    (31, 241, '2020-04-15 12:00:00'),
+    (32, 241, '2022-07-20 18:15:00'),
+    (33, 241, '2023-10-22 16:30:00'),
+    (34, 241, '2020-12-10 14:45:00'),
+    (35, 241, '2022-05-07 08:00:00'),
+    (36, 241, '2023-08-14 10:45:00'),
+    (37, 241, '2021-11-30 16:00:00'),
+    (38, 241, '2020-09-25 20:15:00'),
+    (39, 241, '2022-02-15 22:30:00'),
+    (40, 241, '2023-05-01 12:45:00');

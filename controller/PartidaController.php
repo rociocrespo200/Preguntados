@@ -62,7 +62,7 @@ class PartidaController
             if($this->model->agregarRespuestaALaPartida($partida[0],$_GET['id'])) {
                 $puntaje = $this->actualizarPuntaje($partida[0], $respuesta);
 
-                echo $respuesta['esCorrecta'];
+
                 if ($respuesta['esCorrecta'] == 0) {
                     $datos['error'] = true;
                     $datos['incorrecta'] = "La respuesta es incorrecta";
@@ -86,7 +86,6 @@ class PartidaController
     public function actualizarPuntaje($partida, $respuesta){
         $pregunta = $this->model->buscarPreguntaPorId($respuesta['id_pregunta']);
         $valorDePregunta = $this->model->obtenerDificultad($pregunta[0]['id_dificultad']);
-        var_dump($valorDePregunta);
         $valor = $valorDePregunta[0]['valor'];
 
         if($respuesta['esCorrecta'] == 1){
